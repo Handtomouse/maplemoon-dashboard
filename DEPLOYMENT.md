@@ -6,11 +6,13 @@
 
 ## Production URLs
 
-**Live Dashboard**: https://dashboard-deployment.vercel.app
+**Live Dashboard**: https://dashboarddeployment.vercel.app
 
 **GitHub Repository**: https://github.com/Handtomouse/maplemoon-dashboard
 
 **Vercel Project**: dashboard_deployment
+
+**Latest Deployment**: https://dashboarddeployment-m5s4s2xkk-handtomouses-projects.vercel.app
 
 ---
 
@@ -54,7 +56,7 @@ git push
 
 ## Testing Checklist
 
-- [ ] Visit: https://dashboard-deployment.vercel.app
+- [ ] Visit: https://dashboarddeployment.vercel.app
 - [ ] Click "Download Invoice" → Should download INV-0341.pdf
 - [ ] Click "Make a Payment" → Should open Xero invoice page
 - [ ] Click "Approve Quote" → Should open email with pre-filled message
@@ -65,7 +67,7 @@ git push
 
 Send this URL to MapleMoon (Dylan/Carli):
 
-**https://dashboard-deployment.vercel.app**
+**https://dashboarddeployment.vercel.app**
 
 Dashboard is live and ready for client review!
 
