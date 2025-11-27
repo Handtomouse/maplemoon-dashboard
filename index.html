@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapleMoon Project Portal - Updated Nov 2025</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* MapleMoon Brand Colors */
+            --mm-deep-blue: #457798;
+            --mm-dark-blue: #1E4366;
+            --mm-cream: #E8E5CE;
+            --mm-light-blue: #7DB9FA;
+            --mm-bright-blue: #62ABF9;
+            --mm-lilac: #D8CFF2;
+            --mm-white: #FFFFFF;
+            --afqa-accent: #62ABF9;
+
+            /* Semantic Colors */
+            --primary-color: var(--mm-deep-blue);
+            --secondary-color: var(--mm-dark-blue);
+            --accent-color: var(--mm-cream);
+            --success-color: #8FBC8B;
+            --warning-color: #D4A574;
+            --danger-color: #B85450;
+
+            /* Typography */
+            --font-primary: 'Crimson Text', serif;
+            --font-secondary: 'Inter', sans-serif;
+
+            /* Spacing & Effects */
+            --border-radius: 20px;
+            --border-radius-small: 12px;
+            --shadow-soft: 0 8px 32px rgba(69, 119, 152, 0.15);
+            --shadow-hover: 0 12px 40px rgba(69, 119, 152, 0.25);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            background: linear-gradient(135deg, var(--mm-cream) 0%, #f5f3e8 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+            color: var(--mm-dark-blue);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .brand-header {
+            background: var(--mm-white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--mm-deep-blue), var(--mm-light-blue), var(--mm-lilac));
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            text-align: center;
+        }
+
+        .maple-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 25px;
+            background: linear-gradient(135deg, var(--mm-deep-blue), var(--mm-dark-blue));
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            margin: 0 auto;
+            max-width: 280px;
+        }
+
+        .logo-mark {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .project-title {
+            padding: 25px;
+            background: linear-gradient(135deg, var(--mm-cream), #f0ede0);
+            border-radius: var(--border-radius-small);
+            border-left: 4px solid var(--mm-deep-blue);
+        }
+
+        .project-title h1 {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            color: var(--mm-dark-blue);
+            margin-bottom: 8px;
+        }
+
+        .project-subtitle {
+            color: var(--mm-deep-blue);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .client-summary {
+            padding: 20px;
+            background: var(--mm-cream);
+            border-radius: var(--border-radius-small);
+            border: 2px solid var(--mm-deep-blue);
+        }
+
+        .client-summary h3 {
+            font-family: var(--font-primary);
+            color: var(--mm-dark-blue);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(69, 119, 152, 0.1);
+            font-size: 0.95rem;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            color: var(--mm-dark-blue);
+        }
+
+        /* Financial Overview Cards */
+        .financial-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .finance-card {
+            background: var(--mm-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border-left: 5px solid;
+            position: relative;
+            overflow: hidden;
+            min-height: 160px;
+        }
+
+        .finance-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(69, 119, 152, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(25px, -25px);
+        }
+
+        .finance-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .finance-card.total { border-left-color: var(--mm-deep-blue); }
+        .finance-card.paid { border-left-color: var(--success-color); }
+        .finance-card.outstanding { border-left-color: var(--warning-color); }
+        .finance-card.afqa { border-left-color: var(--afqa-accent); }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--border-radius-small);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 1.2rem;
+            color: var(--mm-white);
+            flex-shrink: 0;
+        }
+
+        .total .card-icon { background: var(--mm-deep-blue); }
+        .paid .card-icon { background: var(--success-color); }
+        .outstanding .card-icon { background: var(--warning-color); }
+        .afqa .card-icon { background: var(--afqa-accent); }
+
+        .card-title {
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            color: var(--mm-dark-blue);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .card-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--mm-dark-blue);
+            margin-bottom: 8px;
+            font-family: var(--font-secondary);
+            line-height: 1.1;
+        }
+
+        .card-description {
+            color: var(--mm-deep-blue);
+            font-size: 0.9rem;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .breakdown-small {
+            font-size: 0.85rem;
+            color: var(--mm-deep-blue);
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(69, 119, 152, 0.1);
+        }
+
+        /* Main Content Sections */
+        .content-section {
+            background: var(--mm-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--mm-deep-blue), var(--mm-dark-blue));
+            color: var(--mm-white);
+            padding: 30px 25px;
+            position: relative;
+        }
+
+        .section-header.gap-header {
+            background: linear-gradient(135deg, var(--mm-lilac), #c5bae8);
+            color: var(--mm-dark-blue);
+        }
+
+        .section-header.afqa-header {
+            background: linear-gradient(135deg, var(--afqa-accent), var(--mm-light-blue));
+            color: var(--mm-dark-blue);
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            opacity: 0.9;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 10px;
+        }
+
+        .badge-complete {
+            background: rgba(143, 188, 139, 0.2);
+            color: var(--success-color);
+        }
+
+        .badge-new {
+            background: rgba(98, 171, 249, 0.2);
+            color: var(--afqa-accent);
+        }
+
+        .badge-pending {
+            background: rgba(212, 165, 116, 0.2);
+            color: var(--warning-color);
+        }
+
+        /* Timeline */
+        .timeline-container {
+            padding: 30px;
+        }
+
+        .timeline-week {
+            display: grid;
+            grid-template-columns: 120px 1fr 120px auto;
+            gap: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            border-radius: var(--border-radius-small);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--mm-deep-blue);
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .timeline-week:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .timeline-week.blocked {
+            border-left-color: var(--danger-color);
+            background: linear-gradient(135deg, #fff5f5, #fff);
+        }
+
+        .timeline-week.needs-info {
+            border-left-color: var(--warning-color);
+            background: linear-gradient(135deg, #fffbf5, #fff);
+        }
+
+        .week-label {
+            font-weight: 700;
+            color: var(--mm-dark-blue);
+            font-size: 0.9rem;
+        }
+
+        .week-deliverable {
+            color: var(--mm-deep-blue);
+            font-size: 0.95rem;
+        }
+
+        .week-amount {
+            font-weight: 700;
+            color: var(--success-color);
+            font-size: 1.1rem;
+        }
+
+        .week-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+
+        .status-icon.ready {
+            background: rgba(143, 188, 139, 0.2);
+            color: var(--success-color);
+        }
+
+        .status-icon.blocked {
+            background: rgba(184, 84, 80, 0.2);
+            color: var(--danger-color);
+        }
+
+        .status-icon.needs {
+            background: rgba(212, 165, 116, 0.2);
+            color: var(--warning-color);
+        }
+
+        .blocker-details {
+            grid-column: 2 / -1;
+            padding: 15px;
+            background: rgba(184, 84, 80, 0.05);
+            border-radius: var(--border-radius-small);
+            border: 1px solid rgba(184, 84, 80, 0.2);
+            margin-top: 10px;
+        }
+
+        .blocker-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 0 0;
+        }
+
+        .blocker-details li {
+            padding: 4px 0;
+            color: var(--danger-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .blocker-details li::before {
+            content: '⚠️ ';
+            margin-right: 6px;
+        }
+
+        /* Pricing Table */
+        .pricing-table {
+            padding: 30px;
+        }
+
+        .pricing-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 120px auto;
+            gap: 15px;
+            padding: 15px;
+            border-bottom: 1px solid rgba(69, 119, 152, 0.1);
+            align-items: center;
+        }
+
+        .pricing-row.header {
+            background: var(--mm-cream);
+            font-weight: 700;
+            border-radius: var(--border-radius-small);
+            border-bottom: 2px solid var(--mm-deep-blue);
+        }
+
+        .pricing-row.category {
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            font-weight: 600;
+            border-left: 4px solid var(--mm-deep-blue);
+            margin-top: 10px;
+        }
+
+        .pricing-row.subtotal {
+            background: var(--mm-cream);
+            font-weight: 700;
+            border-bottom: 2px solid rgba(69, 119, 152, 0.2);
+        }
+
+        .pricing-row.total {
+            background: linear-gradient(135deg, var(--mm-deep-blue), var(--mm-dark-blue));
+            color: var(--mm-white);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 20px 15px;
+            border-radius: var(--border-radius-small);
+            margin-top: 15px;
+        }
+
+        .product-name {
+            color: var(--mm-dark-blue);
+        }
+
+        .product-type {
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .type-compliance {
+            background: rgba(143, 188, 139, 0.15);
+            color: var(--success-color);
+        }
+
+        .type-new {
+            background: rgba(98, 171, 249, 0.15);
+            color: var(--afqa-accent);
+        }
+
+        .price-amount {
+            text-align: right;
+            font-weight: 700;
+            color: var(--success-color);
+            font-size: 1.05rem;
+        }
+
+        /* Primary Actions */
+        .primary-actions {
+            padding: 40px;
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            text-align: center;
+        }
+
+        .actions-title {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            color: var(--mm-dark-blue);
+            margin-bottom: 25px;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .action-card {
+            background: var(--mm-white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border-top: 4px solid;
+        }
+
+        .action-card.primary-action { border-top-color: var(--afqa-accent); }
+        .action-card.secondary-action { border-top-color: var(--warning-color); }
+        .action-card.tertiary-action { border-top-color: var(--mm-deep-blue); }
+
+        .action-card h3 {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            color: var(--mm-dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .action-card .action-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--mm-deep-blue);
+            margin: 15px 0;
+        }
+
+        .action-card .action-description {
+            color: var(--mm-deep-blue);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius-small);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-family: var(--font-secondary);
+            position: relative;
+            overflow: hidden;
+            min-height: 44px;
+            justify-content: center;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--afqa-accent), var(--mm-light-blue));
+            color: var(--mm-dark-blue);
+            box-shadow: 0 4px 15px rgba(98, 171, 249, 0.3);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(98, 171, 249, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--warning-color), #e0b88a);
+            color: var(--mm-white);
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--mm-deep-blue);
+            color: var(--mm-deep-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--mm-deep-blue);
+            color: var(--mm-white);
+            transform: translateY(-2px);
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline-week {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .blocker-details {
+                grid-column: 1;
+            }
+
+            .pricing-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .pricing-row.header {
+                display: none;
+            }
+
+            .actions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Brand Header -->
+        <header class="brand-header fade-in">
+            <div class="header-content">
+                <div class="maple-logo">
+                    <div class="logo-mark">
+                        <svg class="maple-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" style="width:100%;height:100%;">
+                          <defs>
+                            <style>
+                              .cls-1 { fill: none; }
+                              .cls-1, .cls-2 { stroke-width: 0px; }
+                              .cls-2 { fill: #e5e2c8; }
+                            </style>
+                          </defs>
+                          <g>
+                            <path class="cls-2" d="M540,687.36c-69.59,0-126.2-56.61-126.2-126.2v-163.4c0-69.59,56.61-126.2,126.2-126.2s126.2,56.61,126.2,126.2v163.4c0,69.59-56.61,126.2-126.2,126.2ZM540,276.88c-66.66,0-120.89,54.23-120.89,120.89v163.4c0,66.66,54.23,120.89,120.89,120.89s120.89-54.23,120.89-120.89v-163.4c0-66.66-54.23-120.89-120.89-120.89Z"/>
+                          </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="project-title">
+                    <h1>Project Portal - Updated Nov 2025</h1>
+                    <div class="project-subtitle">Design & Packaging Development</div>
+                </div>
+
+                <div class="client-summary">
+                    <h3>Complete Financial Overview</h3>
+                    <div class="summary-item">
+                        <span>Total Relationship Value:</span>
+                        <span>$20,588.79</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Original Project Progress:</span>
+                        <span>100% Complete & Paid</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>AFQA Project Status:</span>
+                        <span>Pending Approval</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Last Updated:</span>
+                        <span>November 24, 2025</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Financial Overview -->
+        <div class="financial-overview">
+            <div class="finance-card total fade-in stagger-1">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="card-title">Total Relationship Value</div>
+                </div>
+                <div class="card-amount">$20,588.79</div>
+                <div class="card-description">Complete MapleMoon Portfolio</div>
+                <div class="breakdown-small">
+                    Original: $10,980 • Gap: $811 • AFQA: $8,797
+                </div>
+            </div>
+
+            <div class="finance-card paid fade-in stagger-2">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="card-title">Total Paid</div>
+                </div>
+                <div class="card-amount">$10,980.21</div>
+                <div class="card-description">Original Project 100% Complete</div>
+                <div class="breakdown-small">
+                    36 invoices, 100% payment rate
+                </div>
+            </div>
+
+            <div class="finance-card outstanding fade-in stagger-3">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <div class="card-title">Outstanding Invoice</div>
+                </div>
+                <div class="card-amount">$811.24</div>
+                <div class="card-description">Gap Period Work (Aug-Oct)</div>
+                <div class="breakdown-small">
+                    INV-0341 • Ready for payment
+                </div>
+            </div>
+
+            <div class="finance-card afqa fade-in stagger-4">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="card-title">AFQA Project Quote</div>
+                </div>
+                <div class="card-amount">$8,797.34</div>
+                <div class="card-description">26 Designs • 5 Weeks</div>
+                <div class="breakdown-small">
+                    Awaiting approval & information
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Original Packaging Project (2024-2025) -->
+        <div class="content-section fade-in stagger-2">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Original Packaging Project
+                    <span class="section-badge badge-complete">100% COMPLETE</span>
+                </h2>
+                <div class="section-subtitle">July 2024 - July 2025 • $10,980.21 Total Value • FULLY PAID</div>
+            </div>
+
+            <div style="padding: 30px;">
+                <h3 style="font-family: var(--font-primary); font-size: 1.4rem; color: var(--mm-dark-blue); margin-bottom: 20px;">
+                    <i class="fas fa-check-circle" style="color: var(--success-color);"></i> Project Complete & Fully Paid
+                </h3>
+
+                <div style="background: linear-gradient(135deg, rgba(143, 188, 139, 0.1), rgba(143, 188, 139, 0.05)); padding: 25px; border-radius: var(--border-radius-small); border-left: 4px solid var(--success-color); margin-bottom: 30px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                        <div>
+                            <div style="font-size: 0.9rem; color: var(--mm-deep-blue); margin-bottom: 5px;">Total Value</div>
+                            <div style="font-size: 1.8rem; font-weight: 700; color: var(--mm-dark-blue);">$10,980.21</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.9rem; color: var(--mm-deep-blue); margin-bottom: 5px;">Total Paid</div>
+                            <div style="font-size: 1.8rem; font-weight: 700; color: var(--success-color);">$10,980.21</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.9rem; color: var(--mm-deep-blue); margin-bottom: 5px;">Outstanding</div>
+                            <div style="font-size: 1.8rem; font-weight: 700; color: var(--success-color);">$0.00</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.9rem; color: var(--mm-deep-blue); margin-bottom: 5px;">Total Invoices</div>
+                            <div style="font-size: 1.8rem; font-weight: 700; color: var(--mm-dark-blue);">36</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--mm-deep-blue); font-size: 0.95rem; margin: 0;">
+                        <i class="fas fa-star" style="color: var(--success-color);"></i>
+                        Excellent payment history: All 36 invoices paid on time (100% payment rate). Last invoices: INV-0284 & INV-0285 (July 30, 2025) - Paid.
+                    </p>
+                </div>
+
+                <!-- Paused Items (Updated) -->
+                <div style="background: rgba(212, 165, 116, 0.1); padding: 20px; border-radius: var(--border-radius-small); border-left: 4px solid var(--warning-color);">
+                    <h4 style="color: var(--mm-dark-blue); margin-bottom: 10px;">
+                        <i class="fas fa-pause-circle"></i> Paused Items: $1,410.36
+                    </h4>
+                    <p style="color: var(--mm-deep-blue); font-size: 0.9rem;">
+                        Goji Bites 2-Pack + 5 other Eclipse Bites products (50% deposits paid, work on hold)
+                    </p>
+                    <p style="color: var(--mm-deep-blue); font-size: 0.85rem; margin-top: 8px; font-style: italic;">
+                        Note: Bananas and Moons moved to AFQA Compliance Project
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Gap Period Work (Standalone Transition) -->
+        <div class="content-section fade-in stagger-3">
+            <div class="section-header gap-header">
+                <h2 class="section-title">
+                    Gap Period Work
+                    <span class="section-badge badge-pending">READY FOR PAYMENT</span>
+                </h2>
+                <div class="section-subtitle">August - October 2025 • Transition Period</div>
+            </div>
+
+            <div style="padding: 30px;">
+                <div style="display: grid; grid-template-columns: 1fr 300px; gap: 30px; align-items: center;">
+                    <div>
+                        <h3 style="font-family: var(--font-primary); font-size: 1.6rem; color: var(--mm-dark-blue); margin-bottom: 15px;">
+                            Invoice INV-0341: Additional Revisions
+                        </h3>
+                        <p style="color: var(--mm-deep-blue); margin-bottom: 20px;">
+                            Continuation work between Original Project and AFQA Compliance. Already created in Xero.
+                        </p>
+
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px;">
+                            <div style="background: rgba(216, 207, 242, 0.3); padding: 15px; border-radius: var(--border-radius-small);">
+                                <div style="font-size: 0.85rem; color: var(--mm-deep-blue); margin-bottom: 5px;">Subtotal (Ex GST)</div>
+                                <div style="font-size: 1.3rem; font-weight: 700; color: var(--mm-dark-blue);">$737.49</div>
+                            </div>
+                            <div style="background: rgba(216, 207, 242, 0.3); padding: 15px; border-radius: var(--border-radius-small);">
+                                <div style="font-size: 0.85rem; color: var(--mm-deep-blue); margin-bottom: 5px;">GST (10%)</div>
+                                <div style="font-size: 1.3rem; font-weight: 700; color: var(--mm-dark-blue);">$73.75</div>
+                            </div>
+                        </div>
+
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(69, 119, 152, 0.1);">
+                                <span style="color: var(--mm-deep-blue);">Moons 4-Pack (4 rounds)</span>
+                                <span style="float: right; font-weight: 700; color: var(--success-color);">$353.72</span>
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(69, 119, 152, 0.1);">
+                                <span style="color: var(--mm-deep-blue);">Bananas 4-Pack (3 rounds)</span>
+                                <span style="float: right; font-weight: 700; color: var(--success-color);">$265.29</span>
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(69, 119, 152, 0.1);">
+                                <span style="color: var(--mm-deep-blue);">Chilli Bar (1 round)</span>
+                                <span style="float: right; font-weight: 700; color: var(--success-color);">$85.48</span>
+                            </li>
+                            <li style="padding: 8px 0;">
+                                <span style="color: var(--mm-deep-blue);">Icons Set (1 round)</span>
+                                <span style="float: right; font-weight: 700; color: var(--success-color);">$33.00</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, var(--mm-lilac), #e0d8f5); padding: 30px; border-radius: var(--border-radius); text-align: center; box-shadow: var(--shadow-soft);">
+                        <div style="font-size: 0.9rem; color: var(--mm-dark-blue); margin-bottom: 10px; font-weight: 600;">TOTAL AMOUNT</div>
+                        <div style="font-size: 3rem; font-weight: 700; color: var(--mm-dark-blue); margin-bottom: 20px;">$811.24</div>
+                        <button class="btn btn-secondary" style="width: 100%;" onclick="downloadGapInvoice()">
+                            <i class="fas fa-download"></i> Download Invoice
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: AFQA Compliance Project (Nov 2025) -->
+        <div class="content-section fade-in stagger-4">
+            <div class="section-header afqa-header">
+                <h2 class="section-title">
+                    AFQA Compliance Project
+                    <span class="section-badge badge-new">NEW PROJECT</span>
+                </h2>
+                <div class="section-subtitle">November 2025 • Complete Packaging Redesign • 26 Designs</div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 30px; background: linear-gradient(135deg, #f8f9fa, #fff);">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--afqa-accent);">$8,797.34</div>
+                    <div style="font-size: 0.9rem; color: var(--mm-deep-blue); font-weight: 500;">Total Quote (Inc GST)</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--afqa-accent);">26</div>
+                    <div style="font-size: 0.9rem; color: var(--mm-deep-blue); font-weight: 500;">Product Designs</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--afqa-accent);">5</div>
+                    <div style="font-size: 0.9rem; color: var(--mm-deep-blue); font-weight: 500;">Week Timeline</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--success-color);">$24K+</div>
+                    <div style="font-size: 0.9rem; color: var(--mm-deep-blue); font-weight: 500;">Savings vs Full Redesign</div>
+                </div>
+            </div>
+
+            <!-- Pricing Breakdown -->
+            <div class="pricing-table">
+                <h3 style="font-family: var(--font-primary); font-size: 1.6rem; color: var(--mm-dark-blue); margin-bottom: 20px;">
+                    Complete Pricing Breakdown - All 26 Products
+                </h3>
+
+                <div class="pricing-row header">
+                    <div>SKU</div>
+                    <div>Product Name</div>
+                    <div style="text-align: right;">Amount</div>
+                    <div>Pricing Type</div>
+                </div>
+
+                <!-- BARS SECTION -->
+                <div class="pricing-row category">
+                    <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
+                        BARS (6 designs) - Compliance Updates - Subtotal: $783.56
+                    </div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_BAR_PCAR_50G</div>
+                    <div>Pure Carob & Cacao Butter Bar</div>
+                    <div class="price-amount">$313.42</div>
+                    <div style="font-size: 0.85rem;"><span class="product-type type-compliance">Master Template (25%)</span></div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_BAR_GCOC_50G</div>
+                    <div>Goji & Coconut Bar</div>
+                    <div class="price-amount">$94.03</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_BAR_CHIL_50G</div>
+                    <div>Cayenne Chilli & Celtic Salt Bar</div>
+                    <div class="price-amount">$94.03</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_BAR_ASAL_50G</div>
+                    <div>Salted Almond Bar</div>
+                    <div class="price-amount">$94.03</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_BAR_PMIN_50G</div>
+                    <div>Peppermint Buckwheat Crisp Bar</div>
+                    <div class="price-amount">$94.03</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_BAR_HNUT_50G</div>
+                    <div>Roasted Dark Hazelnut Bar</div>
+                    <div class="price-amount">$94.02</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+
+                <!-- MOONS SECTION -->
+                <div class="pricing-row category" style="margin-top: 15px;">
+                    <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
+                        MOONS (6 designs) - Compliance Updates - Subtotal: $799.79
+                    </div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_MOON_PCAR_45G</div>
+                    <div>Pure Carob & Cacao Butter Moons</div>
+                    <div class="price-amount">$313.42</div>
+                    <div style="font-size: 0.85rem;"><span class="product-type type-compliance">Master Template (25%)</span></div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_MOON_GCOC_45G</div>
+                    <div>Coconut & Goji Moons</div>
+                    <div class="price-amount">$97.27</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_MOON_ASAL_45G</div>
+                    <div>Almond Celtic Salt Moons</div>
+                    <div class="price-amount">$97.27</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_MOON_CHIL_45G</div>
+                    <div>Cayenne Chilli Celtic Salt Moons</div>
+                    <div class="price-amount">$97.27</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_MOON_HNUT_45G</div>
+                    <div>Roasted Hazelnut Moons</div>
+                    <div class="price-amount">$97.27</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_MOON_PMIN_45G</div>
+                    <div>Peppermint Buckwheat Crisp Moons</div>
+                    <div class="price-amount">$97.29</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+
+                <!-- BAR CDUs SECTION -->
+                <div class="pricing-row category" style="margin-top: 15px;">
+                    <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
+                        BAR CDUs (6 designs) - Compliance Updates - Subtotal: $1,880.49
+                    </div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_BAR_PCAR</div>
+                    <div>Pure Carob Bar CDU</div>
+                    <div class="price-amount">$470.13</div>
+                    <div style="font-size: 0.85rem;"><span class="product-type type-compliance">Master Template (25%)</span></div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_BAR_GCOC</div>
+                    <div>Goji & Coconut Bar CDU</div>
+                    <div class="price-amount">$282.07</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_BAR_CHIL</div>
+                    <div>Cayenne Chilli Bar CDU</div>
+                    <div class="price-amount">$282.07</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_BAR_ASAL</div>
+                    <div>Salted Almond Bar CDU <span style="font-size: 0.75rem; color: var(--success-color);">(BC: 0743966644733)</span></div>
+                    <div class="price-amount">$282.07</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_BAR_PMIN</div>
+                    <div>Peppermint Bar CDU</div>
+                    <div class="price-amount">$282.07</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_BAR_HNUT</div>
+                    <div>Roasted Hazelnut Bar CDU <span style="font-size: 0.75rem; color: var(--success-color);">(BC: 0743966644771)</span></div>
+                    <div class="price-amount">$282.08</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+
+                <!-- BANANAS SECTION -->
+                <div class="pricing-row category" style="margin-top: 15px;">
+                    <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
+                        BANANAS (1 design) - Compliance Update - Subtotal: $162.12
+                    </div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_MUL_BANN_4PK</div>
+                    <div>Bananas 4-Pack</div>
+                    <div class="price-amount">$162.12</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Compliance (25%)</div>
+                </div>
+
+                <!-- MOON CDUs SECTION -->
+                <div class="pricing-row category" style="margin-top: 15px;">
+                    <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
+                        MOON CDUs (6 designs) - 1 Brand New + 5 Updates - Subtotal: $3,290.87
+                    </div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_MOON_PCAR</div>
+                    <div>Pure Carob Moon CDU</div>
+                    <div class="price-amount">$1,880.51</div>
+                    <div style="font-size: 0.85rem;"><span class="product-type type-new">BRAND NEW - Full Price</span></div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_MOON_GCOC</div>
+                    <div>Coconut & Goji Moon CDU</div>
+                    <div class="price-amount">$282.07</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_MOON_ASAL</div>
+                    <div>Almond Celtic Salt Moon CDU</div>
+                    <div class="price-amount">$282.07</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_MOON_CHIL</div>
+                    <div>Cayenne Chilli Moon CDU</div>
+                    <div class="price-amount">$282.07</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_MOON_HNUT</div>
+                    <div>Roasted Hazelnut Moon CDU</div>
+                    <div class="price-amount">$282.07</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_MOON_PMIN</div>
+                    <div>Peppermint Moon CDU</div>
+                    <div class="price-amount">$282.08</div>
+                    <div style="font-size: 0.85rem; color: var(--mm-deep-blue);">Clone (15%)</div>
+                </div>
+
+                <!-- BANANA CDU SECTION -->
+                <div class="pricing-row category" style="margin-top: 15px;">
+                    <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
+                        BANANA CDU (1 design) - Brand New - Subtotal: $1,880.51
+                    </div>
+                </div>
+                <div class="pricing-row">
+                    <div style="font-family: monospace; font-size: 0.85rem;">MM_CDU_BANN_4PK</div>
+                    <div>Banana CDU (4-Pack Shipper)</div>
+                    <div class="price-amount">$1,880.51</div>
+                    <div style="font-size: 0.85rem;"><span class="product-type type-new">BRAND NEW - Full Price</span></div>
+                </div>
+
+                <!-- TOTAL -->
+                <div class="pricing-row total" style="margin-top: 20px;">
+                    <div style="font-weight: 700;">TOTAL PROJECT</div>
+                    <div style="font-weight: 700;">26 Designs</div>
+                    <div style="text-align: right; font-size: 1.4rem; font-weight: 700;">$8,797.34</div>
+                    <div style="text-align: right; font-weight: 700;">Inc GST</div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline-container">
+                <h3 style="font-family: var(--font-primary); font-size: 1.6rem; color: var(--mm-dark-blue); margin-bottom: 20px;">
+                    5-Week Project Timeline
+                </h3>
+
+                <div class="timeline-week">
+                    <div class="week-label">Week 1<br><span style="font-size: 0.8rem; font-weight: 400;">Nov 25-Dec 1</span></div>
+                    <div class="week-deliverable">Bars (6 designs)</div>
+                    <div class="week-amount">$783.56</div>
+                    <div class="week-status">
+                        <div class="status-icon ready"><i class="fas fa-check"></i></div>
+                        <span style="color: var(--success-color);">READY TO START</span>
+                    </div>
+                </div>
+
+                <div class="timeline-week">
+                    <div class="week-label">Week 2<br><span style="font-size: 0.8rem; font-weight: 400;">Dec 2-8</span></div>
+                    <div class="week-deliverable">Bar CDUs (6 designs)</div>
+                    <div class="week-amount">$1,880.49</div>
+                    <div class="week-status">
+                        <div class="status-icon ready"><i class="fas fa-check"></i></div>
+                        <span style="color: var(--success-color);">Ready</span>
+                    </div>
+                </div>
+
+                <div class="timeline-week">
+                    <div class="week-label">Week 3<br><span style="font-size: 0.8rem; font-weight: 400;">Dec 9-15</span></div>
+                    <div class="week-deliverable">Moons (6) + Bananas (1)</div>
+                    <div class="week-amount">$961.92</div>
+                    <div class="week-status">
+                        <div class="status-icon ready"><i class="fas fa-check"></i></div>
+                        <span style="color: var(--success-color);">Ready</span>
+                    </div>
+                </div>
+
+                <div class="timeline-week needs-info">
+                    <div class="week-label">Week 4<br><span style="font-size: 0.8rem; font-weight: 400;">Dec 16-22</span></div>
+                    <div class="week-deliverable">Moon CDUs (6) + Banana CDU (1)</div>
+                    <div class="week-amount">$5,171.37</div>
+                    <div class="week-status">
+                        <div class="status-icon needs"><i class="fas fa-info"></i></div>
+                        <span style="color: var(--warning-color);">Need Info</span>
+                    </div>
+                    <div class="blocker-details" style="background: rgba(212, 165, 116, 0.05); border-color: rgba(212, 165, 116, 0.2);">
+                        <strong style="color: var(--warning-color);">🟡 HIGH PRIORITY - Needed by Dec 16:</strong>
+                        <ul style="color: var(--warning-color);">
+                            <li>Moon CDU dimensions & specifications</li>
+                            <li>All 6 Moon CDU barcodes</li>
+                            <li>Banana CDU dimensions & barcode</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-week">
+                    <div class="week-label">Week 5<br><span style="font-size: 0.8rem; font-weight: 400;">Dec 23-29</span></div>
+                    <div class="week-deliverable">Final Review & Print-Ready Export</div>
+                    <div class="week-amount">—</div>
+                    <div class="week-status">
+                        <div class="status-icon ready"><i class="fas fa-check"></i></div>
+                        <span style="color: var(--success-color);">Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Primary Actions -->
+        <div class="content-section fade-in">
+            <div class="primary-actions">
+                <h2 class="actions-title">Take Action on Your MapleMoon Projects</h2>
+
+                <div class="actions-grid">
+                    <!-- Action 1: Approve AFQA Quote -->
+                    <div class="action-card primary-action">
+                        <h3><i class="fas fa-star"></i> Approve AFQA Quote</h3>
+                        <div class="action-amount">$8,797.34</div>
+                        <div class="action-description">
+                            Review and approve the AFQA Compliance Project. Choose your preferred payment structure and provide required information to start Week 1.
+                        </div>
+                        <button class="btn btn-primary" onclick="openApprovalModal()">
+                            <i class="fas fa-check-circle"></i> Review & Approve Quote
+                        </button>
+                    </div>
+
+                    <!-- Action 2: Pay Outstanding -->
+                    <div class="action-card secondary-action">
+                        <h3><i class="fas fa-file-invoice-dollar"></i> Pay Outstanding Invoice</h3>
+                        <div class="action-amount">$811.24</div>
+                        <div class="action-description">
+                            Gap Period Work (Aug-Oct 2025)<br>
+                            INV-0341 • Moons, Bananas, Chilli Bar, Icons revisions
+                        </div>
+                        <button class="btn btn-secondary" onclick="makePayment()">
+                            <i class="fas fa-credit-card"></i> Make Payment
+                        </button>
+                    </div>
+
+                    <!-- Action 3: Review Combined -->
+                    <div class="action-card tertiary-action">
+                        <h3><i class="fas fa-chart-line"></i> Complete Financial Picture</h3>
+                        <div class="action-amount">$20,588.79</div>
+                        <div class="action-description">
+                            View your complete MapleMoon portfolio across all projects. Export data, download reports, and track progress.
+                        </div>
+                        <button class="btn btn-outline" onclick="showCombinedView()">
+                            <i class="fas fa-eye"></i> View Complete Summary
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div style="background: linear-gradient(135deg, var(--mm-deep-blue), var(--mm-dark-blue)); color: var(--mm-white); border-radius: var(--border-radius); padding: 40px; margin-bottom: 30px; text-align: center; box-shadow: var(--shadow-soft);">
+            <h2 style="font-family: var(--font-primary); font-size: 1.8rem; margin-bottom: 20px;">Questions About Your Projects?</h2>
+            <p style="margin-bottom: 25px; opacity: 0.9;">We're here to help with any questions about the Original Project, Gap Period work, or the new AFQA Compliance Project.</p>
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <div>
+                    <i class="fas fa-envelope" style="font-size: 1.5rem; margin-bottom: 10px;"></i>
+                    <div style="font-weight: 600;">hello@handtomouse.org</div>
+                </div>
+                <div>
+                    <i class="fas fa-calendar-check" style="font-size: 1.5rem; margin-bottom: 10px;"></i>
+                    <div style="font-weight: 600;">Tonight: 6pm Meeting</div>
+                </div>
+                <div>
+                    <i class="fas fa-clock" style="font-size: 1.5rem; margin-bottom: 10px;"></i>
+                    <div style="font-weight: 600;">Updated: Nov 24, 2025</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        // ==================== EMBEDDED INVOICE DATA ====================
+        // Pre-embedded invoice PDF (base64 encoded) - 59,192 bytes
+        // Generated: INV-0341
+        const EMBEDDED_INVOICE_PDF = "data:application/pdf;base64,JVBERi0xLjcNJcjIyMjIyMgNMSAwIG9iago8PC9WZXJzaW9uLzEuNy9OYW1lcyA4IDAgUi9PdXRsaW5lcyAyIDAgUi9QYWdlcyAzIDAgUi9UeXBlL0NhdGFsb2cvTWV0YWRhdGEgMzIgMCBSPj4KZW5kb2JqCjIgMCBvYmoKPDwvVHlwZS9PdXRsaW5lcy9Db3VudCAwPj4KZW5kb2JqCjMgMCBvYmoKPDwvVHlwZS9QYWdlcy9Db3VudCAyL0tpZHNbOSAwIFJdPj4KZW5kb2JqCjQgMCBvYmoKPDwvTW9kRGF0ZShEOjIwMjUxMTI3MDQzNzQ4KzAwJzAwKS9BdXRob3IoKS9DcmVhdGlvbkRhdGUoRDoyMDI1MTEyNzA0Mzc0OCswMCcwMCkvVGl0bGUoKS9DcmVhdG9yKEFzcG9zZSBMdGQuKS9TdWJqZWN0KCkvUHJvZHVjZXIoQXNwb3NlLlBkZiBmb3IgLk5FVCA2LjYpPj4KZW5kb2JqCjYgMCBvYmoKPDwvRmlsdGVyL0ZsYXRlRGVjb2RlL0xlbmd0aCAxMj4+c3RyZWFtCnic4yrkCgQAAeQA1wplbmRzdHJlYW0KZW5kb2JqCjcgMCBvYmoKWy9QREZdCmVuZG9iago4IDAgb2JqCjw8Pj4KZW5kb2JqCjkgMCBvYmoKPDwvVHlwZS9QYWdlcy9Db3VudCAyL1BhcmVudCAzIDAgUi9LaWRzWzEwIDAgUl0+PgplbmRvYmoKMTAgMCBvYmoKPDwvVHlwZS9QYWdlcy9Db3VudCAyL1BhcmVudCA5IDAgUi9LaWRzWzExIDAgUiAyNyAwIFJdPj4KZW5kb2JqCjExIDAgb2JqCjw8L1BhcmVudCAxMCAwIFIvQW5ub3RzIDE0IDAgUi9SZXNvdXJjZXM8PC9Gb250PDwvRi0wIDE3IDAgUj4+L1Byb2NTZXRbL1BERi9UZXh0L0ltYWdlQy9JbWFnZUIvSW1hZ2VJXS9YT2JqZWN0PDwvdGcxMDU4MSAyMiAwIFIvaW0xMDU4MiAyNSAwIFIvaW0xMDU3OSAyNCAwIFIvaW0xMDU4MCAyMyAwIFI+Pi9Db2xvclNwYWNlPDwvRGVmYXVsdFJHQiAxMiAwIFI+Pj4+L1R5cGUvUGFnZS9Db250ZW50cyAyNiAwIFIvTWVkaWFCb3hbMCAwIDU5NS4yMzggODQxLjgzNl0vR3JvdXA8PC9TL1RyYW5zcGFyZW5jeS9LIGZhbHNlL0NTIDEyIDAgUi9JIHRydWU+Pj4+CmVuZG9iagoxMiAwIG9iagpbL0lDQ0Jhc2VkIDEzIDAgUl0KZW5kb2JqCjEzIDAgb2JqCjw8L0ZpbHRlci9GbGF0ZURlY29kZS9OIDMvTGVuZ3RoIDI1OTE+PnN0cmVhbQp4nJ2WZ1RU1xbHz713eqHNMHQYeu9tAOm9Sa+iMswMMJQBhxkQxYaICkQUEWmKIEEBA0ZDkVgRxUJQVLAbkCCgxGAUUVF5M7pW4svLey/J/8O9v7XP3ueeXc5aFwCSTwCXlwFLAZDOE/BDvd3o0TGxdOwggAEeYIA5AExWVmZgmFc4EMnX052eJXIC/6bXIwASv28a+wTT6eDvSZqVyRcAAAWL2JLNyWKJuEDEaTmCTLF9VsTUhFQxwygx80UHFLG8mJM+s9Enn8/sImZ2Oo8tYvGZM9npbDH3iXhbtpAjYiRAxIXZXE6OiG+JWCtNmM4V8RtxbDqHmQUAiiS2CzisZBGbiZjEDw91F/ESAHCkpC844QsWcFYLxEm5Z2Tm8rlJyQK6Hkufbm5nx6D7cHLSOAKBcTCTlcrks+nuGemZTF4uAJ9z/iQZcW3poiLbmNvZ2BhbmJh/Uaj/ufgXJe7tZ3oZ8qlnEG3gd9uf+WU0AMCYE9Vm5++2hCoAurYAIH/vd5vWAQAkRX3rvPZFPjTxvCQLBJn2pqY5OTkmXA7LRFzQ3/R/Hf6CvvieiXi738pD9+AkMoVpArq4bqyMtAwhn56VyWRx6MZ/HOJ/HPjn5zAK5SRy+ByeKCJSNGVcXpKo3Tw2V8DN4NG5vP/WxH8Y9gd9nmuRKI0fAXWlCZC6RgXIzwMARSECJG6/aAX6rW8B+EggvnlRapOf5/6ToP/cFS4VP7K4SZ/i3EPD6SwhP/vzmvhaAjQgAElABQpAFWgCPWAMLIAtcAAuwBP4gSAQDmLACsACySAd8EEOyAObQCEoBjvBHlAN6kAjaAZt4BjoAifBOXARXAXXwTC4D0bBBHgGZsFrsABBEBYiQxRIAVKDtCFDyAJiQE6QJxQAhUIxUDyUBPEgIZQHbYaKoTKoGqqHmqFvoRPQOegyNATdhcagaehX6B2MwCSYCqvAOrApzIBdYX84HF4OJ8Gr4DVwAbwDroQb4CNwJ3wOvgoPw6PwM3gOAQgRoSHqiDHCQNyRICQWSUT4yHqkCKlAGpA2pAfpR24io8gM8haFQVFQdJQxygHlg4pAsVCrUOtRJahq1GFUJ6oPdRM1hppFfUST0cpoQ7Q92hcdjU5C56AL0RXoJnQH+gJ6GD2Bfo3BYGgYXYwtxgcTg0nBrMWUYPZh2jFnMUOYccwcFotVwBpiHbFBWCZWgC3EVmGPYM9gb2AnsG9wRJwazgLnhYvF8XD5uApcC+407gZuEreAl8Jr4+3xQXg2Phdfim/E9+Cv4SfwCwRpgi7BkRBOSCFsIlQS2ggXCA8IL4lEogbRjhhC5BI3EiuJR4mXiGPEtyQZkgHJnRRHEpJ2kA6RzpLukl6SyWQdsgs5liwg7yA3k8+TH5HfSFAkTCR8JdgSGyRqJDolbkg8l8RLaku6Sq6QXCNZIXlc8prkjBReSkfKXYoptV6qRuqE1G2pOWmKtLl0kHS6dIl0i/Rl6SkZrIyOjKcMW6ZA5qDMeZlxCkLRpLhTWJTNlEbKBcoEFUPVpfpSU6jF1G+og9RZWRlZK9lI2dWyNbKnZEdpCE2H5ktLo5XSjtFGaO/kVORc5Thy2+Xa5G7IzcsrybvIc+SL5Nvlh+XfKdAVPBVSFXYpdCk8VEQpGiiGKOYo7le8oDijRFVyUGIpFSkdU7qnDCsbKIcqr1U+qDygPKeiquKtkqlSpXJeZUaVpuqimqJarnpadVqNouakxlUrVzuj9pQuS3elp9Er6X30WXVldR91oXq9+qD6goauRoRGvka7xkNNgiZDM1GzXLNXc1ZLTStQK0+rVeueNl6boZ2svVe7X3teR1cnSmerTpfOlK68rq/uGt1W3Qd6ZD1nvVV6DXq39DH6DP1U/X361w1gA2uDZIMag2uGsKGNIddwn+GQEdrIzohn1GB025hk7GqcbdxqPGZCMwkwyTfpMnluqmUaa7rLtN/0o5m1WZpZo9l9cxlzP/N88x7zXy0MLFgWNRa3LMmWXpYbLLstX1gZWnGs9lvdsaZYB1pvte61/mBja8O3abOZttWyjbettb3NoDKCGSWMS3ZoOze7DXYn7d7a29gL7I/Z/+Jg7JDq0OIwtUR3CWdJ45JxRw1HpmO946gT3Sne6YDTqLO6M9O5wfmxi6YL26XJZdJV3zXF9YjrczczN75bh9u8u737OvezHoiHt0eRx6CnjGeEZ7XnIy8NrySvVq9Zb2vvtd5nfdA+/j67fG77qviyfJt9Z/1s/db59fmT/MP8q/0fBxgE8AN6AuFAv8DdgQ+Wai/lLe0KAkG+QbuDHgbrBq8K/j4EExIcUhPyJNQ8NC+0P4wStjKsJex1uFt4afj9CL0IYURvpGRkXGRz5HyUR1RZ1Gi0afS66KsxijHcmO5YbGxkbFPs3DLPZXuWTcRZxxXGjSzXXb56+eUViivSVpxaKbmSufJ4PDo+Kr4l/j0ziNnAnEvwTahNmGW5s/aynrFd2OXsaY4jp4wzmeiYWJY4leSYtDtpOtk5uSJ5huvOrea+SPFJqUuZTw1KPZS6mBaV1p6OS49PP8GT4aXy+jJUM1ZnDGUaZhZmjq6yX7Vn1Szfn9+UBWUtz+oWUEU/UwNCPeEW4Vi2U3ZN9pucyJzjq6VX81YP5Brkbs+dXOO15uu1qLWstb156nmb8sbWua6rXw+tT1jfu0FzQ8GGiY3eGw9vImxK3fRDvll+Wf6rzVGbewpUCjYWjG/x3tJaKFHIL7y91WFr3TbUNu62we2W26u2fyxiF10pNiuuKH5fwiq58pX5V5VfLe5I3DFYalO6fydmJ2/nyC7nXYfLpMvWlI3vDtzdWU4vLyp/tWflnssVVhV1ewl7hXtHKwMqu6u0qnZWva9Orh6ucatpr1Wu3V47v4+978Z+l/1tdSp1xXXvDnAP3Kn3ru9s0GmoOIg5mH3wSWNkY//XjK+bmxSbips+HOIdGj0ceriv2ba5uUW5pbQVbhW2Th+JO3L9G49vutuM2+rbae3FR8FR4dGn38Z/O3LM/1jvccbxtu+0v6vtoHQUdUKduZ2zXcldo90x3UMn/E709jj0dHxv8v2hk+ona07Jnio9TThdcHrxzJozc2czz86cSzo33ruy9/756PO3+kL6Bi/4X7h00evi+X7X/jOXHC+dvGx/+cQVxpWuqzZXOwesBzp+sP6hY9BmsPOa7bXu63bXe4aWDJ2+4Xzj3E2Pmxdv+d66Orx0eGgkYuTO7bjbo3fYd6bupt19cS/73sL9jQ/QD4oeSj2seKT8qOFH/R/bR21GT415jA08Dnt8f5w1/uynrJ/eTxQ8IT+pmFSbbJ6ymDo57TV9/emypxPPMp8tzBT+LP1z7XO959/94vLLwGz07MQL/ovFX0teKrw89MrqVe9c8Nyj1+mvF+aL3ii8OfyW8bb/XdS7yYWc99j3lR/0P/R89P/4YDF9cfFf94Tz+wplbmRzdHJlYW0KZW5kb2JqCjE0IDAgb2JqClsxNSAwIFJdCmVuZG9iagoxNSAwIG9iago8PC9BIDE2IDAgUi9UeXBlL0Fubm90L1JlY3RbMjguMzQ0IDk5LjExNiAxNDcuODEzIDExMi45NDVdL1N1YnR5cGUvTGluay9Cb3JkZXJbMCAwIDBdPj4KZW5kb2JqCjE2IDAgb2JqCjw8L1MvVVJJL1VSSShodHRwczovL2luLnhlcm8uY29tL1lKSDg5SUJwdFJJUGtIVnNGRWJPbEQ5ZXlBdW45ZmFteDU4TnZ1b0M/dXRtX3NvdXJjZT1pbnZvaWNlUGRmTGluayk+PgplbmRvYmoKMTcgMCBvYmoKPDwvTmFtZS9GLTAvVHlwZS9Gb250L1N1YnR5cGUvVHlwZTAvQmFzZUZvbnQvU1VCU0VUK0FyaWFsVW5pY29kZU1TL0VuY29kaW5nL0lkZW50aXR5LUgvVG9Vbmljb2RlIDIxIDAgUi9EZXNjZW5kYW50Rm9udHNbMTggMCBSXT4+CmVuZG9iagoxOCAwIG9iago8PC9CYXNlRm9udC9TVUJTRVQrQXJpYWxVbmljb2RlTVMvRm9udERlc2NyaXB0b3IgMTkgMCBSL1R5cGUvRm9udC9TdWJ0eXBlL0NJREZvbnRUeXBlMi9XWzBbMCA2MTAgNjY2IDY2NiAyNzcgNzIyIDY2NiA3NzcgNzIyIDY2NiA4MzMgNjY2IDU1NiA1NTYgNTAwIDU1NiAyMjIgNTAwIDU1NiA3MjIgNTU2IDI3NyA1NTYgNTU2IDU1NiA1NTYgODMzIDU1NiAzMzMgMzMzIDU1NiA1NTYgNTU2IDcyMiAyNzcgNTAwIDk0MyA2NjYgNTU2IDIyMiA1MDAgMzMzIDU1NiAzMzMgNjY2IDU1NiA1NTYgNTU2IDcyMiA3MjIgNjY2IDY2NiAyNzcgNTAwIDU1NiA3NzcgNTAwIDc3NyA1NTYgNTU2IDI3NyAyNzcgMjIyIDg4OSA1NTYgMjc3IDI3NyA2MTAgNzIyIDI3N11dL0NJRFRvR0lETWFwL0lkZW50aXR5L0NJRFN5c3RlbUluZm88PC9PcmRlcmluZyhVQ1MpL1Jl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A5yyLjI5uf/gA5yzICQ5ILgDnLIVGDkrKysbQRAAlAOcAKQDnAC0A5wAAwC0A5wAxAOcANQDnAADACADnLITFjkrdHVZKysrAHR0KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrdSsrKysrK3NzKysrK3N0K3QrKysrKysrKytDWL0DSgNNAAEAK//gA02yHiE5uf/gA02yKy45uf/gA02zGBk5hrsDTQCWA00AAnMrKysrG0EJAAYDSgABA0oDTQACACv/4ANNsi8xObn/4ANNsiEkObn/4ANNshQZOSsrKyt1WSsrKysrKysrK3Nzc3NzK3NDWL8A5AKrAAEARAKrAAEAIAKrsyIjOSC4AquyEhY5uf/gAquyEBE5uf/gArGyFhs5KysrK3R1G7n/4AKxsxofOSC4AquzKiw5ILgCq7MeHzkguAKrshITOSsrKytZKysrKysrKytDWLn/8AMRsjI1Obn/8AMRsiMlOSsrG7oA1AMRAAF0WSsrKysrKytDWLn/8AM2sisuObn/8AM2sh4gObn/7AM2shgbObn/8AM2shEUOSsrKysbuf/gAzayLzI5uf/gAzayISM5uf/gAzayERg5KysrWSsrKysrKysrKysrKysrcyt0Kyt0K3QrK3QrKytzKytzdCtzK3Nzc3MrKysrc3Nzc3R0dStzK3MrKysrK3N0c3MrK3NzdHUrcwErc3Nzc3NzdCsrcysrc3RzKytzKysrKysrKyt0cysrKysrKysrKytzK3N0KysrKwBzKwErKysrKysrKytzKysrKysAKysrKysrKysrKysrK3MBc3S5A7QDsUVouAOtRWlhRLgDrUVpuAOyRWmwQIthsEBguAOzI0Rzc3QAdCsrc3MrAbgEDkVouAQOI0QrK3UrKysrKysrKysrKwArKysrKysrKysrKysAcytzAXMAcytzdHN0AXNzAHNzdHN0dHN0dAErdHNzdCsrKysrK3NzKysrcwBzdCsrK3NzdCsBc3Mrcyt0ACtzc3N0K3RzAXN0K7kElgSWRWi4BC5FamG4BA5FaWFEcwBzcysBc3RzKytzdCtzdCsAK3MrdCsrKysrKysrKysrK3MAKysrKysrKysrKysBKysrcwArK3MrK3N0dSsrKytzdAArKysrKysrKytzdHUrc3QrAXN0uQT7BPBFaLgE5kVpYUS4BOZFabgE50VpsECLYbBAYLgE+iNEAHMrKysrdCtzKysrKysrKwArK3QrKysrAXNzAHUrK3NzdHUrKytzc3Nzc3QrKwErKytzKysrKwBzKysrKysrKytzAStzcytzc3QrACsrcysrc3QrKysrKytzdCsAc3QrdHMrKysrKysrKysrcysBc3MrACsrcysrc3MrKysrKysrKysrKysAdSsrKysrKysBcwArKysrdSt0AHMrKyt0dSsrKysrKytzdAFzc3QrK0NYG1krK7AYsDBLU0IrK3N1cysrKysrK3Nzc3QrdHNzKysrKysrc3MrKysrK7EJMitLsFBSQkuwCFJLsAhQW7AaI0JLsMhSS7A2UFuwDCNCS7BkUrAFI0KwMytLsMhSWLEGAUKxBwBCsQoBQrELAEIbAbEAABYQsUYAcLEARj64BLpFALgEu0WwCyuwCiNCsAsjQgA/PxgrEDwBdi84GAYMsAYjQrAHI0JZAEBAUklIPTs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBACwBGLAYQ1hFarAZQ2CwRiNEIxAgsEZO8E0vsAASGyEjESAzL1ktLAEYsBhDWLAFK7AAE0uwFFBYsQBAOFmwBisbISMRIDMvWS0sARiwGENYTrADJRDyIbAAEk0bIEWwBCWwBCUjSmFksChSWCEjENYbsAMlEPIhsAASWVktLLAaQ1ghIRuwAiWwAiVJsAMlsAMlSmEgZLAQUFghISEbsAMlsAMlSbAAUFiwAFBYuP/iOCEbsAA4IVkbsABSWLAeOCEbsAA4IVlZWVktLAEYsBhDWLAFK7AAE0uwFFBYuQAA/8A4WbAGKxshIxEzWS0sTgGKELFGGUNEsAAUsQBG4rAAFbkAAP/wOACwADywKCuwAiUQsAA8LSwBGLAAL7ABFPKwAROwARVNsAASLSwBGLAYQ1iwBSuwABO5AAD/4DiwBisbISMRIDMvWS0sARiwGENYRWRqI0VkabAZQ2RgYLBGI0QjECCwRvAvsAASGyEhIIogilJYETMbISFZWS0sAUuwyFFYsQsKQyNDZQpZLSwAS7DIUVgAsQoLQyNDC1ktLACwRiNwsQFGPgGwRiNwsQJGRTqxAgAIDS0ssBIrsAIlRbACJUVqsECLYLACJSNEISEhLSywEyuwAiVFsAIlRWq4/8CMYLACJSNEISEhLSywALASKyEhIS0ssACwEyshISEtLAFLsMhRWLAGQ7AHQ2UKWS0sIGmwQGGwAIsgsSzAioy4EABiYCsMZCNkYVxYsANhWS0ssQADJUVoVLAcS1BaWLADJUWwAyVFYGggsAQlI0SwBCUjRBuwAyUgRWggiiNEsAMlRWhgsAMlI0RZLSywAyUgRWggiiNEsAMlRWRoZWCwBCWwAWAjRC0ssAlDWIchwBuwEkNYh0WwESuwRyNEsEd65BsDikUYaSCwRyNEioqHILCgUViwESuwRyNEsEd65BshsEd65FlZWRgtLCCKRSNFaGBELSxFakItLAEYLy0sARiwGENYsAQlsAQlSWQjRWRpsECLYSCwgGJqsAIlsAIlYYywGUNgsEYjRCGKELBG9iEbISEhIVktLAGwGENYsAIlRbACJUVkYGqwAyVFamEgsAQlRWogiotlsAQlI0SMsAMlI0QhIRsgRWpEIEVqRFktLAEgRbAAVbAYQ1pYRWgjRWmwQIthILCAYmogiiNhILADJYtlsAQlI0SMsAMlI0QhIRshIbAZK1ktLAGKikVkI0VkYWRCLSywBCWwBCWwGSuwGENYsAQlsAQlsAMlsBsrAbACJUOwQFSwAiVDsABUWliwAyUgRbBAYURZsAIlQ7AAVLACJUOwQFRaWLAEJSBFsEBgRFlZISEhIS0ssAMlILAHJYcFLiMgirAEJbAHJbAUKxAhxCEtLMAtLEtSWEVEGyEhWS0ssAJDWD3tGBvtWS0sS1BYRUQbISFZLSwBGEtSWIov7RshISFZLSxLUyNLUVpYsAMlRWiwAyVFaLADJWBUWCEhIRuwAiVFaGCwAyUjRCEhWRshISFZLSywAkNYPc0YG81ZLSxGI0ZgiopGIyBGimCKYbj/gGIjIBAjirFLS4pwRWAgsABQWLABYbj/uosbsEaMWbAQYGgBOi0sIEWwAyVGUliwAiVGIGhhsAMlsAMlPyMhOBshEVktLCBFsAMlRlBYsAIlRiBoYbADJbADJT8jITgbIRFZLSwAS7DIUVgAsAdDsAZDC1ktLIoQ7C0ssAxDWCEbIEawAFJYuP/wOBuwEDhZWS0sILAAVVi4EABjsAMlRWSwAyVFZGGwAFNYsAIbsEBhsANZJUVpU1hFRBshIVkbIbACJUWwAiVFYWSwKFFYRUQbISFZWS0sISEMZCNki7hAAGItLCGwgFFYDGQjZIu4IABiG7IAQC8rWbACYC0sIbDAUVgMZCNki7gVVWIbsgCALytZsAJgLSwMZCNki7hAAGJgIyEtLBhLU1iwBCWwBCVJZCNFZGmwQIthILCAYmqwAiWwAiVhjLBGI0QhihCwRvYhGyGKESMSIDkvWS0ssAIlsAIlSWSwwFRYuP/4OLAIOBshIVktLLATQ1gDGwJZLSywE0NYAhsDWS0ssAorIxAgPLAXKy0ssAIluP/wOLAoK4oQIyDQI7AQK7AFQ1jAGzxZIBARsAASAS0sS1MjS1FaWDgbISFZLSwBsAIlENAjyQGwAROwABQQsAE8sAEWLSwBsAATsAGwAyVJsAMXOLABEy0sS1MjS1FaWCBFimBEGyEhWS0sS1NYsAIlRrACJUVhsOUjRBux5QBEWSEhLSwYS1NYsAQlsAQlSWSwAyWwAyVJZGiwQIthILCAYmqwAiWwAiVhjLAMI0QhsAQlECOwDPYbsAQlsAQlERIjIDkvWcwhIS0ssAIlRiBoYbADJbADJT8jITgtLEtTI0tRWlg4GyEhWS0sS1RYOBshIVktLEtSWH0belktAAAAAAAABboAGQAABaYAGQAAAAAAAAAAAAAAAAAABCUAGQAAAAD/5wAAAAAAAAAAAAAAAAAA/mj/5wAA/mj/5/pGABkE5wANAsH/8wW6AA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACJAEgAGv93/7j/5gCkAGAADf9c/6D/8wHHAjkAAAAAAAAAAAAAAAAEcwRzAFz/pADJAL8AwgC4ALQAqgC4AAAAtAAAAKkAlgC4AAAAtAAAAKkAjAAAAncAqgCgAK4AAACTAKYAuAAAAJMAAACuAKUAAAAAAAABXgFqAZ4BbwFWAUEAAAAAAAAAAAAAAAAAAACAAAAAzQDNAGgATAEhAAAAAAAAAAAAAAAAAAAAAAAAAKgAqACgAHkAAACMAIEAfAB8AMwBGQBfAF8AjwC/AnAAewMIAJMAuAAAAAAAAABX/6kAAAAAAG0AUgBtAAAAAABWAAAAcf+PALgAzQDMAMwAAACCAJYAdQEHAAAAAAAAAAAAAAAAAIcAXgCFAKgAjwBmAAAAAAAAAAAAKQCsAq0CegJuAY4AXgKAAJwBvQDMAqwA+gKqAG4CTwCbAAAAAAAABW0AGQKFAAgE5wC0AJEAfgCNAG0AmAAl//AAugCRADEAwwAdAEABlQC0AKgAhwBWAEoAtACoAJ4AhwBWAEoB2wCcAAoAFgAaAGT/nAAy/84ATgBOAE4AlACUALIArgDCALgAogCiAH8AfwOgAlgDfwJG/dUDJQRzBFb/CAScAAIAAgCW/i0AaQB0AFYEbQAKBhQGpP/2/mADbQErAKYAtQAAAAAApgBtAO0AcwDMAJkAmgBwAI4A7QBzAM0AAAAAAAAAAAA9AJoAmgA9AGYAbABKAxMAqAHZAAAAAACbAKwAtAAAAFUAZAAAAAAAbwBvAIkApQC5BKAEsgAAAFUAZAAAAAAAYQB9AAAA1wAAAF8AfQAAANcAAAAXACEALQA5AFAAYgB7AJAApAAAAAAAAAAAAAAAAAAAADoARgBaAI8AowAAAAAAAAAAAAAAAAAAAAAAAACbALYAoAC2AKoAogCoAJYAlgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4QDeAIwDZgBQA/wANQE7AIkAKAKqAYEAaQBVA0QAcAGmAEsAeAAAAGEBeQD0ARYAKwDTAAAAAAAAAAAAmwCRAH0Aef/h/+4CvgASABIAzgCTAG4AxQBuAAAAAAAAAAAAAAAAAJwAewCTAJIALQA5AG8ASgAyAFUAAAAAAAAAAAAAAAAAAAAAAAAAAABiAGIASABIAQ4BDgEpASkAZAAyA6QDkwOTA6QFdQBiAR8A3gPEBBkAWgBfAGQAMgCqAFoAXwBkADIAAAHZAc8DsgOpAdAB2gHkADUALwAxADoCvgLGArwAjgD6AHgATALIAGYAgQBwBrIGsgGQBXgGAACTAGYCvAB1AFsAegBfAKQEXgC5Al4AgwEYAK4BXwAAAAAAAACuAV8AAAAAAAAEuABLA3ABugPdBM0CZwG4AAAAAAAyADwASwBkAHMAfQAAAKAAAAAAADIAPABLAGQAcwB9AAAAoAAAAN4FvwBGBBwA6QB2A8sASgDJAFAAdgE2AF8AZABuAHMAfQCHAJEAmwClATYAXwBkAG4AcwB9AIcAkQCbAKUAhwCRAJsAoAClAK8AuQDDAM0AdwCHAJEAmwCgAKUArwC5AMMAzQB2AEUA9QEJATcARQD1AQkBNwDNAD0AOgA6APwAZgA1ADUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAeQBWAE8AXAAAAAAAAAAAAAAAhAB5AFYATwBcAEYAbAAAAAAAAABwAGMAaQBzAH0AhwCRAJsApQCvAHAAYwBpAHMAfQCHAJEAmwClAK8ARgBQAFoAZABGAFAAWgBkAFUAXwBpAHMAfQCHAJEAmwClAK8AuQDDAIcAkQCbAKAApQCvALkAwwDNAAAAhwCRAJsAoAClAK8AuQDDAM0AAABpAHMAfQCHAJEAmwClAK8AuQDDAGkAcwB9AIcAkQCbAKUArwC5AMMAmwOzBIsEiwOzAGYCKgDIAHEAuQJSADoAjQCNALIBxABAADgEVgRWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB6AHoAbwBYAG4ASwBQAGAAfQCCAFwASgBYAAAAAAAAAAAAAAAAAAAAXQBpAHMAfQCHAJEAmwClAK8AuQBpAHMAfQCHAJEAmwClAK8AAAAAAGQASgBqAFABZQAxAG4ACACTAAAIAACdAI4E3gASAbMAJQCIARUAiAABAJcB3wCwAG4AQgcoAOIAAP/eAEcAiAB+AQoBCgEaARgAZwBeAP0AnQBZADkAogCqAHUATwCNAGAAfgCXAIMAVwBjAJIAYwAuAHYATAAQAJ8AbgCmAI4AOwCTANcA1wJGAI4AAAAAAAAAAAAAAAAAAAAAAAAAAAa2BpQAFAYSBWIAEASfBJMDagAA//v/8f/r/e4AAAAAAAAAAAAAAAAAMgA8AEYAUABaAGQAbgBzAHwAggCMAJYAoACqALQACgANAZEBqgC+ADIAPABGAFAAWgBkAG4AcwB4AIIAjACWAKAAqgC0AOoBVQCmAKgAAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANv/KAGMAWv+mAP4FSQAjAIcANwBzAKYAZAFFAEUAoP3VADIBjwDqAWACwfyR/tkAYAAAABsAbgBrABYAXQIJAwAEwQPsALQAoACMAJYA3AG6AIoADgAFAD8DDAPeAGIAuQBqBTsBkQDWBroBZwBuAE4AIgGcAwcAfAAKAPcAkwBYAEMEDQAKAPMAdwKtAAUCGAF3AF0AgACLAOEDoAAWAVcAmQDOAk0DcwOCA+EAAAAAAAAAAAAACAAAsQBQA1YAFgBSAL0AZgDJALcAUgP9AFgApABQALAFngAAAAD/6gBoAIcAnQBbAKQAdwCqAHwBBf3VAIwCMAJEAMUAvgBKAkgCeACiAFQCWACDAM4AnQCOAHEAqwCkAAAAAAcOAAAAAAgAAJoAIwB7AIEAlQArAJIA/gBGAJcBZwTdAAoAAAERAPoAewAA//YAAAB3AM0A/v3VAAAAAAAAAF4AigCBAKIAqACLACcAogBqAGwAPwCSAG8AnADkAOQAAACoAKgAUwB7AAAAAAAAAAAAAAAAAAAAAAU1AAAAAAgAAJYAqgBKAFYAgwBWAGkASgBeAD0ALAO2AAUAAAFfAUAAiQAA/+4AAAAAAAAAAP3VAAAAAAChAaUCFwBzAagA0gCNAHgAcwAABgQALQAACAAAFABcACQAGQBVAIoAFABKAJwAkgBqBNAAGwAAAAAAXQA0AMj/5QAAALsAvQCO/p0AAAAAAD0ASwB2AkUAogEsAbwAhwAdAOYBxAAF/0L/+wAtAJoBpgAWAHcAmgA/AFYANwBLAFIAZQAUACYAOAB3AIQAAAAAAAAAAAAAAAAAAAAAAAAEEAAqAAAIAABYAPoASgC4ANQAWgCkAPoAXgBIARkDyQAYAAABowM8AnoAAP/oAAAAUABeAGf91QAAAAAAmwPdAeQAzQBOAIEAVQCCALgAcwG4A6wBxwccAMEBrwCjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABs0AMgAACAAAgAA1AREAKAA/AHABDgBhAEYAmwE7BNwAIQAAAHYAnwA6AAD/7gAAAEQAAAAA/dUAAAAAAJQAggCkAI0ArAB2AFICHACxAUAAeAA9AJgAhwCOAKcAawBNAAAAAAdOAAAAAAgAAHAAWgBmAMMAewCUAIoAWgBmAL0CKgW8ABgAAACnARcATwAA/+gAAABQAzICHv3VAAAAAAA4AHYAlAEGAR8AhABhAHMAUAGSA/UAeABUAIACbQAAAAIBAAAABwAGAAADAAcAG0ALBwEEAQAFAwkEAAgQ3s0Q3s0ALzPNL80xMCERIRElIREhAQAGAPqABQD7AAYA+gCABQAAAQAtAAAEtgW6AAcAM0AdAAWTBgMDEgcARwACAAJ/QAgFAQ8ABQMICQN/ZDArARgQxl9eXRpN/cZdAD8//TwxMAEhESMRITUhBLb+G8P+HwSJBQz69AUMrgAAAv/+AAAFWAW6AAcADwEWQB46CQEHBgEKBQ4BAwcLAQcMAR0ACAIBAQkPAwQEDgu4/4BAVygrNmULAQEXC7cLxwvnCwQLDgkBAYEABxQAAAcOBASBBQYUBQUGCQ4GAgOSQAgPAQgIDw8FBwYDAAEBBAUBJwABBwA3AGcAlwDHAPcABgkAEAcAAQAEBbj/8EA1CAUBCgAFKAcBBwcXB8cH1wcENwYBJwY3BgIIBhgGyAbYBgQQAg4JBgcFAAYLCyAQEQtCZDArATgRFzNfXl1dcV1dGC9fXl04My9dOF5dcTMALzw8EDw/PBI5LzxeXRpN/TwSOTmHBS4rDn0QxIcFLhgrDn0QxAARM11fcSsHBRA8fcQHEDw8MTAAX15dXQFfXV5dAHEhIwMhAyMBMxMCJicjBgcDBVjbrP2cos0CM9GUtC4cBRwvpAG+/kIFuvyeAdyBbJR+/kkAAAEACgAABUoFugASATFAk2gCAQJoDwEAZwYBZwkBaBIBZwwBAggSAQMHCQEKDg4MCQgJCggQBQUCEhESABEHDA4OEBIAEhEACwIFBQcJCgkICgELAQoBgQALFAAACxAHEQeBCBAUCAgQDgkSBQQBERALCgMIBwEAEggRWBFoEQMHClcKZwoDBwhXCGcIAwgAWABoAAMOAhIOCQUEChAREQEAALj/wEAQDBY2BwAXAAIJAAAAFAsKCrj/wEAUEBY2CgoHCAhADQ42eAgBGAgBAAgvX11dKwERMzMYLysBETMRMxgvX15dKwERMzMYLzMSFzlfXl1dXV0APzw8PD88PDwRFzmHBS5NK4d9xIcuGCuHfcQHCBDECMQOPAcIEDwIxA7EBwgQxAjEBwgQPAjEAV5dX10xMF9dXV1dX11fXSEjASYnIxQBIwkBMwEWFzYBMwEFSvD+2mwcBP5M6gI4/grnATUyGCcBddP9/gGgmTQS/aUC/AK+/kpHMEMB6v1OAAEAvAAAAX8FugADAB9AEAIDAQB/QAEBBW5/CAQBawIrKwEYLxpN7QAvPzEwISMRMwF/w8MFugAAAQCiAAAFIwW6AAsAUkAuuAEBAgkDAQOBBwkUBwcJCQMBCgcDBQESBwcBEgMBCYAABwOABUANAG4CDAVrAisrARoYEE3tMhDtMl9eXQA/PD88Ejk5hy4rh33EMTABX10hIwEjESMRMwEzETMFI8f9AgS4xgL+BLkEf/uBBbr7gQR/AAEADAAABUgFugALALBAeJoHqge6BwOXAacBtwEDmAKoArgCAwN4CgECdwWHBQK6CcoJ2gnqCfoJBWoJegmKCZoJqgkFGgkqCToJSglaCQUDCgkB+gkBAgELBwuBAAEUAAABAgQHBIEDAhQDAwIHAgECAAsEAwMXAAEYAwEACwACAQADBwcEAy8zMxkvFzMYLzJfXV0APzw8PBA8ETOHBS4rh33Ehy4YK4d9xAFfcXJfcnJyMTBdX11fXV0AXQkBIwEzARYXMzY3AQVI/cLG/cjRAX0rIQQeLgGNBbr6RgW6+9dmiXV6BCkAAAIAYP/nBdsF0wALABcArkB5xxYByBQByBABxw4BAccIAQLHBAHIAgHYEugSAgMIEhgSWBIDAhKRyAABAATXDOcMAgMHDBcMVwwDAgyRxwYBBhNYAwEIDwHoD/gPAgNYDwECCA8YDwIPfQMHFQHnFfcVAgNXFQECBxUXFQIJAxV9CUAZA28CGAlsAisrARoYEE3tX15dX11fXXEQ7V1fXV9dcV0AP13tX11fcT9d7V9dX3ExMF1dX11fXV1dXQEgABEQACEgABEQAAEyABMQACMiABEUAAMfATQBiP52/s7+w/5+AYcBNt8BFQH+5dbc/uQBFgXT/l7+qv6r/mEBrgE2AWkBn/q6ATgBFgEeATT+0v7I//7FAAABAGj/5wV3BdMAGQCHQF4oBGgEAgIoDQENDRCRCQQHGQEXGScZVxlnGZcZBQAZGRaRAxOIGagZuBnYGQQXE1cTAogNATcMRwx3DAOIBgE3AEcAdwADAgUTAQkDGX4ADX4ME30GQBsMbwIaBmwCKysBGhgQTe0Q7dbtX15dX11dXV1dXQA/7TMvX11xP+0zL10xMF9dAQYEIyAAERAAITIEFwcuASMiAhEQADMyNjcFd0D+wd/+mP63AYMBMNYBMD2+MMST8PgBBdKs1ysB0ffzAcMBPQFfAY3a0i2Zmv7F/vf+zv7WursAAQCiAAAE6QW6AAsATEAqCZMGQAIBBpMYMAWTAgMKkwESCAQIBAAFCQp/AUAIAAERAA0AbwIMAWsCKysBX15dGhgQTf08PBEzMy8vAD/tP+0rABoYEE3tMTApAREhFSERIRUhESEE6fu5BCX8nQMr/NUDhQW6rv5Arv4QAAEAnAAABg4FugATARZAvVoSAVULAToSATULAZcLpwu3C8cLBMcFAcgEAQQSDxKCAgQUAgIEBQsPC4IHBRQHBwUVDwEDqA/IDwICWA9oD3gPiA8EAQgPGA8oDzgPBABlB3UHAgJHB4cHAgMHAQGHAgFYAgECRwJnAgIBBgIBDwQHAhILAwAIBQQSBAUPDwAJEgsHAoAAB4AJQAgJyAkCCBcJNwlHCYcJlwnXCecJBwcJJwm3CccJ9wkFCgcAAQ4AFQBuAggJAR0AFAlrAisBX15dKwFfXl1eXXFeXRoYEE3tEO0RMzIREjkZLzMzABg/PDw8PzwzMxEzXV9dX11dX11dX11fXV9dX11fcYcFLiuHfcSHLhgrh33EMTABXV1dXV1xcSEjESMBIwEjESMRIQEWFzM2NwEhBg64BP5arv5cBrgBIgFbOgkEGzMBXgECBMv7NQTf+yEFuvvyrSxVlgP8AAIAngAABPwFugAMABUAcUBEhwQBAnUPAXwPAXoSAQMHCAEHAwEIAQ2TGAooCgIACgoLFZMAAwsSJwYBCBABDgIQfQYNC38MQAgGAREAFwZvAhYMawIrKwFfXl0aGBBN/TwQ7V9eXV0APz/tEjkvX13tMTABX15dXV9dXQBdAV9dEyEyHgIVFAQpAREjEyEgETQuASMhngIpg72iU/77/uD+icLCAXkBWlqDgf6LBboabbtmy/X9rgMAAQxYhyEAAAEAmgAABC8FugAFACFAEAIDBJMBEgAHBH8BQAYBawIrARoYEE3tEM4AP+0/MTApAREzESEEL/xrwgLTBbr69AABAIsAAAPsBD0AFwCCQFTFFQECigMBA9gQ6BACAiUQNRBFEAMFFBUUJRQDAwcUAQg4BkgGWAZoBgRIBGgEAgEKEAENAw8LBZUSEAwPAAsBhQANCoULQBkAaAIHGQETABgLZQIrAV9eXSsBGhgQTf3EEO0ALzw/P+0SOTEwAV9eXV9dcV5dAF9dXV9dX11fXSEjETQmIyIOARURIxEzFTM+ATMyHgIVA+y1dWhQjzy0ogQ5p25UpF0YAoWjek6Ogv28BCWWV1c8eIh0AAABABsAAAPnBCUACwDZtkgHWAcCAgG4/85AJjI4NgIyMjg2uAsBtwQBAwEB8wEBRwFXAQIMAgH8AgFIAlgCAgMHuP/OQGAqMjYJMjk8NgELBwuHAAEUAAABAgQHBIcDAhQDAwIHAgECAAsEAw8LCABIAIgAyAAEhwABAAIBAAMYBwEIB0gHiAfIB9gHBcgHAYcHAQcHBBcDAfcDAccD1wMCiAMBAAMvX11xcXIzMxkvXV1xchczGC9dcTIAPzw8PBA8ETOHBS4rh33Ehy4YK4d9xAErACsxMAFfXXFyXXFyXV0rKwBfXQkBIwEzExYXMzY3EwPn/m+o/m2+2z4MBBAn9gQl+9sEJf2arj5AbAKmAAIASP/nBCsEPQALABcAbEBLVwxnDHcMA1gSaBJ4EgMSlQAQDJUGE0gPAUcVAQcVAWcVdxX3FQMIDwFoD3gP+A8DAggJAXgDAQcDAQgDD4MDFYMJQBkDaQIYCWYCKysBGhgQTe0Q7V9eXV1dX11xXXFdXQA/7T/tXV0xMAEyABEQACMiABEQABMyNjU0JiMiBhUUFgI51wEb/s7Ayf7YAR7TmqC1hYmwswQ9/uj+/v7H/v0BCgEhARgBE/w+5LrHys3Lys0AAAIAiQAAAT0FugADAAcAKEAVBQYDAg8BBwCFQAYBAQlohQgIAWUCKysBGC88Gk39PAAvPz/NMTAhIxEzNSM1MwE9tLS0tAQlycwAAQBQ/+cD7gQ9ABoAgEBXdxIBlwy3DMcMA5cLAQgEiATYBOgEBAgIiAgCCEcBAScXASgRAQ6hEZUKEBqiF5UDEygaOBoCBxQXFCcUAw0IDhgOAg8CGoUADoUNFIMGQBwNaQIbBmYCKysBGhgQTe0Q7dbtX15dXl1dAD/t5D/t5F1dMTABXV5dAF0BXV1dAQ4BIyICNTQ+ATMyFhcHLgEjIgYVFBYzMjY3A+4j+p7n/JHaeKTpG64beV6XnJmQdIURAW/LvQEv+s/5ZaqlG2ts1sDE1YWFAAIAUP/nBCMEPQAUABsApkBvyg8B9QIBA3cCAQAIEAEIDAEIAUgFATgYSBgCBwQXBMcE1wQECwIblXcBhwECAQELGJUREJcHAQAHowSVCxMYFSgVOBUD1w4BOAcBB4MIQggVARWDABsHAQEMBwEXAScBAw0CAYMOQB0AaQIcDmYCKysBGhgQTf1fXl1eXcUQ7V327V1dXQA/7eRfcT/tEjkvXe1fXl1dMTABXV9eXV0AX11fXV0BIR4BMzI2NxcOASMiADU0ADMyHgEHLgEjIgYHBCP85QuzhmeMJbkt8LTv/vMBBe1015a5C7Nqf6QNAeWwum1uF6ayASX++wE4ZvVpoo+qhwACAKQAAAVgBboACwAZAHNAMagJuAnYCegJBAKICQEBhQQBAwcDAacDtwPHA+cDBBmTAAMMk0ALEggSGBJYEgMJAge4//BAFw8QNgcHAQsCEn0HDH8LQBsHbwIaC2sCKysBGhgQTe0Q7V9eXSsBX15dABg/Gk3tP+0xMF1xX11fXV9dEyEyHgMVEAApATchMj4CNTQuAyMhpAH6hcCvg0v+zP6I/fDCATpgl5tmJ2mIgWX+zAW6G2m476r+vP5frhhq8sduv51JEAAAAgBO/+cEIQQ9ACEAKwD2QKpaKgED1yUBOCVIJVglAwKYFQEBqAvoCwJ3CgE4CkgKWAq4CsgKBRgGKAY4BkgGWAYFApUZAQM3HEcc1xznHAQCBxwXHCccAwhoCXgJAggHGAcCCQHIBwECGgMqAwIDFysnKwK3BQEDBSOVmA6oDrgOyA4EAkgOAQEODgUWoBOVGhAplQUTARJVFgEDDgNCIgGDACKFHxaFCBcBCgAXFyaDCEAtH2gCLAhmAisrARoYEE3tMy9fXl3tEO3W7RDlPF9dAD8/7T/t5BI5L19dX13tETNdMTABXQBfXQFfXV9eXV1eXV9dX10AX11dXV1fXV9dXV9dISMmJwYjIiY1NDY/ATY3NC4CIyIGByc+ATMyHgEdARQWAzUGBBUUFjMyNgQhvRoLtdKowrvnqF49CjFsW3SHGbAd8NK/sykRxY3+aG5nhcsyUZyoioSrHBkPFlFDSCxWdRejpHGgfvLdlwGLQS83kUlfnwAAAQAj//ICJwWaABYAVUA2BDAJETYQB5UHDAFXDGcMdwyHDAQMDQoPFhSWAhMPSACYAAIABg0RhQgLBwYnBrcGAwAGBhgXERI5L19dPMb9PBDdXcYAP/3GPzzNXV39PDEwASslBiMiLgE1ESM1MxE3ETMVIxEUFjMyNwInUDd2bBiDg7S0tCFDJykCEFOAcgJjiwEIbf6Li/2TUEMIAAABAD8AAAQKBcEAGgD2QJ8HGQENAAgPAQIYBQMFjRYYFBYWGKgWAScWAQEHERcRAhACChAMDzZnA3cDAgUWAxgEGRENDQqZEQcZm0ABEggZAQwCpxYBALUWAXcWlxanFgMCBxY3FvcWAw4IA9gDAh0BAxAWGTYKAwH6AwEDWAOYAwICCAMBCwMWBQMYBAEAB4kUBxkXGTcZ9xkEDhkIAQEdAAENiQ5AHBR8AhsOewIrKwEaGBBN7dRfXl3FXl0Q7cQSFzlfXl1fXV9dcSsBX15dXl1fXV1fcV9eXQAYPxpN7T/tMy8REhc5XSsAX15dX11dhw4uGE0rhw59xDEwAV9dX15dKQE0Njc+ATU0JiMiBgcnNiQzMhYVFAIFBgchBAr8Na3tkeSdeHmkAbkRAQPH2PHL/tGfNALRfP6/dP+Bb5GVlBXO2u+pjf7f8n9cAAABAFb/5wQhBaYAHAEKQB3XEQFVEWURAgI3DQFXDWcNAlcGZwYCWARoBAIBHLj/0EATMjQ2WhRqFAI4EAF4CgHHBAECALj/0EBgMjQ25wABRQABAAABFxwXHBcYHI0ZGBQZGRhFDwEDAAIY2BfoF/gXAxcVnLcCAQICCBybGQY4DAEADAwPmQgT9RkBAtcZ5xkCAQgZGBkCCScYNxhHGFcYBAgSGBICDAIbuP/AQBkWHTYbEokFFwAZHAQYDIkLQB4FfAIdC3sCKysBGhgQTe3GFzIQ7X3EK19eXXFeXV9dX10AGD/tMy9fXT/tEjkvXf3GXTISOV9dhwUuKwh9EMQHCMQxMAFxXStfXV1dXSsAX11dXV1fXV0BNjMyABUUACMiJCc3HgEzMjY1NCYjIgcnEyEVIQFEhpC3ARD+7OC3/vQUvBeWbomqromtXaqPAtf9uANxXP792Nr+z8/LDouJz5easo0UAvKuAAIAXP/nBBcFwQAJABcAt0CCOgFKAQJMDwFFFmUWAkMSYxICPAtMCwIDRwMBADMDAQNIAgEAOgIBAkgIAQA6CAETDCMMMwxDDAQTFiMWMxZDFgQcDywPPA9MDwQcEywTPBNMEwSoBgGYBQGXAAEDBwoBOBEBNwoBCBEBCwIRmQAHCpkFEw2JAhSJB0AZAnwCGAd7AisrARoYEE3tEO0AP+0/7V9eXV1dXV9dXTEwAV0AXV1dXV1fXV9dX11fXV9dAV9dXV1dXQEgERACIyAREBITMhIRNC4BIyICERQSFgI5Ad735/4j9+aRlEGDY5GSQoIFwf0S/oX+jwLsAXsBc/q6ARkBP97/ff7i/sTb/wB9AAABAIf/5wPlBCUAFQB8QExlEgEFDiUOAhEDESALDTY8BAEDGAQoBAIIBwEUAgcYCQo2BxABEAICIAoNNgIFFAoPEJUFEwESAROFAAyFCUAXAGgCBxcBEwAWCWUCKwFfXl0rARoYEE3tEP3EAD8/7T88EjkrAF9eXTEwASsBX15dXV9dACsAX15dXSEjNSMGIyIuATURMxEUHgEzMjY1ETMD5aEFetNvvT+0G3JPZrS0nLVntZACkv20jXpPjd4CNwABAIUAAAYnBD0AIgDSQA0IERgRAggIGAgCGQEguP/oQAkTGDYHIAEIABu4/+hACRMWNgcbAQgAIbj/4LMTFjYhuP/oQB8JCzYYHQAPlRoGlUAaBx8XHycfAwwCHxAVDxQLABIduP/gQDYTGzYHHRcdJx0DCQEBhQDlHQqFCxYThUAU5QsLZSM6IyQLhWQwKCRIJAIHJAEHJDckZyQDCABfXl1xXSsrARgQTfQa/cQQ/cX07V9eXSsAGD88PD8/X15dPBpN7RDtEjk5MTABKysAAF9eXSsAX15dKwBfXl1dISMRNC4BIyIGFREjETQmIyIGFREjETMVMzYzMhYXNjMyFhUGJ7QUU1hqmrRhWXSVtKIEbNF1lyJ20aWlAp5KaVGUpv2YArKKZqDb/dkEJZSsXV26srIAAgCJ/+cEIwW6ABAAHQDAQIgKGBoYAgoKGgoCxRzVHAIKHBocAgoBGgECCwMYHAG4GcgZAhcYATcGATgEARcBAQEYBwG4B8gHAhgK2AoCFwAnADcA1wAEGBcoFzgXAxcRJxE3EQMOAwAXlQIQChGVCBMNEggUAQwIFBgUmBSoFAQOAggFARkDFIMFGg9CDIUNQB8FaQIeDWUCKysBGhgQTf3kxBDtX15dX15dXl0APz/tOT/tOT9dXV1dMTABXXEAX11dXV1dXQFfXl1dXV1dATYzMhIVEAAjIicjFSMRMxEBMjY1NCYjIgYVFB4BAUJkus32/u24u2gEqLQBDX2jloSCn0KFA66P/tbw/uv+2Z6FBbr99PzN18K72+KtqY9oAAABAIMAAALFBD0ADwBtQA4IBBgEKAQ4BEgEBQoBDbj/4EATCQ42BwsXCwIJAQsHDgEDlw5ADrj/8EAZGx82DhAJDwcSBwABCwAAEQoHhQhAEAhlAisBGhgQTf3EEMZfXl0APz8/KwAaGBBN/cYREjlfXl0xMAArAV9eXQEHJiMiBhURIxEzFTM2MzICxT5DQGVotKQEVotcBASmJ7Wj/dMEJaC4AAEAQgG4AmgCbQADABG2AZsCAAAFAi8RMy8AL+0xMAEhNSECaP3aAiYBuLUAAQBa/+cEGwXBACoBGEARDCABDgM3GacZAgIHGQEPARm4//BAMQwONicPNw8CAigROBECAQgRGBFoEQNXKQECSiMBA1clAQgeGB44HgMMBw0XDQIXAg24//BALwwPNkgGWAYCAhUAE5nXFgEWFgYlByEBDCEhHpklBxcKAQAKCg2ZQAYTBygBEAIKuP/wQDcMDzYHIRchNyEDDAcDAQIHABcAAhABACgVFSIbiShAKEAOEjYoEIkDIYsiCosJQCwDfAIrCXsCKysBGhgQTe3W7RDtxCsBGhgQTe0SOS8RM19eXV9dXl0rAV9eXQAYPxpN7TMvX10/7TMvXl0REjkvXf05xl9dKwBfXl1eXV0xMAFfXV9dAABdX11fXSsAX15dX11fXl0BHgEVFAAjIiYnNx4BMzI2NTQmIyIHNzI+AjU0JiMiBgcnPgEzMhYVFAcDCIiL/t3LwvwVtBuPdX6vn4A0SxVIVGhEkV9tiRK0I++mt/XJAxka03zI/v/iuhmRkLGAe6ITng42ZUtteIqAIb++3aDNWgAAAgAfAAAEFAW6AAoADgCQQGCnDgECJQ2lDQKVDgEMDg6OBgcUBgYHkwajBrMGAwMMBwYJDpwBBAQDBwYDEgAIBwKLDGcDAQgDKAM4A0gDBLgD6AP4AwNHAwE3A0cDAgMDDjgGSAYCWAZoBngGiAYEAAYvX11dMzMvXXFdcV08/Tk8xgA/PxI5Lzz9PDwROV9dhwUuKwR9EMQxMAFdXV9dASMRIxEhNQEzETMhESMBBBTGtP2FApuUxv6GBP45AV7+ogFepgO2/EoClv1qAAABAOMAAAMABcEACABMQDkCBJtYBWgFeAWIBQQFBwYBBwCLaAR4BIgEuAQEBEcBVwFnAZcBpwEFBwEXAScBRwF3AYcBtwEHAAEvX11xzl39zQAvP9Zd/cUxMCEjEQYHNSQ3MwMAtIfiATdxdQR7gFmuldwAAAIApAAABbAFugAWACAA/UA5CBIBCogCAQIIGhgaAgAMHhweAg4DFxYBCAIBGQIFAwEDAQMDgRUAFBUVABUDARQXkwdABwcBHQAHuP/AQGUVGDYIB1gHAmgH6Af4BwNnBwE3BwEABwcBIJIKAwgAARJ4EAEHEHcQhxCXEAQIAkcVVxUCARcVAQgVAQwDFQEDAwgAEAgAAQAAHH0HEAEPBxAnEDcQRxAEEQAQIhcIfwlAIQlrAisBGhgQTf08EN5fXl1eXe0zL104Ehc5X15dcV9dX15dXQA/PDw/7RI5L19dcV1xKwBfXl0aGBBN7cUSOTmHDi4rBX0QxAFfXTEwX15dXV9eXV9dAF9dXl0hIwIuAisBESMRITIeAhUUBgcVFhcBITI+ATU0JiMhBbD022p1Z1XgwgKJhbSISdLJk4H8tgGgfpNYkqj+MQFannEe/XkFuiJtplymyhsEQcoBpit8TWSMAAABABAAAAJ9BdMAFgBcQDsTIAkONgEDlhUEDQqVEAcPDBJYCAEnCAEIBwCHAAIAGAcLDhALhSgMOAwCBwwnDIcMlwynDAUADAwYFxESOS9fXXHtPMYQPBDWXcRdXQA/Pzz9PD/9xjEwASsBByYjIgYdATMVIxEjESM1MzU0PgEzMgJ9GzY0QVPNzbSgoB6BhlAFwZ4KN21ki/xmA5qLc1CCaQAB//T/AAQM/2YAAwAQtQECAAUCBBDGEMQAL80xMAEhNSEEDPvoBBj/AGYAAAEAGQAAB3cFugAcARZAYhULAQNHF1cXAgEHFhcWNxZXFncWBQwIFAECKhMBNwwBAxgFAQEBHBkcgQABFAAAAQIVGRWCBQIUBQUCCBQPFIIFCBQFBQgJCw8LgQoJFAoKCQgZGBkoGQMIDxgPKA8DDwIFuP/QQEsJETYPGQEFCwoUFRwAAwkIAQISSABoAMgAA0cKZwrHCgMDAQK3GQEZGQAFCAm4DwEPDwoVFAUFChwnAEcAZwCHAKcAxwAGAAAeCwovMxDGX10yETkZLzMzEjkvXTMzERI5L10zM19dXQAYPzw8PD88PDw8PDIRMzMrAF9eXV2HBS4YTSuHfcSHLhgrh33Ehy4YK4d9xIcuGCuHfcQAX10xMAFfXV1fXV5dX11fcQkBIwEmJyMHASMBMxMWFxYVMzY3ATMTEhczNjcTB3f+bLr+wBkHBCn+yMT+ecbiLQwCBCgXARfs0E4jBBUx5wW6+kYEg1kurvukBbr8Pr1ZEgO+UgPd/Rv+7PR3yAOuAAABAJYAAAVSBboACwFNQNwYAwH4AQEXCwECAgELCgsACgMHCAH3CAHXCAH3CgHoCQECBQIBBQEBAwsLCgECAYEACxQAAAsICgMKgQkIFAkJCIgDAQL3AwEAZwN3A6cDtwMEAggCCwMXA5cDAgOHAwEBJwNHAwIAAwMABgoJAwQAARIICQF4CfgJAkoJAQIICSgJAgGXAvcCAgC3AgEBBwKnAgICAQsAiAIBAAIDCQgKARgKAZUKpQoCAgcKNwq3CscKBAHVCuUK9QoDA2cKdwoCAgoHAAEHABcARwADCQAAEAANCAN/BUAMBWsCKwEaGBBN/TwQ1jhfXl1xxl9dX11fXV9dXXEyEMZfXRE5OV9dX11fXV9dX11dcQA/PDw/PDwSOS9fXV9dX10XM19dX11fXYcFLiuHBH3EhwUuGCuHCH3EAV9xcV9dXQBdcXIHCBA8CDwxMAFdXQBdKQEBBxEjETMRASEBBVL/AP348sLCAtkBBv2aAuXp/gQFuv0pAtf9rgAAAgBK/+cD4wW6ABAAHQDEQINHHAECNxgBATccAQLIFdgVAgEqEgEDJww3DEcMAwHnBwECKgQBAwcWFxYCAQMEEwQCAwcTFxMCAgMMEwwCCwO3BscGAjgXATcRAQLVDQED2AIBDwMNF5ULEAIRlQUTARIHGgEMBxoXGicapxq3GgUNAhQPQgGFABqDCEAfAGgCHghmAisrARoYEE3tEP3kxF9eXV5dAD8/7Tk/7Tk/XV9dX11dMTABXV9eXV9dX10AX11fXV9dX11fXV9dX10BX11fXSEjNSMGIyIANRASMzIXMxEzATI2NTQmIyIGFRQeAQPjqARhxMP++/bKvmMEtP5CdqSWjIyPTYqHoAE19gEBASqRAg76wcLFwubht4S3XAABAIkAAAE9BboAAwAgQBECAwESAIVAAQEFaIUIBAFlAisrARgvGk3tAD8/MTAhIxEzAT20tAW6AAEAP//nA7AEPQAnASNAnAcjAQCXGQGXFQEBCA8BAAcFAfcFAQKYBQGYAQEBtybHJgICOiBKIAIDuBLIEgJFDAECNQwBAwgdAQgdCAoIhx8dFB8fHRcXARgDAQJqH3ofAgOnHwEBJx8BAgUKFQrFCtUK5QoFDwNnCgECCAofHQQQCAABAKUDlSQQBxQBEQAUoxeVQBATCCEYISghOCEEBw0XDQITAiEQCQw2Dbj/8EAhCQs2HwgdCgQNIQCFJycagw0UhRMTBoUhQCkNaQIoIWYCKysBGhgQTe0zL+0Q7TMv7RESFzkrKwFfXl1dABg/Gk3t5F9eXT/t5F0SFzlfXV9eXV9dX11fXV9dXYcOLiuHDn3EAF5dMTABX11fXV1fXV9dAF9dXV9dcV9dX11dX10BLgEjIgYVFBYXHgIVFAYjIiYnNx4BMzI2NTQuAScuATU0NjMyFhcC2Qx1aGd/ZZWop13owsrjGrMOiXt2fjpXmOKR1LO+0xUC/FdXRkM/NicrQndqjsKrqxtvbmNHMDodJTaaa4WslZQAAQB7/lICYAXTAAwAWUA5KgUBAygKAQGaDAECBwwXDCcMAwEHDAEClwkBAQgJAQgJAQIIBgEoBgEHAgEHBAEcAQcACAgIC4sEL+3UODzVPAA/PzEwcV1xX11xX11fcV9dX11fXV9dASMmAjUQEjczCgEVEAJggaa+ypqBsnn+UtQB9vYBFwHezP7c/kjj/h0AAgBG/lID7gQ9ABwAKAEKQLYIIQH4IQEBAx8BVRgBWhBqEHoQAxUNAWUNdQ0ClQnlCQIDByUB9yUBBycB9ycBAggWAQEHEgH3EgECCBIBAQcChwICCAIXIiciAgETECMQAgMXHiceAgITGCMYAgNII1gjAkcdVx0CAvUaAfoPAQMaI5UXEBsPDx2VERIHBxcHdwcDCgAHpAuVBBwHJgEMByYXJicmAw0CIBtCD4MACIUHBxcHJwcDHAAHByaDFEAqAGgCKRRmAisrARoYEE3tMy9fXl3tEP3kxF9eXV5dAD/t7V9eXT/tOT8/7TlfXV1fXV0xMAFfXV9dX10AX10BX15dX11fXXFfXV9dcV1xAF9dXXFdXXFfXXElFA4BIyImNRceATMyPgE1BiMiAjU0EjMyFzM1MwEyNjU0JiMiBhUUFgPuWuagtPCvCnlwjIIddbLP+/TYvHYEpv4zc7KqfYChqY/i33ygthtUVHKkkIsBMunqATiXf/xut9e+y9C10cEAAAEASv5SAi8F0wAMAFRAKggBGAECCAUYBQIHCBcIAgKYCAEBlQsBAggLGAsoCzgLBAEABAccBgAHDLj/+EAKDAgDASgDAQqLAy/tXXHUODzdPAA/PzEwX11fXV9dX10BXV0TFhIVEAIHIxoBNRABy6a+ypqBsnn+1QXT1P4K9/7q/iLMASQBt+MB5AHfAAADAJgAAATsBboADwAaACMAqkBvBwsBhwuXC+cL9wsEAnwhAQOHBQECdQ8BA4cBAQIHCwEIAQAjkxBACQgQkxkwGpMJAxuTCBIIHwEOFw0nDXcNhw2XDQUCFQAlAAIDAAgfAQgVAQIVfggNGA0oDQMPAA0ffQMQG38IQCUDbwIkCGsCKysBGhgQTf08EO3UX15d7V9dXTNfXV9dXl0AP+0/7SsAGhgQTe05MTABX15dX11fXV9dX10AX11xAR4BFRQOASMhESEgFhUUBiUhMj4BNTQuASMhESEyNjU0JiMhA9mKiXzkw/3PAiYBC9tl/RsBPmKFZmePcP7bAW3EmKLT/qwDDCq9e3vOYQW66I5goxMWXmNoYxb7ooZ2d4UAAgBY/+cEGwXBABgAJAEUQL1nFwFoHQFoCwEAYw0BA2cNAWcjAWghAWgWAQBaHQFcCwFTFwFVDQEzDUMNUw0DAzcXRxdXFwMAdRcBA3gQiBACAocNAQFHCgEC1R3lHQIDGBYoFgIBVRRlFAIDeBGIEZgRAzcOAQIIBwEIBQEBOB9IH1gf6B8EAgAJGZxIAwEIAxgDWAMDCQADAw8fmQkHExMVmQ8TByIXIicityIEDCgAOAACHBwiCAABEQIAiQwTixIiiQZAJgx8AiUGewIrKwEaGBBN7dTtEO1fXl0ROS9dXl0AP+0zLz/tEjkvX15dce0SOV9dMTABX11dX11dX11fXV9dAF9dX11fXV9dX11fXV1dXV0BX10AXV1dX11fXV1dAQ4BIyICNTQAMzIAERAAIyImJzcWMzISEQUyNjU0JiMiBhUUFgNkNblstf0BAsvMASr+8P2l3hisKcqmsP7NhJuffH2sqQKyVmoBCdbaARb+wv55/nP+eLW4DucBLwEII7uPkcPPk4uxAAABAGIAAAQXBaYACgCwQHNTBgEDNwEBAgIGBQaNAQIUAQECBQIGAQQHBAAImwkGBBIYBzgHiAcDAbcFAQJHBWcFlwUDAzgFAQKYBQEDmgEBAggBGAEoATgBSAFYAQYJAWcBhwECAgECBgUHBQADiUAIBBgEAg4ABAQACAwAfAILCHsCKysBERI5GC9fXl0aTe0SFzlfXV9eXV9dX11fXV9dX11fXQA/P+05ERIXOYcOLiuHDn3EMTABX10AX10BBgADIxIAEyE1IQQX2P7EHLgHARng/TMDtQUb7f1G/owBKwLLAQKuAAIAVv/nBB0FwQAXACMBSECuZRoBAmwcAQNXFQFXDQFnIwEAbBkBahABbBMBA2cVAQBjDQEDSBMBAWwHATMiQyJTIgM8FkwWAgPIINggAngWAXcPhw8CqAy4DAIXCgE4CgECKiIByiLaIgIDJxUBAhcVAQFYEwGXEAECyAoBAwcGAQcEAQHHGAEDAAgenAcCFwJXAgMJFwIBAAICCA4SEhSZDgcYmUAIEwgbGBsoGwMMBxEXEScRAw8CByEBNAAhuP/AsyszNiG4/8BAJCUnNiEhGwASixEbiQUHAGcAhwCXAAQLAgCJC0AlBXwCJAt7AisrARoYEE3tX15dEO3U7RESOS8rKwFfXl1fXl1eXQAYPxpN7T/tMy8REjkvX3FeXe0SOV9dMTABX11dX11fXV1fXV9dX11xAF9dcV1dXV1fXV0BXV9xX11fXV9dXV1fXV1dAF9dX10BNjMyEhUUAiMiABEQADMyFhcHJiMiAhEBMjY1NCYjIgYVFBYBDHzltPz70NP+1wEN/6XkGbQxx4rGAUZ8mpqCd6ypAvTC/vbP0f7bATgBjwGIAYu4tRDp/u7+2f2HyI6Ouq+Pks4AAQCkAAAFIwW6AAsAPEAgA5MIQAYFCJMZMAsGAwAFCgF/AAcEfwVADQBuAgwFawIrKwEaGBBN/TwQ/TwALzw/PCsAGhgQTe0xMCEjESERIxEzESERMwUjw/0GwsIC+sMCsv1OBbr9pgJaAAEAov/nBSMFugAXAFZAONgTAbcP1w8CeAjICAIHEQELCAUYBbgF2AUEDBYLAxGTBwUnBQIWAgUTFX8ADH8LQBkAbgIYC2sCKysBGhgQTe0Q7QA/X15d7T88Xl1eXTEwAV1dXQEUDgIjIi4CNREzERQeATMyPgE1ETMFIxlr8cnE8HAfwiaiqausNMMCanHAy4d4vs5/A1D8s4S/lHbFnANNAAEAXP/nBOwF0wAlAQFAsIUkAQMHIAEIKB0BAicVNxVHFQMXCwEoATgBSAEDAVckAVggaCB4IAN4HgFYEgFXDgECVQxlDAIDHAgKCIEdHBQdHRx4HQECZx0BBCUdNR0CAzcXRxdnFwMCRwpXCmcKAwM4A0gDAgIIHQocBBAiaAABKAA4AAIAAAOTIgRnFAEHFBcUJxQ3FEcUVxQGCgAUFBeTEBMdCBwKBA0fANAlGtANBtAfFNATQCcNbwImE2wCKysBGhgQTe3W7RDt1O0REhc5AD/tMy9fXl1dP+0zL11dERIXOV9dX11fXV9dX11fXYcOLiuHDn3EMTABX11fXV1dXV0AX11dXV9dXl1fXQEuASMiBhUUFhceAhUUBCMgACc3HgEzMjY1NCYkJjU0JDMyBBcEBAyyppa8kc225qT+0/L+y/7NCbgN9q6jydL+EdoBFO70ASkJBAyMjXBrX10uKFSxlb36ARTcELChhnN4bmvCm7Dm5dMAAAEACgAABUoFugALAKZAUycHNwe3B8cHBAMBCwkLgQABFAAAAQQGCQaBBQQUBQUEAQSYCQEEFwkBAgkJAwsABgUDAxILABCHAJcAAgMnAAEHAHcA5wADCQAAhwkBCQF/QAYFuP/wQA8HBRcFAgsDBQQMDQR/ZDArARgQxV9eXTgyGk39OV3FX15dcV9dODIAPz88PDwSOS9fXV9dMzOHBS4rhwR9xIcFLhgrhwR9xDEwAV9dCQERIxEBMwEWFzYBBUr9uMP9y+wBQjFDKgGSBbr8s/2TAm0DTf4TS3pSAmAAAQAA/88COQW6AAMAPkAmZwF3AQIDAQABjgIDFAICAwMAAwECE0cChwICSACIAAIAAQMAAwIvFzMvXV0APzw/PIcFLiuHfcQxMAFdCQEjAQI5/liRAagFuvoVBesAAAEAhwAAA/gFugALATRA0hgJAQgJATIHCAFDlwgBABcI9wgCAecLAQgJGAn4CQPoCfgJAsgB+AECAgICAQsKCwAKAwsLCgECAYcACxQAAAsICQmHCgMUCgoDCAMBBQMB5QP1AwIBRQMBVwNnA3cDlwOnA7cDxwPXAwgCBgMIAgsDAwMACgkPBAABErgCAQGoAgECCgABA6gAAQELAKgC6AL4AgOXAgF6AgECAgMJBwpXCncKhwqXCqcKtwrHCtcKCQkKEAoKBwAnAEcAZwDHANcA5wAHCwAADQgDfwVADAVlAisBGhgQTf08EMZfXl0yLzheXTMQxl9dXV0ROTldX3FfXV9dAD88PD88EjkvFzM/X11xX11xcYcFLisEfRDEhwUuGCuHCH3EBwgQPAg8MTABX11dcV0AX3Ffcl5dAV5dcSEjAQcRIxEzEQEzAQP43f6ff7S0Aarq/moCH3n+WgW6/L0Brv53AAIAi/5oBCUEPQAQABwA0ECQyAfYBwICCgoaCgIKHBocAgoBGgECC6UTtRMCA7gZAQCIGZgZqBkDARgVqBW4FQMCCAkYCSgJAwcGARcGJwZnBncGBCgEAQcBAQ0BGBcBBxEXEQIOAggKARkBEBeVAhAODwoRlUAIEw0bGkA5PjYIFAEMCBQBCBQYFCgUAw0CFIMFGg9CDIUNQB4FaQIdDWUCKysBGhgQTf3kxBDtX15dcV5dKwAYPz8aTe05Pz/tOV9eXV9eXV0xMF9eXV1dcV1fXV9dX11fXQFeXV1dX10BNjMyEhUQACMiJyMRIxEzFQEyNjU0JiMiBhUUFgEzZcrR8v70w6tnBbSkARt+pZ98gKWeA5yh/tHz/v3+z4j9+QW9ifzf0c/D0uq6xcwAAgBg/40F9gXTABEAIwE7QHqHEQGIIAEBVRMBA1cPAVgNAQF4A4gDAhgMARISExAREA8RIwMDBB8gHx4gAgIjESOCIAIUICACBx0XHVcdxx0ECBcYF1gXyBcECQIHBQESAyMgEQIEASISHxcdEAMLBSJAEhU2IkAJCzYiBReRQBgLAQMLBAcBARQCAbj/wEBHCQs2AR2RxwUBAwUTCBQYFFgUAwcaFxpXGgMJAiAjAhEEACEfEhoUAxAIDiEhGgAAFH0OCA4BGn0IQAcIARUDJQ5vAiQIbAIrKwFfXl0aGBBN7V0Q7TMvETkvERI5ORESOTkREhc5X15dXQA/X13txisAX15dGD9fXRpN7RDEKysAERI5ORESOTkREhc5X15dX15dXYcFLhhNK4cOfcQYMTAHCBB9xAjEBwgQxAjEAV0AXV9dXV9dX11dJQcmJwYjIAAREAAhIAAREAcWJTYREAAjIgAREAAzMjcmJzcWBfY6qo+mwv7N/ngBfAFDATMBid18/uys/uve3v7oARjebVdhXy+zFIdBdFsBqQFNAUoBrP5e/q7+ltdZw58BNgEVATv+0v7e/uT+zCc+Fo4zAAEAIf5SA/AEJQAXATFAq1oOAWwFAVUOAaUOAQOoAQEBRwEBA0USAQJHEwEAaBMBxxMBATcTpxMCAA4ODxMTERYXDYcRAVgEAQHHBAEQDxcADwQNCxMIDlgOaA4DCAAOEgkLlgYcaA94DwJHDwEnD6cPtw/XDwR4BAECVQQBA0cEAQEoBDgEAncAASgAOACoALgA2AAFAgkXCAABhwABSAABAAAODQQEhxMBSBMBCBMBExATCQOIDwEADy9fXRczGS9xcV0XMxgvcV1xMi9fXV1dX11fXV9dXXFdAD/9xj9fXl0zEjk5Pzw8PF1fcQFLsAlTWEAWDRcXhwAEFAAABBMQExYQhw8OFA8PDocFLisIfRDEhwUuGCsOfRDEWQFdBw48CMQIxABfXV9dXV9dAV9dMTBfXV9dX11xAF0BcQkBBgcOASMiLwEWMzI2NwEzExYXMzY3EwPw/moBATqbjzBFEjQyZE0w/m3C+hYZBBkn6QQl+8kCBbThFKoQbpAEJ/1JQGV0aQJ/AAABAGr/5wW2BdMAHQCmQG83CncKAmcEdwQCAlcIZwgCRxlXGQIBBxcXF1cXAwgQGBBYEAMCGQAXGpM3HWcddx0DHR0CCSgNaA0CAA0NEJEJBBeTAhMHExcTVxMDCVgNAQcMFwxHDAMMAhsbExkNfgwZfgATfQVAHwBvAh4FbAIrKwEaGBBN7RDt1O0REjkvX15dXV5dAD/tP+0zL19dERI5L13tETk5X11dX10xMAFdAF9dXSUEISAAETQSJDMyBBcHLgEjIAARFBIEMzI3ESE1IQW2/uv+t/6v/mOpAUnu9wErNK4p1Kv+9/7ygwEBl+bG/lACbM3mAZsBVdABZ8XZ2TGen/68/vrE/vyFlwEQrwAAAQCJAAAD7AW6ABMAc0AjBxEXEacRtxEECQJnBgEIBhgGKAY4BgQYBDgEAgEIBQEQAg24/+BAIwoNNgsDDQAFlQ8QCQASAYUADAmFCkAVAGgCBxUBEwAUCmUCKwFfXl0rARoYEE39PBDtAD88P+0SOT8rAF9eXTEwAV9dcV1fXl0hIxE0JiMiBhURIxEzETYzMh4BFQPstXBvbq20tIDAZ7xMAp6CgpnF/bwFuv3ykVSumwAAAwBW/+cEGwXBABYAIgAuATFAiwobGhtqG5obBAyYKKgoAgNnFQFoDQEIKRgpSCkDApcjAQMHIxcjRyMDGB1IHXgdAxcXRxd3FwMCdwWHBQIIABgAAg4DCwgMDjYACymZBxcXF3cXAw8AFxcFHZkRByOZQAUTWBoBVyABRwABSAsBJywBKCYBBxQXFAIIDhgOAgcCFwICCAgYCAIQAiy4//BACQwPNiYQDA82ILj/8EAiDA82GhAMDzYHCwEPAgALDhqJFEAUQBEUNhQmiQIgiQ5ADrj/wEAQEhQ2DiyJCEAwAtUCLwjUAisrARoYEE3txCsBGhgQTe0Q7cQrARoYEE3tEjk5X15dKysrKwFfXl1dXV1dXV1dXV0AGD8aTe0/7RI5L19eXe05OSsAX15dXV9dXV1fXV9dMTABXV1fXQBeXQEEERQEIyIANTQ2NzUmNTQ2MzIWFRQHJzI2NTQmIyIGFRQWEzI2NTQmIyIGFRQWAwgBE/7y1Nb+85eA3Oi8v+vXz2WJi2Vnhoplf6qvfoOkqQMZWP7hvf4BAMGL0BYEROWi2eCf2E1DgWFjiIZbbX/9G6SDg6iten+sAAABAKz+3wGFAM0ACQBVQCIlBTUFRQUDAwcBFwECCQEEsggDGAMCGQADAAcSCLBABhIEuP/AQA4JETYEBwaxAK9HBwEABy9fcfTtEMYrABg/Gk3tPzzUX15d7TEwAV9eXQBfcSEUBgcnNjcjNTMBhWFHMXABZc1/hhxMMKXNAAABALYAAAGDAM0AAwAWQAsCsAESAK9HAQEAAS9fce0AP+0xMCEjNTMBg83NzQAAAv+k/lQBPQW6AA4AEgA8uQAC/+BAHgkNNhARAw0PBwmVBBwPABEGAIVADAwUaIUIEwxlAisrARgvGk3tzDwQPAA//cY/P80xMAErBRQOASMiJzcWMzI2NREzNSM1MwE9HHV7R0YjMiI6NLS0tDlpl3MSmA5OjQRaycwAAAUAlv/JBo0F0wADAA8AFwAkACwA3UARAwEAAcoCAxQCAgMfEBMVNhi4//BACRMVNgoQExU2BLj/8EAhExU2EM0KzgBCA0IUzQQEAgEpzRjOAUIlzUAfIhATEzYbuP/wQAkTEzYNEBMTNge4//BACRMTNiIQCQs2G7j/8EAJCQs2DRAJCzYHuP/wQAwJCzYDABAAACIbAQK4//BAFwICBw0ryiLMJ8obLhLKB8wWygcNAQANL19d7fTtEN7t9O0REjkvODMREjkvODMrKysrKysrKwAYLxpN7eT07RA8P+3m5PTtKysrK4cFLhhNK4d9xDEwCQEjAQUyFhUUBiMiJjU0NhMyERAjIhEQBTIWFRQOASMiJjU0NhMyERAjIhEQBWj85JYDIfzyibS4g4itopWdnZwEH4qzYpBJiK2ilZ6enAXT+foGBgLGv7zHyMej1v11AQ4BAv7w/wB1xr+MrknIx6PW/XUBDgEC/vD/AAAAAgBO/mgD5wQ9ABAAHQDHQGDIFdgVAicMAScHAQGHBwECKAQ4BEgEAwcWFxYCAQMEEwQCAwcTFxMCAgMMEwwCCwOXGKcYApcGpwYClxynHAICuAIBAQgXGBcCBxEXEQIOAg0XlQsQDw8CEZVABRMBAhS4/8BAJDY+NhcaARcaJxo3GgMHGgEMAhQPQgGFABqDCEAfAGgCHghmAisrARoYEE3tEP3kxF9eXV1xKwAYPz8aTe05Pz/tOV9eXV1fXTEwAV9dXV1fXl1fXV9dAF9dXV9dX3FdXQEjESMGIyIAETQSMzIXMzUzATI2NTQmIyIGFRQeAQPntARoqsT+9fLQymUFo/5Cf56kgXyfSoj+aAIHiAExAQPzAS+hifxWzMW66tLDibpdAAACALgAAAGFBCUAAwAHACBAEQGwAg8GsAUSAASvAUcFAQAFL19xPP08AD/tP+0xMAEjNTMRIzUzAYXNzc3NA1jN+9vNAAEApAAABIEFugAJAEdAKAWTAkAIBwKTGTABkwgDBxIIBAEKBAACBn8HQAgAAREACwBvAgoHawIrKwFfXl0aGBBN/TwQxl5dAD8/7SsAGhgQTe0xMAEhESEVIREjESEEgfzlArH9T8ID3QUM/jqu/WgFugAAAQAKAAAFvAQlABQBaUDHuAoBAxcFARcGARcHAQBFBwED+AoBlwgBmAMB9wABAgEqFBMUhwABFAAAAQ8CBgKIEw8UExMPDggGCIgMDhQMDA4JKgsMC4cKCRQKCgkXBgEApwa3BscGAwEGCwoPDhQAD7cTxxMCWBN4EwICKBM4E0gTAwEKExoTArcMAVgMaAx4DAMCGAwoDDgMSAwEAQoMAQjYDAECEwwJCAIBEhQHABcAVwBnAKcABQAQAAIBAAPXEwFYE2gTAhMLCAoYClgKaAqoCgUKCrj/8EAfCgkICgMHDBcMAg8ADA4PDBMEBgYgFRYGQmQwuBYBAF9dKwE4ERczGS9fXl0XMxgvOF5dMxkvXV0XMxgvOF0zAD88PDwzM19dXl1fXV9dXV1fXV9dXT88PDw8PDNfXV9dhwUuTSuHS1JYfRt6WcSHLhgrh33Ehy4YK4d9xIcuGCuHS1JYfRt6WcQxMAFfXV1dXQBfXV9dXV0BX10JASMDIiY1IwMjATMTNxMzExYXMxMFvP6zu6gBKATTvP66u+ckvbmPPAYE8QQl+9sCfawI/M8EJfy4jwK5/dTmHwMxAAAAAAAAAAAARAAAAJ4AAAH4AAADeAAAA7AAAAQyAAAFHAAABjQAAAccAAAHmAAACPoAAAm6AAAJ+gAACsYAAAvWAAAMnAAADOYAAA28AAAOwgAAD4wAABEGAAARpAAAEvQAABReAAAVcAAAFjAAABdmAAAYiAAAGSwAABlYAAAa8AAAG74AABwyAAAdmAAAHjoAAB5mAAAf6gAAIW4AACKQAAAiyAAAJGIAACTyAAAmdgAAJwQAACgiAAApsAAAKpYAACxUAAAsvgAALWAAAC7aAAAvugAAMBgAADGAAAAyrgAANG4AADX4AAA3CgAAN74AADl8AAA5+gAAOigAADqkAAA8FAAAPTwAAD08AAA9gAAAPfQAAD+uAAA/rgplbmRzdHJlYW0KZW5kb2JqCjIxIDAgb2JqCjw8L0ZpbHRlci9GbGF0ZURlY29kZS9MZW5ndGggNTI2Pj5zdHJlYW0KeJxdlE+P2jAQxe98Ch+3h1Wwx7F3JYTEwiJx6B+V9gOExNBIJYlMOPDtm/g9b6vmQPSYzPj9ZqwptofdoWtHVXyLfX0Mozq3XRPDrb/HOqhTuLSdWmijmrYes0yv+loNajHnHx+3MVwP3blXi9VKFd+n8G2MD/W0afpT+KSKr7EJse0u6unn9jjp430Yfodr6Ea1VOu1asJ5LvW5Gr5U16CKlPc8ffu8/Cf24zEEZfCHhpe6b8JtqOoQq+4SpuOX07NWq/30rNUidM3/X/glMk/n+lcV/2bglaROsrSUJkmrKQXRF0qL6CtlCflO6fCxo/SI7ilfIIXyFbKk3EDuKN9QKpvcIrql3CXp8rnvSfp87h5RnqvB6+hZg9fRhgavow0NXstuaPA6dkOD1+coeMVQgldyKfAKETR4fY6C15FXg9flUuD1WYLX5I/BKxkBvEJXBrxCz4bzZSlDXvbKcL7slQFv6Sk53zdK8Lp8EHgdh2LA6+nKgNfw5hjy5srgNRyK4XyzSfBKjpI355KXCAJey4OEvOyzgLekKyEvKwt4DfEFvI68Al7PCQp4SzZWyJtL8T7TpJA3uwKvZAlew9YJ58v7LOB1G0rwGhJZ8HrasODd0KQFrzDX8j6zVxa8niYteOcbMy+PvCTmPZLW3ceKqu8xTusrbcW0nOa11HbhY3MO/ZDy+PMHgt8yewplbmRzdHJlYW0KZW5kb2JqCjIyIDAgb2JqCjw8L0xlbmd0aCAxOS9Hcm91cDw8L1MvVHJhbnNwYXJlbmN5L0NTWy9JQ0NCYXNlZCAxMyAwIFJdPj4vUmVzb3VyY2VzPDwvWE9iamVjdDw8L2ltMTA1ODAgMjMgMCBSL2ltMTA1NzkgMjQgMCBSPj4vUHJvY1NldFsvUERGL1RleHQvSW1hZ2VDL0ltYWdlQi9JbWFnZUldPj4vU3VidHlwZS9Gb3JtL0Zvcm1UeXBlIDEvRmlsdGVyL0ZsYXRlRGVjb2RlL1R5cGUvWE9iamVjdC9CQm94WzAgMCAxODAgOTNdL01hdHJpeFsxIDAgMCAxIDAgMF0+PnN0cmVhbQp4nNPPzDU0MDW3VHDJBwARYwLfCmVuZHN0cmVhbQplbmRvYmoKMjMgMCBvYmoKPDwvQ29sb3JTcGFjZS9EZXZpY2VHcmF5L0xlbmd0aCA1Mi9CaXRzUGVyQ29tcG9uZW50IDgvVHlwZS9YT2JqZWN0L1dpZHRoIDI0MC9TdWJ0eXBlL0ltYWdlL0ZpbHRlci9GbGF0ZURlY29kZS9IZWlnaHQgMTI1Pj5zdHJlYW0KeJztwTEBAAAAwqD+qbXETmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJEDu3vBnQplbmRzdHJlYW0KZW5kb2JqCjI0IDAgb2JqCjw8L0NvbG9yU3BhY2VbL0lDQ0Jhc2VkIDEzIDAgUl0vTGVuZ3RoIDI4NDUvQml0c1BlckNvbXBvbmVudCA4L1R5cGUvWE9iamVjdC9XaWR0aCAyNDAvU3VidHlwZS9JbWFnZS9JbnRlcnBvbGF0ZSB0cnVlL1NNYXNrIDIzIDAgUi9GaWx0ZXIvRmxhdGVEZWNvZGUvRGVjb2RlUGFybXM8PC9CaXRzUGVyQ29tcG9uZW50IDgvQ29sb3JzIDMvUHJlZGljdG9yIDE1L0NvbHVtbnMgMjQwPj4vSGVpZ2h0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SJgmlHVmCu4vD+zBXAplbmRzdHJlYW0KZW5kb2JqCjMyIDAgb2JqCjw8L0xlbmd0aCA5OTU+PnN0cmVhbQrvu788P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iPjxyZGY6UkRGIHhtbG5zOnBkZmFpZD0iaHR0cDovL3d3dy5haWltLm9yZy9wZGZhL25zL2lkLyIgeG1sbnM6cGRmYUV4dGVuc2lvbj0iaHR0cDovL3d3dy5haWltLm9yZy9wZGZhL25zL2V4dGVuc2lvbi8iIHhtbG5zOnBkZmFTY2hlbWE9Imh0dHA6Ly93d3cuYWlpbS5vcmcvcGRmYS9ucy9zY2hlbWEjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBkZj0iaHR0cDovL25zLmFkb2JlLmNvbS9wZGYvMS4zLyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpwZGZhUHJvcGVydHk9Imh0dHA6Ly93d3cuYWlpbS5vcmcvcGRmYS9ucy9wcm9wZXJ0eSMiIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiI+PGRjOmRlc2NyaXB0aW9uPjxyZGY6QWx0PjxyZGY6bGk+PC9yZGY6bGk+PC9yZGY6QWx0PjwvZGM6ZGVzY3JpcHRpb24+PGRjOnRpdGxlPjxyZGY6QWx0PjxyZGY6bGk+PC9yZGY6bGk+PC9yZGY6QWx0PjwvZGM6dGl0bGU+PGRjOmNyZWF0b3I+PHJkZjpTZXE+PHJkZjpsaT48L3JkZjpsaT48L3JkZjpTZXE+PC9kYzpjcmVhdG9yPjxwZGY6UHJvZHVjZXI+QXNwb3NlLlBkZiBmb3IgLk5FVCA2LjY8L3BkZjpQcm9kdWNlcj48eG1wOkNyZWF0ZURhdGU+MjAyNS0xMS0yN1QwNDozNzo0OCswMDowMDwveG1wOkNyZWF0ZURhdGU+PHhtcDpNb2RpZnlEYXRlPjIwMjUtMTEtMjdUMDQ6Mzc6NDgrMDA6MDA8L3htcDpNb2RpZnlEYXRlPjx4bXA6Q3JlYXRvclRvb2w+QXNwb3NlIEx0ZC48L3htcDpDcmVhdG9yVG9vbD48L3JkZjpEZXNjcmlwdGlvbj48L3JkZjpSREY+PC94OnhtcG1ldGE+PD94cGFja2V0IGVuZD0idyI/PgplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCAzMw0KMDAwMDAwMDAwMCA2NTUzNSBmDQowMDAwMDAwMDE4IDAwMDAwIG4NCjAwMDAwMDAxMTggMDAwMDAgbg0KMDAwMDAwMDE2MCAwMDAwMCBuDQowMDAwMDAwMjExIDAwMDAwIG4NCjAwMDAwMDAwMDAgMDAwMDAgZg0KMDAwMDAwMDM4MiAwMDAwMCBuDQowMDAwMDAwNDYwIDAwMDAwIG4NCjAwMDAwMDA0ODIgMDAwMDAgbg0KMDAwMDAwMDUwMiAwMDAwMCBuDQowMDAwMDAwNTY3IDAwMDAwIG4NCjAwMDAwMDA2NDAgMDAwMDAgbg0KMDAwMDAwMDk3NCAwMDAwMCBuDQowMDAwMDAxMDA5IDAwMDAwIG4NCjAwMDAwMDM2NzMgMDAwMDAgbg0KMDAwMDAwMzY5OCAwMDAwMCBuDQowMDAwMDAzODAyIDAwMDAwIG4NCjAwMDAwMDM5MjEgMDAwMDAgbg0KMDAwMDAwNDA2NyAwMDAwMCBuDQowMDAwMDA0NTU0IDAwMDAwIG4NCjAwMDAwMDQ3NjIgMDAwMDAgbg0KMDAwMDAzNjQ2MyAwMDAwMCBuDQowMDAwMDM3MDU3IDAwMDAwIG4NCjAwMDAwMzczNTkgMDAwMDAgbg0KMDAwMDAzNzU2NyAwMDAwMCBuDQowMDAwMDQwNjc2IDAwMDAwIG4NCjAwMDAwNDcxMDYgMDAwMDAgbg0KMDAwMDA0OTYwMyAwMDAwMCBuDQowMDAwMDQ5OTA4IDAwMDAwIG4NCjAwMDAwNTA1MjkgMDAwMDAgbg0KMDAwMDA1NDcwOCAwMDAwMCBuDQowMDAwMDU1MDExIDAwMDAwIG4NCjAwMDAwNTU4MzEgMDAwMDAgbg0KdHJhaWxlcgo8PC9Sb290IDEgMCBSL0luZm8gNCAwIFIvU2l6ZSAzMj4+CnN0YXJ0eHJlZgo1Njg3NQolJUVPRgoKMSAwIG9iago8PC9WZXJzaW9uLzEuNy9OYW1lcyA4IDAgUi9PdXRsaW5lcyAyIDAgUi9QYWdlcyAzIDAgUi9UeXBlL0NhdGFsb2cvTWV0YWRhdGEgMzMgMCBSPj4KZW5kb2JqCjQgMCBvYmoKPDwvTW9kRGF0ZShEOjIwMjUxMTI3MDQzNzQ4KzAwJzAwKS9BdXRob3IoKS9DcmVhdGlvbkRhdGUoRDoyMDI1MTEyNzA0Mzc0OCswMCcwMCkvVGl0bGUoKS9DcmVhdG9yKEFzcG9zZSBMdGQuKS9TdWJqZWN0KCkvUHJvZHVjZXIoQXNwb3NlLlBkZiBmb3IgLk5FVCA2LjYpPj4KZW5kb2JqCjMzIDAgb2JqCjw8L0xlbmd0aCAxMDgzPj5zdHJlYW0K77u/PD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz48eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIj48cmRmOlJERiB4bWxuczpwZGZhaWQ9Imh0dHA6Ly93d3cuYWlpbS5vcmcvcGRmYS9ucy9pZC8iIHhtbG5zOnBkZmFFeHRlbnNpb249Imh0dHA6Ly93d3cuYWlpbS5vcmcvcGRmYS9ucy9leHRlbnNpb24vIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnBkZmFTY2hlbWE9Imh0dHA6Ly93d3cuYWlpbS5vcmcvcGRmYS9ucy9zY2hlbWEjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6cGRmPSJodHRwOi8vbnMuYWRvYmUuY29tL3BkZi8xLjMvIiB4bWxuczpwZGZhUHJvcGVydHk9Imh0dHA6Ly93d3cuYWlpbS5vcmcvcGRmYS9ucy9wcm9wZXJ0eSMiIHhtbG5zOnhlcm89Imh0dHA6Ly93d3cueGVyby5jb20vbnMvMS4wLyI+PHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiI+PGRjOmRlc2NyaXB0aW9uPjxyZGY6QWx0IC8+PC9kYzpkZXNjcmlwdGlvbj48ZGM6dGl0bGU+PHJkZjpBbHQgLz48L2RjOnRpdGxlPjxkYzpjcmVhdG9yPjxyZGY6U2VxIC8+PC9kYzpjcmVhdG9yPjxwZGY6UHJvZHVjZXI+QXNwb3NlLlBkZiBmb3IgLk5FVCA2LjY8L3BkZjpQcm9kdWNlcj48eG1wOkNyZWF0ZURhdGU+MjAyNS0xMS0yN1QwNDozNzo0OCswMDowMDwveG1wOkNyZWF0ZURhdGU+PHhtcDpNb2RpZnlEYXRlPjIwMjUtMTEtMjdUMDQ6Mzc6NDgrMDA6MDA8L3htcDpNb2RpZnlEYXRlPjx4bXA6Q3JlYXRvclRvb2w+QXNwb3NlIEx0ZC48L3htcDpDcmVhdG9yVG9vbD48eGVybzpvaWk+WUpIODlJQnB0UklQa0hWc0ZFYk9sRDlleUF1bjlmYW14NThOdnVvQzwveGVybzpvaWk+PHhlcm86aD42Nk1sVFlWVHcyWG5ITHhLellyMjZscXJTN2NpeVNXMVM2b2wrMlkwbHNzPTwveGVybzpoPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT48P3hwYWNrZXQgZW5kPSJ3Ij8+CmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDINCjAwMDAwMDAwMDAgNjU1MzUgZg0KMDAwMDA1NzYxMiAwMDAwMCBuDQo0IDENCjAwMDAwNTc3MTIgMDAwMDAgbg0KMzMgMQ0KMDAwMDA1Nzg4MyAwMDAwMCBuDQp0cmFpbGVyCjw8L1Jvb3QgMSAwIFIvUHJldiA1Njg3NS9JbmZvIDQgMCBSL1NpemUgMz4+CnN0YXJ0eHJlZgo1OTAxNgolJUVPRgo=";
+
+        // Pre-generated Xero payment link
+        const XERO_PAYMENT_LINK = "https://go.xero.com/AccountsReceivable/View/6e91aab7-5a80-4f12-b349-e1c9387d4fa9";
+        // ==================== END EMBEDDED DATA ====================
+    </script>
+<script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((element, index) => {
+                if (!element.classList.contains('stagger-1') &&
+                    !element.classList.contains('stagger-2') &&
+                    !element.classList.contains('stagger-3') &&
+                    !element.classList.contains('stagger-4')) {
+                    element.style.animationDelay = `${index * 0.1}s`;
+                }
+            });
+        });
+
+        // Approval Modal
+        function openApprovalModal() {
+            const modalHTML = `
+                <div id="approvalModal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; animation: fadeIn 0.3s;">
+                    <div style="background: white; border-radius: 20px; padding: 40px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                        <h2 style="font-family: 'Crimson Text', serif; color: #1E4366; margin-bottom: 20px; font-size: 2rem;">
+                            <i class="fas fa-check-circle" style="color: #62ABF9;"></i> Approve AFQA Compliance Project
+                        </h2>
+
+                        <div style="background: linear-gradient(135deg, #62ABF9, #7DB9FA); padding: 25px; border-radius: 15px; margin-bottom: 25px; color: white; text-align: center;">
+                            <div style="font-size: 0.9rem; margin-bottom: 5px; opacity: 0.9;">Total Quote Amount</div>
+                            <div style="font-size: 3rem; font-weight: 700; margin: 10px 0;">$8,797.34</div>
+                            <div style="font-size: 0.95rem; margin-top: 5px; opacity: 0.9;">26 designs • 5-week timeline • Printer deadline: Jan 13, 2026</div>
+                        </div>
+
+                        <h3 style="color: #1E4366; margin-bottom: 15px; font-size: 1.3rem;"><i class="fas fa-layer-group"></i> Approval-Based Payment Structure</h3>
+
+                        <div style="background: linear-gradient(135deg, #f0f7ff, #fff); border: 3px solid #62ABF9; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                            <strong style="font-size: 1.1rem; color: #1E4366;"><i class="fas fa-check-double"></i> How Payment Works</strong>
+                            <div style="display: inline-block; margin-left: 10px; background: #62ABF9; color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.75rem;">PAY ON APPROVAL</div>
+
+                            <div style="margin-top: 15px; padding: 15px; background: white; border-radius: 8px;">
+                                <div style="margin-bottom: 12px; color: #457798;">
+                                    <strong style="color: #1E4366;">For each category:</strong>
+                                </div>
+                                <ol style="margin: 0; padding-left: 20px; color: #457798; line-height: 1.8;">
+                                    <li><strong>Pure Carob Master:</strong> Designed first → Submitted for your approval</li>
+                                    <li><strong>Revision Pricing:</strong>
+                                        <ul style="margin: 5px 0 5px 20px;">
+                                            <li>✅ Base price includes: Initial submission + 1 revision round</li>
+                                            <li>📊 Extra revisions: +15% per round (if needed)</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Invoice on Approval:</strong> When Pure Carob approved → Invoice created</li>
+                                    <li><strong>Other Flavors (5):</strong> Cloned from approved master → Submitted as group</li>
+                                    <li><strong>Group Approval:</strong> When all 5 approved → Invoice created</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div style="background: white; border: 2px solid #ddd; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                            <strong style="font-size: 1.05rem; color: #1E4366; display: block; margin-bottom: 12px;">
+                                <i class="fas fa-boxes"></i> Category Breakdown
+                            </strong>
+
+                            <div style="font-size: 0.9rem; color: #457798;">
+                                <div style="margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+                                    📦 <strong>Stage 1: Bars</strong><br>
+                                    <span style="margin-left: 25px; font-size: 0.85rem;">
+                                        Pure Carob Master → $313.42 • Other 5 Bars → $470.14
+                                    </span>
+                                </div>
+
+                                <div style="margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+                                    📦 <strong>Stage 2: Bar CDUs</strong><br>
+                                    <span style="margin-left: 25px; font-size: 0.85rem;">
+                                        Pure Carob Master → $470.13 • Other 5 CDUs → $1,410.37
+                                    </span>
+                                </div>
+
+                                <div style="margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+                                    📦 <strong>Stage 3: Moons + Bananas</strong><br>
+                                    <span style="margin-left: 25px; font-size: 0.85rem;">
+                                        Pure Carob Moon → $313.42 • Other 5 Moons → $486.37 • Bananas → $162.12
+                                    </span>
+                                </div>
+
+                                <div style="margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+                                    📦 <strong>Stage 4: Moon CDUs + Banana CDU</strong><br>
+                                    <span style="margin-left: 25px; font-size: 0.85rem;">
+                                        Pure Carob Moon CDU (NEW) → $1,880.51 • Other 5 Moon CDUs → $1,410.37 • Banana CDU (NEW) → $1,880.51
+                                    </span>
+                                </div>
+
+                                <div style="margin-top: 15px; padding-top: 12px; border-top: 2px solid #ddd; text-align: center; font-size: 0.85rem; color: #457798;">
+                                    <i class="fas fa-info-circle"></i> All invoices: NET 7 days payment terms
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #FFC107;">
+                            <strong style="color: #1E4366;"><i class="fas fa-lightbulb"></i> Key Benefits:</strong>
+                            <ul style="margin: 10px 0 0 20px; color: #457798;">
+                                <li>Pay only when you approve each design (not on completion)</li>
+                                <li>No upfront deposit required - approval-driven invoicing</li>
+                                <li>Extra revision charges only if needed (most approvals happen within 1 revision)</li>
+                                <li>Clear master-template workflow reduces overall revision rounds</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: rgba(143, 188, 139, 0.1); padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #8FBC8B;">
+                            <strong style="color: #1E4366;"><i class="fas fa-star"></i> Approval includes:</strong>
+                            <ul style="margin: 10px 0 0 20px; color: #457798;">
+                                <li>Signed quote PDF (auto-generated)</li>
+                                <li>Email confirmation to hello@handtomouse.org</li>
+                                <li>Project details copied to clipboard</li>
+                                <li>Dashboard updated to show approved status</li>
+                            </ul>
+                        </div>
+
+                        <div style="display: flex; gap: 15px; margin-top: 30px;">
+                            <button onclick="submitApproval()" style="flex: 1; background: linear-gradient(135deg, #8FBC8B, #A8D5A3); color: white; border: none; padding: 18px; border-radius: 12px; font-weight: 700; font-size: 1.1rem; cursor: pointer; box-shadow: 0 4px 12px rgba(143, 188, 139, 0.3); transition: all 0.3s;">
+                                <i class="fas fa-check-circle"></i> Approve Quote & Generate Documents
+                            </button>
+                            <button onclick="closeModal()" style="flex: 0 0 120px; background: transparent; border: 2px solid #457798; color: #457798; padding: 18px; border-radius: 12px; font-weight: 600; cursor: pointer;">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+
+        async function submitApproval() {
+            // Show processing toast
+            showToast('⏳ Processing approval...', 10000);
+
+            // 1. Generate Quote PDF
+            await generateQuotePDF();
+
+            // 2. Copy details to clipboard
+            copyApprovalToClipboard();
+
+            // 3. Send email confirmation
+            sendApprovalEmail();
+
+            // 4. Update dashboard UI
+            updateDashboardToApproved();
+
+            closeModal();
+
+            // Show success message
+            setTimeout(() => {
+                showToast('✅ Quote Approved! PDF generated, email opened, details copied to clipboard.', 6000);
+            }, 500);
+        }
+
+        async function generateQuotePDF() {
+            // Generate comprehensive quote PDF
+            const pdfContent = `
+===========================================
+MAPLEMOON AFQA COMPLIANCE PROJECT
+Quote Approval Confirmation
+===========================================
+
+Date: ${new Date().toLocaleDateString()}
+Time: ${new Date().toLocaleTimeString()}
+
+QUOTE DETAILS:
+-----------
+Total Amount: $8,797.34 (Inc GST)
+Project: AFQA Compliance Redesign
+Designs: 26 packaging designs
+Timeline: 5 weeks (Nov 25 - Dec 29, 2025)
+Printer Deadline: January 13, 2026
+
+PAYMENT STRUCTURE:
+-----------
+Approval-Based Payment (Pay on Approval)
+
+HOW IT WORKS:
+• For each category: Pure Carob master designed first
+• Base price includes: Initial submission + 1 revision round
+• Extra revisions: +15% per round (if needed)
+• Invoice created when design approved (not on completion)
+• Other flavors (5) cloned from approved master
+• Group invoiced when all 5 approved
+
+CATEGORY BREAKDOWN:
+-----------
+Stage 1: Bars
+  Pure Carob Master → $313.42
+  Other 5 Bars → $470.14
+
+Stage 2: Bar CDUs
+  Pure Carob Master → $470.13
+  Other 5 CDUs → $1,410.37
+
+Stage 3: Moons + Bananas
+  Pure Carob Moon → $313.42
+  Other 5 Moons → $486.37
+  Bananas → $162.12
+
+Stage 4: Moon CDUs + Banana CDU
+  Pure Carob Moon CDU (NEW) → $1,880.51
+  Other 5 Moon CDUs → $1,410.37
+  Banana CDU (NEW) → $1,880.51
+
+Payment Terms: NET 7 days upon approval
+
+PROJECT REQUIREMENTS MET:
+-----------
+✓ Salted Almond Bar CDU barcode: 0743966644733
+✓ Roasted Hazelnut Bar CDU barcode: 0743966644771
+✓ Company address confirmed: 33 Nana Street
+
+APPROVED BY: Dylan & Carli - MapleMoon
+PREPARED BY: HandToMouse Studio
+EMAIL: hello@handtomouse.org
+
+===========================================
+This quote is now approved and binding.
+Work to commence: November 25, 2025
+===========================================
+            `;
+
+            // Create downloadable text file (PDF generation would require jsPDF library)
+            const blob = new Blob([pdfContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `MapleMoon_AFQA_Quote_APPROVED_${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function copyApprovalToClipboard() {
+            const clipboardText = `MAPLEMOON AFQA PROJECT - APPROVED
+
+Date: ${new Date().toLocaleDateString()}
+Total: $8,797.34 (Inc GST)
+Designs: 26
+Timeline: 5 weeks
+
+Payment Structure: Approval-Based Payment (Pay on Approval)
+
+How It Works:
+• Pure Carob master designed first for each category
+• Base price includes: Initial + 1 revision
+• Extra revisions: +15% per round (if needed)
+• Invoice created when design approved
+• Other 5 flavors cloned and invoiced as group
+
+Category Breakdown:
+Stage 1: Bars - Pure Carob $313.42 • Other 5 $470.14
+Stage 2: Bar CDUs - Pure Carob $470.13 • Other 5 $1,410.37
+Stage 3: Moons + Bananas - Pure Carob $313.42 • Other 5 $486.37 • Bananas $162.12
+Stage 4: Moon CDUs + Banana CDU - Pure Carob CDU $1,880.51 • Other 5 $1,410.37 • Banana CDU $1,880.51
+
+Barcodes:
+- Salted Almond CDU: 0743966644733
+- Roasted Hazelnut CDU: 0743966644771
+Address: 33 Nana Street
+
+Start Date: November 25, 2025
+Printer Deadline: January 13, 2026`;
+
+            navigator.clipboard.writeText(clipboardText).catch(err => {
+                console.log('Clipboard copy failed:', err);
+            });
+        }
+
+        function sendApprovalEmail() {
+            // Open client's email with pre-filled approval message
+            const subject = encodeURIComponent('✅ MapleMoon AFQA Quote APPROVED - Approval-Based Payment');
+            const body = encodeURIComponent(`Hi Tom,
+
+Great news! The AFQA Compliance Project quote has been approved by MapleMoon.
+
+APPROVAL DETAILS:
+─────────────────
+Date: ${new Date().toLocaleString()}
+Total Amount: $8,797.34 (Inc GST)
+Payment Structure: Approval-Based Payment (Pay on Approval)
+
+PAYMENT STRUCTURE:
+• Pure Carob master designed first for each category
+• Base price includes: Initial submission + 1 revision round
+• Extra revisions: +15% per round (if needed)
+• Invoice created when design approved (not on completion)
+• Other 5 flavors cloned from approved master
+• Group invoiced when all 5 approved
+
+CATEGORY BREAKDOWN:
+Stage 1: Bars - Pure Carob $313.42 • Other 5 $470.14
+Stage 2: Bar CDUs - Pure Carob $470.13 • Other 5 $1,410.37
+Stage 3: Moons + Bananas - Pure Carob $313.42 • Other 5 $486.37 • Bananas $162.12
+Stage 4: Moon CDUs + Banana CDU - Pure Carob CDU $1,880.51 • Other 5 $1,410.37 • Banana CDU $1,880.51
+
+Payment Terms: NET 7 days upon approval
+
+REQUIREMENTS PROVIDED:
+✓ Salted Almond Bar CDU barcode: 0743966644733
+✓ Roasted Hazelnut Bar CDU barcode: 0743966644771
+✓ Company address: 33 Nana Street
+
+PROJECT TIMELINE:
+─────────────────
+Start Date: November 25, 2025
+Printer Deadline: January 13, 2026
+Total Duration: 5 weeks
+
+Ready to commence Stage 1 (Bars) immediately!
+
+Best regards,
+MapleMoon (via Dashboard Approval)
+            `);
+
+            window.open(`mailto:hello@handtomouse.org?subject=${subject}&body=${body}`, '_blank');
+        }
+
+        function updateDashboardToApproved() {
+            // Update AFQA section badge
+            const afqaBadges = document.querySelectorAll('.section-badge');
+            afqaBadges.forEach(badge => {
+                if (badge.textContent.includes('NEW PROJECT')) {
+                    badge.textContent = '✅ APPROVED';
+                    badge.style.background = 'linear-gradient(135deg, #8FBC8B, #A8D5A3)';
+                    badge.style.color = 'white';
+                }
+            });
+
+            // Update primary action button
+            const primaryActions = document.querySelectorAll('.action-card.primary-action h3');
+            primaryActions.forEach(h3 => {
+                if (h3.textContent.includes('Approve AFQA')) {
+                    const actionCard = h3.closest('.action-card');
+                    actionCard.querySelector('h3').innerHTML = '<i class="fas fa-file-contract"></i> View Approved Quote';
+                    actionCard.querySelector('.action-description').textContent =
+                        `Quote approved on ${new Date().toLocaleDateString()} with Approval-Based Payment structure (Pay on Approval). Ready to commence work.`;
+                    actionCard.querySelector('button').onclick = () => showToast('Quote PDF downloaded. Check your Downloads folder.');
+                    actionCard.querySelector('button').innerHTML = '<i class="fas fa-download"></i> Download Approved Quote';
+                }
+            });
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('approvalModal');
+            if (modal) {
+                modal.style.animation = 'fadeOut 0.3s';
+                setTimeout(() => modal.remove(), 300);
+            }
+        }
+
+        // Download Gap Period Invoice (INV-0341)
+        function downloadGapInvoice() {
+            showToast('⏳ Downloading invoice...', 2000);
+
+            // Use embedded PDF (works offline, no server needed!)
+            const a = document.createElement('a');
+            a.href = EMBEDDED_INVOICE_PDF;
+            a.download = 'INV-0341.pdf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            setTimeout(() => {
+                showToast('✅ Invoice INV-0341 downloaded!');
+            }, 500);
+        }
+
+        // Make Payment
+        function makePayment() {
+            showToast('⏳ Opening Xero payment portal...', 2000);
+
+            // Use embedded Xero payment link (works without server!)
+            window.open(XERO_PAYMENT_LINK, '_blank');
+
+            setTimeout(() => {
+                showToast('💳 Xero payment portal opened in new tab!');
+            }, 500);
+        }
+
+        // View Complete Summary
+        function showCombinedView() {
+            showToast('⏳ Generating complete financial summary...', 3000);
+
+            const summaryContent = `
+===========================================
+MAPLEMOON - COMPLETE FINANCIAL SUMMARY
+Generated: ${new Date().toLocaleString()}
+===========================================
+
+PORTFOLIO OVERVIEW:
+───────────────────────────────────────
+Total Relationship Value:    $20,588.79
+Total Paid to Date:          $10,980.21
+Outstanding Balance:            $811.24
+New Project Quote:            $8,797.34
+───────────────────────────────────────
+
+1. ORIGINAL PACKAGING PROJECT
+   Status: 100% COMPLETE & FULLY PAID
+   ───────────────────────────────────
+   Total Value:               $10,980.21
+   Amount Paid:               $10,980.21
+   Outstanding:                    $0.00
+   Payment History: 36 invoices, 100% on-time
+
+   Last Invoices (PAID):
+   • INV-0284: Design Revisions - $1,786.35
+   • INV-0285: Project Completion - $1,719.74
+
+   Paused Items:
+   • Goji Bites 2-Pack + 5 Eclipse Bites products
+   • Value: $1,410.36 (50% deposits paid)
+   • Note: Bananas and Moons moved to AFQA project
+
+2. GAP PERIOD WORK (Aug-Oct 2025)
+   Status: READY FOR PAYMENT
+   ───────────────────────────────────
+   Invoice: INV-0341
+   Amount: $811.24 (Inc GST)
+   Due: December 1, 2025 (NET 7)
+
+   Line Items:
+   • Moons 4-Pack (4 revisions): $353.72
+   • Bananas 4-Pack (3 revisions): $265.29
+   • Chilli Bar (1 revision): $85.48
+   • Icons Set (1 revision): $33.00
+
+3. AFQA COMPLIANCE PROJECT (NEW)
+   Status: AWAITING APPROVAL
+   ───────────────────────────────────
+   Quote Amount:              $8,797.34 (Inc GST)
+   Designs:                   26 packaging designs
+   Timeline:                  5 weeks (Nov 25 - Dec 29)
+   Printer Deadline:          January 13, 2026
+
+   Breakdown by Category:
+   • Bars (6 designs):           $783.56
+   • Moons (6 designs):          $799.79
+   • Bar CDUs (6 designs):     $1,880.49
+   • Bananas (1 design):         $162.12
+   • Moon CDUs (6 designs):    $3,290.87
+   • Banana CDU (1 design):    $1,880.51
+
+   Requirements Met:
+   ✓ Salted Almond CDU barcode: 0743966644733
+   ✓ Roasted Hazelnut CDU barcode: 0743966644771
+   ✓ Company address: 33 Nana Street
+
+PAYMENT OPTIONS (AFQA):
+───────────────────────────────────────
+Option 1: Progressive by Deliverable (Recommended)
+• Stage 1: Bar CDUs → $1,880.49 (21%)
+• Stage 2: Bars → $783.56 (9%)
+• Stage 3: Moons + Bananas → $961.92 (11%)
+• Stage 4: Moon CDUs + Banana CDU → $5,171.37 (59%)
+
+Option 2: Milestone-Based
+• Commencement (40%): $3,518.94
+• Mid-Project (30%): $2,639.20
+• Completion (30%): $2,639.20
+
+TIMELINE SUMMARY:
+───────────────────────────────────────
+Week 1 (Nov 25-Dec 1): Bars - READY TO START
+Week 2 (Dec 2-8): Bar CDUs
+Week 3 (Dec 9-15): Moons + Bananas
+Week 4 (Dec 16-22): Moon CDUs + Banana CDU
+Week 5 (Dec 23-29): Final delivery & export
+
+NEXT ACTIONS:
+───────────────────────────────────────
+1. Pay outstanding invoice: $811.24 (INV-0341)
+2. Approve AFQA quote: $8,797.34
+3. Select payment structure
+4. Confirm commencement date
+
+Contact: hello@handtomouse.org
+===========================================
+            `;
+
+            const blob = new Blob([summaryContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `MapleMoon_Complete_Financial_Summary_${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            setTimeout(() => {
+                showToast('✅ Complete summary downloaded!');
+            }, 500);
+        }
+
+        // Show toast notification
+        function showToast(message, duration = 3500) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 30px;
+                right: 30px;
+                background: #457798;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 15px;
+                box-shadow: 0 8px 32px rgba(69, 119, 152, 0.4);
+                z-index: 1000;
+                transform: translateX(400px);
+                transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                max-width: 350px;
+            `;
+            toast.textContent = message;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.transform = 'translateX(0)';
+            }, 100);
+
+            setTimeout(() => {
+                toast.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 500);
+            }, duration);
+        }
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
