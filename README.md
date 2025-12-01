@@ -12,7 +12,7 @@ Interactive client dashboard for MapleMoon's AFQA Compliance Packaging Project.
 
 ## Project Details
 
-**Total**: $8,903.22 (Inc GST)
+**Total**: $7,962.97 (Inc GST)
 **Scope**: 26 packaging designs + 8 certification icons
 **Payment Structure**: Approval-Based Payment (Pay on Approval)
 **Timeline**: Dec 2-22, 2025 (3 weeks to Christmas deadline)
