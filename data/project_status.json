@@ -2,13 +2,14 @@
   "lastUpdated": "2025-12-02T14:30:00Z",
   "project": {
     "totalValue": 7962.97,
-    "inProgressValue": 1046.14,
-    "blockedValue": 4272.04,
-    "readyValue": 2644.79,
+    "inProgressValue": 419.30,
+    "blockedValue": 5193.04,
+    "readyValue": 2350.63,
     "completeValue": 0,
     "targetDate": "2025-12-22",
     "alternateDate": "2026-01-13"
   },
+  "_note": "Aggregate values are calculated from products array: inProgressValue = sum(status=in_progress), blockedValue = sum(status=blocked), readyValue = sum(status=ready), completeValue = sum(status=completed). These should match product sums.",
   "products": [
     {
       "id": "pure_carob_bar",
