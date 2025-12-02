@@ -17,7 +17,7 @@ I've put together an interactive dashboard for the AFQA compliance packaging pro
 
 ✅ **Complete project breakdown** - All 26 packaging designs + 8 certification icons
 ✅ **Embedded invoice** - Gap period work (Aug-Oct) INV-0341: $811.24
-✅ **AFQA compliance quote** - Total: $8,903.22 (inc GST)
+✅ **AFQA compliance quote** - Total: $8,276.39 (inc GST)
 ✅ **Direct payment link** - Pay the gap invoice via Xero
 ✅ **Approval workflow** - One-click email to approve and proceed
 
@@ -25,6 +25,7 @@ I've put together an interactive dashboard for the AFQA compliance packaging pro
 
 - **26 packaging designs:** Bars, Moons, Bar CDUs, Moon CDUs, Banana CDU
 - **8 certification icons:** 6 updated + 2 brand new (Australian Made, 4 Wholefood Ingredients)
+- **Special pricing:** Pure Carob Bar & Banana CDU at 50% mates rate
 - **Payment:** Approval-based (pay when you approve each stage)
 
 ## Timeline - IMPORTANT
@@ -40,8 +41,11 @@ This gives us **3 weeks** to finalize Bars, Bar CDUs, Moons, Bananas, and Icons 
 
 1. **Review the dashboard** - Check the pricing breakdown and embedded invoice
 2. **Pay gap invoice** ($811.24) - Use the Xero link in the dashboard
-3. **Approve to proceed** - Reply when ready to kick off Week 1
-4. **Provide barcode info** - 2 bar CDU barcodes (Almond, Hazelnut) + address confirmation so we can start immediately
+3. **🚨 URGENT - Provide critical specs** (needed by Dec 15):
+   - Moon packaging dimensions (size changed - CRITICAL BLOCKER)
+   - Banana packaging dimensions (size changed - CRITICAL BLOCKER)
+   - Address confirmation (1/9 Nana St or 33 Nana St, Brunswick Heads?)
+4. **Approve to proceed** - Reply when ready to continue with Week 2
 
 The dashboard is fully interactive - no account needed, just open the link in any browser.
 

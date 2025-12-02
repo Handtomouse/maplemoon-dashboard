@@ -11,15 +11,20 @@ Just sent through the AFQA compliance quote + dashboard. Everything's ready to v
 https://dashboarddeployment.vercel.app
 
 **Key info:**
-• Total: $8,903.22 (26 designs + 8 icons)
+• Total: $8,276.39 (26 designs + 8 icons)
+• Special pricing: Pure Carob Bar & Banana CDU at 50% mates rate
 • Christmas deadline: Dec 22 finalization
 • Gap invoice: $811.24 (can pay via Xero link in dashboard)
-• 3-week timeline to get Bars/Bar CDUs/Moons/Bananas/Icons done before Christmas
 
-Already started to maximize time before Christmas:
-✅ Pure Carob Bar - in progress
-✅ Icons (8) - underway
+Already started to maximize time:
+✅ Pure Carob Bar (50% mates rate)
+✅ Icons (8)
 
-Need 2 bar CDU barcodes (Almond, Hazelnut) + address for Week 2. Let me know when you've had a chance to review! 🚀
+🚨 URGENT (by Dec 15):
+• Moon packaging dimensions (size changed)
+• Banana packaging dimensions (size changed)
+• Address confirmation
+
+Review dashboard & let me know! 🚀
 
 Nate
