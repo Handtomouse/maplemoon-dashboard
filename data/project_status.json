@@ -64,10 +64,10 @@
       "blocker": null,
       "notes": "Waiting on Pure Carob Bar completion",
       "checklist": [
-        "Choc Peanut",
+        "Goji & Coconut",
+        "Cayenne Chilli",
         "Salted Almond",
-        "Chilli",
-        "Coconut Rough",
+        "Peppermint Buckwheat",
         "Roasted Hazelnut"
       ]
     },
@@ -81,17 +81,17 @@
       "status": "ready",
       "price": 1880.49,
       "progress": 0,
-      "specsComplete": false,
-      "blocker": "Need 4 Bar CDU barcodes",
-      "urgent": true,
-      "notes": "URGENT: Low stock situation. 2 barcodes confirmed, 4 needed.",
+      "specsComplete": true,
+      "blocker": null,
+      "urgent": false,
+      "notes": "All 6 Bar CDU barcodes confirmed available.",
       "checklist": [
+        "✅ Pure Carob CDU: 0743966644696",
+        "✅ Goji & Coconut CDU: 0743966127625",
+        "✅ Cayenne Chilli CDU: 0743966644719",
         "✅ Salted Almond CDU: 0743966644733",
-        "✅ Roasted Hazelnut CDU: 0743966644771",
-        "❌ Pure Carob CDU barcode",
-        "❌ Choc Peanut CDU barcode",
-        "❌ Chilli CDU barcode",
-        "❌ Coconut Rough CDU barcode"
+        "✅ Peppermint Buckwheat CDU: 0743966644757",
+        "✅ Roasted Hazelnut CDU: 0743966644771"
       ]
     },
     {
