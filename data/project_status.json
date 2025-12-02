@@ -1,0 +1,181 @@
+{
+  "lastUpdated": "2025-12-02T14:30:00Z",
+  "project": {
+    "totalValue": 7962.97,
+    "inProgressValue": 1046.14,
+    "blockedValue": 4272.04,
+    "readyValue": 2644.79,
+    "completeValue": 0,
+    "targetDate": "2025-12-22",
+    "alternateDate": "2026-01-13"
+  },
+  "products": [
+    {
+      "id": "pure_carob_bar",
+      "name": "Pure Carob Bar",
+      "fullName": "Pure Carob Bar (Master Template)",
+      "type": "Bar",
+      "week": "Week 1",
+      "weekDates": "Dec 2-8",
+      "status": "in_progress",
+      "price": 313.42,
+      "progress": 45,
+      "startDate": "2025-12-01",
+      "specsComplete": true,
+      "blocker": null,
+      "notes": "Design underway, on track for Week 1 delivery",
+      "checklist": [
+        "Master design in progress",
+        "Client review pending",
+        "Clone to 5 flavors pending"
+      ]
+    },
+    {
+      "id": "icons",
+      "name": "Icons (8)",
+      "fullName": "Certification Icons (8 total)",
+      "type": "Icon",
+      "week": "Ongoing",
+      "weekDates": "All weeks",
+      "status": "in_progress",
+      "price": 105.88,
+      "progress": 30,
+      "startDate": "2025-12-01",
+      "specsComplete": true,
+      "blocker": null,
+      "notes": "6 updated icons (25% rate) + 2 brand new (full rate)",
+      "checklist": [
+        "6 updated icons (Caffeine, Gluten, Vegan, Additive, Organic, Sugar)",
+        "2 new icons (Australian Made Map, 4 Wholefood Ingredients)"
+      ]
+    },
+    {
+      "id": "other_bars",
+      "name": "Other Bars (5)",
+      "fullName": "Other Bars (5 flavors)",
+      "type": "Bar",
+      "week": "Week 1",
+      "weekDates": "Dec 2-8",
+      "status": "ready",
+      "price": 470.14,
+      "progress": 0,
+      "specsComplete": true,
+      "blocker": null,
+      "notes": "Waiting on Pure Carob Bar completion",
+      "checklist": [
+        "Choc Peanut",
+        "Salted Almond",
+        "Chilli",
+        "Coconut Rough",
+        "Roasted Hazelnut"
+      ]
+    },
+    {
+      "id": "bar_cdus",
+      "name": "Bar CDUs (6)",
+      "fullName": "Bar CDUs (6 designs)",
+      "type": "CDU",
+      "week": "Week 2",
+      "weekDates": "Dec 9-15",
+      "status": "ready",
+      "price": 1880.49,
+      "progress": 0,
+      "specsComplete": false,
+      "blocker": "Need 4 Bar CDU barcodes",
+      "urgent": true,
+      "notes": "URGENT: Low stock situation. 2 barcodes confirmed, 4 needed.",
+      "checklist": [
+        "✅ Salted Almond CDU: 0743966644733",
+        "✅ Roasted Hazelnut CDU: 0743966644771",
+        "❌ Pure Carob CDU barcode",
+        "❌ Choc Peanut CDU barcode",
+        "❌ Chilli CDU barcode",
+        "❌ Coconut Rough CDU barcode"
+      ]
+    },
+    {
+      "id": "moons",
+      "name": "Moons (6)",
+      "fullName": "Moons (6 designs)",
+      "type": "Moon",
+      "week": "Week 3",
+      "weekDates": "Dec 16-22",
+      "status": "blocked",
+      "price": 799.79,
+      "progress": 0,
+      "specsComplete": false,
+      "blocker": "New packaging dimensions needed",
+      "critical": true,
+      "notes": "CRITICAL: Packaging size changed. Cannot start without new dimensions.",
+      "checklist": [
+        "❌ New Moon packaging dimensions (length × width × height)",
+        "❌ Weight specifications",
+        "❌ Material specifications",
+        "⚠️ DEADLINE: Need by Dec 15 to start Week 3"
+      ]
+    },
+    {
+      "id": "bananas",
+      "name": "Bananas 4-Pack",
+      "fullName": "Bananas 4-Pack",
+      "type": "Banana",
+      "week": "Week 3",
+      "weekDates": "Dec 16-22",
+      "status": "blocked",
+      "price": 162.12,
+      "progress": 0,
+      "specsComplete": false,
+      "blocker": "New packaging dimensions needed",
+      "critical": true,
+      "notes": "CRITICAL: Packaging size changed. Cannot start without new dimensions.",
+      "checklist": [
+        "❌ New Banana packaging dimensions",
+        "❌ Weight specifications",
+        "❌ Material specifications",
+        "⚠️ DEADLINE: Need by Dec 15 to start Week 3"
+      ]
+    },
+    {
+      "id": "moon_cdus",
+      "name": "Moon CDUs (6)",
+      "fullName": "Moon CDUs (6 designs)",
+      "type": "CDU",
+      "week": "Week 4",
+      "weekDates": "Post-Dec 22",
+      "status": "blocked",
+      "price": 3290.87,
+      "progress": 0,
+      "specsComplete": false,
+      "blocker": "Barcodes + specs needed (affected by Moon size change)",
+      "notes": "Dependent on Moon specs being finalized first",
+      "checklist": [
+        "❌ 6 Moon CDU barcodes (one per flavor)",
+        "❌ CDU dimensions (based on new Moon size)",
+        "❌ Quantity per CDU",
+        "❌ Weight per CDU",
+        "⚠️ Can provide after Moon specs confirmed"
+      ]
+    },
+    {
+      "id": "banana_cdu",
+      "name": "Banana CDU",
+      "fullName": "Banana CDU (50% mates rate)",
+      "type": "CDU",
+      "week": "Week 4",
+      "weekDates": "Post-Dec 22",
+      "status": "blocked",
+      "price": 940.26,
+      "progress": 0,
+      "specsComplete": false,
+      "blocker": "Barcode + specs needed (affected by Banana size change)",
+      "notes": "Dependent on Banana specs being finalized first. 50% mates rate pricing.",
+      "checklist": [
+        "❌ Banana CDU barcode",
+        "❌ CDU dimensions (based on new Banana size)",
+        "❌ Quantity per CDU",
+        "❌ Weight per CDU",
+        "⚠️ Can provide after Banana specs confirmed"
+      ]
+    }
+  ]
+}
