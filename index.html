@@ -1629,6 +1629,51 @@
 
     </div>
 
+    <!-- Project Tracker Tab -->
+    <div id="tracker-tab" class="tab-content">
+        <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Project Tracker</h2>
+
+        <div class="tracker-stats" id="tracker-stats">
+            <!-- Stats will be loaded via JavaScript -->
+        </div>
+
+        <div class="kanban-board" id="kanban-board">
+            <!-- Kanban cards will be loaded via JavaScript -->
+        </div>
+    </div>
+
+    <!-- Spec Tracker Tab -->
+    <div id="specs-tab" class="tab-content">
+        <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Specification Tracker</h2>
+
+        <div style="background: rgba(231, 76, 60, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #E74C3C;">
+            <strong style="color: #E74C3C;">⚠️ CRITICAL BLOCKERS</strong>
+            <p style="margin: 8px 0 0 0; color: #666;">The following items are blocking project progress and need immediate attention:</p>
+        </div>
+
+        <table class="spec-table" id="spec-table">
+            <!-- Table will be loaded via JavaScript -->
+        </table>
+    </div>
+
+    <!-- Timeline Tab -->
+    <div id="timeline-tab" class="tab-content">
+        <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Project Timeline</h2>
+
+        <div class="timeline-container">
+            <div class="timeline-header">
+                <div style="font-size: 1.1rem; opacity: 0.9;">Days Until Christmas Deadline</div>
+                <div class="timeline-countdown" id="countdown">--</div>
+                <div style="font-size: 0.95rem; opacity: 0.8;">Target: December 22, 2025</div>
+            </div>
+
+            <div class="timeline-items" id="timeline-items">
+                <!-- Timeline will be loaded via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+
     
     <script>
         // ==================== EMBEDDED INVOICE DATA ====================
@@ -1764,51 +1809,6 @@
                         </div>
                     </div>
                 
-    </div><!-- End Quote Tab -->
-
-    <!-- Project Tracker Tab -->
-    <div id="tracker-tab" class="tab-content">
-        <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Project Tracker</h2>
-
-        <div class="tracker-stats" id="tracker-stats">
-            <!-- Stats will be loaded via JavaScript -->
-        </div>
-
-        <div class="kanban-board" id="kanban-board">
-            <!-- Kanban cards will be loaded via JavaScript -->
-        </div>
-    </div>
-
-    <!-- Spec Tracker Tab -->
-    <div id="specs-tab" class="tab-content">
-        <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Specification Tracker</h2>
-
-        <div style="background: rgba(231, 76, 60, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #E74C3C;">
-            <strong style="color: #E74C3C;">⚠️ CRITICAL BLOCKERS</strong>
-            <p style="margin: 8px 0 0 0; color: #666;">The following items are blocking project progress and need immediate attention:</p>
-        </div>
-
-        <table class="spec-table" id="spec-table">
-            <!-- Table will be loaded via JavaScript -->
-        </table>
-    </div>
-
-    <!-- Timeline Tab -->
-    <div id="timeline-tab" class="tab-content">
-        <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Project Timeline</h2>
-
-        <div class="timeline-container">
-            <div class="timeline-header">
-                <div style="font-size: 1.1rem; opacity: 0.9;">Days Until Christmas Deadline</div>
-                <div class="timeline-countdown" id="countdown">--</div>
-                <div style="font-size: 0.95rem; opacity: 0.8;">Target: December 22, 2025</div>
-            </div>
-
-            <div class="timeline-items" id="timeline-items">
-                <!-- Timeline will be loaded via JavaScript -->
-            </div>
-        </div>
-    </div>
 </div>
             `;
             document.body.insertAdjacentHTML('beforeend', modalHTML);
