@@ -1006,10 +1006,10 @@
     <div class="container">
     <!-- Tab Navigation -->
     <div class="tab-navigation">
-        <button class="tab-button active" onclick="switchTab('quote')">Quote & Invoice</button>
-        <button class="tab-button" onclick="switchTab('tracker')">Project Tracker</button>
-        <button class="tab-button" onclick="switchTab('specs')">Spec Tracker</button>
-        <button class="tab-button" onclick="switchTab('timeline')">Timeline</button>
+        <button class="tab-button active" onclick="switchTab('quote', event)">Quote & Invoice</button>
+        <button class="tab-button" onclick="switchTab('tracker', event)">Project Tracker</button>
+        <button class="tab-button" onclick="switchTab('specs', event)">Spec Tracker</button>
+        <button class="tab-button" onclick="switchTab('timeline', event)">Timeline</button>
     </div>
 
     <!-- Quote Tab (existing content) -->
@@ -2236,7 +2236,7 @@ Contact: hello@handtomouse.org
 
     <script>
         // Tab switching
-        function switchTab(tabName) {
+        function switchTab(tabName, event) {
             // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
@@ -2251,13 +2251,23 @@ Contact: hello@handtomouse.org
             document.getElementById(tabName + '-tab').classList.add('active');
 
             // Activate button
-            event.target.classList.add('active');
-
-            // Load data if needed
-            if (tabName !== 'quote' && !window.projectDataLoaded) {
-                loadProjectData();
+            if (event && event.target) {
+                event.target.classList.add('active');
+            } else {
+                // Find button by tab name
+                const buttons = document.querySelectorAll('.tab-button');
+                buttons.forEach(btn => {
+                    if (btn.textContent.toLowerCase().includes(tabName)) {
+                        btn.classList.add('active');
+                    }
+                });
             }
         }
+
+        // Load project data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProjectData();
+        });
 
         // Load project data from JSON
         async function loadProjectData() {
