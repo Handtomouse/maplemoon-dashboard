@@ -1,8 +1,8 @@
 {
   "lastUpdated": "2025-12-02T14:30:00Z",
   "project": {
-    "totalValue": 7858.50,
-    "inProgressValue": 314.83,
+    "totalValue": 8276.39,
+    "inProgressValue": 732.72,
     "blockedValue": 5193.04,
     "readyValue": 2350.63,
     "completeValue": 0,
@@ -19,7 +19,7 @@
       "week": "Week 1",
       "weekDates": "Dec 2-8",
       "status": "in_progress",
-      "price": 208.95,
+      "price": 626.84,
       "rateType": "mates",
       "discount": "50%",
       "progress": 45,
