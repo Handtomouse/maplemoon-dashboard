@@ -1602,6 +1602,66 @@
                 </div>
             </div>
 
+            <!-- Rate Explanation Panel -->
+            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; padding: 20px; margin: 30px 0; border-left: 4px solid var(--afqa-accent);">
+                <div onclick="this.parentElement.querySelector('.rate-details').classList.toggle('hidden')" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                    <h3 style="font-family: var(--font-primary); font-size: 1.3rem; color: var(--mm-dark-blue); margin: 0;">
+                        💡 Understanding Our Rates
+                    </h3>
+                    <span style="font-size: 0.9rem; color: var(--mm-deep-blue); font-weight: 500;">Click to expand ▼</span>
+                </div>
+
+                <div class="rate-details" style="margin-top: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+
+                        <div style="background: white; padding: 15px; border-radius: 8px; border-left: 3px solid #28a745;">
+                            <div style="font-weight: 700; color: #28a745; margin-bottom: 8px;">
+                                <span style="font-size: 1.1rem;">50% MATES RATE</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                                <strong>Applied to:</strong> Pure Carob Bar<br>
+                                <strong>Why:</strong> Long-term client discount on the master template that all other bars clone from. Recognizes the foundational design work benefits all 5 variations.
+                            </div>
+                        </div>
+
+                        <div style="background: white; padding: 15px; border-radius: 8px; border-left: 3px solid #ffc107;">
+                            <div style="font-weight: 700; color: #f57c00; margin-bottom: 8px;">
+                                <span style="font-size: 1.1rem;">25% MASTER TEMPLATE</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                                <strong>Applied to:</strong> First in each category<br>
+                                <strong>Why:</strong> Reduced rate for creating the template that other designs in the category will replicate (e.g., Pure Carob Moon, Bar CDUs).
+                            </div>
+                        </div>
+
+                        <div style="background: white; padding: 15px; border-radius: 8px; border-left: 3px solid #17a2b8;">
+                            <div style="font-weight: 700; color: #17a2b8; margin-bottom: 8px;">
+                                <span style="font-size: 1.1rem;">15% CLONE RATE</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                                <strong>Applied to:</strong> Flavor variations (5 other bars, 5 other moons)<br>
+                                <strong>Why:</strong> Minimal work required - just swap flavor name and adjust colors. Design template already created.
+                            </div>
+                        </div>
+
+                        <div style="background: white; padding: 15px; border-radius: 8px; border-left: 3px solid #6c757d;">
+                            <div style="font-weight: 700; color: #6c757d; margin-bottom: 8px;">
+                                <span style="font-size: 1.1rem;">100% FULL RATE</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                                <strong>Applied to:</strong> New designs (2 brand new icons, Moon CDUs)<br>
+                                <strong>Why:</strong> Completely new artwork or first-time designs with no existing template to clone from.
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div style="margin-top: 15px; padding: 12px; background: #fff9e6; border-radius: 6px; font-size: 0.85rem; color: #856404;">
+                        <strong>💰 Your Savings:</strong> This pricing structure saves you $24,000+ compared to redesigning everything from scratch at full rate. You benefit from our efficient template-based workflow!
+                    </div>
+                </div>
+            </div>
+
             <!-- Pricing Breakdown -->
             <div class="pricing-table">
                 <h3 style="font-family: var(--font-primary); font-size: 1.6rem; color: var(--mm-dark-blue); margin-bottom: 20px;">
@@ -1993,9 +2053,17 @@
     <div id="specs-tab" class="tab-content">
         <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Specification Tracker</h2>
 
-        <div style="background: rgba(231, 76, 60, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #E74C3C;">
-            <strong style="color: #E74C3C;">⚠️ CRITICAL BLOCKERS</strong>
-            <p style="margin: 8px 0 0 0; color: #666;">The following items are blocking project progress and need immediate attention:</p>
+        <div id="blocker-alert" style="background: rgba(231, 76, 60, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #E74C3C;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <strong style="color: #E74C3C;">⚠️ CRITICAL BLOCKERS</strong>
+                    <p style="margin: 8px 0 0 0; color: #666;">The following items are blocking project progress and need immediate attention:</p>
+                </div>
+                <div id="blocker-countdown" style="background: #E74C3C; color: white; padding: 10px 20px; border-radius: 6px; font-weight: 700; text-align: center; min-width: 150px;">
+                    <div style="font-size: 1.3rem;" id="blocker-days">--</div>
+                    <div style="font-size: 0.75rem; opacity: 0.9;">until Bar CDU deadline</div>
+                </div>
+            </div>
         </div>
 
         <table class="spec-table" id="spec-table">
@@ -2627,6 +2695,7 @@ Contact: hello@handtomouse.org
                 renderSpecTable(data);
                 renderTimeline(data);
                 updateCountdown(data.project.targetDate);
+                updateBlockerCountdown();
                 validatePricing(data);
 
                 window.projectDataLoaded = true;
@@ -2818,6 +2887,42 @@ Contact: hello@handtomouse.org
             const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
 
             document.getElementById('countdown').textContent = days;
+        }
+
+        function updateBlockerCountdown() {
+            // Hardcoded Bar CDU deadline: December 15, 2025
+            const blockerDeadline = new Date('2025-12-15');
+            const now = new Date();
+            const diff = blockerDeadline - now;
+            const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+            const daysElement = document.getElementById('blocker-days');
+            const countdownBox = document.getElementById('blocker-countdown');
+
+            if (daysElement) {
+                if (days < 0) {
+                    daysElement.textContent = 'OVERDUE';
+                    if (countdownBox) countdownBox.style.background = '#721c24';
+                } else if (days === 0) {
+                    daysElement.textContent = 'TODAY!';
+                    if (countdownBox) countdownBox.style.background = '#E74C3C';
+                } else if (days <= 3) {
+                    daysElement.textContent = `⏰ ${days} DAYS`;
+                    if (countdownBox) countdownBox.style.background = '#E74C3C';
+                } else if (days <= 7) {
+                    daysElement.textContent = `${days} days`;
+                    if (countdownBox) countdownBox.style.background = '#f39c12';
+                } else {
+                    daysElement.textContent = `${days} days`;
+                    if (countdownBox) countdownBox.style.background = '#17a2b8';
+                }
+            }
+
+            // Update blocker alert background based on urgency
+            const blockerAlert = document.getElementById('blocker-alert');
+            if (blockerAlert && days <= 3 && days >= 0) {
+                blockerAlert.style.animation = 'pulse 2s infinite';
+            }
         }
 
         // Load data when switching to tracker tabs
