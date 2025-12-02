@@ -2889,6 +2889,31 @@ Contact: hello@handtomouse.org
             document.getElementById('countdown').textContent = days;
         }
 
+        function copyBarcode(barcode, button) {
+            navigator.clipboard.writeText(barcode).then(() => {
+                // Show success feedback
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '✓';
+                button.style.color = '#27AE60';
+
+                // Show toast notification
+                const toast = document.createElement('div');
+                toast.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #27AE60; color: white; padding: 12px 20px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10000; font-size: 0.9rem;';
+                toast.textContent = `Copied: ${barcode}`;
+                document.body.appendChild(toast);
+
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.style.color = '#17a2b8';
+                    toast.remove();
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert(`Copy failed. Barcode: ${barcode}`);
+            });
+        }
+
         function updateBlockerCountdown() {
             // Hardcoded Bar CDU deadline: December 15, 2025
             const blockerDeadline = new Date('2025-12-15');
@@ -3042,7 +3067,9 @@ Contact: hello@handtomouse.org
                                 </span>
                             </td>
                             <td style="color: ${asset.status === 'complete' ? '#27AE60' : '#E74C3C'}; font-weight: ${asset.critical ? '700' : '400'};">
-                                ${asset.value}
+                                ${asset.type === 'Barcode' && asset.status === 'complete' && asset.value.match(/^\d/)
+                                    ? `${asset.value} <button onclick="copyBarcode('${asset.value}', this)" style="background: none; border: none; color: #17a2b8; cursor: pointer; font-size: 1.1rem; padding: 0 5px;" title="Copy barcode">📋</button>`
+                                    : asset.value}
                             </td>
                         </tr>
                     `).join('')}
