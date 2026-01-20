@@ -1,7 +1,7 @@
 # MapleMoon AFQA Project - FINAL Pricing Breakdown
 
-**Date:** December 2, 2025
-**Total:** $7,806.29 (Inc GST)
+**Date:** January 20, 2026 (Updated)
+**Total:** $10,029.28 (Inc GST)
 **Quote Reference:** C21_MM_05_AFQA-COMPLIANCE
 
 ---
@@ -9,44 +9,44 @@
 ## PRICING STRUCTURE
 
 **Applied Rates:**
-- **50%:** Master templates requiring full rebuild (Pure Carob Bar, Bar CDU, Moon CDU, Banana CDU)
-- **25%:** Master template with lighter updates (Pure Carob Moon, Bananas, Icons)
+- **50%:** Master templates requiring full rebuild (Pure Carob Bar, Pure Carob Moon, Bar CDU, Banana CDU)
+- **100%:** Brand new product (Pure Carob Moon CDU)
+- **25%:** Lighter updates (Bananas)
 - **15%:** Clone variations (just update flavor/barcode/color)
-- **100%:** Brand new icon designs (2 icons)
 
 ---
 
-## CATEGORY 1: BARS - $1,096.98
+## CATEGORY 1: BARS - $1,567.09
 
 **Pure Carob Bar (Master - 50%)**
 - Base rate: $1,253.68 × 0.50 = **$626.84**
 - Work: Full template rebuild for AFQA compliance
 
 **Other 5 Bars (Clones - 15% each)**
-- Base per bar: $626.87 × 0.15 = $94.03
-- **Total for 5: $470.14**
+- Base per bar: $1,253.68 × 0.15 = $188.05
+- **Total for 5: $940.25**
 - Flavors: Goji Coconut, Cayenne Chilli, Salted Almond, Peppermint Buckwheat, Roasted Hazelnut
 
-**Bars Subtotal: $1,096.98**
+**Bars Subtotal: $1,567.09**
 
 ---
 
-## CATEGORY 2: MOONS - $799.79
+## CATEGORY 2: MOONS - $1,567.09
 
-**Pure Carob Moon (Master - 25%)**
-- Base rate: $1,253.68 × 0.25 = **$313.42**
-- Work: Compliance updates to existing template
+**Pure Carob Moon (Master - 50%)**
+- Base rate: $1,253.68 × 0.50 = **$626.84**
+- Work: Master template rebuild
 
 **Other 5 Moons (Clones - 15% each)**
-- Average per moon: $97.27
-- **Total for 5: $486.37**
+- Base per moon: $1,253.68 × 0.15 = $188.05
+- **Total for 5: $940.25**
 - Flavors: Coconut Goji, Almond Celtic Salt, Cayenne Chilli, Roasted Hazelnut, Peppermint Buckwheat
 
-**Moons Subtotal: $799.79**
+**Moons Subtotal: $1,567.09**
 
 ---
 
-## CATEGORY 3: BAR CDUs - $2,350.63
+## CATEGORY 3: BAR CDUs - $2,350.61
 
 **Pure Carob Bar CDU (Master - 50%)**
 - Base rate: $1,880.51 × 0.50 = **$940.26**
@@ -54,10 +54,10 @@
 
 **Other 5 Bar CDUs (Clones - 15% each)**
 - Base per CDU: $1,880.51 × 0.15 = $282.07
-- **Total for 5: $1,410.37**
+- **Total for 5: $1,410.35**
 - CDUs: Goji Coconut, Cayenne Chilli, Salted Almond, Peppermint Buckwheat, Roasted Hazelnut
 
-**Bar CDUs Subtotal: $2,350.63**
+**Bar CDUs Subtotal: $2,350.61**
 
 ---
 
@@ -71,18 +71,18 @@
 
 ---
 
-## CATEGORY 5: MOON CDUs - $2,350.63
+## CATEGORY 5: MOON CDUs - $3,290.86
 
-**Pure Carob Moon CDU (NEW - 50%)**
-- Base rate: $1,880.51 × 0.50 = **$940.26**
-- Work: Brand new CDU design with 50% mates rate
+**Pure Carob Moon CDU (NEW - 100%)**
+- Base rate: $1,880.51 × 1.00 = **$1,880.51**
+- Work: Brand new CDU design (new product)
 
 **Other 5 Moon CDUs (Clones - 15% each)**
 - Base per CDU: $1,880.51 × 0.15 = $282.07
-- **Total for 5: $1,410.37**
+- **Total for 5: $1,410.35**
 - CDUs: Coconut Goji, Almond, Cayenne Chilli, Roasted Hazelnut, Peppermint Buckwheat
 
-**Moon CDUs Subtotal: $2,350.63**
+**Moon CDUs Subtotal: $3,290.86**
 
 ---
 
@@ -96,17 +96,17 @@
 
 ---
 
-## CATEGORY 7: ICONS - $105.88
+## CATEGORY 7: ICONS - $151.25
 
-**6 Updated Icons (25%)**
-- Base: $30.25 per icon × 0.25 × 6 = **$45.38**
-- Icons: Caffeine Free, Gluten Free, Vegan, Additive Free, Organic Ingredients, Sugar claim
+**4 Updated Icons (25%)**
+- Base: $30.25 per icon × 0.25 × 4 = **$30.25**
+- Icons: Caffeine Free, Gluten Free, Vegan, Additive Free
 
-**2 Brand New Icons (100%)**
-- Base: $30.25 per icon × 1.00 × 2 = **$60.50**
-- Icons: Australian Made Map, 4 Wholefood Ingredients
+**4 Brand New Icons (100%)**
+- Base: $30.25 per icon × 1.00 × 4 = **$121.00**
+- Icons: Organic Ingredients, Sugar claim, Australian Made Map, 4 Wholefood Ingredients
 
-**Icons Subtotal: $105.88**
+**Icons Subtotal: $151.25**
 
 ---
 
@@ -114,32 +114,32 @@
 
 | Category | Designs | Inc GST |
 |----------|---------|---------|
-| Bars | 6 | $1,096.98 |
-| Moons | 6 | $799.79 |
-| Bar CDUs | 6 | $2,350.63 |
+| Bars | 6 | $1,567.09 |
+| Moons | 6 | $1,567.09 |
+| Bar CDUs | 6 | $2,350.61 |
 | Bananas | 1 | $162.12 |
-| Moon CDUs | 6 | $2,350.63 |
+| Moon CDUs | 6 | $3,290.86 |
 | Banana CDU | 1 | $940.26 |
-| Icons | 8 | $105.88 |
-| **TOTAL** | **26 + 8** | **$7,806.29** |
+| Icons | 8 | $151.25 |
+| **TOTAL** | **26 + 8** | **$10,029.28** |
 
 ---
 
 ## SCOPE BOUNDARIES
 
 ### INCLUDED IN QUOTE:
-✅ 26 packaging designs + 8 certification icons
-✅ AFQA compliance updates per audit requirements
-✅ Template-based approach (masters + clones)
-✅ Up to 2 revision rounds per category
-✅ Final print-ready files
+- 26 packaging designs + 8 certification icons
+- AFQA compliance updates per audit requirements
+- Template-based approach (masters + clones)
+- Up to 1 revision round per category
+- Final print-ready files
 
 ### NOT INCLUDED (Separate Quote):
-❌ Major design changes beyond AFQA requirements
-❌ Additional revision rounds (beyond 2 per category)
-❌ New products/variations not in 26 designs
-❌ Rush fees for accelerated timeline
-❌ Special export formats beyond standard
+- Major design changes beyond AFQA requirements
+- Additional revision rounds (beyond 1 per category)
+- New products/variations not in 26 designs
+- Rush fees for accelerated timeline
+- Special export formats beyond standard
 
 **Policy:** Any work outside scope will be flagged and quoted before proceeding.
 
@@ -147,14 +147,16 @@
 
 ## COMPARISON TO ORIGINAL QUOTE
 
-**Original Dashboard Quote:** $7,790.10
-**Updated Final Quote:** $7,806.29
-**Difference:** +$16.19 (0.2% increase)
+**Original Dashboard Quote:** $7,806.29
+**Updated Final Quote:** $10,029.28
+**Difference:** +$2,222.99 (28.5% increase)
 
 **What Changed:**
-- Bar CDUs Pure Carob: 25% → 50% (+$470.13) - reflects actual template rebuild work
-- Moon CDUs Pure Carob: 100% → 50% (-$940.25) - mates rate applied to new design
-- Net change: Virtually the same total
+- Bars clones: 15% of discounted → 15% of base ($94.03 → $188.05 each, +$470.11 total)
+- Moons master: 25% → 50% (+$313.42)
+- Moons clones: Corrected rate (+$453.88)
+- Moon CDUs master: 50% → 100% (+$940.25)
+- Icons: 6 updated + 2 new → 4 updated + 4 new (+$45.37)
 
 ---
 
@@ -165,5 +167,5 @@
 
 ---
 
-**Quote Valid Until:** December 31, 2025
+**Quote Valid Until:** January 31, 2026
 **HandToMouse Studio - Design & Packaging Development**

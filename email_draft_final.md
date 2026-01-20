@@ -37,7 +37,7 @@ This quote covers:
 ✅ **26 packaging designs + 8 certification icons** as outlined
 ✅ **Compliance updates** per AFQA audit requirements
 ✅ **Template-based approach** (Pure Carob masters + flavor clones)
-✅ **Up to 2 revision rounds per category** (e.g., 2 rounds for bars, 2 for CDUs, etc.)
+✅ **Up to 1 revision round per category** (e.g., 1 round for bars, 1 for CDUs, etc.)
 ✅ **Final print-ready files** in required formats
 
 ---
@@ -47,7 +47,7 @@ This quote covers:
 To ensure we stay on track and on budget, the following would require separate quotes:
 
 ❌ **Major design changes** beyond AFQA compliance requirements
-❌ **Additional revision rounds** beyond 2 per category
+❌ **Additional revision rounds** beyond 1 per category
 ❌ **New products or variations** not listed in the 26 designs
 ❌ **Rush fees** if timeline accelerates beyond agreed schedule
 ❌ **Additional file formats** or special export requirements
