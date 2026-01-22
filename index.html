@@ -1387,10 +1387,696 @@
         .content-section.collapsed .section-header {
             border-radius: var(--border-radius);
         }
+
+        /* ============================================
+           20 CLIENT READABILITY IMPROVEMENTS
+           ============================================ */
+
+        /* 1. "What's Happening Now" Hero Card */
+        .hero-status-card {
+            display: flex;
+            gap: 20px;
+            padding: 25px 30px;
+            background: linear-gradient(135deg, var(--afqa-accent), var(--mm-light-blue));
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-soft);
+            align-items: center;
+            color: var(--mm-dark-blue);
+        }
+
+        .hero-status-card .hero-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .hero-status-card .hero-content {
+            flex: 1;
+        }
+
+        .hero-status-card .hero-content h3 {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .hero-status-card .hero-content p {
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+
+        .hero-status-card .hero-progress {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-status-card .hero-progress .progress-bar {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.4);
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .hero-status-card .hero-progress .progress-fill {
+            background: var(--mm-dark-blue);
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .hero-status-card .hero-progress span {
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* 2. Overall AFQA Progress Bar */
+        .project-progress {
+            background: var(--mm-white);
+            border-radius: var(--border-radius-small);
+            padding: 20px 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .project-progress .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--mm-dark-blue);
+        }
+
+        .project-progress .progress-track {
+            height: 12px;
+            background: rgba(69, 119, 152, 0.15);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .project-progress .progress-track .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success-color), var(--afqa-accent));
+            border-radius: 6px;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-progress .progress-milestones {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-progress .milestone {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(69, 119, 152, 0.1);
+            color: var(--mm-deep-blue);
+            font-weight: 500;
+        }
+
+        .project-progress .milestone.complete {
+            background: rgba(143, 188, 139, 0.2);
+            color: var(--success-color);
+        }
+
+        .project-progress .milestone.complete::before {
+            content: '✓ ';
+        }
+
+        .project-progress .milestone.active {
+            background: var(--afqa-accent);
+            color: var(--mm-dark-blue);
+            font-weight: 700;
+        }
+
+        /* 3. "Next Steps" Action Callout */
+        .next-steps-callout {
+            display: flex;
+            gap: 15px;
+            padding: 20px 25px;
+            background: linear-gradient(135deg, #fff9e6, #fff);
+            border-radius: var(--border-radius-small);
+            border-left: 4px solid #F39C12;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+
+        .next-steps-callout .callout-icon {
+            font-size: 1.5rem;
+            color: #F39C12;
+        }
+
+        .next-steps-callout .callout-content {
+            flex: 1;
+            color: var(--mm-dark-blue);
+            line-height: 1.5;
+        }
+
+        .next-steps-callout .callout-content strong {
+            color: #F39C12;
+        }
+
+        /* 4. Highlight Current Week in Timeline */
+        .timeline-week.current-week {
+            border-left: 4px solid var(--afqa-accent);
+            background: rgba(98, 171, 249, 0.12);
+            position: relative;
+            animation: pulse-border 2s ease-in-out infinite;
+        }
+
+        .timeline-week.current-week::before {
+            content: 'CURRENT';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: var(--afqa-accent);
+            color: var(--mm-dark-blue);
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(98, 171, 249, 0.4); }
+            50% { box-shadow: 0 0 0 6px rgba(98, 171, 249, 0); }
+        }
+
+        /* 5. "Approval Required" Banner */
+        .approval-banner {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #F39C12, #e67e22);
+            color: white;
+            border-radius: var(--border-radius-small);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .approval-banner i {
+            font-size: 1.3rem;
+        }
+
+        .approval-banner span {
+            flex: 1;
+        }
+
+        .approval-banner button {
+            background: white;
+            color: #F39C12;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .approval-banner button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 6. Inline Pricing Tier Tooltips - Enhanced */
+        .price-with-tip {
+            cursor: help;
+            border-bottom: 1px dotted var(--mm-deep-blue);
+            position: relative;
+        }
+
+        .price-with-tip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--mm-dark-blue);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+            margin-bottom: 5px;
+        }
+
+        .price-with-tip:hover::after {
+            opacity: 1;
+        }
+
+        /* 7. Simplified Status Badges (Icon-based) */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-badge.complete {
+            background: rgba(46, 204, 113, 0.15);
+            color: #27AE60;
+        }
+
+        .status-badge.blocked {
+            background: rgba(231, 76, 60, 0.15);
+            color: #E74C3C;
+        }
+
+        .status-badge.pending {
+            background: rgba(243, 156, 18, 0.15);
+            color: #F39C12;
+        }
+
+        .status-badge.in-progress {
+            background: rgba(52, 152, 219, 0.15);
+            color: #3498DB;
+        }
+
+        .status-badge i {
+            font-size: 0.9rem;
+        }
+
+        /* 8. Sticky Financial Summary */
+        .sticky-summary {
+            position: fixed;
+            top: -100px;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: top 0.3s ease;
+        }
+
+        .sticky-summary.visible {
+            top: 0;
+        }
+
+        .sticky-summary .sticky-item {
+            text-align: center;
+        }
+
+        .sticky-summary .sticky-label {
+            font-size: 0.75rem;
+            color: var(--mm-deep-blue);
+            margin-bottom: 2px;
+        }
+
+        .sticky-summary .sticky-value {
+            font-weight: 700;
+            color: var(--mm-dark-blue);
+            font-size: 1rem;
+        }
+
+        .sticky-summary .sticky-value.paid { color: var(--success-color); }
+        .sticky-summary .sticky-value.due { color: var(--warning-color); }
+
+        /* 9. Category Accordions for Pricing Table */
+        .pricing-category-accordion {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: var(--mm-cream);
+            border-radius: var(--border-radius-small);
+            margin: 15px 0 5px 0;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--mm-dark-blue);
+            transition: all 0.2s ease;
+        }
+
+        .pricing-category-accordion:hover {
+            background: #e0ddc6;
+        }
+
+        .pricing-category-accordion i {
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-category-accordion.expanded i {
+            transform: rotate(180deg);
+        }
+
+        .pricing-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pricing-items.expanded {
+            max-height: 1000px;
+        }
+
+        /* 10. Mobile Card Layout for Tables */
+        @media (max-width: 768px) {
+            .pricing-row:not(.header):not(.category):not(.total) {
+                display: flex;
+                flex-direction: column;
+                background: white;
+                border-radius: 10px;
+                padding: 15px;
+                margin-bottom: 10px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+                border-left: 3px solid var(--mm-deep-blue);
+            }
+
+            .pricing-row:not(.header):not(.category):not(.total) > div:first-child {
+                font-size: 0.75rem;
+                color: var(--mm-deep-blue);
+                margin-bottom: 3px;
+            }
+
+            .pricing-row:not(.header):not(.category):not(.total) > div:nth-child(2) {
+                font-weight: 600;
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            .pricing-row:not(.header):not(.category):not(.total) .price-amount {
+                font-size: 1.2rem;
+                text-align: left;
+            }
+
+            .hero-status-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-status-card .hero-progress {
+                flex-direction: column;
+            }
+
+            .next-steps-callout {
+                flex-direction: column;
+            }
+
+            .approval-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .sticky-summary {
+                padding: 8px 12px;
+            }
+
+            .sticky-summary .sticky-item {
+                font-size: 0.85rem;
+            }
+
+            .sticky-summary .sticky-label {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* 11. Single Primary CTA with Clear Hierarchy */
+        .action-card.primary-action {
+            background: linear-gradient(135deg, var(--mm-bright-blue), var(--mm-light-blue));
+            color: var(--mm-dark-blue);
+            border-top: none;
+            transform: scale(1.02);
+        }
+
+        .action-card.primary-action h3,
+        .action-card.primary-action .action-amount,
+        .action-card.primary-action .action-description {
+            color: var(--mm-dark-blue);
+        }
+
+        .action-card.secondary-action,
+        .action-card.tertiary-action {
+            opacity: 0.9;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        /* 12. Prominent "Last Updated" Timestamp */
+        .last-updated {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: rgba(69, 119, 152, 0.1);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--mm-deep-blue);
+            margin-top: 10px;
+        }
+
+        .last-updated i {
+            color: var(--afqa-accent);
+        }
+
+        .last-updated .date-absolute {
+            opacity: 0.7;
+            font-size: 0.8rem;
+        }
+
+        /* 13. Project Health Traffic Light */
+        .project-health {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .project-health .health-light {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+
+        .project-health .health-light.green {
+            background: #27AE60;
+            box-shadow: 0 0 8px rgba(39, 174, 96, 0.5);
+        }
+
+        .project-health .health-light.yellow {
+            background: #F39C12;
+            box-shadow: 0 0 8px rgba(243, 156, 18, 0.5);
+        }
+
+        .project-health .health-light.red {
+            background: #E74C3C;
+            box-shadow: 0 0 8px rgba(231, 76, 60, 0.5);
+        }
+
+        /* 14. Improved Contrast on Gradient Backgrounds */
+        .section-header {
+            background: linear-gradient(135deg, var(--mm-deep-blue), var(--mm-dark-blue));
+        }
+
+        .section-header.afqa-header {
+            background: linear-gradient(135deg, var(--afqa-accent) 0%, #4a9de8 100%);
+        }
+
+        /* 15. Completed Items Counter */
+        .items-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--success-color);
+            font-weight: 600;
+            margin-left: 12px;
+        }
+
+        .items-counter i {
+            font-size: 0.8rem;
+        }
+
+        /* 16. Soften Section Transitions */
+        .content-section {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-content {
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        }
+
+        /* 17. Summary Line Per Section Header */
+        .section-summary {
+            display: block;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 5px;
+            font-weight: 400;
+        }
+
+        /* 18. Print-Friendly Stylesheet */
+        @media print {
+            .tab-navigation,
+            .approval-banner,
+            .sticky-summary,
+            .btn,
+            .approval-buttons {
+                display: none !important;
+            }
+
+            .content-section.collapsed > div:not(.section-header) {
+                display: block !important;
+            }
+
+            .accordion-content {
+                max-height: none !important;
+            }
+
+            body {
+                font-size: 11pt;
+                background: white !important;
+                color: black !important;
+            }
+
+            .section-header {
+                break-after: avoid;
+                background: #457798 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .finance-card,
+            .content-section {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+
+        /* 19. Animate Status Badge Changes */
+        .status-badge.just-updated {
+            animation: badge-highlight 1s ease;
+        }
+
+        @keyframes badge-highlight {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); background: rgba(255, 215, 0, 0.3); }
+            100% { transform: scale(1); }
+        }
+
+        /* 20. Expandable FAQ/Help Section */
+        .help-section {
+            background: var(--mm-white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .help-section h3 {
+            font-family: var(--font-primary);
+            color: var(--mm-dark-blue);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(69, 119, 152, 0.1);
+            padding: 15px 0;
+            cursor: pointer;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--mm-dark-blue);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.3rem;
+            color: var(--mm-deep-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.expanded .faq-question::after {
+            content: '−';
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--mm-deep-blue);
+            line-height: 1.6;
+        }
+
+        .faq-item.expanded .faq-answer {
+            max-height: 500px;
+            padding-top: 12px;
+        }
     </style>
 </head>
 <body>
+    <!-- Sticky Financial Summary (Improvement #8) -->
+    <div class="sticky-summary" id="sticky-summary">
+        <div class="sticky-item">
+            <div class="sticky-label">Total Value</div>
+            <div class="sticky-value">$21,820.73</div>
+        </div>
+        <div class="sticky-item">
+            <div class="sticky-label">Paid</div>
+            <div class="sticky-value paid">$11,791.45</div>
+        </div>
+        <div class="sticky-item">
+            <div class="sticky-label">Current Due</div>
+            <div class="sticky-value due">$5,636.04</div>
+        </div>
+        <div class="sticky-item">
+            <div class="sticky-label">Pending</div>
+            <div class="sticky-value">$4,393.24</div>
+        </div>
+        <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="makePayment()">
+            <i class="fas fa-credit-card"></i> Pay Now
+        </button>
+    </div>
+
     <div class="container">
+    <!-- Approval Required Banner (Improvement #5) -->
+    <div class="approval-banner" id="approval-banner">
+        <i class="fas fa-clipboard-check"></i>
+        <span><strong>Action Required:</strong> Review completed Bar CDU designs and pay Invoice AFQA-001 ($5,636.04) to keep the project on schedule.</span>
+        <button onclick="scrollToApprovals()">Review Now</button>
+    </div>
+
     <!-- Tab Navigation -->
     <div class="tab-navigation">
         <button class="tab-button active" onclick="switchTab('quote', event)">Quote & Invoice</button>
@@ -1413,6 +2099,17 @@
                 <div class="project-title">
                     <h1>Project Portal - Updated Jan 2026</h1>
                     <div class="project-subtitle">Design & Packaging Development</div>
+                    <!-- Project Health Indicator (#13) & Last Updated (#12) -->
+                    <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap; justify-content: center;">
+                        <div class="project-health">
+                            <div class="health-light green"></div>
+                            <span>On Track</span>
+                        </div>
+                        <div class="last-updated">
+                            <i class="fas fa-sync-alt"></i>
+                            Updated 1 day ago <span class="date-absolute">(Jan 21, 2026)</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="client-summary">
@@ -1501,6 +2198,40 @@
             </div>
         </div>
 
+        <!-- "What's Happening Now" Hero Card (Improvement #1) -->
+        <div class="hero-status-card fade-in" id="hero-status">
+            <div class="hero-icon">🎨</div>
+            <div class="hero-content">
+                <h3>Moon CDUs In Progress</h3>
+                <p>6 designs currently being created. Expected completion: Week 4</p>
+                <div class="hero-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 54%"></div>
+                    </div>
+                    <span>54% Complete (14/26 designs)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overall AFQA Progress Bar (Improvement #2) -->
+        <div class="project-progress fade-in">
+            <div class="progress-label">
+                <span>Project Progress</span>
+                <span class="items-counter"><i class="fas fa-check"></i> 14 of 26 Designs Complete</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width: 54%"></div>
+            </div>
+            <div class="progress-milestones">
+                <span class="milestone complete">Bars</span>
+                <span class="milestone complete">Bar CDUs</span>
+                <span class="milestone complete">Moons</span>
+                <span class="milestone active">Moon CDUs</span>
+                <span class="milestone">Bananas</span>
+                <span class="milestone">Banana CDU</span>
+            </div>
+        </div>
+
         <!-- Section 1: Original Packaging Project (2024-2025) -->
         <div id="original-project-section" class="content-section fade-in stagger-2 collapsed">
             <div class="section-header accordion-header" onclick="toggleSection('original-project-section')">
@@ -1509,7 +2240,9 @@
                         Original Packaging Project
                         <span class="section-badge badge-complete">100% COMPLETE</span>
                     </h2>
-                    <div class="section-subtitle">July 2024 - July 2025 • $10,980.21 Total Value • FULLY PAID</div>
+                    <div class="section-subtitle">July 2024 - July 2025 • $10,980.21 Total Value • FULLY PAID
+                        <span class="section-summary">36 invoices completed, excellent payment history</span>
+                    </div>
                 </div>
                 <i class="fas fa-chevron-down accordion-icon" style="color: white; font-size: 1.5rem;"></i>
             </div>
@@ -1629,7 +2362,9 @@
                     AFQA Compliance Project
                     <span class="section-badge badge-pending">IN PROGRESS</span>
                 </h2>
-                <div class="section-subtitle">January 2026 - February 2026 • Complete Packaging Redesign • 26 Designs + 8 Icons</div>
+                <div class="section-subtitle">January 2026 - February 2026 • Complete Packaging Redesign • 26 Designs + 8 Icons
+                    <span class="section-summary">Phase 1 complete (Bars, Moons, Bar CDUs, Icons) • Phase 2 in progress (Moon CDUs)</span>
+                </div>
             </div>
 
             <!-- Quick Stats -->
@@ -1991,7 +2726,8 @@
                     </div>
                 </div>
 
-                <div class="timeline-week" style="background: rgba(212, 165, 116, 0.15); border-left: 4px solid var(--afqa-accent);">
+                <!-- Current Week Highlight (Improvement #4) -->
+                <div class="timeline-week current-week">
                     <div class="week-label">Week 4</div>
                     <div class="week-deliverable">Moon CDUs (6 designs)</div>
                     <div class="week-amount">$3,527.60</div>
@@ -2030,6 +2766,15 @@
                         <span style="color: var(--mm-deep-blue);">Final</span>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- "Next Steps" Action Callout (Improvement #3) -->
+        <div class="next-steps-callout fade-in">
+            <div class="callout-icon"><i class="fas fa-hand-point-right"></i></div>
+            <div class="callout-content">
+                <strong>Your Next Step:</strong> Review and approve the completed Bar CDU designs below,
+                then pay Invoice #AFQA-001 ($5,636.04) to keep the project on schedule.
             </div>
         </div>
 
@@ -2076,6 +2821,55 @@
                             <i class="fas fa-eye"></i> View Complete Summary
                         </button>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ/Help Section (Improvement #20) -->
+        <div class="help-section fade-in">
+            <h3><i class="fas fa-question-circle" style="color: var(--afqa-accent); margin-right: 10px;"></i>Common Questions</h3>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">How is my pricing calculated?</div>
+                <div class="faq-answer">
+                    Your pricing is based on a tiered rate system designed to save you money:<br><br>
+                    <strong>50% Mates Rate:</strong> Applied to the master template (Pure Carob Bar) as a long-term client discount.<br>
+                    <strong>25% Master Template Rate:</strong> For creating the first design in each category that others clone from.<br>
+                    <strong>15% Clone Rate:</strong> For flavor variations that use existing templates with minimal changes.<br>
+                    <strong>100% Full Rate:</strong> For completely new designs with no existing template.<br><br>
+                    This structure saves you $24,000+ compared to full-price redesign.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">When will my designs be ready?</div>
+                <div class="faq-answer">
+                    The AFQA project timeline targets completion by February 13, 2026. Current progress:<br><br>
+                    <strong>Week 1-3 (Complete):</strong> Bars, Moons, Bar CDUs, and Icons<br>
+                    <strong>Week 4 (Current):</strong> Moon CDUs - 6 designs in progress<br>
+                    <strong>Week 5-6:</strong> Bananas and Banana CDU<br><br>
+                    We'll notify you as each batch is ready for review and approval.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">How do I approve designs?</div>
+                <div class="faq-answer">
+                    When designs are ready for review, you'll see an "Approval Required" banner at the top of this dashboard.
+                    Click "Review Now" to see the completed designs. For each design, you can either approve it or request
+                    changes with specific feedback. Once approved, designs move to the "Completed" column and the invoice
+                    becomes payable.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">What payment methods are accepted?</div>
+                <div class="faq-answer">
+                    We accept payment through Xero's secure payment portal, which supports:<br><br>
+                    • Direct bank transfer (EFT)<br>
+                    • Credit/Debit cards (Visa, Mastercard)<br>
+                    • PayPal (where available)<br><br>
+                    Click the "Make Payment" button to access the Xero payment portal for the current invoice.
                 </div>
             </div>
         </div>
@@ -3296,6 +4090,101 @@ Contact: hello@handtomouse.org
                 console.error('Error loading project data:', error);
             }
         };
+
+        // ============================================================================
+        // 20 CLIENT READABILITY IMPROVEMENTS - JavaScript
+        // ============================================================================
+
+        // Improvement #5: Scroll to approvals section
+        function scrollToApprovals() {
+            const afqaSection = document.querySelector('.section-header.afqa-header');
+            if (afqaSection) {
+                afqaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Briefly highlight the section
+                afqaSection.parentElement.style.boxShadow = '0 0 20px rgba(243, 156, 18, 0.5)';
+                setTimeout(() => {
+                    afqaSection.parentElement.style.boxShadow = '';
+                }, 2000);
+            }
+        }
+
+        // Improvement #8: Sticky summary on scroll
+        (function initStickySummary() {
+            const stickySummary = document.getElementById('sticky-summary');
+            const financialOverview = document.querySelector('.financial-overview');
+
+            if (stickySummary && financialOverview) {
+                window.addEventListener('scroll', function() {
+                    const rect = financialOverview.getBoundingClientRect();
+                    if (rect.bottom < 0) {
+                        stickySummary.classList.add('visible');
+                    } else {
+                        stickySummary.classList.remove('visible');
+                    }
+                });
+            }
+        })();
+
+        // Improvement #19: Animate status badge changes
+        function animateStatusBadge(element) {
+            element.classList.add('just-updated');
+            setTimeout(() => {
+                element.classList.remove('just-updated');
+            }, 1000);
+        }
+
+        // Improvement #20: FAQ toggle
+        function toggleFaq(element) {
+            // Close other FAQ items
+            document.querySelectorAll('.faq-item.expanded').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('expanded');
+                }
+            });
+            // Toggle current item
+            element.classList.toggle('expanded');
+        }
+
+        // Improvement #9: Pricing category accordions
+        function togglePricingCategory(categoryId) {
+            const accordion = document.querySelector(`[data-category="${categoryId}"]`);
+            const items = document.getElementById(`${categoryId}-items`);
+
+            if (accordion && items) {
+                accordion.classList.toggle('expanded');
+                items.classList.toggle('expanded');
+            }
+        }
+
+        // Update hero card based on project status
+        function updateHeroCard() {
+            const heroStatus = document.getElementById('hero-status');
+            if (!heroStatus) return;
+
+            // This would be populated from real project data
+            const currentPhase = 'Moon CDUs';
+            const progress = 54;
+            const completed = 14;
+            const total = 26;
+
+            const progressFill = heroStatus.querySelector('.progress-fill');
+            const progressText = heroStatus.querySelector('.hero-progress span');
+
+            if (progressFill) progressFill.style.width = `${progress}%`;
+            if (progressText) progressText.textContent = `${progress}% Complete (${completed}/${total} designs)`;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateHeroCard();
+
+            // Auto-hide approval banner if no items need approval
+            // (In production, this would check actual approval status)
+            // const approvalBanner = document.getElementById('approval-banner');
+            // if (approvalBanner && noItemsNeedApproval) {
+            //     approvalBanner.style.display = 'none';
+            // }
+        });
 </script>
 </body>
 </html>
