@@ -1346,6 +1346,47 @@
             font-weight: bold;
             margin-right: 8px;
         }
+
+        /* Accordion Styles */
+        .accordion-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            opacity: 0.9;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .accordion-icon.expanded {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.expanded {
+            max-height: 2000px;
+        }
+
+        /* Section-specific collapsed states */
+        .content-section.collapsed > div:not(.section-header) {
+            display: none;
+        }
+
+        .content-section.collapsed .section-header {
+            border-radius: var(--border-radius);
+        }
     </style>
 </head>
 <body>
@@ -1375,22 +1416,27 @@
                 </div>
 
                 <div class="client-summary">
-                    <h3>Complete Financial Overview</h3>
-                    <div class="summary-item">
-                        <span>Total Relationship Value:</span>
-                        <span>$20,588.79</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Original Project Progress:</span>
-                        <span>100% Complete & Paid</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>AFQA Project Status:</span>
-                        <span>Pending Approval</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Last Updated:</span>
-                        <span>January 21, 2026</span>
+                    <h3 class="accordion-header" onclick="toggleAccordion(this, 'financial-overview-content')">
+                        Complete Financial Overview
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </h3>
+                    <div id="financial-overview-content" class="accordion-content">
+                        <div class="summary-item">
+                            <span>Total Relationship Value:</span>
+                            <span>$20,588.79</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Original Project Progress:</span>
+                            <span>100% Complete & Paid</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>AFQA Project Status:</span>
+                            <span>Pending Approval</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Last Updated:</span>
+                            <span>January 21, 2026</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1456,13 +1502,16 @@
         </div>
 
         <!-- Section 1: Original Packaging Project (2024-2025) -->
-        <div class="content-section fade-in stagger-2">
-            <div class="section-header">
-                <h2 class="section-title">
-                    Original Packaging Project
-                    <span class="section-badge badge-complete">100% COMPLETE</span>
-                </h2>
-                <div class="section-subtitle">July 2024 - July 2025 • $10,980.21 Total Value • FULLY PAID</div>
+        <div id="original-project-section" class="content-section fade-in stagger-2 collapsed">
+            <div class="section-header accordion-header" onclick="toggleSection('original-project-section')">
+                <div>
+                    <h2 class="section-title">
+                        Original Packaging Project
+                        <span class="section-badge badge-complete">100% COMPLETE</span>
+                    </h2>
+                    <div class="section-subtitle">July 2024 - July 2025 • $10,980.21 Total Value • FULLY PAID</div>
+                </div>
+                <i class="fas fa-chevron-down accordion-icon" style="color: white; font-size: 1.5rem;"></i>
             </div>
 
             <div style="padding: 30px;">
@@ -1511,13 +1560,16 @@
         </div>
 
         <!-- Section 2: Gap Period Work (Standalone Transition) - PAID -->
-        <div class="content-section fade-in stagger-3">
-            <div class="section-header" style="background: linear-gradient(135deg, rgba(143, 188, 139, 0.15), rgba(143, 188, 139, 0.05));">
-                <h2 class="section-title">
-                    Gap Period Work
-                    <span class="section-badge badge-complete">PAID</span>
-                </h2>
-                <div class="section-subtitle">August - October 2025 • Transition Period • Completed</div>
+        <div id="gap-period-section" class="content-section fade-in stagger-3 collapsed">
+            <div class="section-header accordion-header" style="background: linear-gradient(135deg, rgba(143, 188, 139, 0.15), rgba(143, 188, 139, 0.05));" onclick="toggleSection('gap-period-section')">
+                <div>
+                    <h2 class="section-title">
+                        Gap Period Work
+                        <span class="section-badge badge-complete">PAID</span>
+                    </h2>
+                    <div class="section-subtitle">August - October 2025 • Transition Period • Completed</div>
+                </div>
+                <i class="fas fa-chevron-down accordion-icon" style="color: white; font-size: 1.5rem;"></i>
             </div>
 
             <div style="padding: 30px;">
@@ -2657,6 +2709,29 @@ Contact: hello@handtomouse.org
                     }
                 });
             }
+        }
+
+        // Accordion toggle for Financial Overview
+        function toggleAccordion(element, contentId) {
+            const content = document.getElementById(contentId);
+            const icon = element.querySelector('.accordion-icon');
+
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                icon.classList.remove('expanded');
+            } else {
+                content.classList.add('expanded');
+                icon.classList.add('expanded');
+            }
+        }
+
+        // Section toggle for content-section elements
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const icon = section.querySelector('.accordion-icon');
+
+            section.classList.toggle('collapsed');
+            icon.classList.toggle('expanded');
         }
 
         // Load project data on page load
