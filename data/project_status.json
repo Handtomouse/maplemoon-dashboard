@@ -1,13 +1,12 @@
 {
-  "lastUpdated": "2026-01-20T12:00:00Z",
+  "lastUpdated": "2026-01-21T12:00:00Z",
   "project": {
     "totalValue": 10029.28,
     "inProgressValue": 778.09,
     "blockedValue": 5960.33,
     "readyValue": 3290.88,
     "completeValue": 0,
-    "targetDate": "2025-12-22",
-    "alternateDate": "2026-01-13"
+    "targetDate": "2026-02-13"
   },
   "_note": "Aggregate values are calculated from products array: inProgressValue = sum(status=in_progress), blockedValue = sum(status=blocked), readyValue = sum(status=ready), completeValue = sum(status=completed). These should match product sums.",
   "products": [
@@ -17,13 +16,13 @@
       "fullName": "Pure Carob Bar (Master Template)",
       "type": "Bar",
       "week": "Week 1",
-      "weekDates": "Dec 2-8",
+      "weekDates": "Week 1",
       "status": "in_progress",
       "price": 626.84,
       "rateType": "mates",
       "discount": "50%",
       "progress": 45,
-      "startDate": "2025-12-01",
+      "startDate": "2026-01-01",
       "specsComplete": true,
       "blocker": null,
       "notes": "MATES RATE (50% off) - Master template that other 5 bars will be based on. Design underway.",
@@ -43,7 +42,7 @@
       "status": "in_progress",
       "price": 151.25,
       "progress": 30,
-      "startDate": "2025-12-01",
+      "startDate": "2026-01-01",
       "specsComplete": true,
       "blocker": null,
       "notes": "4 updated icons (25% rate) + 4 brand new (full rate)",
@@ -58,7 +57,7 @@
       "fullName": "Other Bars (5 flavors)",
       "type": "Bar",
       "week": "Week 1",
-      "weekDates": "Dec 2-8",
+      "weekDates": "Week 1",
       "status": "ready",
       "price": 940.25,
       "progress": 0,
@@ -79,7 +78,7 @@
       "fullName": "Bar CDUs (6 designs)",
       "type": "CDU",
       "week": "Week 2",
-      "weekDates": "Dec 9-15",
+      "weekDates": "Week 2",
       "status": "ready",
       "price": 2350.63,
       "rateType": "mixed",
@@ -104,7 +103,7 @@
       "fullName": "Moons (6 designs)",
       "type": "Moon",
       "week": "Week 3",
-      "weekDates": "Dec 16-22",
+      "weekDates": "Week 3",
       "status": "blocked",
       "price": 1567.09,
       "rateType": "mixed",
@@ -118,7 +117,7 @@
         "❌ New Moon packaging dimensions (length × width × height)",
         "❌ Weight specifications",
         "❌ Material specifications",
-        "⚠️ DEADLINE: Need by Dec 15 to start Week 3"
+        "⚠️ DEADLINE: Need specs to start Week 3"
       ]
     },
     {
@@ -127,7 +126,7 @@
       "fullName": "Bananas 4-Pack",
       "type": "Banana",
       "week": "Week 3",
-      "weekDates": "Dec 16-22",
+      "weekDates": "Week 3",
       "status": "blocked",
       "price": 162.12,
       "progress": 0,
@@ -139,7 +138,7 @@
         "❌ New Banana packaging dimensions",
         "❌ Weight specifications",
         "❌ Material specifications",
-        "⚠️ DEADLINE: Need by Dec 15 to start Week 3"
+        "⚠️ DEADLINE: Need specs to start Week 3"
       ]
     },
     {
@@ -148,7 +147,7 @@
       "fullName": "Moon CDUs (6 designs)",
       "type": "CDU",
       "week": "Week 4",
-      "weekDates": "Post-Dec 22",
+      "weekDates": "Week 4",
       "status": "blocked",
       "price": 3290.86,
       "rateType": "mixed",
@@ -171,7 +170,7 @@
       "fullName": "Banana CDU (50% mates rate)",
       "type": "CDU",
       "week": "Week 4",
-      "weekDates": "Post-Dec 22",
+      "weekDates": "Week 4",
       "status": "blocked",
       "price": 940.26,
       "rateType": "mates",
