@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MapleMoon Project Portal - Updated Jan 2026</title>
+    <title>MapleMoon Project Portal - Updated Feb 2026</title>
+    <meta name="description" content="MapleMoon project portal — packaging design, AFQA compliance, and e-commerce proposal dashboard.">
+    <meta property="og:title" content="MapleMoon Project Portal">
+    <meta property="og:description" content="Client dashboard for MapleMoon packaging design & e-commerce projects.">
+    <meta property="og:image" content="assets/maplemoon-logo.svg">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="assets/maplemoon-logo.svg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <style>
         :root {
             /* MapleMoon Brand Colors */
@@ -22,8 +29,8 @@
             --primary-color: var(--mm-deep-blue);
             --secondary-color: var(--mm-dark-blue);
             --accent-color: var(--mm-cream);
-            --success-color: #8FBC8B;
-            --warning-color: #D4A574;
+            --success-color: #5A8F5A;
+            --warning-color: #B8844A;
             --danger-color: #B85450;
 
             /* Typography */
@@ -1042,6 +1049,9 @@
             margin: 30px 0 20px 0;
             border-bottom: 2px solid #D4A574;
             padding-bottom: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
         }
 
         .tab-button {
@@ -1057,6 +1067,8 @@
             transition: all 0.3s ease;
             position: relative;
             bottom: -2px;
+            flex-shrink: 0;
+            white-space: nowrap;
         }
 
         .tab-button:hover {
@@ -1070,18 +1082,150 @@
             background: rgba(212, 165, 116, 0.08);
         }
 
+        /* #6 Focus-visible styles */
+        .tab-button:focus-visible,
+        .btn:focus-visible,
+        .action-card:focus-visible,
+        .accordion-header:focus-visible {
+            outline: 2px solid var(--mm-deep-blue);
+            outline-offset: 2px;
+        }
+
         .tab-content {
             display: none;
-            animation: fadeIn 0.3s ease;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .tab-content.active {
             display: block;
+            opacity: 1;
+            animation: fadeIn 0.3s ease forwards;
         }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* #19 Extracted inline styles for E-Commerce tab */
+        .scope-grid {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .scope-list-included {
+            background: linear-gradient(135deg, #f0fff0, #fff);
+            padding: 25px;
+            border-radius: var(--border-radius-small);
+            border: 2px solid var(--success-color);
+        }
+
+        .scope-list-excluded {
+            background: linear-gradient(135deg, #fff5f5, #fff);
+            padding: 25px;
+            border-radius: var(--border-radius-small);
+            border: 2px solid var(--danger-color);
+        }
+
+        .scope-list-included h3,
+        .scope-list-excluded h3 {
+            font-family: var(--font-primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .scope-list-included h3 { color: var(--success-color); }
+        .scope-list-excluded h3 { color: var(--danger-color); }
+
+        .scope-list-included ul,
+        .scope-list-excluded ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .scope-list-included li,
+        .scope-list-excluded li {
+            padding: 8px 0;
+            color: var(--mm-dark-blue);
+        }
+
+        .scope-list-included li { border-bottom: 1px solid rgba(90, 143, 90, 0.2); }
+        .scope-list-excluded li { border-bottom: 1px solid rgba(184, 84, 80, 0.2); }
+        .scope-list-included li:last-child,
+        .scope-list-excluded li:last-child { border-bottom: none; }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .value-prop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .value-prop-card {
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            border-radius: var(--border-radius-small);
+            border-left: 4px solid var(--mm-deep-blue);
+        }
+
+        .value-prop-card h4 {
+            font-family: var(--font-primary);
+            color: var(--mm-dark-blue);
+            margin-bottom: 8px;
+        }
+
+        .value-prop-card p {
+            color: var(--mm-deep-blue);
+            font-size: 0.95rem;
+        }
+
+        /* #14 Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--mm-deep-blue);
+            color: var(--mm-white);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-soft);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* #16 Scope grid mobile */
+        @media (max-width: 768px) {
+            .scope-grid,
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Project Tracker Styles */
@@ -1973,6 +2117,24 @@
                 max-width: 100%;
                 padding: 0;
             }
+
+            /* #12 Print styles for E-Commerce tab */
+            #ecommerce-tab .content-section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            #ecommerce-tab .content-section .section-header {
+                break-after: avoid;
+            }
+
+            .back-to-top {
+                display: none !important;
+            }
+
+            .scope-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         /* 19. Animate Status Badge Changes */
@@ -2078,17 +2240,17 @@
     </div>
 
     <!-- Tab Navigation -->
-    <div class="tab-navigation">
-        <button class="tab-button active" onclick="switchTab('quote', event)">Quote & Invoice</button>
-        <button class="tab-button" onclick="switchTab('tracker', event)">Project Tracker</button>
-        <button class="tab-button" onclick="switchTab('specs', event)">Spec Tracker</button>
-        <button class="tab-button" onclick="switchTab('timeline', event)">Timeline</button>
-        <button class="tab-button" onclick="switchTab('assets', event)">Assets & Specs</button>
-        <button class="tab-button" onclick="switchTab('ecommerce', event)"><i class="fas fa-shopping-cart" style="margin-right:6px"></i>E-Commerce Proposal</button>
+    <div class="tab-navigation" role="tablist" aria-label="Project sections">
+        <button class="tab-button active" role="tab" aria-selected="true" aria-controls="quote-tab" tabindex="0" onclick="switchTab('quote', event)">Quote & Invoice</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="tracker-tab" tabindex="-1" onclick="switchTab('tracker', event)">Project Tracker</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="specs-tab" tabindex="-1" onclick="switchTab('specs', event)">Spec Tracker</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="timeline-tab" tabindex="-1" onclick="switchTab('timeline', event)">Timeline</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="assets-tab" tabindex="-1" onclick="switchTab('assets', event)">Assets & Specs</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="ecommerce-tab" tabindex="-1" onclick="switchTab('ecommerce', event)"><i class="fas fa-shopping-cart" style="margin-right:6px"></i>E-Commerce Proposal</button>
     </div>
 
     <!-- Quote Tab (existing content) -->
-    <div id="quote-tab" class="tab-content active">
+    <div id="quote-tab" class="tab-content active" role="tabpanel" aria-labelledby="quote-tab-btn">
 
         <!-- Brand Header -->
         <header class="brand-header fade-in">
@@ -2108,7 +2270,7 @@
                         </div>
                         <div class="last-updated">
                             <i class="fas fa-sync-alt"></i>
-                            Updated 1 day ago <span class="date-absolute">(Jan 21, 2026)</span>
+                            <span id="last-updated-text" data-updated="2026-02-04">Updated today</span> <span class="date-absolute">(Feb 4, 2026)</span>
                         </div>
                     </div>
                 </div>
@@ -2133,7 +2295,7 @@
                         </div>
                         <div class="summary-item">
                             <span>Last Updated:</span>
-                            <span>January 21, 2026</span>
+                            <span id="last-updated-summary">February 4, 2026</span>
                         </div>
                     </div>
                 </div>
@@ -2898,11 +3060,11 @@
         <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Project Tracker</h2>
 
         <div class="tracker-stats" id="tracker-stats">
-            <!-- Stats will be loaded via JavaScript -->
+            <div class="loading-skeleton" style="padding:20px;text-align:center;color:var(--mm-deep-blue);opacity:0.6"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading stats...</div>
         </div>
 
         <div class="kanban-board" id="kanban-board">
-            <!-- Kanban cards will be loaded via JavaScript -->
+            <div class="loading-skeleton" style="padding:40px;text-align:center;color:var(--mm-deep-blue);opacity:0.6"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading project tracker...</div>
         </div>
     </div>
 
@@ -2916,7 +3078,7 @@
                     <strong style="color: #E74C3C;">⚠️ CRITICAL BLOCKERS</strong>
                     <p style="margin: 8px 0 0 0; color: #666;">The following items are blocking project progress and need immediate attention:</p>
                 </div>
-                <div id="blocker-countdown" style="background: #E74C3C; color: white; padding: 10px 20px; border-radius: 6px; font-weight: 700; text-align: center; min-width: 150px;">
+                <div id="blocker-countdown" data-deadline="2026-02-06" style="background: #E74C3C; color: white; padding: 10px 20px; border-radius: 6px; font-weight: 700; text-align: center; min-width: 150px;">
                     <div style="font-size: 1.3rem;" id="blocker-days">--</div>
                     <div style="font-size: 0.75rem; opacity: 0.9;">until Bar CDU deadline</div>
                 </div>
@@ -2924,7 +3086,7 @@
         </div>
 
         <table class="spec-table" id="spec-table">
-            <!-- Table will be loaded via JavaScript -->
+            <tr><td class="loading-skeleton" style="padding:30px;text-align:center;color:var(--mm-deep-blue);opacity:0.6"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading specifications...</td></tr>
         </table>
     </div>
 
@@ -3489,34 +3651,129 @@ Contact: hello@handtomouse.org
     </script>
 
     <script>
-        // Tab switching
+        // Tab switching with ARIA support (#4) and deep-linking (#15)
         function switchTab(tabName, event) {
             // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
 
-            // Remove active from all buttons
+            // Remove active from all buttons + update ARIA
             document.querySelectorAll('.tab-button').forEach(btn => {
                 btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+                btn.setAttribute('tabindex', '-1');
             });
 
             // Show selected tab
-            document.getElementById(tabName + '-tab').classList.add('active');
+            const tabEl = document.getElementById(tabName + '-tab');
+            if (tabEl) tabEl.classList.add('active');
 
             // Activate button
+            let activeBtn = null;
             if (event && event.target) {
-                event.target.classList.add('active');
-            } else {
-                // Find button by tab name
+                activeBtn = event.target.closest('.tab-button') || event.target;
+            }
+            if (!activeBtn) {
                 const buttons = document.querySelectorAll('.tab-button');
                 buttons.forEach(btn => {
-                    if (btn.textContent.toLowerCase().includes(tabName)) {
-                        btn.classList.add('active');
+                    if (btn.getAttribute('aria-controls') === tabName + '-tab') {
+                        activeBtn = btn;
                     }
                 });
             }
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+                activeBtn.setAttribute('aria-selected', 'true');
+                activeBtn.setAttribute('tabindex', '0');
+            }
+
+            // Update URL hash (#15)
+            history.replaceState(null, '', '#' + tabName);
+
+            // Scroll to top of tab
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // #5 Keyboard navigation for tabs
+        document.addEventListener('DOMContentLoaded', function() {
+            const tablist = document.querySelector('[role="tablist"]');
+            if (tablist) {
+                tablist.addEventListener('keydown', function(e) {
+                    const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+                    const currentIndex = tabs.indexOf(document.activeElement);
+                    let newIndex = -1;
+
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        newIndex = (currentIndex + 1) % tabs.length;
+                    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+                    } else if (e.key === 'Home') {
+                        e.preventDefault();
+                        newIndex = 0;
+                    } else if (e.key === 'End') {
+                        e.preventDefault();
+                        newIndex = tabs.length - 1;
+                    }
+
+                    if (newIndex >= 0) {
+                        tabs[newIndex].focus();
+                        tabs[newIndex].click();
+                    }
+                });
+            }
+
+            // #15 Deep-link from URL hash on load
+            const hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById(hash + '-tab')) {
+                switchTab(hash);
+            }
+
+            // #2 Dynamic "Updated X days ago"
+            const updatedEl = document.getElementById('last-updated-text');
+            if (updatedEl) {
+                const updatedDate = new Date(updatedEl.dataset.updated);
+                const now = new Date();
+                const diffDays = Math.floor((now - updatedDate) / (1000 * 60 * 60 * 24));
+                if (diffDays === 0) updatedEl.textContent = 'Updated today';
+                else if (diffDays === 1) updatedEl.textContent = 'Updated yesterday';
+                else updatedEl.textContent = 'Updated ' + diffDays + ' days ago';
+            }
+
+            // #14 Back to top button
+            const backToTop = document.getElementById('back-to-top');
+            if (backToTop) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 300) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+                });
+                backToTop.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // #20 IntersectionObserver for fade-in animations on E-Commerce tab
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('#ecommerce-tab .fade-in').forEach(function(el) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
 
         // Accordion toggle for Financial Overview
         function toggleAccordion(element, contentId) {
@@ -3563,6 +3820,12 @@ Contact: hello@handtomouse.org
                 window.projectDataLoaded = true;
             } catch (error) {
                 console.error('Error loading project data:', error);
+                // #11 Show user-visible error states
+                const errorMsg = '<div style="padding:30px;text-align:center;color:var(--danger-color)"><i class="fas fa-exclamation-triangle" style="font-size:2rem;margin-bottom:10px;display:block"></i>Unable to load project data. Please refresh the page.</div>';
+                const board = document.getElementById('kanban-board');
+                const stats = document.getElementById('tracker-stats');
+                if (board) board.innerHTML = errorMsg;
+                if (stats) stats.innerHTML = errorMsg;
             }
         }
 
@@ -3777,8 +4040,10 @@ Contact: hello@handtomouse.org
         }
 
         function updateBlockerCountdown() {
-            // Hardcoded blocker deadline: February 6, 2026 (one week before Feb 13)
-            const blockerDeadline = new Date('2026-02-06');
+            // #9 Read deadline from data attribute instead of hardcoding
+            const countdownEl = document.getElementById('blocker-countdown');
+            const deadlineStr = countdownEl ? countdownEl.dataset.deadline : '2026-02-06';
+            const blockerDeadline = new Date(deadlineStr);
             const now = new Date();
             const diff = blockerDeadline - now;
             const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
@@ -4187,8 +4452,6 @@ Contact: hello@handtomouse.org
             // }
         });
 </script>
-</body>
-</html>
 
     <!-- Assets & Specs Tab -->
     <div id="assets-tab" class="tab-content">
@@ -4526,33 +4789,33 @@ Contact: hello@handtomouse.org
                 <div class="section-title">Scope Details</div>
                 <div class="section-subtitle">What's included and what's not</div>
             </div>
-            <div style="padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:30px">
-                <div style="background:linear-gradient(135deg,#f0fff0,#fff);padding:25px;border-radius:var(--border-radius-small);border:2px solid var(--success-color)">
-                    <h3 style="font-family:var(--font-primary);color:var(--success-color);margin-bottom:15px;font-size:1.3rem"><i class="fas fa-check-circle" style="margin-right:8px"></i>Included</h3>
-                    <ul style="list-style:none;padding:0">
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Full Shopify store setup & configuration</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Custom theme design (MapleMoon brand)</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>17 content pages</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Product migration from WooCommerce</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Klaviyo email automation (3 flows)</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Analytics (GA4 + Meta Pixel)</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>SEO optimisation & copywriting</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Stripe + PayPal + Afterpay</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>AusPost shipping integration</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>2 training sessions + documentation</li>
-                        <li style="padding:8px 0;color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>2 weeks post-launch bug-fix support</li>
+            <div class="scope-grid">
+                <div class="scope-list-included">
+                    <h3><i class="fas fa-check-circle" style="margin-right:8px"></i>Included</h3>
+                    <ul>
+                        <li><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Full Shopify store setup & configuration</li>
+                        <li><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Custom theme design (MapleMoon brand)</li>
+                        <li><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>17 content pages</li>
+                        <li><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Product migration from WooCommerce</li>
+                        <li><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Klaviyo email automation (3 flows)</li>
+                        <li><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Analytics (GA4 + Meta Pixel)</li>
+                        <li><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>SEO optimisation & copywriting</li>
+                        <li><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Stripe + PayPal + Afterpay</li>
+                        <li><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>AusPost shipping integration</li>
+                        <li><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>2 training sessions + documentation</li>
+                        <li><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>2 weeks post-launch bug-fix support</li>
                     </ul>
                 </div>
-                <div style="background:linear-gradient(135deg,#fff5f5,#fff);padding:25px;border-radius:var(--border-radius-small);border:2px solid var(--danger-color)">
-                    <h3 style="font-family:var(--font-primary);color:var(--danger-color);margin-bottom:15px;font-size:1.3rem"><i class="fas fa-times-circle" style="margin-right:8px"></i>Not Included (Client Responsibility)</h3>
-                    <ul style="list-style:none;padding:0">
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Product photography (art direction included)</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Shopify monthly subscription ($39–$105/mo)</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Klaviyo monthly plan (free up to 250 contacts)</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Domain renewal & DNS management</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Ongoing content updates post-handover</li>
-                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Paid advertising setup (Meta/Google Ads)</li>
-                        <li style="padding:8px 0;color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Third-party app subscription fees</li>
+                <div class="scope-list-excluded">
+                    <h3><i class="fas fa-times-circle" style="margin-right:8px"></i>Not Included (Client Responsibility)</h3>
+                    <ul>
+                        <li><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Product photography (art direction included)</li>
+                        <li><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Shopify monthly subscription ($39–$105/mo)</li>
+                        <li><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Klaviyo monthly plan (free up to 250 contacts)</li>
+                        <li><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Domain renewal & DNS management</li>
+                        <li><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Ongoing content updates post-handover</li>
+                        <li><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Paid advertising setup (Meta/Google Ads)</li>
+                        <li><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Third-party app subscription fees</li>
                     </ul>
                 </div>
             </div>
@@ -4565,7 +4828,7 @@ Contact: hello@handtomouse.org
                 <div class="section-subtitle" style="color:var(--mm-dark-blue);opacity:0.8">Post-launch retainer options</div>
             </div>
             <div style="padding:30px">
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+                <div class="support-grid">
                     <div class="action-card primary-action">
                         <h3><i class="fas fa-calendar-check" style="color:var(--afqa-accent);margin-right:8px"></i>Mini Retainer</h3>
                         <div class="action-amount">$590/mo</div>
@@ -4592,22 +4855,22 @@ Contact: hello@handtomouse.org
                 <div class="section-title">Why Shopify + HandToMouse?</div>
             </div>
             <div style="padding:30px">
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
-                    <div style="padding:20px;background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:var(--border-radius-small);border-left:4px solid var(--success-color)">
-                        <h4 style="font-family:var(--font-primary);color:var(--mm-dark-blue);margin-bottom:8px"><i class="fas fa-bolt" style="color:var(--success-color);margin-right:8px"></i>Speed to Market</h4>
-                        <p style="color:var(--mm-deep-blue);font-size:0.95rem">6–8 week build vs 12+ weeks for custom. Launch before April 2026.</p>
+                <div class="value-prop-grid">
+                    <div class="value-prop-card" style="border-left-color:var(--success-color)">
+                        <h4><i class="fas fa-bolt" style="color:var(--success-color);margin-right:8px"></i>Speed to Market</h4>
+                        <p>6–8 week build vs 12+ weeks for custom. Launch before April 2026.</p>
                     </div>
-                    <div style="padding:20px;background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:var(--border-radius-small);border-left:4px solid var(--afqa-accent)">
-                        <h4 style="font-family:var(--font-primary);color:var(--mm-dark-blue);margin-bottom:8px"><i class="fas fa-hand-holding-usd" style="color:var(--afqa-accent);margin-right:8px"></i>Self-Managed</h4>
-                        <p style="color:var(--mm-deep-blue);font-size:0.95rem">You control products, stock, orders — no developer needed for day-to-day.</p>
+                    <div class="value-prop-card" style="border-left-color:var(--afqa-accent)">
+                        <h4><i class="fas fa-hand-holding-usd" style="color:var(--afqa-accent);margin-right:8px"></i>Self-Managed</h4>
+                        <p>You control products, stock, orders — no developer needed for day-to-day.</p>
                     </div>
-                    <div style="padding:20px;background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:var(--border-radius-small);border-left:4px solid var(--mm-lilac)">
-                        <h4 style="font-family:var(--font-primary);color:var(--mm-dark-blue);margin-bottom:8px"><i class="fas fa-seedling" style="color:var(--mm-lilac);margin-right:8px"></i>Grows With You</h4>
-                        <p style="color:var(--mm-deep-blue);font-size:0.95rem">Subscriptions, wholesale, international shipping — add when ready.</p>
+                    <div class="value-prop-card" style="border-left-color:var(--mm-lilac)">
+                        <h4><i class="fas fa-seedling" style="color:var(--mm-lilac);margin-right:8px"></i>Grows With You</h4>
+                        <p>Subscriptions, wholesale, international shipping — add when ready.</p>
                     </div>
-                    <div style="padding:20px;background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:var(--border-radius-small);border-left:4px solid var(--mm-deep-blue)">
-                        <h4 style="font-family:var(--font-primary);color:var(--mm-dark-blue);margin-bottom:8px"><i class="fas fa-handshake" style="color:var(--mm-deep-blue);margin-right:8px"></i>Existing Partnership</h4>
-                        <p style="color:var(--mm-deep-blue);font-size:0.95rem">We already know your brand, assets, and team. 20% loyalty discount applied.</p>
+                    <div class="value-prop-card">
+                        <h4><i class="fas fa-handshake" style="color:var(--mm-deep-blue);margin-right:8px"></i>Existing Partnership</h4>
+                        <p>We already know your brand, assets, and team. 20% loyalty discount applied.</p>
                     </div>
                 </div>
             </div>
@@ -4615,3 +4878,8 @@ Contact: hello@handtomouse.org
 
     </div>
 
+    <!-- Back to Top Button (#14) -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+</body>
+</html>
