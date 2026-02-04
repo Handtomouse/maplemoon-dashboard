@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-01-21T12:00:00Z",
+  "lastUpdated": "2026-02-04T17:00:00Z",
   "project": {
     "totalValue": 10029.28,
     "inProgressValue": 778.09,
-    "blockedValue": 5960.33,
+    "blockedValue": 1567.09,
     "readyValue": 3290.88,
-    "completeValue": 0,
+    "completeValue": 4393.25,
     "targetDate": "2026-02-13"
   },
   "_note": "Aggregate values are calculated from products array: inProgressValue = sum(status=in_progress), blockedValue = sum(status=blocked), readyValue = sum(status=ready), completeValue = sum(status=completed). These should match product sums.",
@@ -123,22 +123,28 @@
     {
       "id": "bananas",
       "name": "Bananas 4-Pack",
-      "fullName": "Bananas 4-Pack",
+      "fullName": "Bananas 4-Pack (80g)",
       "type": "Banana",
       "week": "Week 3",
       "weekDates": "Week 3",
-      "status": "blocked",
+      "status": "completed",
       "price": 162.12,
-      "progress": 0,
-      "specsComplete": false,
-      "blocker": "New packaging dimensions needed",
-      "critical": true,
-      "notes": "CRITICAL: Packaging size changed. Cannot start without new dimensions.",
+      "progress": 100,
+      "specsComplete": true,
+      "blocker": null,
+      "critical": false,
+      "invoiced": true,
+      "invoiceNumber": "INV-0363",
+      "invoiceDate": "2026-02-04",
+      "notes": "INVOICED (INV-0363, $4,393.26 inc GST — combined with Moon CDUs + Banana CDU). All specs confirmed: 80g, NIP (320kJ/1600kJ), barcode 0743966127632, SKU MM_MUL_BANN_4PK.",
       "checklist": [
-        "❌ New Banana packaging dimensions",
-        "❌ Weight specifications",
-        "❌ Material specifications",
-        "⚠️ DEADLINE: Need specs to start Week 3"
+        "✅ Weight confirmed: 80g",
+        "✅ Dimensions: H 12cm x W 10cm",
+        "✅ NIP: 320kJ = 76cal / 1600kJ = 382cal",
+        "✅ Ingredients: Carob Powder (12.5%), Cacao Butter, Australian Dried Banana (75%)",
+        "✅ Barcode: 0743966127632",
+        "✅ SKU: MM_MUL_BANN_4PK",
+        "✅ Invoiced: INV-0363 (4 Feb 2026)"
       ]
     },
     {
@@ -148,20 +154,25 @@
       "type": "CDU",
       "week": "Week 4",
       "weekDates": "Week 4",
-      "status": "blocked",
+      "status": "completed",
       "price": 3290.86,
       "rateType": "mixed",
       "discount": "100% master + 15% clones",
-      "progress": 0,
-      "specsComplete": false,
-      "blocker": "Barcodes + specs needed (affected by Moon size change)",
-      "notes": "Pure Carob Moon CDU at 100% (new product), other 5 at 15% clone rate. Dependent on Moon specs being finalized first.",
+      "progress": 100,
+      "specsComplete": true,
+      "blocker": null,
+      "invoiced": true,
+      "invoiceNumber": "INV-0363",
+      "invoiceDate": "2026-02-04",
+      "notes": "INVOICED (INV-0363). Pure Carob Moon CDU at 100% ($1,709.55 — new design, master template), other 5 at 15% clone rate ($256.43 each). All barcodes confirmed.",
       "checklist": [
-        "❌ 6 Moon CDU barcodes (one per flavor)",
-        "❌ CDU dimensions (based on new Moon size)",
-        "❌ Quantity per CDU",
-        "❌ Weight per CDU",
-        "⚠️ Can provide after Moon specs confirmed"
+        "✅ Pure Carob Moon CDU: 0743966644641 (100% master - $1,709.55)",
+        "✅ Coconut & Goji CDU: 0743966644542 (15% clone - $256.43)",
+        "✅ Almond Celtic Salt CDU: 0743966644566 (15% clone - $256.43)",
+        "✅ Cayenne Chilli CDU: 0743966644580 (15% clone - $256.43)",
+        "✅ Roasted Hazelnut CDU: 0743966644603 (15% clone - $256.43)",
+        "✅ Peppermint Buckwheat CDU: 0743966644627 (15% clone - $256.43)",
+        "✅ Invoiced: INV-0363 (4 Feb 2026)"
       ]
     },
     {
@@ -171,20 +182,22 @@
       "type": "CDU",
       "week": "Week 4",
       "weekDates": "Week 4",
-      "status": "blocked",
+      "status": "completed",
       "price": 940.26,
       "rateType": "mates",
       "discount": "50%",
-      "progress": 0,
-      "specsComplete": false,
-      "blocker": "Barcode + specs needed (affected by Banana size change)",
-      "notes": "Dependent on Banana specs being finalized first. 50% mates rate (new design).",
+      "progress": 100,
+      "specsComplete": true,
+      "blocker": null,
+      "invoiced": true,
+      "invoiceNumber": "INV-0363",
+      "invoiceDate": "2026-02-04",
+      "notes": "INVOICED (INV-0363). 50% mates rate (new design). Barcode confirmed.",
       "checklist": [
-        "❌ Banana CDU barcode",
-        "❌ CDU dimensions (based on new Banana size)",
-        "❌ Quantity per CDU",
-        "❌ Weight per CDU",
-        "⚠️ Can provide after Banana specs confirmed"
+        "✅ Banana CDU barcode: 0743966644665",
+        "✅ CDU dimensions confirmed",
+        "✅ SKU: MM_CDU_BANN",
+        "✅ Invoiced: INV-0363 (4 Feb 2026)"
       ]
     }
   ]
