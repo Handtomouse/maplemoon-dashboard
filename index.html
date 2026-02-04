@@ -2084,6 +2084,7 @@
         <button class="tab-button" onclick="switchTab('specs', event)">Spec Tracker</button>
         <button class="tab-button" onclick="switchTab('timeline', event)">Timeline</button>
         <button class="tab-button" onclick="switchTab('assets', event)">Assets & Specs</button>
+        <button class="tab-button" onclick="switchTab('ecommerce', event)"><i class="fas fa-shopping-cart" style="margin-right:6px"></i>E-Commerce Proposal</button>
     </div>
 
     <!-- Quote Tab (existing content) -->
@@ -4203,5 +4204,414 @@ Contact: hello@handtomouse.org
                 <!-- Asset table will be loaded via JavaScript -->
             </table>
         </div>
+    </div>
+
+    <!-- E-Commerce Proposal Tab -->
+    <div id="ecommerce-tab" class="tab-content">
+
+        <!-- Proposal Header -->
+        <header class="brand-header fade-in">
+            <div class="header-content">
+                <div class="maple-logo">
+                    <img src="assets/maplemoon-logo.svg" alt="MapleMoon" style="width: 200px; height: auto; margin: 0 auto; display: block;">
+                </div>
+                <div class="project-title">
+                    <h1>E-Commerce Website Proposal</h1>
+                    <div class="project-subtitle">Shopify E-Commerce Platform</div>
+                    <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap; justify-content: center;">
+                        <span class="section-badge badge-new">Proposal — February 2026</span>
+                        <span class="section-badge badge-pending">Awaiting Approval</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Summary Stat Cards -->
+        <div class="financial-overview">
+            <div class="finance-card total fade-in stagger-1">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-code"></i></div>
+                    <div class="card-title">Core Build</div>
+                </div>
+                <div class="card-amount">$13,206</div>
+                <div class="card-description">Ex GST — After 20% Discount</div>
+                <div class="breakdown-small">Full price: $16,507 • You save $3,301</div>
+            </div>
+            <div class="finance-card afqa fade-in stagger-2">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                    <div class="card-title">With All Add-Ons</div>
+                </div>
+                <div class="card-amount">$18,237</div>
+                <div class="card-description">Ex GST — Complete Scope</div>
+                <div class="breakdown-small">Core + Subscriptions, Wholesale, Video, Insta, Xero</div>
+            </div>
+            <div class="finance-card paid fade-in stagger-3">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-percent"></i></div>
+                    <div class="card-title">Existing Client Discount</div>
+                </div>
+                <div class="card-amount">20%</div>
+                <div class="card-description">Applied Across All Line Items</div>
+                <div class="breakdown-small">Loyalty discount for ongoing partnership</div>
+            </div>
+            <div class="finance-card outstanding fade-in stagger-4">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-play-circle"></i></div>
+                    <div class="card-title">Deposit to Start</div>
+                </div>
+                <div class="card-amount">$4,358</div>
+                <div class="card-description">Inc GST — 30% of Core Build</div>
+                <div class="breakdown-small">Kicks off Week 1: Discovery & Setup</div>
+            </div>
+        </div>
+
+        <!-- Core Build Breakdown -->
+        <div class="content-section fade-in">
+            <div class="section-header">
+                <div class="section-title">Core Build Breakdown <span class="section-badge badge-new">10 Line Items</span></div>
+                <div class="section-subtitle">Everything included in the core Shopify build</div>
+            </div>
+            <div class="pricing-table">
+                <div class="pricing-row header">
+                    <span>Line Item</span>
+                    <span>Hours</span>
+                    <span style="text-align:right">Price (ex GST)</span>
+                    <span></span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-store" style="color:var(--mm-deep-blue);margin-right:8px"></i>Shopify Store Setup & Config</span>
+                    <span>8 hrs</span>
+                    <span class="price-amount">$1,572</span>
+                    <span class="product-type type-new">Setup</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-palette" style="color:var(--mm-deep-blue);margin-right:8px"></i>Theme Customisation & Brand Design</span>
+                    <span>16 hrs</span>
+                    <span class="price-amount">$3,144</span>
+                    <span class="product-type type-new">Design</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-file-alt" style="color:var(--mm-deep-blue);margin-right:8px"></i>Content Pages (Home, About, Contact, FAQ + 13 more)</span>
+                    <span>14 hrs</span>
+                    <span class="price-amount">$2,751</span>
+                    <span class="product-type type-new">Content</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-envelope" style="color:var(--mm-deep-blue);margin-right:8px"></i>Klaviyo Email Setup (Welcome, Abandoned Cart, Post-Purchase)</span>
+                    <span>6 hrs</span>
+                    <span class="price-amount">$1,179</span>
+                    <span class="product-type type-new">Email</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-chart-bar" style="color:var(--mm-deep-blue);margin-right:8px"></i>GA4 + Meta Pixel + Conversions API</span>
+                    <span>4 hrs</span>
+                    <span class="price-amount">$786</span>
+                    <span class="product-type type-compliance">Analytics</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-exchange-alt" style="color:var(--mm-deep-blue);margin-right:8px"></i>WooCommerce → Shopify Migration</span>
+                    <span>10 hrs</span>
+                    <span class="price-amount">$1,965</span>
+                    <span class="product-type type-new">Migration</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-pen-fancy" style="color:var(--mm-deep-blue);margin-right:8px"></i>Copywriting & SEO Optimisation</span>
+                    <span>10 hrs</span>
+                    <span class="price-amount">$1,965</span>
+                    <span class="product-type type-new">Content</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-camera" style="color:var(--mm-deep-blue);margin-right:8px"></i>Photo Art Direction & Image Prep</span>
+                    <span>8 hrs</span>
+                    <span class="price-amount">$1,572</span>
+                    <span class="product-type type-new">Creative</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-star" style="color:var(--mm-deep-blue);margin-right:8px"></i>Reviews Integration (Judge.me)</span>
+                    <span>3 hrs</span>
+                    <span class="price-amount">$590</span>
+                    <span class="product-type type-compliance">Integration</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-graduation-cap" style="color:var(--mm-deep-blue);margin-right:8px"></i>Training & Handover (2 sessions)</span>
+                    <span>5 hrs</span>
+                    <span class="price-amount">$983</span>
+                    <span class="product-type type-compliance">Support</span>
+                </div>
+
+                <!-- Totals -->
+                <div class="pricing-row subtotal" style="margin-top:15px">
+                    <span>Subtotal (84 hours @ $196.50/hr)</span>
+                    <span>84 hrs</span>
+                    <span class="price-amount">$16,507</span>
+                    <span></span>
+                </div>
+                <div class="pricing-row" style="color:var(--success-color)">
+                    <span><i class="fas fa-tag" style="margin-right:8px"></i>Existing Client Discount (20%)</span>
+                    <span></span>
+                    <span class="price-amount" style="color:var(--success-color)">−$3,301</span>
+                    <span></span>
+                </div>
+                <div class="pricing-row subtotal">
+                    <span><strong>Total Ex GST</strong></span>
+                    <span></span>
+                    <span class="price-amount"><strong>$13,206</strong></span>
+                    <span></span>
+                </div>
+                <div class="pricing-row">
+                    <span>GST (10%)</span>
+                    <span></span>
+                    <span class="price-amount">$1,321</span>
+                    <span></span>
+                </div>
+                <div class="pricing-row total">
+                    <span>Total Inc GST</span>
+                    <span></span>
+                    <span style="text-align:right;font-size:1.3rem">$14,527</span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional Add-Ons -->
+        <div class="content-section fade-in">
+            <div class="section-header" style="background: linear-gradient(135deg, var(--mm-lilac), #c5bae8);">
+                <div class="section-title" style="color:var(--mm-dark-blue)">Optional Add-Ons <span class="section-badge badge-pending">Phase 1.5</span></div>
+                <div class="section-subtitle" style="color:var(--mm-dark-blue);opacity:0.8">Can be added during build or post-launch</div>
+            </div>
+            <div class="pricing-table">
+                <div class="pricing-row header">
+                    <span>Add-On</span>
+                    <span>Hours</span>
+                    <span style="text-align:right">Full Price</span>
+                    <span style="text-align:right">With Discount</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-sync-alt" style="color:var(--mm-lilac);margin-right:8px"></i>Subscription Box (Recharge)</span>
+                    <span>10 hrs</span>
+                    <span class="price-amount">$1,965</span>
+                    <span class="price-amount">$1,572</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-building" style="color:var(--mm-lilac);margin-right:8px"></i>Wholesale Portal (SparkLayer)</span>
+                    <span>8 hrs</span>
+                    <span class="price-amount">$1,572</span>
+                    <span class="price-amount">$1,258</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-video" style="color:var(--mm-lilac);margin-right:8px"></i>Hero Video Production & Embed</span>
+                    <span>6 hrs</span>
+                    <span class="price-amount">$1,179</span>
+                    <span class="price-amount">$943</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fab fa-instagram" style="color:var(--mm-lilac);margin-right:8px"></i>Instagram Shop Integration</span>
+                    <span>4 hrs</span>
+                    <span class="price-amount">$786</span>
+                    <span class="price-amount">$629</span>
+                </div>
+                <div class="pricing-row">
+                    <span class="product-name"><i class="fas fa-receipt" style="color:var(--mm-lilac);margin-right:8px"></i>Xero Accounting Sync</span>
+                    <span>4 hrs</span>
+                    <span class="price-amount">$786</span>
+                    <span class="price-amount">$629</span>
+                </div>
+                <div class="pricing-row total" style="background:linear-gradient(135deg, var(--mm-lilac), #c5bae8);color:var(--mm-dark-blue)">
+                    <span>All Add-Ons Total (with discount)</span>
+                    <span>32 hrs</span>
+                    <span></span>
+                    <span style="text-align:right;font-size:1.3rem">$5,031</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Structure -->
+        <div class="content-section fade-in">
+            <div class="section-header afqa-header">
+                <div class="section-title" style="color:var(--mm-dark-blue)">Payment Structure <span class="section-badge badge-new">30 / 40 / 30</span></div>
+                <div class="section-subtitle" style="color:var(--mm-dark-blue);opacity:0.8">Three milestone-based payments tied to deliverables</div>
+            </div>
+            <div style="padding:30px">
+                <div class="actions-grid">
+                    <div class="action-card primary-action">
+                        <h3><i class="fas fa-flag" style="color:var(--afqa-accent);margin-right:8px"></i>Milestone 1 — Deposit</h3>
+                        <div class="action-amount">$4,358</div>
+                        <div class="action-description">
+                            <strong>30% of core build (inc GST)</strong><br>
+                            Due on approval to begin work<br><br>
+                            <strong>Triggers:</strong> Discovery workshop, Shopify setup, theme selection, content audit
+                        </div>
+                        <span class="section-badge badge-pending">Due on Approval</span>
+                    </div>
+                    <div class="action-card secondary-action">
+                        <h3><i class="fas fa-tasks" style="color:var(--warning-color);margin-right:8px"></i>Milestone 2 — Midpoint</h3>
+                        <div class="action-amount">$5,811</div>
+                        <div class="action-description">
+                            <strong>40% of core build (inc GST)</strong><br>
+                            Due at design approval / content loaded<br><br>
+                            <strong>Triggers:</strong> Theme build complete, all product pages live in staging, email flows drafted
+                        </div>
+                        <span class="section-badge badge-new">~Week 4</span>
+                    </div>
+                    <div class="action-card tertiary-action">
+                        <h3><i class="fas fa-rocket" style="color:var(--mm-deep-blue);margin-right:8px"></i>Milestone 3 — Launch</h3>
+                        <div class="action-amount">$4,358</div>
+                        <div class="action-description">
+                            <strong>30% of core build (inc GST)</strong><br>
+                            Due on go-live<br><br>
+                            <strong>Triggers:</strong> Final QA, DNS switch, training sessions complete, site live
+                        </div>
+                        <span class="section-badge badge-new">~Week 6–8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="content-section fade-in">
+            <div class="section-header">
+                <div class="section-title">Project Timeline <span class="section-badge badge-new">6–8 Weeks</span></div>
+                <div class="section-subtitle">Target: Late March — Early April 2026</div>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-week">
+                    <div class="week-label">Week 1</div>
+                    <div class="week-deliverable"><strong>Discovery & Setup</strong> — Kickoff workshop, Shopify account setup, theme selection, content audit, sitemap finalisation</div>
+                    <div class="week-amount">Deposit Due</div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 2–3</div>
+                    <div class="week-deliverable"><strong>Design & Build</strong> — Theme customisation, homepage hero, product page templates, collection pages, navigation structure</div>
+                    <div class="week-amount"></div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 3–4</div>
+                    <div class="week-deliverable"><strong>Content & Products</strong> — Product migration from WooCommerce, copy & SEO, photo direction, content pages built</div>
+                    <div class="week-amount"></div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 4–5</div>
+                    <div class="week-deliverable"><strong>Integrations</strong> — Klaviyo email flows, GA4 + Meta Pixel, reviews (Judge.me), AusPost shipping, Stripe/PayPal/Afterpay</div>
+                    <div class="week-amount">Midpoint Due</div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 5–6</div>
+                    <div class="week-deliverable"><strong>Testing & QA</strong> — Cross-browser testing, mobile QA, checkout flow testing, speed optimisation, accessibility check</div>
+                    <div class="week-amount"></div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                </div>
+                <div class="timeline-week">
+                    <div class="week-label">Week 6–7</div>
+                    <div class="week-deliverable"><strong>Training & Handover</strong> — 2× live training sessions (product management, orders, Klaviyo basics), documentation</div>
+                    <div class="week-amount"></div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                </div>
+                <div class="timeline-week" style="border-left-color:var(--success-color);background:linear-gradient(135deg, #f0fff0, #fff)">
+                    <div class="week-label">Week 7–8</div>
+                    <div class="week-deliverable"><strong>Launch</strong> — DNS switch, go-live, post-launch monitoring, 2 weeks bug-fix support included</div>
+                    <div class="week-amount">Final Due</div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-rocket"></i></div> Launch</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What's Included vs Not Included -->
+        <div class="content-section fade-in">
+            <div class="section-header">
+                <div class="section-title">Scope Details</div>
+                <div class="section-subtitle">What's included and what's not</div>
+            </div>
+            <div style="padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:30px">
+                <div style="background:linear-gradient(135deg,#f0fff0,#fff);padding:25px;border-radius:var(--border-radius-small);border:2px solid var(--success-color)">
+                    <h3 style="font-family:var(--font-primary);color:var(--success-color);margin-bottom:15px;font-size:1.3rem"><i class="fas fa-check-circle" style="margin-right:8px"></i>Included</h3>
+                    <ul style="list-style:none;padding:0">
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Full Shopify store setup & configuration</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Custom theme design (MapleMoon brand)</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>17 content pages</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Product migration from WooCommerce</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Klaviyo email automation (3 flows)</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Analytics (GA4 + Meta Pixel)</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>SEO optimisation & copywriting</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>Stripe + PayPal + Afterpay</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>AusPost shipping integration</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(143,188,139,0.2);color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>2 training sessions + documentation</li>
+                        <li style="padding:8px 0;color:var(--mm-dark-blue)"><i class="fas fa-check" style="color:var(--success-color);margin-right:10px;font-size:0.8rem"></i>2 weeks post-launch bug-fix support</li>
+                    </ul>
+                </div>
+                <div style="background:linear-gradient(135deg,#fff5f5,#fff);padding:25px;border-radius:var(--border-radius-small);border:2px solid var(--danger-color)">
+                    <h3 style="font-family:var(--font-primary);color:var(--danger-color);margin-bottom:15px;font-size:1.3rem"><i class="fas fa-times-circle" style="margin-right:8px"></i>Not Included (Client Responsibility)</h3>
+                    <ul style="list-style:none;padding:0">
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Product photography (art direction included)</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Shopify monthly subscription ($39–$105/mo)</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Klaviyo monthly plan (free up to 250 contacts)</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Domain renewal & DNS management</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Ongoing content updates post-handover</li>
+                        <li style="padding:8px 0;border-bottom:1px solid rgba(184,84,80,0.2);color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Paid advertising setup (Meta/Google Ads)</li>
+                        <li style="padding:8px 0;color:var(--mm-dark-blue)"><i class="fas fa-times" style="color:var(--danger-color);margin-right:10px;font-size:0.8rem"></i>Third-party app subscription fees</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ongoing Support -->
+        <div class="content-section fade-in">
+            <div class="section-header" style="background: linear-gradient(135deg, var(--mm-lilac), #c5bae8);">
+                <div class="section-title" style="color:var(--mm-dark-blue)">Ongoing Support Options</div>
+                <div class="section-subtitle" style="color:var(--mm-dark-blue);opacity:0.8">Post-launch retainer options</div>
+            </div>
+            <div style="padding:30px">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+                    <div class="action-card primary-action">
+                        <h3><i class="fas fa-calendar-check" style="color:var(--afqa-accent);margin-right:8px"></i>Mini Retainer</h3>
+                        <div class="action-amount">$590/mo</div>
+                        <div class="action-description">
+                            3 hours per month for updates, tweaks, new product additions, seasonal banners, and priority support.<br><br>
+                            <strong>Best for:</strong> Ongoing changes, seasonal promotions, regular product updates
+                        </div>
+                    </div>
+                    <div class="action-card tertiary-action">
+                        <h3><i class="fas fa-clock" style="color:var(--mm-deep-blue);margin-right:8px"></i>Ad-Hoc Support</h3>
+                        <div class="action-amount">$196.50/hr</div>
+                        <div class="action-description">
+                            Pay as you go at standard hourly rate. No commitment, invoice per session.<br><br>
+                            <strong>Best for:</strong> Occasional updates, one-off changes, troubleshooting
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Value Proposition -->
+        <div class="content-section fade-in" style="margin-bottom:0">
+            <div class="section-header" style="background:linear-gradient(135deg,var(--success-color),#6da06a)">
+                <div class="section-title">Why Shopify + HandToMouse?</div>
+            </div>
+            <div style="padding:30px">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
+                    <div style="padding:20px;background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:var(--border-radius-small);border-left:4px solid var(--success-color)">
+                        <h4 style="font-family:var(--font-primary);color:var(--mm-dark-blue);margin-bottom:8px"><i class="fas fa-bolt" style="color:var(--success-color);margin-right:8px"></i>Speed to Market</h4>
+                        <p style="color:var(--mm-deep-blue);font-size:0.95rem">6–8 week build vs 12+ weeks for custom. Launch before April 2026.</p>
+                    </div>
+                    <div style="padding:20px;background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:var(--border-radius-small);border-left:4px solid var(--afqa-accent)">
+                        <h4 style="font-family:var(--font-primary);color:var(--mm-dark-blue);margin-bottom:8px"><i class="fas fa-hand-holding-usd" style="color:var(--afqa-accent);margin-right:8px"></i>Self-Managed</h4>
+                        <p style="color:var(--mm-deep-blue);font-size:0.95rem">You control products, stock, orders — no developer needed for day-to-day.</p>
+                    </div>
+                    <div style="padding:20px;background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:var(--border-radius-small);border-left:4px solid var(--mm-lilac)">
+                        <h4 style="font-family:var(--font-primary);color:var(--mm-dark-blue);margin-bottom:8px"><i class="fas fa-seedling" style="color:var(--mm-lilac);margin-right:8px"></i>Grows With You</h4>
+                        <p style="color:var(--mm-deep-blue);font-size:0.95rem">Subscriptions, wholesale, international shipping — add when ready.</p>
+                    </div>
+                    <div style="padding:20px;background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:var(--border-radius-small);border-left:4px solid var(--mm-deep-blue)">
+                        <h4 style="font-family:var(--font-primary);color:var(--mm-dark-blue);margin-bottom:8px"><i class="fas fa-handshake" style="color:var(--mm-deep-blue);margin-right:8px"></i>Existing Partnership</h4>
+                        <p style="color:var(--mm-deep-blue);font-size:0.95rem">We already know your brand, assets, and team. 20% loyalty discount applied.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
