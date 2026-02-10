@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-02-04T17:00:00Z",
+  "lastUpdated": "2026-02-06T10:00:00Z",
   "project": {
-    "totalValue": 10029.28,
+    "totalValue": 10656.12,
     "inProgressValue": 778.09,
     "blockedValue": 1567.09,
-    "readyValue": 3290.88,
-    "completeValue": 4393.25,
+    "readyValue": 3917.72,
+    "completeValue": 4393.24,
     "targetDate": "2026-02-13"
   },
   "_note": "Aggregate values are calculated from products array: inProgressValue = sum(status=in_progress), blockedValue = sum(status=blocked), readyValue = sum(status=ready), completeValue = sum(status=completed). These should match product sums.",
@@ -136,7 +136,9 @@
       "invoiced": true,
       "invoiceNumber": "INV-0363",
       "invoiceDate": "2026-02-04",
-      "notes": "INVOICED (INV-0363, $4,393.26 inc GST — combined with Moon CDUs + Banana CDU). All specs confirmed: 80g, NIP (320kJ/1600kJ), barcode 0743966127632, SKU MM_MUL_BANN_4PK.",
+      "paid": true,
+      "paidDate": "2026-02-06",
+      "notes": "PAID (INV-0363, $4,393.26 inc GST — combined with Moon CDUs + Banana CDU). All specs confirmed: 80g, NIP (320kJ/1600kJ), barcode 0743966127632, SKU MM_MUL_BANN_4PK.",
       "checklist": [
         "✅ Weight confirmed: 80g",
         "✅ Dimensions: H 12cm x W 10cm",
@@ -144,7 +146,8 @@
         "✅ Ingredients: Carob Powder (12.5%), Cacao Butter, Australian Dried Banana (75%)",
         "✅ Barcode: 0743966127632",
         "✅ SKU: MM_MUL_BANN_4PK",
-        "✅ Invoiced: INV-0363 (4 Feb 2026)"
+        "✅ Invoiced: INV-0363 (4 Feb 2026)",
+        "✅ PAID: 6 Feb 2026"
       ]
     },
     {
@@ -164,7 +167,9 @@
       "invoiced": true,
       "invoiceNumber": "INV-0363",
       "invoiceDate": "2026-02-04",
-      "notes": "INVOICED (INV-0363). Pure Carob Moon CDU at 100% ($1,709.55 — new design, master template), other 5 at 15% clone rate ($256.43 each). All barcodes confirmed.",
+      "paid": true,
+      "paidDate": "2026-02-06",
+      "notes": "PAID (INV-0363). Pure Carob Moon CDU at 100% ($1,709.55 — new design, master template), other 5 at 15% clone rate ($256.43 each). All barcodes confirmed.",
       "checklist": [
         "✅ Pure Carob Moon CDU: 0743966644641 (100% master - $1,709.55)",
         "✅ Coconut & Goji CDU: 0743966644542 (15% clone - $256.43)",
@@ -172,7 +177,8 @@
         "✅ Cayenne Chilli CDU: 0743966644580 (15% clone - $256.43)",
         "✅ Roasted Hazelnut CDU: 0743966644603 (15% clone - $256.43)",
         "✅ Peppermint Buckwheat CDU: 0743966644627 (15% clone - $256.43)",
-        "✅ Invoiced: INV-0363 (4 Feb 2026)"
+        "✅ Invoiced: INV-0363 (4 Feb 2026)",
+        "✅ PAID: 6 Feb 2026"
       ]
     },
     {
@@ -192,12 +198,65 @@
       "invoiced": true,
       "invoiceNumber": "INV-0363",
       "invoiceDate": "2026-02-04",
-      "notes": "INVOICED (INV-0363). 50% mates rate (new design). Barcode confirmed.",
+      "paid": true,
+      "paidDate": "2026-02-06",
+      "notes": "PAID (INV-0363). 50% mates rate (new design). Barcode confirmed.",
       "checklist": [
         "✅ Banana CDU barcode: 0743966644665",
         "✅ CDU dimensions confirmed",
         "✅ SKU: MM_CDU_BANN",
-        "✅ Invoiced: INV-0363 (4 Feb 2026)"
+        "✅ Invoiced: INV-0363 (4 Feb 2026)",
+        "✅ PAID: 6 Feb 2026"
+      ]
+    },
+    {
+      "id": "elixir_plain",
+      "name": "Plain Carob Elixir",
+      "fullName": "Plain Carob Elixir (250ml) - AFQA Compliance",
+      "type": "Elixir",
+      "week": "Week 5",
+      "weekDates": "Week 5",
+      "status": "ready",
+      "price": 313.42,
+      "rateType": "compliance",
+      "discount": "25%",
+      "progress": 0,
+      "specsComplete": true,
+      "blocker": null,
+      "notes": "AFQA compliance update. TPP Small Cylinder 73x115mm. Allergen statements, NIP formatting, claims review, country of origin, storage instructions.",
+      "checklist": [
+        "✅ SKU: MM_ELX_PCAR_250ML",
+        "✅ Package: TPP Small Cylinder 73x115mm",
+        "✅ Claims: vegan, organic, caffeine free, gluten free, refined sugar free",
+        "⏳ Barcode: Pending from client",
+        "⏳ Allergen statement update",
+        "⏳ NIP formatting per AFQA",
+        "⏳ Country of origin statement"
+      ]
+    },
+    {
+      "id": "elixir_spiced",
+      "name": "Spiced Carob Elixir",
+      "fullName": "Spiced Carob Elixir (250ml) - AFQA Compliance",
+      "type": "Elixir",
+      "week": "Week 5",
+      "weekDates": "Week 5",
+      "status": "ready",
+      "price": 313.42,
+      "rateType": "compliance",
+      "discount": "25%",
+      "progress": 0,
+      "specsComplete": true,
+      "blocker": null,
+      "notes": "AFQA compliance update. TPP Small Cylinder 73x115mm. Ayurvedic inspired spiced variant. Same compliance work as Plain Carob Elixir.",
+      "checklist": [
+        "✅ SKU: MM_ELX_SPIC_250ML",
+        "✅ Package: TPP Small Cylinder 73x115mm",
+        "✅ Claims: vegan, organic, caffeine free, gluten free, ayurvedic inspired",
+        "⏳ Barcode: Pending from client",
+        "⏳ Allergen statement update",
+        "⏳ NIP formatting per AFQA",
+        "⏳ Country of origin statement"
       ]
     }
   ]

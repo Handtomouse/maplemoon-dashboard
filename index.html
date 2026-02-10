@@ -2226,8 +2226,8 @@
             <div class="sticky-label">Pending</div>
             <div class="sticky-value">$4,393.24</div>
         </div>
-        <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="makePayment()">
-            <i class="fas fa-credit-card"></i> Pay Now
+        <button class="btn btn-success" style="padding: 8px 16px; font-size: 0.85rem;" onclick="makePayment()" disabled>
+            <i class="fas fa-check-circle"></i> All Paid
         </button>
     </div>
 
@@ -2235,7 +2235,7 @@
     <!-- Approval Required Banner (Improvement #5) -->
     <div class="approval-banner" id="approval-banner">
         <i class="fas fa-clipboard-check"></i>
-        <span><strong>Action Required:</strong> Review completed Bar CDU designs and pay Invoice AFQA-001 ($5,636.04) to keep the project on schedule.</span>
+        <span><strong>Thank You!</strong> INV-0363 has been paid. Elixir AFQA compliance work (Plain + Spiced) now ready to start.</span>
         <button onclick="scrollToApprovals()">Review Now</button>
     </div>
 
@@ -2955,7 +2955,7 @@
                             <strong>Bars, Moons, Bar CDUs, Icons</strong><br>
                             Ready for payment • Designs complete
                         </div>
-                        <button class="btn btn-primary" onclick="makePayment()">
+                        <button class="btn btn-success" onclick="makePayment()" disabled>
                             <i class="fas fa-credit-card"></i> Make Payment
                         </button>
                     </div>
@@ -3487,13 +3487,13 @@ MapleMoon (via Dashboard Approval)
 
         // Make Payment
         function makePayment() {
-            showToast('⏳ Opening Xero payment portal...', 2000);
+            showToast('✅ All invoices are paid! Thank you.', 3000);
 
             // Use embedded Xero payment link (works without server!)
-            window.open(XERO_PAYMENT_LINK, '_blank');
+            // All invoices paid - no payment link needed
 
             setTimeout(() => {
-                showToast('💳 Xero payment portal opened in new tab!');
+                showToast('🎉 No outstanding invoices. Next invoice after Elixir completion.');
             }, 500);
         }
 
