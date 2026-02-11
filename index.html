@@ -497,6 +497,129 @@
             margin-top: 15px;
         }
 
+        /* File download link on category rows */
+        .file-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 10px;
+            padding: 3px 10px;
+            background: rgba(69, 119, 152, 0.1);
+            color: var(--mm-deep-blue);
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            vertical-align: middle;
+        }
+        .file-link:hover {
+            background: var(--mm-deep-blue);
+            color: white;
+        }
+        .file-link i { font-size: 0.7rem; }
+
+        /* Final Files tab */
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .file-category-card {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid rgba(69, 119, 152, 0.12);
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+        .file-category-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .file-category-header {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, var(--mm-deep-blue), var(--mm-dark-blue));
+            color: white;
+        }
+        .file-category-header h3 {
+            margin: 0; font-size: 1rem; font-weight: 700;
+        }
+        .file-category-header .file-cat-meta {
+            font-size: 0.8rem; opacity: 0.8; margin-top: 4px;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(69, 119, 152, 0.06);
+            font-size: 0.9rem;
+        }
+        .file-item:last-child { border-bottom: none; }
+        .file-item-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--mm-dark-blue);
+        }
+        .file-item-name i {
+            color: var(--mm-deep-blue);
+            width: 16px;
+            text-align: center;
+        }
+        .file-item-sku {
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: #999;
+        }
+        .file-item-actions {
+            display: flex;
+            gap: 6px;
+        }
+        .file-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .file-btn-view {
+            background: rgba(69, 119, 152, 0.1);
+            color: var(--mm-deep-blue);
+        }
+        .file-btn-view:hover {
+            background: var(--mm-deep-blue);
+            color: white;
+        }
+        .file-btn-download {
+            background: rgba(143, 188, 139, 0.15);
+            color: var(--success-color);
+        }
+        .file-btn-download:hover {
+            background: var(--success-color);
+            color: white;
+        }
+        .file-btn-pending {
+            background: rgba(184, 132, 74, 0.1);
+            color: var(--warning-color);
+            cursor: default;
+        }
+        .file-placeholder-notice {
+            padding: 16px 20px;
+            background: rgba(184, 132, 74, 0.08);
+            border-left: 3px solid var(--warning-color);
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
         .product-name {
             color: var(--mm-dark-blue);
         }
@@ -2246,6 +2369,7 @@
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="specs-tab" tabindex="-1" onclick="switchTab('specs', event)">Spec Tracker</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="timeline-tab" tabindex="-1" onclick="switchTab('timeline', event)">Timeline</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="assets-tab" tabindex="-1" onclick="switchTab('assets', event)">Assets & Specs</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="files-tab" tabindex="-1" onclick="switchTab('files', event)"><i class="fas fa-folder-open" style="margin-right:6px"></i>Final Files</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="ecommerce-tab" tabindex="-1" onclick="switchTab('ecommerce', event)"><i class="fas fa-shopping-cart" style="margin-right:6px"></i>E-Commerce Proposal</button>
     </div>
 
@@ -2628,7 +2752,7 @@
                 <!-- BARS SECTION -->
                 <div class="pricing-row category">
                     <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
-                        BARS (6 designs) - Compliance Updates - Subtotal: $1,567.09 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0355)</span>
+                        BARS (6 designs) - Compliance Updates - Subtotal: $1,567.09 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0355)</span> <a href="#" class="file-link" onclick="switchTab('files', event); return false;"><i class="fas fa-folder-open"></i> Files</a>
                     </div>
                 </div>
                 <div class="pricing-row">
@@ -2671,7 +2795,7 @@
                 <!-- MOONS SECTION -->
                 <div class="pricing-row category" style="margin-top: 15px;">
                     <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
-                        MOONS (6 designs) - Compliance Updates - Subtotal: $1,567.09 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0359)</span>
+                        MOONS (6 designs) - Compliance Updates - Subtotal: $1,567.09 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0359)</span> <a href="#" class="file-link" onclick="switchTab('files', event); return false;"><i class="fas fa-folder-open"></i> Files</a>
                     </div>
                 </div>
                 <div class="pricing-row">
@@ -2714,7 +2838,7 @@
                 <!-- BAR CDUs SECTION -->
                 <div class="pricing-row category" style="margin-top: 15px;">
                     <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
-                        BAR CDUs (6 designs) - Compliance Updates - Subtotal: $2,350.63 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0356)</span>
+                        BAR CDUs (6 designs) - Compliance Updates - Subtotal: $2,350.63 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0356)</span> <a href="#" class="file-link" onclick="switchTab('files', event); return false;"><i class="fas fa-folder-open"></i> Files</a>
                     </div>
                 </div>
                 <div class="pricing-row">
@@ -2757,7 +2881,7 @@
                 <!-- BANANAS SECTION -->
                 <div class="pricing-row category" style="margin-top: 15px;">
                     <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
-                        BANANAS (1 design) - Compliance Update - Subtotal: $162.12 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0363)</span>
+                        BANANAS (1 design) - Compliance Update - Subtotal: $162.12 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0363)</span> <a href="#" class="file-link" onclick="switchTab('files', event); return false;"><i class="fas fa-folder-open"></i> Files</a>
                     </div>
                 </div>
                 <div class="pricing-row">
@@ -2770,7 +2894,7 @@
                 <!-- MOON CDUs SECTION -->
                 <div class="pricing-row category" style="margin-top: 15px;">
                     <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
-                        MOON CDUs (6 designs) - New Design (100% New Product) + 5 Clones - Subtotal: $3,290.86 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0363)</span>
+                        MOON CDUs (6 designs) - New Design (100% New Product) + 5 Clones - Subtotal: $3,290.86 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0363)</span> <a href="#" class="file-link" onclick="switchTab('files', event); return false;"><i class="fas fa-folder-open"></i> Files</a>
                     </div>
                 </div>
                 <div class="pricing-row">
@@ -2813,7 +2937,7 @@
                 <!-- BANANA CDU SECTION -->
                 <div class="pricing-row category" style="margin-top: 15px;">
                     <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
-                        BANANA CDU (1 design) - 50% Mates Rate - Subtotal: $940.26 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0363)</span>
+                        BANANA CDU (1 design) - 50% Mates Rate - Subtotal: $940.26 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0363)</span> <a href="#" class="file-link" onclick="switchTab('files', event); return false;"><i class="fas fa-folder-open"></i> Files</a>
                     </div>
                 </div>
                 <div class="pricing-row">
@@ -2827,7 +2951,7 @@
                 <!-- ICONS SECTION -->
                 <div class="pricing-row category" style="margin-top: 15px;">
                     <div colspan="4" style="grid-column: 1 / -1; font-weight: 700; background: var(--mm-cream); padding: 12px 15px; border-radius: 8px;">
-                        CERTIFICATION ICONS (8 icons) - 4 Updated + 4 New - Subtotal: $151.25 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0354)</span>
+                        CERTIFICATION ICONS (8 icons) - 4 Updated + 4 New - Subtotal: $151.25 <span style="background: var(--success-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 8px;">PAID (INV-0354)</span> <a href="#" class="file-link" onclick="switchTab('files', event); return false;"><i class="fas fa-folder-open"></i> Files</a>
                     </div>
                 </div>
                 <div class="pricing-row">
@@ -4449,16 +4573,82 @@ Contact: hello@handtomouse.org
             if (progressText) progressText.textContent = `${progress}% Complete (${completed}/${total} designs)`;
         }
 
+        // ============================================================
+        // FINAL FILES — Google Drive URL Map
+        // Replace '#' with actual Google Drive share URLs when available.
+        // Format: 'data-file-key': 'https://drive.google.com/file/d/...'
+        // ============================================================
+        const fileUrls = {
+            // Bars
+            bar_pure_carob: '#',
+            bar_goji_coconut: '#',
+            bar_cayenne_chilli: '#',
+            bar_salted_almond: '#',
+            bar_peppermint: '#',
+            bar_hazelnut: '#',
+            // Moons
+            moon_pure_carob: '#',
+            moon_coconut_goji: '#',
+            moon_almond_salt: '#',
+            moon_cayenne_chilli: '#',
+            moon_hazelnut: '#',
+            moon_peppermint: '#',
+            // Bar CDUs
+            cdu_bar_pure_carob: '#',
+            cdu_bar_goji: '#',
+            cdu_bar_chilli: '#',
+            cdu_bar_almond: '#',
+            cdu_bar_peppermint: '#',
+            cdu_bar_hazelnut: '#',
+            // Moon CDUs
+            cdu_moon_pure_carob: '#',
+            cdu_moon_goji: '#',
+            cdu_moon_almond: '#',
+            cdu_moon_chilli: '#',
+            cdu_moon_hazelnut: '#',
+            cdu_moon_peppermint: '#',
+            // Bananas
+            banana_4pack: '#',
+            cdu_banana: '#',
+            // Icons
+            icon_caffeine_free: '#',
+            icon_gluten_free: '#',
+            icon_vegan: '#',
+            icon_additive_free: '#',
+            icon_organic: '#',
+            icon_sugar_free: '#',
+            icon_aus_made: '#',
+            icon_wholefood: '#',
+        };
+
+        // Wire up all file-btn-view clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.file-btn-view').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const key = this.getAttribute('data-file');
+                    const url = fileUrls[key];
+                    if (url && url !== '#') {
+                        window.open(url, '_blank');
+                    } else {
+                        // Show a brief tooltip-style message
+                        const orig = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-link"></i> Link pending';
+                        this.style.background = 'rgba(184, 132, 74, 0.15)';
+                        this.style.color = 'var(--warning-color)';
+                        setTimeout(() => {
+                            this.innerHTML = orig;
+                            this.style.background = '';
+                            this.style.color = '';
+                        }, 1500);
+                    }
+                });
+            });
+        });
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             updateHeroCard();
-
-            // Auto-hide approval banner if no items need approval
-            // (In production, this would check actual approval status)
-            // const approvalBanner = document.getElementById('approval-banner');
-            // if (approvalBanner && noItemsNeedApproval) {
-            //     approvalBanner.style.display = 'none';
-            // }
         });
 </script>
 
@@ -4475,6 +4665,420 @@ Contact: hello@handtomouse.org
             <table class="spec-table" id="asset-table">
                 <!-- Asset table will be loaded via JavaScript -->
             </table>
+        </div>
+    </div>
+
+    <!-- Final Files Tab -->
+    <div id="files-tab" class="tab-content">
+        <h2 style="color: var(--mm-brown); margin-bottom: 10px;"><i class="fas fa-folder-open" style="margin-right: 10px; color: var(--mm-deep-blue);"></i>Final Deliverable Files</h2>
+        <p style="color: #666; margin-bottom: 20px;">All completed design files for the MapleMoon AFQA project. Click to view or download from Google Drive.</p>
+
+        <div class="file-placeholder-notice">
+            <strong><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Google Drive links pending</strong> — File links will be connected once the Google Drive folder URLs are provided. Click any "View" button to open the file directly.
+        </div>
+
+        <!-- Summary stats -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px;">
+            <div style="background: rgba(143, 188, 139, 0.1); padding: 14px 16px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.6rem; font-weight: 700; color: var(--success-color);">26</div>
+                <div style="font-size: 0.8rem; color: #666;">Designs Delivered</div>
+            </div>
+            <div style="background: rgba(143, 188, 139, 0.1); padding: 14px 16px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.6rem; font-weight: 700; color: var(--success-color);">8</div>
+                <div style="font-size: 0.8rem; color: #666;">Icons Delivered</div>
+            </div>
+            <div style="background: rgba(184, 132, 74, 0.1); padding: 14px 16px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.6rem; font-weight: 700; color: var(--warning-color);">2</div>
+                <div style="font-size: 0.8rem; color: #666;">Elixirs In Progress</div>
+            </div>
+            <div style="background: rgba(69, 119, 152, 0.1); padding: 14px 16px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.6rem; font-weight: 700; color: var(--mm-deep-blue);">7</div>
+                <div style="font-size: 0.8rem; color: #666;">Categories</div>
+            </div>
+        </div>
+
+        <div class="files-grid">
+
+            <!-- BARS -->
+            <div class="file-category-card">
+                <div class="file-category-header">
+                    <h3><i class="fas fa-candy-cane" style="margin-right: 8px;"></i>Bars (6 designs)</h3>
+                    <div class="file-cat-meta">INV-0355 — Completed & Paid</div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Pure Carob Bar</div>
+                        <div class="file-item-sku">MM_BAR_PCAR_50G — Master Template</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="bar_pure_carob"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Goji & Coconut Bar</div>
+                        <div class="file-item-sku">MM_BAR_GCOC_50G</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="bar_goji_coconut"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Cayenne Chilli Bar</div>
+                        <div class="file-item-sku">MM_BAR_CHIL_50G</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="bar_cayenne_chilli"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Salted Almond Bar</div>
+                        <div class="file-item-sku">MM_BAR_ASAL_50G</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="bar_salted_almond"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Peppermint Buckwheat Bar</div>
+                        <div class="file-item-sku">MM_BAR_PMIN_50G</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="bar_peppermint"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Roasted Hazelnut Bar</div>
+                        <div class="file-item-sku">MM_BAR_HNUT_50G</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="bar_hazelnut"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOONS -->
+            <div class="file-category-card">
+                <div class="file-category-header">
+                    <h3><i class="fas fa-moon" style="margin-right: 8px;"></i>Moons (6 designs)</h3>
+                    <div class="file-cat-meta">INV-0359 — Completed & Paid</div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Pure Carob Moons</div>
+                        <div class="file-item-sku">MM_MOON_PCAR_45G — Master Template</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="moon_pure_carob"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Coconut & Goji Moons</div>
+                        <div class="file-item-sku">MM_MOON_GCOC_45G</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="moon_coconut_goji"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Almond Celtic Salt Moons</div>
+                        <div class="file-item-sku">MM_MOON_ASAL_45G</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="moon_almond_salt"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Cayenne Chilli Moons</div>
+                        <div class="file-item-sku">MM_MOON_CHIL_45G</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="moon_cayenne_chilli"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Roasted Hazelnut Moons</div>
+                        <div class="file-item-sku">MM_MOON_HNUT_45G</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="moon_hazelnut"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Peppermint Buckwheat Moons</div>
+                        <div class="file-item-sku">MM_MOON_PMIN_45G</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="moon_peppermint"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BAR CDUs -->
+            <div class="file-category-card">
+                <div class="file-category-header">
+                    <h3><i class="fas fa-box-open" style="margin-right: 8px;"></i>Bar CDUs (6 designs)</h3>
+                    <div class="file-cat-meta">INV-0356 — Completed & Paid</div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Pure Carob Bar CDU</div>
+                        <div class="file-item-sku">MM_CDU_BAR_PCAR — BC: 0743966644696</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_bar_pure_carob"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Goji & Coconut Bar CDU</div>
+                        <div class="file-item-sku">MM_CDU_BAR_GCOC — BC: 0743966127625</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_bar_goji"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Cayenne Chilli Bar CDU</div>
+                        <div class="file-item-sku">MM_CDU_BAR_CHIL — BC: 0743966644719</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_bar_chilli"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Salted Almond Bar CDU</div>
+                        <div class="file-item-sku">MM_CDU_BAR_ASAL — BC: 0743966644733</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_bar_almond"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Peppermint Bar CDU</div>
+                        <div class="file-item-sku">MM_CDU_BAR_PMIN — BC: 0743966644757</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_bar_peppermint"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Roasted Hazelnut Bar CDU</div>
+                        <div class="file-item-sku">MM_CDU_BAR_HNUT — BC: 0743966644771</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_bar_hazelnut"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOON CDUs -->
+            <div class="file-category-card">
+                <div class="file-category-header">
+                    <h3><i class="fas fa-box-open" style="margin-right: 8px;"></i>Moon CDUs (6 designs)</h3>
+                    <div class="file-cat-meta">INV-0363 — Completed & Paid</div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Pure Carob Moon CDU</div>
+                        <div class="file-item-sku">MM_CDU_MOON_PCAR — BC: 0743966644641</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_moon_pure_carob"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Coconut & Goji Moon CDU</div>
+                        <div class="file-item-sku">MM_CDU_MOON_GCOC — BC: 0743966644542</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_moon_goji"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Almond Celtic Salt Moon CDU</div>
+                        <div class="file-item-sku">MM_CDU_MOON_ASAL — BC: 0743966644566</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_moon_almond"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Cayenne Chilli Moon CDU</div>
+                        <div class="file-item-sku">MM_CDU_MOON_CHIL — BC: 0743966644580</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_moon_chilli"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Roasted Hazelnut Moon CDU</div>
+                        <div class="file-item-sku">MM_CDU_MOON_HNUT — BC: 0743966644603</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_moon_hazelnut"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Peppermint Moon CDU</div>
+                        <div class="file-item-sku">MM_CDU_MOON_PMIN — BC: 0743966644627</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_moon_peppermint"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BANANAS -->
+            <div class="file-category-card">
+                <div class="file-category-header">
+                    <h3><i class="fas fa-apple-alt" style="margin-right: 8px;"></i>Bananas 4-Pack</h3>
+                    <div class="file-cat-meta">INV-0363 — Completed & Paid</div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Bananas 4-Pack (80g)</div>
+                        <div class="file-item-sku">MM_MUL_BANN_4PK — BC: 0743966127632</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="banana_4pack"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Banana CDU</div>
+                        <div class="file-item-sku">MM_CDU_BANN — BC: 0743966644665</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="cdu_banana"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ICONS -->
+            <div class="file-category-card">
+                <div class="file-category-header" style="background: linear-gradient(135deg, #5a8f5a, #4a7a4a);">
+                    <h3><i class="fas fa-certificate" style="margin-right: 8px;"></i>Certification Icons (8)</h3>
+                    <div class="file-cat-meta">INV-0354 — Completed & Paid</div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-image"></i> Caffeine Free</div>
+                        <div class="file-item-sku">Updated icon — 25% compliance rate</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="icon_caffeine_free"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-image"></i> Gluten Free</div>
+                        <div class="file-item-sku">Updated icon — 25% compliance rate</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="icon_gluten_free"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-image"></i> Vegan</div>
+                        <div class="file-item-sku">Updated icon — 25% compliance rate</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="icon_vegan"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-image"></i> Additive Free</div>
+                        <div class="file-item-sku">Updated icon — 25% compliance rate</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="icon_additive_free"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-image"></i> Organic</div>
+                        <div class="file-item-sku">New icon — Full rate</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="icon_organic"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-image"></i> Sugar Free</div>
+                        <div class="file-item-sku">New icon — Full rate</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="icon_sugar_free"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-image"></i> Australian Made Map</div>
+                        <div class="file-item-sku">New icon — Full rate</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="icon_aus_made"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-image"></i> 4 Wholefood Ingredients</div>
+                        <div class="file-item-sku">New icon — Full rate</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <a href="#" class="file-btn file-btn-view" data-file="icon_wholefood"><i class="fas fa-eye"></i> View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ELIXIRS (In Progress) -->
+            <div class="file-category-card" style="opacity: 0.7;">
+                <div class="file-category-header" style="background: linear-gradient(135deg, var(--warning-color), #a07040);">
+                    <h3><i class="fas fa-flask" style="margin-right: 8px;"></i>Elixirs (2 designs)</h3>
+                    <div class="file-cat-meta">In Progress — AFQA Compliance</div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Plain Carob Elixir (250ml)</div>
+                        <div class="file-item-sku">MM_ELX_PCAR_250ML — TPP Cylinder 73x115mm</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <span class="file-btn file-btn-pending"><i class="fas fa-clock"></i> Pending</span>
+                    </div>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <div class="file-item-name"><i class="fas fa-file-pdf"></i> Spiced Carob Elixir (250ml)</div>
+                        <div class="file-item-sku">MM_ELX_SPIC_250ML — TPP Cylinder 73x115mm</div>
+                    </div>
+                    <div class="file-item-actions">
+                        <span class="file-btn file-btn-pending"><i class="fas fa-clock"></i> Pending</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
