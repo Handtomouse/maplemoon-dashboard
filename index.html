@@ -330,17 +330,17 @@
 
         .badge-complete {
             background: rgba(143, 188, 139, 0.2);
-            color: var(--success-color);
+            color: #3D6D3D;
         }
 
         .badge-new {
             background: rgba(98, 171, 249, 0.2);
-            color: var(--afqa-accent);
+            color: #1A5A96;
         }
 
         .badge-pending {
             background: rgba(212, 165, 116, 0.2);
-            color: var(--warning-color);
+            color: #7D5428;
         }
 
         /* Timeline */
@@ -817,8 +817,22 @@
             .actions-grid {
                 grid-template-columns: 1fr;
             }
+
+            .files-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .file-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .file-item-actions {
+                align-self: flex-end;
+            }
         }
-    
+
         /* Approval Workflow System */
         .approval-status {
             display: inline-flex;
@@ -1094,6 +1108,41 @@
             .timeline-countdown {
                 font-size: 1.75rem;
             }
+
+            .files-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .file-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .file-item-actions {
+                align-self: flex-end;
+            }
+
+            .card-amount {
+                font-size: 1.8rem;
+            }
+
+            .brand-header {
+                padding: 15px;
+            }
+
+            .finance-card {
+                padding: 15px;
+            }
+
+            .timeline-week {
+                padding: 12px;
+                gap: 8px;
+            }
+
+            .week-label {
+                font-size: 0.8rem;
+            }
         }
 
         /* Cost Breakdown Tooltips */
@@ -1164,9 +1213,6 @@
             background: rgba(243, 156, 18, 0.15);
             color: #F39C12;
         }
-</style>
-
-    <style>
         /* Tab Navigation */
         .tab-navigation {
             display: flex;
@@ -1433,14 +1479,14 @@
             background: rgba(231, 76, 60, 0.05);
         }
 
-        .card-header {
+        .kanban-card .card-header {
             display: flex;
             justify-content: space-between;
             align-items: start;
             margin-bottom: 10px;
         }
 
-        .card-title {
+        .kanban-card .card-title {
             font-weight: 700;
             color: #66584D;
             font-size: 0.95rem;
@@ -1578,7 +1624,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
-        .timeline-week {
+        #timeline-items .timeline-week {
             margin: 20px 0;
             padding: 15px;
             border-left: 4px solid #D4A574;
@@ -1586,12 +1632,12 @@
             border-radius: 4px;
         }
 
-        .timeline-week.blocked {
+        #timeline-items .timeline-week.blocked {
             border-left-color: #E74C3C;
             background: rgba(231, 76, 60, 0.05);
         }
 
-        .timeline-week h4 {
+        #timeline-items .timeline-week h4 {
             margin: 0 0 10px 0;
             color: #66584D;
             font-size: 1.1rem;
@@ -2402,9 +2448,9 @@
                 </div>
 
                 <div class="client-summary">
-                    <h3 class="accordion-header" onclick="toggleAccordion(this, 'financial-overview-content')">
+                    <h3 class="accordion-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleAccordion(this, 'financial-overview-content')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleAccordion(this,'financial-overview-content')}">
                         Complete Financial Overview
-                        <i class="fas fa-chevron-down accordion-icon"></i>
+                        <i class="fas fa-chevron-down accordion-icon" aria-hidden="true"></i>
                     </h3>
                     <div id="financial-overview-content" class="accordion-content">
                         <div class="summary-item">
@@ -2525,7 +2571,7 @@
 
         <!-- Section 1: Original Packaging Project (2024-2025) -->
         <div id="original-project-section" class="content-section fade-in stagger-2 collapsed">
-            <div class="section-header accordion-header" onclick="toggleSection('original-project-section')">
+            <div class="section-header accordion-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleSection('original-project-section')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('original-project-section')}">
                 <div>
                     <h2 class="section-title">
                         Original Packaging Project
@@ -2535,7 +2581,7 @@
                         <span class="section-summary">36 invoices completed, excellent payment history</span>
                     </div>
                 </div>
-                <i class="fas fa-chevron-down accordion-icon" style="color: white; font-size: 1.5rem;"></i>
+                <i class="fas fa-chevron-down accordion-icon" style="color: white; font-size: 1.5rem;" aria-hidden="true"></i>
             </div>
 
             <div style="padding: 30px;">
@@ -2585,7 +2631,7 @@
 
         <!-- Section 2: Gap Period Work (Standalone Transition) - PAID -->
         <div id="gap-period-section" class="content-section fade-in stagger-3 collapsed">
-            <div class="section-header accordion-header" style="background: linear-gradient(135deg, rgba(143, 188, 139, 0.15), rgba(143, 188, 139, 0.05));" onclick="toggleSection('gap-period-section')">
+            <div class="section-header accordion-header" role="button" tabindex="0" aria-expanded="false" style="background: linear-gradient(135deg, rgba(143, 188, 139, 0.15), rgba(143, 188, 139, 0.05));" onclick="toggleSection('gap-period-section')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('gap-period-section')}">
                 <div>
                     <h2 class="section-title">
                         Gap Period Work
@@ -2593,7 +2639,7 @@
                     </h2>
                     <div class="section-subtitle">August - October 2025 • Transition Period • Completed</div>
                 </div>
-                <i class="fas fa-chevron-down accordion-icon" style="color: white; font-size: 1.5rem;"></i>
+                <i class="fas fa-chevron-down accordion-icon" style="color: white; font-size: 1.5rem;" aria-hidden="true"></i>
             </div>
 
             <div style="padding: 30px;">
@@ -3023,7 +3069,7 @@
                     <div class="week-deliverable">Bars (6 designs)</div>
                     <div class="week-amount">$1,567.09</div>
                     <div class="week-status">
-                        <div class="status-icon" style="background: var(--success-color);"><i class="fas fa-check"></i></div>
+                        <div class="status-icon" style="background: var(--success-color);"><i class="fas fa-check" aria-hidden="true"></i></div>
                         <span style="color: var(--success-color);">COMPLETE</span>
                     </div>
                 </div>
@@ -3033,7 +3079,7 @@
                     <div class="week-deliverable">Bar CDUs (6 designs)</div>
                     <div class="week-amount">$2,350.63</div>
                     <div class="week-status">
-                        <div class="status-icon" style="background: var(--success-color);"><i class="fas fa-check"></i></div>
+                        <div class="status-icon" style="background: var(--success-color);"><i class="fas fa-check" aria-hidden="true"></i></div>
                         <span style="color: var(--success-color);">COMPLETE</span>
                     </div>
                 </div>
@@ -3043,7 +3089,7 @@
                     <div class="week-deliverable">Moons (6) + Icons (8)</div>
                     <div class="week-amount">$1,718.14</div>
                     <div class="week-status">
-                        <div class="status-icon" style="background: var(--success-color);"><i class="fas fa-check"></i></div>
+                        <div class="status-icon" style="background: var(--success-color);"><i class="fas fa-check" aria-hidden="true"></i></div>
                         <span style="color: var(--success-color);">COMPLETE</span>
                     </div>
                 </div>
@@ -3053,7 +3099,7 @@
                     <div class="week-deliverable">Moon CDUs (6) + Bananas + Banana CDU</div>
                     <div class="week-amount">$4,393.24</div>
                     <div class="week-status">
-                        <div class="status-icon" style="background: var(--success-color);"><i class="fas fa-check"></i></div>
+                        <div class="status-icon" style="background: var(--success-color);"><i class="fas fa-check" aria-hidden="true"></i></div>
                         <span style="color: var(--success-color);">COMPLETE & PAID (INV-0363)</span>
                     </div>
                 </div>
@@ -3064,7 +3110,7 @@
                     <div class="week-deliverable">Elixirs (2 designs) — AFQA Compliance</div>
                     <div class="week-amount">$626.84</div>
                     <div class="week-status">
-                        <div class="status-icon" style="background: var(--afqa-accent);"><i class="fas fa-arrow-right"></i></div>
+                        <div class="status-icon" style="background: var(--afqa-accent);"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
                         <span style="color: var(--afqa-accent); font-weight: 700;">IN PROGRESS</span>
                     </div>
                 </div>
@@ -3939,23 +3985,28 @@ Contact: hello@handtomouse.org
         function toggleAccordion(element, contentId) {
             const content = document.getElementById(contentId);
             const icon = element.querySelector('.accordion-icon');
+            const isExpanded = content.classList.contains('expanded');
 
-            if (content.classList.contains('expanded')) {
+            if (isExpanded) {
                 content.classList.remove('expanded');
                 icon.classList.remove('expanded');
             } else {
                 content.classList.add('expanded');
                 icon.classList.add('expanded');
             }
+            element.setAttribute('aria-expanded', String(!isExpanded));
         }
 
         // Section toggle for content-section elements
         function toggleSection(sectionId) {
             const section = document.getElementById(sectionId);
+            const header = section.querySelector('.accordion-header');
             const icon = section.querySelector('.accordion-icon');
 
             section.classList.toggle('collapsed');
             icon.classList.toggle('expanded');
+            const isExpanded = !section.classList.contains('collapsed');
+            header.setAttribute('aria-expanded', String(isExpanded));
         }
 
         // loadProjectData is called from the single DOMContentLoaded below
@@ -5349,37 +5400,37 @@ Contact: hello@handtomouse.org
                     <div class="week-label">Week 1</div>
                     <div class="week-deliverable"><strong>Discovery & Setup</strong> — Kickoff workshop, Shopify account setup, theme selection, content audit, sitemap finalisation</div>
                     <div class="week-amount">Deposit Due</div>
-                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check" aria-hidden="true"></i></div> Ready</div>
                 </div>
                 <div class="timeline-week">
                     <div class="week-label">Week 2–3</div>
                     <div class="week-deliverable"><strong>Design & Build</strong> — Theme customisation, homepage hero, product page templates, collection pages, navigation structure</div>
                     <div class="week-amount"></div>
-                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check" aria-hidden="true"></i></div> Ready</div>
                 </div>
                 <div class="timeline-week">
                     <div class="week-label">Week 3–4</div>
                     <div class="week-deliverable"><strong>Content & Products</strong> — Product migration from WooCommerce, copy & SEO, photo direction, content pages built</div>
                     <div class="week-amount"></div>
-                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check" aria-hidden="true"></i></div> Ready</div>
                 </div>
                 <div class="timeline-week">
                     <div class="week-label">Week 4–5</div>
                     <div class="week-deliverable"><strong>Integrations</strong> — Klaviyo email flows, GA4 + Meta Pixel, reviews (Judge.me), AusPost shipping, Stripe/PayPal/Afterpay</div>
                     <div class="week-amount">Midpoint Due</div>
-                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check" aria-hidden="true"></i></div> Ready</div>
                 </div>
                 <div class="timeline-week">
                     <div class="week-label">Week 5–6</div>
                     <div class="week-deliverable"><strong>Testing & QA</strong> — Cross-browser testing, mobile QA, checkout flow testing, speed optimisation, accessibility check</div>
                     <div class="week-amount"></div>
-                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check" aria-hidden="true"></i></div> Ready</div>
                 </div>
                 <div class="timeline-week">
                     <div class="week-label">Week 6–7</div>
                     <div class="week-deliverable"><strong>Training & Handover</strong> — 2× live training sessions (product management, orders, Klaviyo basics), documentation</div>
                     <div class="week-amount"></div>
-                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check"></i></div> Ready</div>
+                    <div class="week-status"><div class="status-icon ready"><i class="fas fa-check" aria-hidden="true"></i></div> Ready</div>
                 </div>
                 <div class="timeline-week" style="border-left-color:var(--success-color);background:linear-gradient(135deg, #f0fff0, #fff)">
                     <div class="week-label">Week 7–8</div>
