@@ -1,44 +1,42 @@
-# MapleMoon AFQA Quote Dashboard
+# MapleMoon AFQA Dashboard
 
-Interactive client dashboard for MapleMoon's AFQA Compliance Packaging Project.
+Client dashboard for MapleMoon's AFQA Compliance Packaging Project.
 
-## Features
+**Live**: [dashboarddeployment.vercel.app](https://dashboarddeployment.vercel.app)
 
-- **Quote Overview**: Visual breakdown of all 4 project stages
-- **Embedded Invoice**: Real invoice PDF (INV-0341) embedded as base64
-- **Payment Integration**: Direct Xero payment link
-- **Approval Workflow**: One-click email approval
-- **No Backend Required**: All data embedded in static HTML
+## Project Status
 
-## Project Details
+- **Total AFQA Value**: $10,656.14 (Inc GST)
+- **Paid**: $10,029.30 (original scope — 26 designs + 8 icons)
+- **In Progress**: $626.84 (2 Elixirs — AFQA compliance)
+- **Target**: February 28, 2026
 
-**Total**: $7,962.97 (Inc GST)
-**Scope**: 26 packaging designs + 8 certification icons
-**Payment Structure**: Approval-Based Payment (Pay on Approval)
-**Timeline**: Dec 2-22, 2025 (3 weeks to Christmas deadline)
-**Deadlines**: Dec 22 (finalization) | Dec 23 (Christmas print) | Jan 13, 2026 (CNY alternative)
+## Invoices
 
-## Deployment
+| Invoice | Amount (Inc GST) | Items | Status |
+|---------|-----------------|-------|--------|
+| INV-0354 | $151.25 | Icons (8) | Paid |
+| INV-0355 | $1,567.09 | Bars (6) | Paid |
+| INV-0356 | $2,350.63 | Bar CDUs (6) | Paid |
+| INV-0359 | $1,567.09 | Moons (6) | Paid |
+| INV-0363 | $4,393.24 | Moon CDUs (6) + Bananas + Banana CDU | Paid |
 
-This is a static HTML file - deploy to any static hosting:
-- Vercel
-- Netlify
-- GitHub Pages
-- AWS S3
-- Or any web server
+## Tabs
 
-## Embedded Data
+- **Quote & Invoice** — Pricing breakdown, timeline, action cards
+- **Project Tracker** — Kanban board from `data/project_status.json`
+- **Spec Tracker** — Product specs, barcodes, dimensions
+- **Timeline** — Week-by-week progress
+- **Assets & Specs** — Asset library with status indicators
+- **Final Files** — Google Drive links to all 36 print-ready PDFs
+- **E-Commerce Proposal** — Shopify website proposal
 
-- Invoice PDF: INV-0341 (78KB, base64 encoded)
-- Xero Payment Link: Pre-generated
-- All quote details: Hard-coded for client review
+## Tech
 
-## Technical Stack
-
-- Pure HTML/CSS/JavaScript
-- No dependencies
-- No build process
-- Works offline after first load
+- Static HTML/CSS/JS (no build, no dependencies)
+- Data: `data/project_status.json`
+- Deployed via Vercel (auto-deploy on push to `main`)
+- Final files linked to Google Drive via file IDs
 
 ---
 
