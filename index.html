@@ -831,6 +831,34 @@
             .file-item-actions {
                 align-self: flex-end;
             }
+
+            /* Deck tab responsive */
+            .deck-theme-showdown,
+            .deck-app-stack {
+                grid-template-columns: 1fr;
+            }
+
+            .deck-progress-track {
+                height: auto;
+                flex-direction: column;
+            }
+
+            .deck-progress-segment {
+                flex-direction: row;
+                gap: 8px;
+                padding: 10px 15px;
+                justify-content: flex-start;
+            }
+
+            .deck-milestone-markers {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .deck-milestone {
+                flex-direction: row;
+                gap: 10px;
+            }
         }
 
         /* Approval Workflow System */
@@ -1143,6 +1171,46 @@
             .week-label {
                 font-size: 0.8rem;
             }
+
+            /* Deck tab 480px */
+            .deck-theme-mini-grid,
+            .deck-product-grid,
+            .deck-recommendation-grid,
+            .deck-blocker-grid,
+            .deck-week-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .deck-section-header {
+                font-size: 1.3rem;
+                padding: 0 15px;
+            }
+
+            .deck-section-sub {
+                padding: 0 15px;
+            }
+
+            .deck-theme-showdown,
+            .deck-app-stack,
+            .deck-product-grid,
+            .deck-recommendation-grid,
+            .deck-blocker-grid,
+            .deck-chip-list,
+            .deck-comparison-table,
+            .deck-week-grid {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .deck-progress-track {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+
+            .deck-milestone-markers {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
         }
 
         /* Cost Breakdown Tooltips */
@@ -1389,6 +1457,538 @@
         .back-to-top:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
+        }
+
+        /* ============================================
+           E-COMMERCE RESEARCH DECK TAB STYLES
+           ============================================ */
+
+        /* Section headers for deck */
+        .deck-section {
+            margin-bottom: 40px;
+        }
+
+        .deck-section-header {
+            font-family: var(--font-primary);
+            font-size: 1.6rem;
+            color: var(--mm-dark-blue);
+            margin-bottom: 8px;
+            padding: 0 30px;
+        }
+
+        .deck-section-sub {
+            font-size: 0.9rem;
+            color: var(--mm-deep-blue);
+            opacity: 0.8;
+            padding: 0 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Theme comparison cards */
+        .deck-theme-showdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 0 30px 30px;
+        }
+
+        .deck-theme-card {
+            background: var(--mm-white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            border-top: 5px solid;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .deck-theme-card.recommended {
+            border-top-color: var(--success-color);
+        }
+
+        .deck-theme-card.premium {
+            border-top-color: var(--mm-lilac);
+        }
+
+        .deck-theme-card .theme-name {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            color: var(--mm-dark-blue);
+        }
+
+        .deck-theme-card .theme-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--mm-deep-blue);
+            margin: 8px 0;
+        }
+
+        .deck-theme-card .theme-score {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .deck-theme-card.recommended .theme-score {
+            background: rgba(90, 143, 90, 0.15);
+            color: #3D6D3D;
+        }
+
+        .deck-theme-card.premium .theme-score {
+            background: rgba(216, 207, 242, 0.4);
+            color: #6B5B95;
+        }
+
+        .deck-theme-card .theme-features {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0;
+        }
+
+        .deck-theme-card .theme-features li {
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: var(--mm-dark-blue);
+            border-bottom: 1px solid rgba(69, 119, 152, 0.08);
+        }
+
+        .deck-theme-card .theme-features li:last-child {
+            border-bottom: none;
+        }
+
+        .deck-score-bar {
+            height: 8px;
+            background: rgba(69, 119, 152, 0.12);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .deck-score-bar .score-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--mm-deep-blue);
+        }
+
+        .deck-theme-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            padding: 0 30px 30px;
+        }
+
+        .deck-theme-mini {
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            border-radius: var(--border-radius-small);
+            padding: 14px;
+            border-left: 4px solid var(--mm-deep-blue);
+        }
+
+        .deck-theme-mini .mini-name {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--mm-dark-blue);
+        }
+
+        .deck-theme-mini .mini-score {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--mm-deep-blue);
+        }
+
+        .deck-theme-mini .mini-price {
+            font-size: 0.8rem;
+            color: var(--mm-deep-blue);
+            opacity: 0.7;
+        }
+
+        /* App stack columns */
+        .deck-app-stack {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 0 30px 30px;
+        }
+
+        .deck-app-column {
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border-top: 4px solid;
+        }
+
+        .deck-app-column.phase-1 { border-top-color: var(--afqa-accent); }
+        .deck-app-column.phase-15 { border-top-color: var(--mm-lilac); }
+
+        .deck-app-column .phase-label {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            color: var(--mm-dark-blue);
+        }
+
+        .deck-app-column .phase-cost {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--mm-deep-blue);
+            margin-bottom: 20px;
+        }
+
+        .deck-app-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(69, 119, 152, 0.08);
+        }
+
+        .deck-app-item:last-child { border-bottom: none; }
+
+        .deck-app-item .app-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--mm-white);
+            flex-shrink: 0;
+        }
+
+        .deck-app-item .app-info { flex: 1; }
+
+        .deck-app-item .app-name {
+            font-weight: 600;
+            color: var(--mm-dark-blue);
+            font-size: 0.9rem;
+        }
+
+        .deck-app-item .app-detail {
+            font-size: 0.8rem;
+            color: var(--mm-deep-blue);
+            opacity: 0.7;
+        }
+
+        .app-cost-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .app-cost-badge.free { background: rgba(90, 143, 90, 0.15); color: #3D6D3D; }
+        .app-cost-badge.paid { background: rgba(184, 132, 74, 0.15); color: #7D5428; }
+
+        /* Product architecture grid */
+        .deck-product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            padding: 0 30px 30px;
+        }
+
+        .deck-product-card {
+            background: var(--mm-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow-soft);
+            border-left: 5px solid var(--mm-deep-blue);
+            transition: var(--transition);
+        }
+
+        .deck-product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .deck-product-card .product-cat-emoji {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .deck-product-card .product-cat-name {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            color: var(--mm-dark-blue);
+        }
+
+        .deck-product-card .product-cat-count {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--mm-deep-blue);
+        }
+
+        .deck-product-card .product-cat-detail {
+            font-size: 0.85rem;
+            color: var(--mm-deep-blue);
+            opacity: 0.8;
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        .deck-chip-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 30px 30px;
+        }
+
+        .deck-chip {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .deck-chip.primary { background: rgba(98, 171, 249, 0.15); color: #1A5A96; }
+        .deck-chip.dietary { background: rgba(90, 143, 90, 0.15); color: #3D6D3D; }
+        .deck-chip.marketing { background: rgba(216, 207, 242, 0.4); color: #6B5B95; }
+
+        /* Competitor recommendation cards */
+        .deck-recommendation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 0 30px 30px;
+        }
+
+        .deck-recommendation-card {
+            padding: 20px 20px 20px 28px;
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            border-radius: var(--border-radius-small);
+            border-left: 4px solid var(--mm-deep-blue);
+            position: relative;
+        }
+
+        .deck-recommendation-card .rec-number {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--mm-deep-blue);
+            color: var(--mm-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .deck-recommendation-card h4 {
+            font-family: var(--font-primary);
+            color: var(--mm-dark-blue);
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .deck-recommendation-card p {
+            color: var(--mm-deep-blue);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .deck-recommendation-card .rec-brands {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--mm-deep-blue);
+            opacity: 0.6;
+        }
+
+        /* Comparison table */
+        .deck-comparison-table {
+            padding: 0 30px 30px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .deck-comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+
+        .deck-comparison-table th {
+            background: rgba(69, 119, 152, 0.08);
+            color: var(--mm-dark-blue);
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            border-bottom: 2px solid var(--mm-deep-blue);
+            white-space: nowrap;
+        }
+
+        .deck-comparison-table th:first-child { text-align: left; }
+
+        .deck-comparison-table td {
+            padding: 8px 10px;
+            text-align: center;
+            border-bottom: 1px solid rgba(69, 119, 152, 0.08);
+            color: var(--mm-dark-blue);
+        }
+
+        .deck-comparison-table td:first-child { text-align: left; font-weight: 600; }
+
+        /* Timeline progress bar */
+        .deck-progress-track {
+            display: flex;
+            gap: 0;
+            border-radius: var(--border-radius-small);
+            overflow: hidden;
+            height: 56px;
+            margin: 0 30px 15px;
+        }
+
+        .deck-progress-segment {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 4px;
+            color: var(--mm-white);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .deck-progress-segment .seg-hours {
+            font-size: 1rem;
+        }
+
+        .deck-progress-segment .seg-label {
+            font-size: 0.6rem;
+            opacity: 0.85;
+        }
+
+        .deck-progress-segment.wk-1 { background: #1E4366; }
+        .deck-progress-segment.wk-2 { background: #2B5A80; }
+        .deck-progress-segment.wk-3 { background: #3A7099; }
+        .deck-progress-segment.wk-4 { background: #62ABF9; }
+        .deck-progress-segment.wk-5 { background: #D8CFF2; color: var(--mm-dark-blue); }
+        .deck-progress-segment.wk-6 { background: #B8844A; }
+        .deck-progress-segment.wk-7 { background: #457798; }
+        .deck-progress-segment.wk-8 { background: #5A8F5A; }
+
+        .deck-milestone-markers {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px 30px;
+        }
+
+        .deck-milestone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .deck-milestone .milestone-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 3px solid var(--mm-deep-blue);
+            background: var(--mm-white);
+        }
+
+        .deck-milestone .milestone-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--mm-dark-blue);
+            text-align: center;
+        }
+
+        .deck-milestone .milestone-amount {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #3D6D3D;
+        }
+
+        /* Week detail cards */
+        .deck-week-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 0 30px 30px;
+        }
+
+        .deck-week-card {
+            background: var(--mm-white);
+            border-radius: var(--border-radius-small);
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(69, 119, 152, 0.08);
+        }
+
+        .deck-week-card .week-num {
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--mm-deep-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .deck-week-card .week-focus {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            color: var(--mm-dark-blue);
+            margin: 4px 0;
+        }
+
+        .deck-week-card .week-hrs {
+            font-size: 0.8rem;
+            color: var(--mm-deep-blue);
+            opacity: 0.7;
+        }
+
+        .deck-week-card .week-deliverables {
+            font-size: 0.8rem;
+            color: var(--mm-dark-blue);
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+
+        /* Blocker cards */
+        .deck-blocker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            padding: 0 30px 30px;
+        }
+
+        .deck-blocker-card {
+            background: linear-gradient(135deg, #fff5f5, #fff);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border-left: 5px solid var(--danger-color);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .deck-blocker-card h4 {
+            font-family: var(--font-primary);
+            color: var(--danger-color);
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .deck-blocker-card p {
+            color: var(--mm-dark-blue);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .deck-blocker-card .blocker-impact {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(184, 84, 80, 0.15);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--danger-color);
         }
 
         /* #16 Scope grid mobile */
@@ -2419,6 +3019,7 @@
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="assets-tab" tabindex="-1" onclick="switchTab('assets', event)">Assets & Specs</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="files-tab" tabindex="-1" onclick="switchTab('files', event)"><i class="fas fa-folder-open" style="margin-right:6px"></i>Final Files</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="ecommerce-tab" tabindex="-1" onclick="switchTab('ecommerce', event)"><i class="fas fa-shopping-cart" style="margin-right:6px"></i>E-Commerce Proposal</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="research-tab" tabindex="-1" onclick="switchTab('research', event)"><i class="fas fa-flask" style="margin-right:6px"></i>Shopify Research</button>
     </div>
 
     <!-- Quote Tab (existing content) -->
@@ -5530,6 +6131,632 @@ Contact: hello@handtomouse.org
                         <h4><i class="fas fa-handshake" style="color:var(--mm-deep-blue);margin-right:8px"></i>Existing Partnership</h4>
                         <p>We already know your brand, assets, and team. 20% loyalty discount applied.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Shopify Research Deck Tab -->
+    <div id="research-tab" class="tab-content" role="tabpanel" aria-labelledby="research-tab-btn">
+
+        <!-- Slide 1: Hero Stats -->
+        <header class="brand-header fade-in" style="margin-bottom: 30px;">
+            <div class="header-content">
+                <div class="maple-logo">
+                    <img src="assets/maplemoon-logo.svg" alt="MapleMoon" style="width: 200px; height: auto; margin: 0 auto; display: block;">
+                </div>
+                <div class="project-title">
+                    <h1>Shopify E-Commerce Research</h1>
+                    <div class="project-subtitle">Platform, Theme, App Stack & Competitive Intelligence</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="financial-overview fade-in stagger-1">
+            <div class="finance-card total">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-dollar-sign" aria-hidden="true"></i></div>
+                    <div class="card-title">Core Build</div>
+                </div>
+                <div class="card-amount">$13,206</div>
+                <div class="card-description">Inc GST, 20% existing client discount</div>
+            </div>
+            <div class="finance-card afqa">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-calendar-alt" aria-hidden="true"></i></div>
+                    <div class="card-title">Timeline</div>
+                </div>
+                <div class="card-amount">8 Weeks</div>
+                <div class="card-description">~98 hours, late March/April 2026</div>
+            </div>
+            <div class="finance-card paid">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-boxes" aria-hidden="true"></i></div>
+                    <div class="card-title">Product Catalog</div>
+                </div>
+                <div class="card-amount">51 SKUs</div>
+                <div class="card-description">20 products across 16 collections</div>
+            </div>
+            <div class="finance-card outstanding">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-search" aria-hidden="true"></i></div>
+                    <div class="card-title">Competitors Audited</div>
+                </div>
+                <div class="card-amount">9 Brands</div>
+                <div class="card-description">AU health food DTC on Shopify</div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Theme Showdown -->
+        <div class="deck-section fade-in stagger-2">
+            <h2 class="deck-section-header">Theme Showdown</h2>
+            <p class="deck-section-sub">Two strong options for a premium food/wellness DTC brand</p>
+
+            <div class="deck-theme-showdown">
+                <div class="deck-theme-card recommended">
+                    <div class="theme-score">8/10 MapleMoon Fit</div>
+                    <div class="theme-name">Taste</div>
+                    <div class="theme-price">Free</div>
+                    <div class="deck-score-bar"><div class="score-fill" style="width: 80%; background: var(--success-color);"></div></div>
+                    <ul class="theme-features">
+                        <li>Built-in NIP display sections</li>
+                        <li>Ingredients & FAQ sections included</li>
+                        <li>Food/beverage-specific design</li>
+                        <li>Lighthouse mobile: 85-90</li>
+                        <li>Recommended for budget launch</li>
+                    </ul>
+                </div>
+                <div class="deck-theme-card premium">
+                    <div class="theme-score">9/10 MapleMoon Fit</div>
+                    <div class="theme-name">Local</div>
+                    <div class="theme-price">$360 USD</div>
+                    <div class="deck-score-bar"><div class="score-fill" style="width: 90%; background: #6B5B95;"></div></div>
+                    <ul class="theme-features">
+                        <li>Nutri-score module built in</li>
+                        <li>30+ sections, food type icons</li>
+                        <li>Most complete food brand theme</li>
+                        <li>Lighthouse mobile: 80-85</li>
+                        <li>Premium option if budget allows</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="deck-theme-mini-grid">
+                <div class="deck-theme-mini">
+                    <div class="mini-score">7/10</div>
+                    <div class="mini-name">Refresh</div>
+                    <div class="mini-price">Free &mdash; wellness aesthetic, certifications built-in</div>
+                </div>
+                <div class="deck-theme-mini">
+                    <div class="mini-score">7/10</div>
+                    <div class="mini-name">Modular</div>
+                    <div class="mini-price">$300 &mdash; visual powerhouse, product badges</div>
+                </div>
+                <div class="deck-theme-mini">
+                    <div class="mini-score">6/10</div>
+                    <div class="mini-name">Sense</div>
+                    <div class="mini-price">Free &mdash; beautiful wellness, lacks food features</div>
+                </div>
+                <div class="deck-theme-mini">
+                    <div class="mini-score">6/10</div>
+                    <div class="mini-name">Craft</div>
+                    <div class="mini-price">Free &mdash; excellent storytelling, not food-specific</div>
+                </div>
+                <div class="deck-theme-mini">
+                    <div class="mini-score">5/10</div>
+                    <div class="mini-name">Dawn</div>
+                    <div class="mini-price">Free &mdash; fastest, most flexible, most work needed</div>
+                </div>
+                <div class="deck-theme-mini">
+                    <div class="mini-score">5/10</div>
+                    <div class="mini-name">Crave</div>
+                    <div class="mini-price">Free &mdash; food features but 27% review score</div>
+                </div>
+                <div class="deck-theme-mini">
+                    <div class="mini-score">5/10</div>
+                    <div class="mini-name">Canopy</div>
+                    <div class="mini-price">$390 &mdash; too grocery-focused for premium DTC</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: App Stack -->
+        <div class="deck-section fade-in stagger-3">
+            <h2 class="deck-section-header">App Stack</h2>
+            <p class="deck-section-sub">Phase 1 launches lean, Phase 1.5 adds wholesale & subscriptions</p>
+
+            <div class="deck-app-stack">
+                <div class="deck-app-column phase-1">
+                    <div class="phase-label">Phase 1: Launch</div>
+                    <div class="phase-cost">~$99/mo</div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #62ABF9;"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Klaviyo</div>
+                            <div class="app-detail">Email flows, abandoned cart, welcome series</div>
+                        </div>
+                        <span class="app-cost-badge free">Free*</span>
+                    </div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #5A8F5A;"><i class="fas fa-star" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Judge.me</div>
+                            <div class="app-detail">Photo reviews, SEO snippets</div>
+                        </div>
+                        <span class="app-cost-badge free">Free</span>
+                    </div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #B8844A;"><i class="fas fa-shipping-fast" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Native AusPost</div>
+                            <div class="app-detail">Calculated rates, label printing</div>
+                        </div>
+                        <span class="app-cost-badge free">Free</span>
+                    </div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #457798;"><i class="fas fa-credit-card" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Shopify Payments</div>
+                            <div class="app-detail">1.75% + 30c domestic, inc Apple/Google Pay</div>
+                        </div>
+                        <span class="app-cost-badge paid">$55/mo</span>
+                    </div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #1E4366;"><i class="fas fa-clock" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Afterpay</div>
+                            <div class="app-detail">BNPL, 66% sales uplift reported</div>
+                        </div>
+                        <span class="app-cost-badge paid">4-6% fee</span>
+                    </div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #D8CFF2; color: #6B5B95;"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Analyzify</div>
+                            <div class="app-detail">Server-side GA4 + Meta CAPI</div>
+                        </div>
+                        <span class="app-cost-badge paid">$99/mo</span>
+                    </div>
+                </div>
+
+                <div class="deck-app-column phase-15">
+                    <div class="phase-label">Phase 1.5: Growth</div>
+                    <div class="phase-cost">~$230-370/mo</div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #62ABF9;"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Klaviyo (Scaled)</div>
+                            <div class="app-detail">500-1k contacts, advanced segments</div>
+                        </div>
+                        <span class="app-cost-badge paid">$20-30/mo</span>
+                    </div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #5A8F5A;"><i class="fas fa-star" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Judge.me Awesome</div>
+                            <div class="app-detail">Carousel, Q&A, coupons</div>
+                        </div>
+                        <span class="app-cost-badge paid">$15/mo</span>
+                    </div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #B8844A;"><i class="fas fa-shipping-fast" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Starshipit</div>
+                            <div class="app-detail">Multi-carrier, automation, up to 100/mo</div>
+                        </div>
+                        <span class="app-cost-badge paid">$45/mo</span>
+                    </div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #457798;"><i class="fas fa-store" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">SparkLayer</div>
+                            <div class="app-detail">Wholesale B2B portal, ABN verification</div>
+                        </div>
+                        <span class="app-cost-badge paid">$49/mo</span>
+                    </div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #1E4366;"><i class="fas fa-sync" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Loop Subscriptions</div>
+                            <div class="app-detail">Subscribe & save for snack boxes</div>
+                        </div>
+                        <span class="app-cost-badge paid">0.75%/txn</span>
+                    </div>
+
+                    <div class="deck-app-item">
+                        <div class="app-icon" style="background: #D8CFF2; color: #6B5B95;"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Analyzify/Elevar</div>
+                            <div class="app-detail">Enhanced attribution, consent mode</div>
+                        </div>
+                        <span class="app-cost-badge paid">$99-200/mo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Product Architecture -->
+        <div class="deck-section fade-in stagger-2">
+            <h2 class="deck-section-header">Product Architecture</h2>
+            <p class="deck-section-sub">20 products, 51 SKUs across 16 collections with full metafield schema</p>
+
+            <div class="deck-product-grid">
+                <div class="deck-product-card" style="border-left-color: #B8844A;">
+                    <div class="product-cat-emoji">🍫</div>
+                    <div class="product-cat-name">Carob Bars</div>
+                    <div class="product-cat-count">6 flavours &times; 3 sizes</div>
+                    <div class="product-cat-detail">Single / 6-Pack / 12-Pack<br>Pure, Goji &amp; Coconut, Cayenne, Almond, Peppermint, Hazelnut</div>
+                </div>
+                <div class="deck-product-card" style="border-left-color: #D8CFF2;">
+                    <div class="product-cat-emoji">🌙</div>
+                    <div class="product-cat-name">Carob Moons</div>
+                    <div class="product-cat-count">6 flavours &times; 3 sizes</div>
+                    <div class="product-cat-detail">4-Pack / 6&times;4-Pack / 12&times;4-Pack<br>Same flavour range as bars</div>
+                </div>
+                <div class="deck-product-card" style="border-left-color: #62ABF9;">
+                    <div class="product-cat-emoji">🍌</div>
+                    <div class="product-cat-name">Carob Bananas</div>
+                    <div class="product-cat-count">1 product &times; 3 sizes</div>
+                    <div class="product-cat-detail">4-Pack / 6-Pack / 12-Pack</div>
+                </div>
+                <div class="deck-product-card" style="border-left-color: #5A8F5A;">
+                    <div class="product-cat-emoji">🧪</div>
+                    <div class="product-cat-name">Carob Elixirs</div>
+                    <div class="product-cat-count">2 flavours &times; 2 sizes</div>
+                    <div class="product-cat-detail">Single / 6-Pack<br>Plain Carob + Spiced Carob (250ml)</div>
+                </div>
+                <div class="deck-product-card" style="border-left-color: #B85450;">
+                    <div class="product-cat-emoji">📦</div>
+                    <div class="product-cat-name">Bundles</div>
+                    <div class="product-cat-count">3-5 curated sets</div>
+                    <div class="product-cat-detail">Mix-and-match builder, "Carob Curious Starter", "Full Moon Box"</div>
+                </div>
+                <div class="deck-product-card" style="border-left-color: #457798;">
+                    <div class="product-cat-emoji">🎁</div>
+                    <div class="product-cat-name">Gift Sets</div>
+                    <div class="product-cat-count">2-3 options + gift cards</div>
+                    <div class="product-cat-detail">Price-tiered: $30 / $50 / $75</div>
+                </div>
+            </div>
+
+            <h3 class="deck-section-header" style="font-size: 1.1rem; margin-bottom: 12px;">16 Collections</h3>
+            <div class="deck-chip-list">
+                <span class="deck-chip primary">All Products</span>
+                <span class="deck-chip primary">Carob Bars</span>
+                <span class="deck-chip primary">Moons</span>
+                <span class="deck-chip primary">Bananas</span>
+                <span class="deck-chip primary">Elixirs</span>
+                <span class="deck-chip primary">Bundles</span>
+                <span class="deck-chip primary">Gift Sets</span>
+                <span class="deck-chip primary">New Arrivals</span>
+                <span class="deck-chip dietary">Vegan</span>
+                <span class="deck-chip dietary">Gluten Free</span>
+                <span class="deck-chip dietary">Sugar Free</span>
+                <span class="deck-chip dietary">Organic</span>
+                <span class="deck-chip dietary">Caffeine Free</span>
+                <span class="deck-chip marketing">Best Sellers</span>
+                <span class="deck-chip marketing">Staff Picks</span>
+                <span class="deck-chip marketing">Subscribe &amp; Save</span>
+            </div>
+        </div>
+
+        <!-- Slide 5: Competitor Intelligence -->
+        <div class="deck-section fade-in stagger-2">
+            <h2 class="deck-section-header">Competitor Intelligence</h2>
+            <p class="deck-section-sub">Top 10 recommendations from auditing 9 Australian health food Shopify stores</p>
+
+            <div class="deck-recommendation-grid">
+                <div class="deck-recommendation-card">
+                    <div class="rec-number">1</div>
+                    <h4>Bundle Builder</h4>
+                    <p>"Choose Your Own" mix-and-match at a discount. Let customers mix Bars, Moons, Bananas, Elixirs.</p>
+                    <div class="rec-brands">Pana Organic, Macro Mike, Health Lab</div>
+                </div>
+                <div class="deck-recommendation-card">
+                    <div class="rec-number">2</div>
+                    <h4>Sample/Discovery Pack</h4>
+                    <p>Low-barrier entry point at $25-35. Converts first-time buyers into regulars.</p>
+                    <div class="rec-brands">Fodbods ($38), Health Lab ($26)</div>
+                </div>
+                <div class="deck-recommendation-card">
+                    <div class="rec-number">3</div>
+                    <h4>Subscribe &amp; Save</h4>
+                    <p>10-15% off recurring orders. Critical for consumable snacks with natural replenishment cycles.</p>
+                    <div class="rec-brands">Nutra Organics (15%), Fodbods, Amazonia</div>
+                </div>
+                <div class="deck-recommendation-card">
+                    <div class="rec-number">4</div>
+                    <h4>Wholesale Trade Page</h4>
+                    <p>Dedicated /pages/wholesale with ABN form. Not a hidden email link.</p>
+                    <div class="rec-brands">All established brands</div>
+                </div>
+                <div class="deck-recommendation-card">
+                    <div class="rec-number">5</div>
+                    <h4>Certification Badges</h4>
+                    <p>Organic, Vegan, GF, Caffeine Free displayed above the fold on every product page and in header.</p>
+                    <div class="rec-brands">Fodbods, Amazonia, Pana Organic</div>
+                </div>
+                <div class="deck-recommendation-card">
+                    <div class="rec-number">6</div>
+                    <h4>Gifting Collection</h4>
+                    <p>Price-tiered gift boxes at $30/$50/$75. Strong for carob as an artisanal/health-conscious gift.</p>
+                    <div class="rec-brands">Byron Bay Cookie, Pana Organic</div>
+                </div>
+                <div class="deck-recommendation-card">
+                    <div class="rec-number">7</div>
+                    <h4>Named Bundles</h4>
+                    <p>Give bundles personality: "The Full Moon Box", "Carob Curious Starter", "Office Snack Pack".</p>
+                    <div class="rec-brands">Health Lab ("Busy Babe", "3pm Best Of")</div>
+                </div>
+                <div class="deck-recommendation-card">
+                    <div class="rec-number">8</div>
+                    <h4>Comprehensive Product Info</h4>
+                    <p>Ingredients, NIP, allergens, storage, certifications on every product. Table stakes for food DTC.</p>
+                    <div class="rec-brands">All 9 audited stores</div>
+                </div>
+                <div class="deck-recommendation-card">
+                    <div class="rec-number">9</div>
+                    <h4>Loyalty Program</h4>
+                    <p>Points-based rewards system. Add in Phase 2 via Smile.io or LoyaltyLion.</p>
+                    <div class="rec-brands">Macro Mike (points system)</div>
+                </div>
+                <div class="deck-recommendation-card">
+                    <div class="rec-number">10</div>
+                    <h4>Recipe Content for SEO</h4>
+                    <p>Carob recipes drive organic traffic and demonstrate product versatility beyond snacking.</p>
+                    <div class="rec-brands">Multiple brands use blog/recipe sections</div>
+                </div>
+            </div>
+
+            <h3 class="deck-section-header" style="font-size: 1.1rem; margin-bottom: 12px;">Feature Comparison</h3>
+            <div class="deck-comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Carob Kitchen</th>
+                            <th>Pana</th>
+                            <th>Fodbods</th>
+                            <th>Macro Mike</th>
+                            <th>Nutra Organics</th>
+                            <th>Health Lab</th>
+                            <th>Amazonia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Subscribe &amp; Save</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-check">&#x2713;</td>
+                        </tr>
+                        <tr>
+                            <td>Bundle Builder</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-check">&#x2713;</td>
+                        </tr>
+                        <tr>
+                            <td>Wholesale Page</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                        </tr>
+                        <tr>
+                            <td>Sample Pack</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                        </tr>
+                        <tr>
+                            <td>Loyalty Program</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                        </tr>
+                        <tr>
+                            <td>Certifications</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-check">&#x2713;</td>
+                        </tr>
+                        <tr>
+                            <td>Gift Options</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-check">&#x2713;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                            <td class="deck-cross">&#x2717;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 6: Build Timeline -->
+        <div class="deck-section fade-in stagger-2">
+            <h2 class="deck-section-header">Build Timeline</h2>
+            <p class="deck-section-sub">8-week phased build with 30/40/30 milestone payments</p>
+
+            <div class="deck-progress-track">
+                <div class="deck-progress-segment wk-1">
+                    <span class="seg-hours">9h</span>
+                    <span class="seg-label">Wk 1</span>
+                </div>
+                <div class="deck-progress-segment wk-2">
+                    <span class="seg-hours">15h</span>
+                    <span class="seg-label">Wk 2</span>
+                </div>
+                <div class="deck-progress-segment wk-3">
+                    <span class="seg-hours">16h</span>
+                    <span class="seg-label">Wk 3</span>
+                </div>
+                <div class="deck-progress-segment wk-4">
+                    <span class="seg-hours">19h</span>
+                    <span class="seg-label">Wk 4</span>
+                </div>
+                <div class="deck-progress-segment wk-5">
+                    <span class="seg-hours">13h</span>
+                    <span class="seg-label">Wk 5</span>
+                </div>
+                <div class="deck-progress-segment wk-6">
+                    <span class="seg-hours">12h</span>
+                    <span class="seg-label">Wk 6</span>
+                </div>
+                <div class="deck-progress-segment wk-7">
+                    <span class="seg-hours">9h</span>
+                    <span class="seg-label">Wk 7</span>
+                </div>
+                <div class="deck-progress-segment wk-8">
+                    <span class="seg-hours">5h</span>
+                    <span class="seg-label">Wk 8</span>
+                </div>
+            </div>
+
+            <div class="deck-milestone-markers">
+                <div class="deck-milestone">
+                    <div class="milestone-dot"></div>
+                    <div>
+                        <div class="milestone-label">Milestone 1 (30%)</div>
+                        <div class="milestone-amount">$3,962</div>
+                    </div>
+                </div>
+                <div class="deck-milestone">
+                    <div class="milestone-dot"></div>
+                    <div>
+                        <div class="milestone-label">Milestone 2 (40%)</div>
+                        <div class="milestone-amount">$5,282</div>
+                    </div>
+                </div>
+                <div class="deck-milestone">
+                    <div class="milestone-dot"></div>
+                    <div>
+                        <div class="milestone-label">Milestone 3 (30%)</div>
+                        <div class="milestone-amount">$3,962</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deck-week-grid">
+                <div class="deck-week-card">
+                    <div class="week-num">Week 1</div>
+                    <div class="week-focus">Foundation</div>
+                    <div class="week-hrs">9 hours</div>
+                    <div class="week-deliverables">Dev store, theme setup, metafields schema, WooCommerce data export</div>
+                </div>
+                <div class="deck-week-card">
+                    <div class="week-num">Week 2</div>
+                    <div class="week-focus">Products &amp; Content</div>
+                    <div class="week-hrs">15 hours</div>
+                    <div class="week-deliverables">CSV import, metafield data, product images, collections, tags, variants</div>
+                </div>
+                <div class="deck-week-card">
+                    <div class="week-num">Week 3</div>
+                    <div class="week-focus">Theme &amp; Pages</div>
+                    <div class="week-hrs">16 hours</div>
+                    <div class="week-deliverables">Custom NIP/cert sections, homepage, about, FAQ, legal pages</div>
+                </div>
+                <div class="deck-week-card">
+                    <div class="week-num">Week 4</div>
+                    <div class="week-focus">Integrations</div>
+                    <div class="week-hrs">19 hours</div>
+                    <div class="week-deliverables">Klaviyo flows, Judge.me, payments, shipping config, Analyzify</div>
+                </div>
+                <div class="deck-week-card">
+                    <div class="week-num">Week 5</div>
+                    <div class="week-focus">Bundles &amp; Polish</div>
+                    <div class="week-hrs">13 hours</div>
+                    <div class="week-deliverables">Bundle/gift setup, search config, mobile testing, accessibility</div>
+                </div>
+                <div class="deck-week-card">
+                    <div class="week-num">Week 6</div>
+                    <div class="week-focus">Testing &amp; QA</div>
+                    <div class="week-hrs">12 hours</div>
+                    <div class="week-deliverables">Checkout flows, shipping calc, email triggers, analytics, redirects</div>
+                </div>
+                <div class="deck-week-card">
+                    <div class="week-num">Week 7</div>
+                    <div class="week-focus">Launch Prep</div>
+                    <div class="week-hrs">9 hours</div>
+                    <div class="week-deliverables">DNS, SSL, customer import, 301 redirects, GSC, Business Profile</div>
+                </div>
+                <div class="deck-week-card">
+                    <div class="week-num">Week 8</div>
+                    <div class="week-focus">Go-Live</div>
+                    <div class="week-hrs">5 hours</div>
+                    <div class="week-deliverables">Launch, error monitoring, test orders, analytics verification</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Blockers -->
+        <div class="deck-section fade-in stagger-2">
+            <h2 class="deck-section-header" style="color: var(--danger-color);">Blockers &amp; Action Items</h2>
+            <p class="deck-section-sub">These must be resolved before the Shopify build can begin</p>
+
+            <div class="deck-blocker-grid">
+                <div class="deck-blocker-card">
+                    <h4>Retail Pricing Not Confirmed</h4>
+                    <p>All product prices (singles, 6-packs, 12-packs) need to be set by Dylan &amp; Carli before product setup can begin.</p>
+                    <div class="blocker-impact">Blocks: Product setup, variants, bundles, all pricing</div>
+                </div>
+                <div class="deck-blocker-card">
+                    <h4>Elixir Barcodes Missing</h4>
+                    <p>AFQA compliance at 30%. Elixir barcodes (EAN-13) needed for product pages and inventory tracking.</p>
+                    <div class="blocker-impact">Blocks: Elixir product pages, barcode scanning</div>
+                </div>
+                <div class="deck-blocker-card">
+                    <h4>Product Photography</h4>
+                    <p>Confirm: using AFQA renders or commissioning a new product shoot? Need front, back, and lifestyle shots.</p>
+                    <div class="blocker-impact">Blocks: Product pages, homepage hero, social</div>
+                </div>
+                <div class="deck-blocker-card">
+                    <h4>Brand Content Not Written</h4>
+                    <p>Our Story, Ingredients &amp; Sourcing, Recipes, Blog &mdash; 4+ pages have no copy yet.</p>
+                    <div class="blocker-impact">Blocks: 4+ content pages, SEO, brand narrative</div>
+                </div>
+                <div class="deck-blocker-card">
+                    <h4>Packaging Dimensions Unknown</h4>
+                    <p>Box weights and dimensions for each product needed for accurate shipping rate calculations.</p>
+                    <div class="blocker-impact">Blocks: Shipping config, rate accuracy</div>
                 </div>
             </div>
         </div>
