@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapleMoon — Wholefood Carob | Ethereal Theme</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Ethereal Theme — Warm Minimalism ── */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #FDFCF8;
+            color: #3D3D35;
+        }
+
+        /* ── 1. Navigation ── */
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 50px;
+            background: #FFFFFF;
+            border-bottom: 1px solid #EEEBE2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .nav.scrolled {
+            box-shadow: 0 1px 8px rgba(61, 61, 53, 0.04);
+        }
+
+        .nav-inner {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .nav-links-left,
+        .nav-links-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links-left {
+            margin-right: auto;
+        }
+
+        .nav-links-right {
+            margin-left: auto;
+        }
+
+        .nav-link {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #6B6B5E;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #3D3D35;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #3D3D35;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+            padding: 0 40px;
+        }
+
+        .nav-cart {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6B6B5E;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-cart:hover {
+            color: #3D3D35;
+        }
+
+        /* ── 2. Hero Section ── */
+
+        .hero {
+            min-height: 80vh;
+            margin-top: 50px;
+            background-image: url('img/orris_stacked_amber.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(253, 252, 248, 0.35);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 120px 24px;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 400;
+            color: #3D3D35;
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 1rem;
+            color: #6B6B5E;
+            margin-bottom: 48px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6B6B5E;
+            border: 1px solid #6B6B5E;
+            background: transparent;
+            padding: 14px 40px;
+            cursor: pointer;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        .hero-cta:hover {
+            background: #6B6B5E;
+            color: #FDFCF8;
+        }
+
+        /* ── 3. Product Grid ── */
+
+        .products {
+            background: #FDFCF8;
+            padding: 80px 24px;
+        }
+
+        .products-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .product-card {
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.02);
+        }
+
+        .product-card:hover .product-image {
+            box-shadow: 0 8px 32px rgba(61, 61, 53, 0.08);
+        }
+
+        .product-card .product-image {
+            transition: box-shadow 0.5s ease;
+            box-shadow: none;
+        }
+
+        .product-name {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #3D3D35;
+            margin-top: 16px;
+        }
+
+        .product-weight {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.8rem;
+            color: #9B9B8E;
+            margin-top: 12px;
+        }
+
+        .product-price {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 1rem;
+            color: #3D3D35;
+            margin-top: 12px;
+        }
+
+        /* Ethereal cert badges: very subtle */
+        .product-card .cert-row {
+            margin-top: 10px;
+        }
+
+        .product-card .cert-badge {
+            opacity: 0.6;
+            font-size: 0.6rem;
+            padding: 2px 6px;
+        }
+
+        .product-card .cert-badge i {
+            font-size: 0.5rem;
+        }
+
+        /* ── 4. Brand Story ── */
+
+        .brand-story {
+            min-height: 60vh;
+            background-image: url('img/orris_bar_backlit.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-story::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(30, 25, 15, 0.6);
+        }
+
+        .brand-story-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 600px;
+            padding: 100px 24px;
+        }
+
+        .story-rule {
+            width: 60px;
+            height: 1px;
+            background: rgba(255, 252, 245, 0.3);
+            border: none;
+            margin: 0 auto 40px;
+        }
+
+        .story-rule-bottom {
+            margin: 40px auto 0;
+        }
+
+        .brand-story-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: #FDFCF8;
+            margin-bottom: 28px;
+            line-height: 1.3;
+        }
+
+        .brand-story-body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 2;
+            color: rgba(253, 252, 248, 0.8);
+        }
+
+        /* ── 5. Footer ── */
+
+        .footer {
+            background: #FDFCF8;
+            border-top: 1px solid #EEEBE2;
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #3D3D35;
+            margin-bottom: 20px;
+        }
+
+        .footer-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.8rem;
+            color: #9B9B8E;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #3D3D35;
+        }
+
+        .footer-dot {
+            font-size: 0.5rem;
+            color: #C0C0B0;
+        }
+
+        .footer-copyright {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.75rem;
+            color: #C0C0B0;
+            margin-top: 30px;
+        }
+
+        /* ── Responsive ── */
+
+        @media (max-width: 768px) {
+            .nav-links-left,
+            .nav-links-right {
+                display: none;
+            }
+
+            .nav-logo {
+                padding: 0;
+            }
+
+            .nav-cart {
+                right: 20px;
+            }
+
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .hero-title {
+                font-size: clamp(1.8rem, 5vw, 2.8rem);
+            }
+
+            .hero-content {
+                padding: 80px 20px;
+            }
+
+            .brand-story-content {
+                padding: 60px 20px;
+            }
+
+            .brand-story-title {
+                font-size: 1.8rem;
+            }
+
+            .products {
+                padding: 60px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-cta {
+                padding: 12px 32px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── 1. Navigation ── -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <div class="nav-links-left">
+                <a href="#" class="nav-link">Shop</a>
+                <a href="#products" class="nav-link">Bars</a>
+                <a href="#products" class="nav-link">Moons</a>
+            </div>
+            <a href="#" class="nav-logo">MapleMoon</a>
+            <div class="nav-links-right">
+                <a href="#products" class="nav-link">Elixirs</a>
+                <a href="#products" class="nav-link">Bundles</a>
+                <a href="#story" class="nav-link">About</a>
+            </div>
+            <a href="#" class="nav-cart" aria-label="Shopping bag">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ── 2. Hero Section ── -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Wholefood Carob</h1>
+            <p class="hero-subtitle">Crafted from nature. Made in Australia.</p>
+            <a href="#products" class="hero-cta">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- ── 3. Product Grid ── -->
+    <section class="products" id="products">
+        <div class="products-inner">
+            <div class="product-grid">
+
+                <!-- Pure Carob Bar -->
+                <div class="product-card">
+                    <div class="product-image" style="background: var(--flavor-pure-carob);">
+                        <img src="https://orrisparis.com/cdn/shop/products/Deesse_packshot_2_2048x2048.png" alt="Pure Carob Bar">
+                    </div>
+                    <div class="product-name">Pure Carob Bar</div>
+                    <div class="product-weight">40g</div>
+                    <div class="product-price">$6.95</div>
+                    <div class="cert-row">
+                        <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Vegan</span>
+                        <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+                        <span class="cert-badge"><i class="fa-solid fa-seedling"></i> Organic</span>
+                    </div>
+                </div>
+
+                <!-- Goji & Coconut Bar -->
+                <div class="product-card">
+                    <div class="product-image" style="background: var(--flavor-goji);">
+                        <img src="https://orrisparis.com/cdn/shop/products/Soliste_packshotcopy_2048x2048.png" alt="Goji & Coconut Bar">
+                    </div>
+                    <div class="product-name">Goji &amp; Coconut Bar</div>
+                    <div class="product-weight">40g</div>
+                    <div class="product-price">$7.50</div>
+                    <div class="cert-row">
+                        <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Vegan</span>
+                        <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+                    </div>
+                </div>
+
+                <!-- Cayenne Chilli Bar -->
+                <div class="product-card">
+                    <div class="product-image" style="background: var(--flavor-cayenne);">
+                        <img src="https://orrisparis.com/cdn/shop/products/Nomade_packshotBcopy_2048x2048.png" alt="Cayenne Chilli Bar">
+                    </div>
+                    <div class="product-name">Cayenne Chilli Bar</div>
+                    <div class="product-weight">40g</div>
+                    <div class="product-price">$7.50</div>
+                    <div class="cert-row">
+                        <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Vegan</span>
+                        <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+                    </div>
+                </div>
+
+                <!-- Pure Carob Moon 4-Pack -->
+                <div class="product-card">
+                    <div class="product-image" style="background: var(--flavor-pure-carob);">
+                        <img src="https://orrisparis.com/cdn/shop/files/DSCF2385_2048x2048.jpg" alt="Pure Carob Moon 4-Pack">
+                    </div>
+                    <div class="product-name">Pure Carob Moon 4-Pack</div>
+                    <div class="product-weight">4 x 30g</div>
+                    <div class="product-price">$12.95</div>
+                    <div class="cert-row">
+                        <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Vegan</span>
+                        <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+                    </div>
+                </div>
+
+                <!-- Peppermint Moon 4-Pack -->
+                <div class="product-card">
+                    <div class="product-image" style="background: var(--flavor-peppermint);">
+                        <img src="https://orrisparis.com/cdn/shop/products/Botaniste_packshotcopy_2048x2048.png" alt="Peppermint Moon 4-Pack">
+                    </div>
+                    <div class="product-name">Peppermint Moon 4-Pack</div>
+                    <div class="product-weight">4 x 30g</div>
+                    <div class="product-price">$12.95</div>
+                    <div class="cert-row">
+                        <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Vegan</span>
+                        <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+                    </div>
+                </div>
+
+                <!-- Carob Bananas 4-Pack -->
+                <div class="product-card">
+                    <div class="product-image" style="background: var(--flavor-banana);">
+                        <img src="https://orrisparis.com/cdn/shop/files/ritualsetsquare_2048x2048.png" alt="Carob Bananas 4-Pack">
+                    </div>
+                    <div class="product-name">Carob Bananas 4-Pack</div>
+                    <div class="product-weight">4 x 25g</div>
+                    <div class="product-price">$8.50</div>
+                    <div class="cert-row">
+                        <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Vegan</span>
+                        <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+                    </div>
+                </div>
+
+                <!-- Plain Carob Elixir -->
+                <div class="product-card">
+                    <div class="product-image" style="background: var(--flavor-elixir-plain);">
+                        <img src="https://orrisparis.com/cdn/shop/files/ORRIS_Dish_Soap_01_2048x2048.png" alt="Plain Carob Elixir">
+                    </div>
+                    <div class="product-name">Plain Carob Elixir</div>
+                    <div class="product-weight">250ml</div>
+                    <div class="product-price">$9.95</div>
+                    <div class="cert-row">
+                        <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Vegan</span>
+                        <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+                        <span class="cert-badge"><i class="fa-solid fa-seedling"></i> Organic</span>
+                    </div>
+                </div>
+
+                <!-- The Starter Bundle -->
+                <div class="product-card">
+                    <div class="product-image" style="background: var(--flavor-bundle);">
+                        <img src="https://orrisparis.com/cdn/shop/products/LeQuartet_shopify_2048x2048.png" alt="The Starter Bundle">
+                    </div>
+                    <div class="product-name">The Starter Bundle</div>
+                    <div class="product-weight">Mixed selection</div>
+                    <div class="product-price">$34.95</div>
+                    <div class="cert-row">
+                        <span class="cert-badge"><i class="fa-solid fa-gift"></i> Gift Ready</span>
+                        <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Vegan</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 4. Brand Story ── -->
+    <section class="brand-story" id="story">
+        <div class="brand-story-content">
+            <hr class="story-rule">
+            <h2 class="brand-story-title">From Tree to Table</h2>
+            <p class="brand-story-body">
+                Every MapleMoon product begins with Australian-grown carob pods,
+                sun-ripened and hand-harvested from century-old trees across South Australia.
+                We mill, roast, and craft each bar, moon, and elixir in small batches,
+                honouring the slow rhythms of the land. No cacao, no caffeine, no compromise
+                &mdash; just pure, wholefood carob the way nature intended it.
+            </p>
+            <hr class="story-rule story-rule-bottom">
+        </div>
+    </section>
+
+    <!-- ── 5. Footer ── -->
+    <footer class="footer">
+        <div class="footer-logo">MapleMoon</div>
+        <nav class="footer-nav">
+            <a href="#" class="footer-link">Shop</a>
+            <span class="footer-dot">&middot;</span>
+            <a href="#story" class="footer-link">About</a>
+            <span class="footer-dot">&middot;</span>
+            <a href="#" class="footer-link">Contact</a>
+            <span class="footer-dot">&middot;</span>
+            <a href="#" class="footer-link">Instagram</a>
+        </nav>
+        <p class="footer-copyright">&copy; 2026 MapleMoon. All rights reserved.</p>
+    </footer>
+
+    <!-- ── Minimal JS: Nav scroll effect ── -->
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+</body>
+</html>

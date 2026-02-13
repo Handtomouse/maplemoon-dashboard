@@ -93,12 +93,19 @@
         .hero {
             position: relative;
             min-height: 80vh;
-            background: var(--mm-cream);
+            background: url('img/orris_editorial_white.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             padding: 80px 60px;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(232, 229, 206, 0.65);
+            z-index: 0;
         }
 
         /* Floating blob shapes */
@@ -381,11 +388,20 @@
         }
 
         .brand-story {
-            background: var(--mm-deep-blue);
+            background: url('img/orris_flatlay_dark.jpg') center/cover;
             color: var(--mm-cream);
             padding: 80px 60px;
+            position: relative;
+        }
+        .brand-story::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(69, 119, 152, 0.85);
         }
         .brand-story-inner {
+            position: relative;
+            z-index: 1;
             display: flex;
             gap: 60px;
             max-width: 1200px;
@@ -632,7 +648,7 @@
         <!-- 1. Pure Carob Bar -->
         <div class="product-card">
             <div class="product-image shape-bar" style="background: var(--flavor-pure-carob);">
-                <div class="silhouette-bar"></div>
+                <img src="https://orrisparis.com/cdn/shop/products/Deesse_packshot_2_2048x2048.png" alt="Pure Carob Bar" loading="lazy">
             </div>
             <div class="product-info">
                 <div class="product-name">Pure Carob Bar</div>
@@ -650,7 +666,7 @@
         <!-- 2. Goji & Coconut Bar -->
         <div class="product-card">
             <div class="product-image shape-bar" style="background: var(--flavor-goji);">
-                <div class="silhouette-bar"></div>
+                <img src="https://orrisparis.com/cdn/shop/products/Soliste_packshotcopy_2048x2048.png" alt="Goji & Coconut Bar" loading="lazy">
             </div>
             <div class="product-info">
                 <div class="product-name">Goji &amp; Coconut Bar</div>
@@ -668,7 +684,7 @@
         <!-- 3. Cayenne Chilli Bar -->
         <div class="product-card">
             <div class="product-image shape-bar" style="background: var(--flavor-cayenne);">
-                <div class="silhouette-bar"></div>
+                <img src="https://orrisparis.com/cdn/shop/products/Nomade_packshotBcopy_2048x2048.png" alt="Cayenne Chilli Bar" loading="lazy">
             </div>
             <div class="product-info">
                 <div class="product-name">Cayenne Chilli Bar</div>
@@ -686,7 +702,7 @@
         <!-- 4. Pure Carob Moon 4-Pack -->
         <div class="product-card">
             <div class="product-image shape-moon" style="background: var(--flavor-pure-carob);">
-                <div class="silhouette-moon"></div>
+                <img src="https://orrisparis.com/cdn/shop/files/DSCF2385_2048x2048.jpg" alt="Pure Carob Moon" loading="lazy">
             </div>
             <div class="product-info">
                 <div class="product-name">Pure Carob Moon 4-Pack</div>
@@ -704,7 +720,7 @@
         <!-- 5. Peppermint Moon 4-Pack -->
         <div class="product-card">
             <div class="product-image shape-moon" style="background: var(--flavor-peppermint);">
-                <div class="silhouette-moon"></div>
+                <img src="https://orrisparis.com/cdn/shop/products/Botaniste_packshotcopy_2048x2048.png" alt="Peppermint Moon" loading="lazy">
             </div>
             <div class="product-info">
                 <div class="product-name">Peppermint Moon 4-Pack</div>
@@ -722,7 +738,7 @@
         <!-- 6. Carob Bananas 4-Pack -->
         <div class="product-card">
             <div class="product-image shape-banana" style="background: var(--flavor-banana);">
-                <div class="silhouette-banana"></div>
+                <img src="https://orrisparis.com/cdn/shop/files/ritualsetsquare_2048x2048.png" alt="Carob Bananas" loading="lazy">
             </div>
             <div class="product-info">
                 <div class="product-name">Carob Bananas 4-Pack</div>
@@ -740,7 +756,7 @@
         <!-- 7. Plain Carob Elixir -->
         <div class="product-card">
             <div class="product-image shape-elixir" style="background: var(--flavor-elixir-plain);">
-                <div class="silhouette-elixir"></div>
+                <img src="https://orrisparis.com/cdn/shop/files/ORRIS_Dish_Soap_01_2048x2048.png" alt="Plain Carob Elixir" loading="lazy">
             </div>
             <div class="product-info">
                 <div class="product-name">Plain Carob Elixir</div>
@@ -758,7 +774,7 @@
         <!-- 8. The Starter Bundle -->
         <div class="product-card">
             <div class="product-image shape-bundle" style="background: var(--flavor-bundle);">
-                <div class="silhouette-bundle"></div>
+                <img src="https://orrisparis.com/cdn/shop/products/LeQuartet_shopify_2048x2048.png" alt="The Starter Bundle" loading="lazy">
             </div>
             <div class="product-info">
                 <div class="product-name">The Starter Bundle</div>
