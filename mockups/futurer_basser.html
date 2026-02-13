@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MapleMoon — Futurer / Basser Theme Preview</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Futurer / Basser — Premium Cinematic Theme ── */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0D2137;
+            color: #1E4366;
+            overflow-x: hidden;
+        }
+
+        /* ── 1. Navigation ── */
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 70px;
+            background: #1E4366;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 60px;
+            transition: background 0.4s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(30, 67, 102, 0.97);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            gap: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .nav-links a {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.8);
+            transition: color 0.4s ease;
+        }
+
+        .nav-links a:hover {
+            color: #7DB9FA;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            display: block;
+        }
+
+        .nav-cart {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            transition: color 0.4s ease;
+            cursor: pointer;
+        }
+
+        .nav-cart:hover {
+            color: #7DB9FA;
+        }
+
+        /* ── 2. Hero Section ── */
+
+        .hero {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 70px;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(125,185,250,0.08) 0%, transparent 60%),
+                linear-gradient(160deg, #1E4366 0%, #0D2137 50%, #457798 100%);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hero-headline {
+            font-family: var(--font-heading);
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 400;
+            color: #FFFFFF;
+            letter-spacing: 0.08em;
+            line-height: 1.1;
+        }
+
+        .hero-subheadline {
+            font-family: var(--font-body);
+            font-weight: 200;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 18px 50px;
+            border: 1px solid rgba(255,255,255,0.5);
+            background: transparent;
+            color: #FFFFFF;
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        .hero-cta:hover {
+            background: #FFFFFF;
+            color: #1E4366;
+        }
+
+        /* ── 3. Product Grid Section ── */
+
+        .collection {
+            background: #FFFFFF;
+            padding: 100px 60px 80px;
+        }
+
+        .collection-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .collection-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #1E4366;
+            letter-spacing: 0.05em;
+        }
+
+        .collection-subtitle {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.95rem;
+            color: #457798;
+            margin-top: 12px;
+        }
+
+        .product-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            cursor: pointer;
+        }
+
+        .product-card .product-image {
+            border-radius: 8px;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.02);
+        }
+
+        .product-info {
+            padding-top: 20px;
+        }
+
+        .product-name {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            font-size: 1.3rem;
+            color: #1E4366;
+            letter-spacing: 0.02em;
+        }
+
+        .product-weight {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.85rem;
+            color: #457798;
+            margin-top: 4px;
+        }
+
+        .product-price {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: #1E4366;
+            margin-top: 8px;
+        }
+
+        /* Alternating dark card treatment */
+        .product-card:nth-child(even) {
+            background: #1E4366;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .product-card:nth-child(even) .product-name {
+            color: #FFFFFF;
+        }
+
+        .product-card:nth-child(even) .product-weight {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .product-card:nth-child(even) .product-price {
+            color: var(--mm-cream);
+        }
+
+        /* ── 4. Brand Story Section ── */
+
+        .brand-story {
+            background: #0D2137;
+            padding: 100px 80px;
+        }
+
+        .split-layout {
+            display: flex;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .story-visual {
+            flex: 0 0 40%;
+        }
+
+        .story-illustration {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            background: var(--flavor-pure-carob);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-illustration .silhouette-bar {
+            width: 50%;
+            height: 15%;
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .story-illustration .silhouette-bar::after {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 8%;
+            right: 8%;
+            height: 2px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 1px;
+        }
+
+        .story-illustration .silhouette-moon {
+            width: 30%;
+            height: 22%;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .story-content {
+            flex: 0 0 60%;
+        }
+
+        .story-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #FFFFFF;
+            letter-spacing: 0.05em;
+            margin-bottom: 30px;
+        }
+
+        .story-text {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+
+        .cert-row-mono {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .cert-mono {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .cert-mono i {
+            font-size: 0.85rem;
+        }
+
+        /* ── 5. Footer ── */
+
+        .footer {
+            background: #0D2137;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 40px 60px;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo img {
+            height: 24px;
+            display: block;
+            opacity: 0.5;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a,
+        .footer-links span {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            transition: color 0.4s ease;
+        }
+
+        .footer-links a:hover {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-links span {
+            user-select: none;
+        }
+
+        .footer-copyright {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ── Responsive Overrides ── */
+
+        @media (max-width: 1024px) {
+            .collection {
+                padding: 80px 40px;
+            }
+
+            .brand-story {
+                padding: 80px 40px;
+            }
+
+            .split-layout {
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 24px;
+            }
+
+            .nav-inner {
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+
+            .hero-subheadline {
+                font-size: 1rem;
+                letter-spacing: 2px;
+                padding: 0 20px;
+            }
+
+            .hero-cta {
+                padding: 16px 36px;
+            }
+
+            .collection {
+                padding: 60px 24px;
+            }
+
+            .collection-title {
+                font-size: 2rem;
+            }
+
+            .brand-story {
+                padding: 60px 24px;
+            }
+
+            .split-layout {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .story-visual {
+                flex: none;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .story-content {
+                flex: none;
+                width: 100%;
+            }
+
+            .footer {
+                padding: 30px 24px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cert-row-mono {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links a:not(:first-child):not(:last-child) {
+                display: none;
+            }
+
+            .hero-headline {
+                letter-spacing: 0.04em;
+            }
+
+            .product-card:nth-child(even) {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── 1. Navigation ── -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <div class="nav-links">
+                <a href="#collection">Shop</a>
+                <a href="#collection">Bars</a>
+                <a href="#collection">Moons</a>
+            </div>
+            <a href="#" class="nav-logo">
+                <img src="../assets/maplemoon-logo.svg" alt="MapleMoon" style="height:40px;">
+            </a>
+            <div class="nav-links">
+                <a href="#collection">Elixirs</a>
+                <a href="#story">About</a>
+                <a href="#" class="nav-cart" aria-label="Shopping bag"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── 2. Hero Section ── -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-headline">MapleMoon</h1>
+            <p class="hero-subheadline">Wholefood Carob &middot; Crafted in Australia</p>
+            <a href="#collection" class="hero-cta">Explore the Collection</a>
+        </div>
+    </section>
+
+    <!-- ── 3. Product Grid ── -->
+    <section class="collection" id="collection">
+        <div class="collection-header">
+            <h2 class="collection-title">The Collection</h2>
+            <p class="collection-subtitle">Wholefood carob bars, moons & elixirs — crafted with organic ingredients</p>
+        </div>
+
+        <div class="product-grid-2">
+
+            <!-- Product 1: Pure Carob Bar -->
+            <div class="product-card">
+                <div class="product-image" style="background: var(--flavor-pure-carob);">
+                    <div class="silhouette-bar"></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Pure Carob Bar</div>
+                    <div class="product-weight">90g</div>
+                    <div class="product-price">$6.50</div>
+                </div>
+            </div>
+
+            <!-- Product 2: Goji & Coconut Bar -->
+            <div class="product-card">
+                <div class="product-image" style="background: var(--flavor-goji);">
+                    <div class="silhouette-bar"></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Goji &amp; Coconut Bar</div>
+                    <div class="product-weight">90g</div>
+                    <div class="product-price">$7.50</div>
+                </div>
+            </div>
+
+            <!-- Product 3: Cayenne Chilli Bar -->
+            <div class="product-card">
+                <div class="product-image" style="background: var(--flavor-cayenne);">
+                    <div class="silhouette-bar"></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Cayenne Chilli Bar</div>
+                    <div class="product-weight">90g</div>
+                    <div class="product-price">$7.50</div>
+                </div>
+            </div>
+
+            <!-- Product 4: Pure Carob Moon 4-Pack -->
+            <div class="product-card">
+                <div class="product-image" style="background: var(--flavor-pure-carob);">
+                    <div class="silhouette-moon"></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Pure Carob Moon 4-Pack</div>
+                    <div class="product-weight">45g &times; 4</div>
+                    <div class="product-price">$12.00</div>
+                </div>
+            </div>
+
+            <!-- Product 5: Peppermint Moon 4-Pack -->
+            <div class="product-card">
+                <div class="product-image" style="background: var(--flavor-peppermint);">
+                    <div class="silhouette-moon"></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Peppermint Moon 4-Pack</div>
+                    <div class="product-weight">45g &times; 4</div>
+                    <div class="product-price">$12.00</div>
+                </div>
+            </div>
+
+            <!-- Product 6: Carob Bananas 4-Pack -->
+            <div class="product-card">
+                <div class="product-image" style="background: var(--flavor-banana);">
+                    <div class="silhouette-banana"></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Carob Bananas 4-Pack</div>
+                    <div class="product-weight">80g</div>
+                    <div class="product-price">$9.00</div>
+                </div>
+            </div>
+
+            <!-- Product 7: Plain Carob Elixir -->
+            <div class="product-card">
+                <div class="product-image" style="background: var(--flavor-elixir-plain);">
+                    <div class="silhouette-elixir"></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Plain Carob Elixir</div>
+                    <div class="product-weight">250ml</div>
+                    <div class="product-price">$8.50</div>
+                </div>
+            </div>
+
+            <!-- Product 8: The Starter Bundle -->
+            <div class="product-card">
+                <div class="product-image" style="background: var(--flavor-bundle);">
+                    <div class="silhouette-bundle"></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">The Starter Bundle</div>
+                    <div class="product-weight">Mixed</div>
+                    <div class="product-price">$34.00</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── 4. Brand Story Section ── -->
+    <section class="brand-story" id="story">
+        <div class="split-layout">
+            <div class="story-visual">
+                <div class="story-illustration">
+                    <div class="silhouette-bar"></div>
+                    <div class="silhouette-moon"></div>
+                </div>
+            </div>
+            <div class="story-content">
+                <h2 class="story-title">Our Story</h2>
+                <p class="story-text">From the ancient carob groves of the Mediterranean to the heart of Australia, MapleMoon crafts wholefood snacks that honour tradition and nourish the body. Every bar, moon, and elixir is made with organic ingredients &mdash; no caffeine, no gluten, no additives. Just pure, honest carob.</p>
+                <div class="cert-row-mono">
+                    <div class="cert-mono"><i class="fas fa-leaf"></i> Vegan</div>
+                    <div class="cert-mono"><i class="fas fa-seedling"></i> Organic</div>
+                    <div class="cert-mono"><i class="fas fa-wheat-awn-circle-exclamation"></i> GF</div>
+                    <div class="cert-mono"><i class="fas fa-mug-hot"></i> CF</div>
+                    <div class="cert-mono"><i class="fas fa-shield-halved"></i> Additive Free</div>
+                    <div class="cert-mono"><i class="fas fa-flag"></i> Aus Made</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 5. Footer ── -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="#" class="footer-logo">
+                <img src="../assets/maplemoon-logo.svg" alt="MapleMoon">
+            </a>
+            <div class="footer-links">
+                <a href="#collection">Shop</a>
+                <span>&middot;</span>
+                <a href="#story">About</a>
+                <span>&middot;</span>
+                <a href="#">Contact</a>
+                <span>&middot;</span>
+                <a href="#">Instagram</a>
+            </div>
+            <div class="footer-copyright">&copy; 2026 MapleMoon. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- ── Minimal JS: Nav scroll effect ── -->
+    <script>
+        (function() {
+            var nav = document.getElementById('nav');
+            var threshold = 40;
+            var ticking = false;
+
+            function onScroll() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        if (window.scrollY > threshold) {
+                            nav.classList.add('scrolled');
+                        } else {
+                            nav.classList.remove('scrolled');
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+        })();
+    </script>
+
+</body>
+</html>

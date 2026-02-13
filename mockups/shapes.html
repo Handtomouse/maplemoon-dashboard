@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MapleMoon — Shapes Theme Preview</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Shapes Theme — Playful & Fun ── */
+        html { scroll-behavior: smooth; }
+
+        /* ── Navigation ── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--mm-white);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            height: 64px;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, var(--mm-deep-blue), var(--mm-light-blue), var(--mm-lilac)) 1;
+            transition: box-shadow 0.3s ease;
+        }
+        .nav.scrolled {
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .nav-logo img {
+            height: 36px;
+            filter: brightness(0) saturate(100%) invert(42%) sepia(15%) saturate(1200%) hue-rotate(164deg);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-links a {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--mm-dark-blue);
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--mm-deep-blue), var(--mm-lilac));
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--mm-deep-blue);
+        }
+        .nav-cart {
+            font-size: 18px;
+            color: var(--mm-dark-blue);
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .nav-cart:hover {
+            transform: scale(1.15);
+        }
+        .nav-cart .cart-count {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+            background: var(--mm-lilac);
+            color: var(--mm-dark-blue);
+            font-size: 10px;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── Hero Section ── */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            background: var(--mm-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 80px 60px;
+        }
+
+        /* Floating blob shapes */
+        .blob {
+            position: absolute;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: 0;
+            animation: blob-float 12s ease-in-out infinite;
+        }
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(69, 119, 152, 0.15);
+            top: -80px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(216, 207, 242, 0.20);
+            bottom: -60px;
+            left: -60px;
+            border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            animation-delay: -4s;
+        }
+        .blob-3 {
+            width: 320px;
+            height: 320px;
+            background: rgba(125, 185, 250, 0.10);
+            top: 30%;
+            right: 15%;
+            border-radius: 50% 80% 40% 70% / 60% 30% 70% 40%;
+            animation-delay: -8s;
+        }
+        .blob-4 {
+            width: 220px;
+            height: 220px;
+            background: rgba(216, 207, 242, 0.15);
+            top: 10%;
+            left: 20%;
+            border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+            animation-delay: -6s;
+        }
+
+        @keyframes blob-float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(15px, -20px) rotate(5deg) scale(1.03); }
+            50% { transform: translate(-10px, 15px) rotate(-3deg) scale(0.97); }
+            75% { transform: translate(20px, 10px) rotate(4deg) scale(1.02); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 700px;
+        }
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--mm-dark-blue);
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .hero-content .subtitle {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 1.1rem;
+            color: var(--mm-deep-blue);
+            margin-bottom: 36px;
+            letter-spacing: 0.3px;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--mm-deep-blue);
+            color: var(--mm-white);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 16px 40px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            letter-spacing: 0.3px;
+        }
+        .hero-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(69, 119, 152, 0.35);
+        }
+
+        /* Sticker badges */
+        .sticker-badges {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+        .sticker {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 3px solid currentColor;
+            border-radius: 20px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.8rem;
+            position: absolute;
+            white-space: nowrap;
+            animation: sticker-bob 4s ease-in-out infinite;
+        }
+        .sticker-natural {
+            color: #5A9E6F;
+            top: 18%;
+            right: 10%;
+            transform: rotate(-3deg);
+            animation-delay: 0s;
+        }
+        .sticker-organic {
+            color: var(--mm-dark-blue);
+            bottom: 25%;
+            right: 8%;
+            transform: rotate(4deg);
+            animation-delay: -1s;
+        }
+        .sticker-gluten {
+            color: #9B89D4;
+            top: 22%;
+            left: 8%;
+            transform: rotate(-5deg);
+            animation-delay: -2s;
+        }
+        .sticker-caffeine {
+            color: var(--mm-light-blue);
+            bottom: 20%;
+            left: 12%;
+            transform: rotate(3deg);
+            animation-delay: -3s;
+        }
+
+        @keyframes sticker-bob {
+            0%, 100% { transform: translateY(0) rotate(var(--r, -3deg)); }
+            50% { transform: translateY(-8px) rotate(var(--r, -3deg)); }
+        }
+        .sticker-natural { --r: -3deg; }
+        .sticker-organic { --r: 4deg; }
+        .sticker-gluten { --r: -5deg; }
+        .sticker-caffeine { --r: 3deg; }
+
+        /* ── Product Grid Section ── */
+        .products-section {
+            padding: 80px 60px;
+            background: var(--mm-white);
+        }
+        .products-section h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--mm-dark-blue);
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .product-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Product Card — Shapes theme */
+        .product-card {
+            background: var(--mm-white);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(69,119,152,0.12);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(69,119,152,0.18);
+        }
+
+        /* Shape masks for Shapes theme */
+        .product-card .product-image.shape-bar {
+            border-radius: 30px 30px 12px 12px;
+        }
+        .product-card .product-image.shape-moon {
+            border-radius: 50%;
+            margin: 16px auto;
+            width: calc(100% - 32px);
+        }
+        .product-card .product-image.shape-banana {
+            clip-path: ellipse(48% 45% at 50% 50%);
+        }
+        .product-card .product-image.shape-elixir {
+            border-radius: 12px;
+        }
+        .product-card .product-image.shape-bundle {
+            border-radius: 20px;
+            clip-path: polygon(5% 0, 95% 0, 100% 100%, 0% 100%);
+        }
+
+        .product-info {
+            padding: 16px;
+        }
+        .product-info .product-name {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--mm-dark-blue);
+            margin-bottom: 4px;
+        }
+        .product-info .product-weight {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: var(--mm-deep-blue);
+            margin-bottom: 6px;
+        }
+        .product-info .product-price {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--mm-deep-blue);
+        }
+
+        /* Flavor bar */
+        .flavor-bar {
+            height: 4px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Quick buy button — slides up on hover */
+        .quick-buy {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--mm-deep-blue);
+            color: var(--mm-white);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 14px;
+            border: none;
+            cursor: pointer;
+            border-radius: 0 0 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 2;
+            letter-spacing: 0.3px;
+        }
+        .product-card:hover .quick-buy {
+            transform: translateY(0);
+        }
+        .quick-buy:hover {
+            background: var(--mm-dark-blue);
+        }
+
+        /* ── Brand Story Section ── */
+        .wave-divider {
+            display: block;
+            width: 100%;
+            line-height: 0;
+        }
+        .wave-divider svg {
+            display: block;
+            width: 100%;
+        }
+
+        .brand-story {
+            background: var(--mm-deep-blue);
+            color: var(--mm-cream);
+            padding: 80px 60px;
+        }
+        .brand-story-inner {
+            display: flex;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .brand-story-text {
+            flex: 1;
+        }
+        .brand-story-text h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--mm-cream);
+        }
+        .brand-story-text p {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.75;
+            color: rgba(232, 229, 206, 0.9);
+        }
+        .brand-certs {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .brand-cert-sticker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px 12px;
+            border: 3px solid rgba(255,255,255,0.7);
+            border-radius: 18px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--mm-white);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            cursor: default;
+        }
+        .brand-cert-sticker:nth-child(1) { transform: rotate(-2deg); }
+        .brand-cert-sticker:nth-child(2) { transform: rotate(3deg); }
+        .brand-cert-sticker:nth-child(3) { transform: rotate(-1deg); }
+        .brand-cert-sticker:nth-child(4) { transform: rotate(2deg); }
+        .brand-cert-sticker:nth-child(5) { transform: rotate(-3deg); }
+        .brand-cert-sticker:nth-child(6) { transform: rotate(1deg); }
+        .brand-cert-sticker:hover {
+            transform: rotate(0deg) scale(1.08);
+            border-color: var(--mm-white);
+        }
+        .brand-cert-sticker i {
+            display: block;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--mm-cream);
+            padding: 60px 60px 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+        .footer-col h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--mm-dark-blue);
+            margin-bottom: 16px;
+        }
+        .footer-col p,
+        .footer-col a {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--mm-dark-blue);
+            line-height: 1.8;
+            display: block;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: var(--mm-deep-blue);
+        }
+        .footer-col .footer-logo {
+            height: 32px;
+            margin-bottom: 12px;
+            filter: brightness(0) saturate(100%) invert(42%) sepia(15%) saturate(1200%) hue-rotate(164deg);
+        }
+        .footer-newsletter {
+            display: flex;
+            gap: 0;
+            margin-top: 12px;
+        }
+        .footer-newsletter input {
+            flex: 1;
+            padding: 10px 16px;
+            border: 2px solid var(--mm-deep-blue);
+            border-right: none;
+            border-radius: 50px 0 0 50px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            background: var(--mm-white);
+            color: var(--mm-dark-blue);
+            outline: none;
+        }
+        .footer-newsletter input::placeholder {
+            color: rgba(69, 119, 152, 0.5);
+        }
+        .footer-newsletter input:focus {
+            border-color: var(--mm-light-blue);
+        }
+        .footer-newsletter button {
+            padding: 10px 20px;
+            background: var(--mm-deep-blue);
+            color: var(--mm-white);
+            border: 2px solid var(--mm-deep-blue);
+            border-radius: 0 50px 50px 0;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .footer-newsletter button:hover {
+            background: var(--mm-dark-blue);
+            border-color: var(--mm-dark-blue);
+        }
+        .footer-social {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid var(--mm-deep-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--mm-deep-blue);
+            transition: background 0.2s, color 0.2s;
+        }
+        .footer-social a:hover {
+            background: var(--mm-deep-blue);
+            color: var(--mm-white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(30, 67, 102, 0.15);
+            text-align: center;
+            padding: 20px 0;
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.8rem;
+            color: var(--mm-dark-blue);
+        }
+
+        /* ── Responsive adjustments ── */
+        @media (max-width: 1024px) {
+            .hero { padding: 60px 32px; }
+            .hero-content h1 { font-size: 2.6rem; }
+            .sticker-badges { display: none; }
+            .products-section { padding: 60px 32px; }
+            .brand-story { padding: 60px 32px; }
+            .brand-story-inner { flex-direction: column; gap: 40px; }
+            .brand-certs { grid-template-columns: repeat(3, 1fr); }
+            .footer { padding: 40px 32px 0; }
+        }
+        @media (max-width: 768px) {
+            .nav { padding: 0 20px; }
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .brand-certs { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 1.8rem; }
+            .hero-content .subtitle { font-size: 0.95rem; }
+            .brand-certs { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAVIGATION ═══════════════════════════ -->
+<nav class="nav" id="mainNav">
+    <a href="#" class="nav-logo">
+        <img src="../assets/maplemoon-logo.svg" alt="MapleMoon" style="height:36px; filter: brightness(0) saturate(100%) invert(42%) sepia(15%) saturate(1200%) hue-rotate(164deg);">
+    </a>
+    <div class="nav-links">
+        <a href="#">Shop All</a>
+        <a href="#">Bars</a>
+        <a href="#">Moons</a>
+        <a href="#">Elixirs</a>
+        <a href="#">Bundles</a>
+        <a href="#">About</a>
+    </div>
+    <div class="nav-cart">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count">3</span>
+    </div>
+</nav>
+
+<!-- ═══════════════════════════ HERO SECTION ═══════════════════════════ -->
+<section class="hero">
+    <!-- Floating blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+
+    <!-- Sticker badges -->
+    <div class="sticker-badges">
+        <span class="sticker sticker-natural">100% Natural</span>
+        <span class="sticker sticker-organic">Organic</span>
+        <span class="sticker sticker-gluten">Gluten Free</span>
+        <span class="sticker sticker-caffeine">Caffeine Free</span>
+    </div>
+
+    <!-- Hero content -->
+    <div class="hero-content">
+        <h1>Wholefood Carob Snacks</h1>
+        <p class="subtitle">Vegan &middot; Organic &middot; Caffeine Free &middot; Made in Australia</p>
+        <a href="#products" class="hero-cta">Shop Collection</a>
+    </div>
+</section>
+
+<!-- ═══════════════════════════ PRODUCT GRID ═══════════════════════════ -->
+<section class="products-section" id="products">
+    <h2>Our Range</h2>
+    <div class="product-grid-4">
+
+        <!-- 1. Pure Carob Bar -->
+        <div class="product-card">
+            <div class="product-image shape-bar" style="background: var(--flavor-pure-carob);">
+                <div class="silhouette-bar"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Pure Carob Bar</div>
+                <div class="product-weight">90g</div>
+                <div class="product-price">$6.95</div>
+                <div class="cert-row">
+                    <span class="cert-badge"><i class="fas fa-leaf"></i> Vegan</span>
+                    <span class="cert-badge"><i class="fas fa-seedling"></i> Organic</span>
+                </div>
+            </div>
+            <div class="flavor-bar" style="background: var(--flavor-pure-carob);"></div>
+            <button class="quick-buy">Add to Cart</button>
+        </div>
+
+        <!-- 2. Goji & Coconut Bar -->
+        <div class="product-card">
+            <div class="product-image shape-bar" style="background: var(--flavor-goji);">
+                <div class="silhouette-bar"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Goji &amp; Coconut Bar</div>
+                <div class="product-weight">90g</div>
+                <div class="product-price">$7.50</div>
+                <div class="cert-row">
+                    <span class="cert-badge"><i class="fas fa-leaf"></i> Vegan</span>
+                    <span class="cert-badge"><i class="fas fa-seedling"></i> Organic</span>
+                </div>
+            </div>
+            <div class="flavor-bar" style="background: var(--flavor-goji);"></div>
+            <button class="quick-buy">Add to Cart</button>
+        </div>
+
+        <!-- 3. Cayenne Chilli Bar -->
+        <div class="product-card">
+            <div class="product-image shape-bar" style="background: var(--flavor-cayenne);">
+                <div class="silhouette-bar"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Cayenne Chilli Bar</div>
+                <div class="product-weight">90g</div>
+                <div class="product-price">$7.50</div>
+                <div class="cert-row">
+                    <span class="cert-badge"><i class="fas fa-leaf"></i> Vegan</span>
+                    <span class="cert-badge"><i class="fas fa-seedling"></i> Organic</span>
+                </div>
+            </div>
+            <div class="flavor-bar" style="background: var(--flavor-cayenne);"></div>
+            <button class="quick-buy">Add to Cart</button>
+        </div>
+
+        <!-- 4. Pure Carob Moon 4-Pack -->
+        <div class="product-card">
+            <div class="product-image shape-moon" style="background: var(--flavor-pure-carob);">
+                <div class="silhouette-moon"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Pure Carob Moon 4-Pack</div>
+                <div class="product-weight">45g &times; 4</div>
+                <div class="product-price">$12.95</div>
+                <div class="cert-row">
+                    <span class="cert-badge"><i class="fas fa-leaf"></i> Vegan</span>
+                    <span class="cert-badge"><i class="fas fa-seedling"></i> Organic</span>
+                </div>
+            </div>
+            <div class="flavor-bar" style="background: var(--flavor-pure-carob);"></div>
+            <button class="quick-buy">Add to Cart</button>
+        </div>
+
+        <!-- 5. Peppermint Moon 4-Pack -->
+        <div class="product-card">
+            <div class="product-image shape-moon" style="background: var(--flavor-peppermint);">
+                <div class="silhouette-moon"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Peppermint Moon 4-Pack</div>
+                <div class="product-weight">45g &times; 4</div>
+                <div class="product-price">$12.95</div>
+                <div class="cert-row">
+                    <span class="cert-badge"><i class="fas fa-leaf"></i> Vegan</span>
+                    <span class="cert-badge"><i class="fas fa-seedling"></i> Organic</span>
+                </div>
+            </div>
+            <div class="flavor-bar" style="background: var(--flavor-peppermint);"></div>
+            <button class="quick-buy">Add to Cart</button>
+        </div>
+
+        <!-- 6. Carob Bananas 4-Pack -->
+        <div class="product-card">
+            <div class="product-image shape-banana" style="background: var(--flavor-banana);">
+                <div class="silhouette-banana"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Carob Bananas 4-Pack</div>
+                <div class="product-weight">80g</div>
+                <div class="product-price">$9.50</div>
+                <div class="cert-row">
+                    <span class="cert-badge"><i class="fas fa-leaf"></i> Vegan</span>
+                    <span class="cert-badge"><i class="fas fa-seedling"></i> Organic</span>
+                </div>
+            </div>
+            <div class="flavor-bar" style="background: var(--flavor-banana);"></div>
+            <button class="quick-buy">Add to Cart</button>
+        </div>
+
+        <!-- 7. Plain Carob Elixir -->
+        <div class="product-card">
+            <div class="product-image shape-elixir" style="background: var(--flavor-elixir-plain);">
+                <div class="silhouette-elixir"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Plain Carob Elixir</div>
+                <div class="product-weight">250ml</div>
+                <div class="product-price">$8.95</div>
+                <div class="cert-row">
+                    <span class="cert-badge"><i class="fas fa-leaf"></i> Vegan</span>
+                    <span class="cert-badge"><i class="fas fa-seedling"></i> Organic</span>
+                </div>
+            </div>
+            <div class="flavor-bar" style="background: var(--flavor-elixir-plain);"></div>
+            <button class="quick-buy">Add to Cart</button>
+        </div>
+
+        <!-- 8. The Starter Bundle -->
+        <div class="product-card">
+            <div class="product-image shape-bundle" style="background: var(--flavor-bundle);">
+                <div class="silhouette-bundle"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">The Starter Bundle</div>
+                <div class="product-weight">Mixed</div>
+                <div class="product-price">$34.95</div>
+                <div class="cert-row">
+                    <span class="cert-badge"><i class="fas fa-leaf"></i> Vegan</span>
+                    <span class="cert-badge"><i class="fas fa-seedling"></i> Organic</span>
+                </div>
+            </div>
+            <div class="flavor-bar" style="background: var(--flavor-bundle);"></div>
+            <button class="quick-buy">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════ BRAND STORY ═══════════════════════════ -->
+<!-- Wave divider: white → deep blue -->
+<div class="wave-divider">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="#457798"/>
+    </svg>
+</div>
+
+<section class="brand-story">
+    <div class="brand-story-inner">
+        <div class="brand-story-text">
+            <h2>Our Story</h2>
+            <p>
+                MapleMoon was born from a simple belief: snacking should be joyful, wholesome, and kind to the planet.
+                We craft every bar, moon, and elixir from Australian-grown carob &mdash; a naturally sweet, caffeine-free
+                superfood that has been cherished for centuries. Our recipes use only organic, plant-based ingredients
+                with zero artificial additives. From our kitchen in Australia to your hands, each product is made
+                with care, wrapped in fun, and designed to make you smile. Because wholefood snacking should feel
+                like a treat, not a compromise.
+            </p>
+        </div>
+        <div class="brand-certs">
+            <div class="brand-cert-sticker">
+                <div><i class="fas fa-leaf"></i><br>Vegan</div>
+            </div>
+            <div class="brand-cert-sticker">
+                <div><i class="fas fa-seedling"></i><br>Organic</div>
+            </div>
+            <div class="brand-cert-sticker">
+                <div><i class="fas fa-wheat-awn-circle-exclamation"></i><br>Gluten Free</div>
+            </div>
+            <div class="brand-cert-sticker">
+                <div><i class="fas fa-mug-hot"></i><br>Caffeine Free</div>
+            </div>
+            <div class="brand-cert-sticker">
+                <div><i class="fas fa-flask-vial"></i><br>Additive Free</div>
+            </div>
+            <div class="brand-cert-sticker">
+                <div><i class="fas fa-earth-oceania"></i><br>Australian Made</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<!-- Wave divider: deep blue → cream -->
+<div class="wave-divider">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C360,100 720,0 1080,60 C1260,90 1380,30 1440,50 L1440,120 L0,120 Z" fill="#E8E5CE"/>
+    </svg>
+</div>
+
+<footer class="footer">
+    <div class="footer-grid">
+        <!-- About -->
+        <div class="footer-col">
+            <img src="../assets/maplemoon-logo.svg" alt="MapleMoon" class="footer-logo">
+            <p>Wholefood carob snacks crafted with love in Australia. Vegan, organic, and naturally delicious.</p>
+        </div>
+
+        <!-- Shop -->
+        <div class="footer-col">
+            <h4>Shop</h4>
+            <a href="#">Bars</a>
+            <a href="#">Moons</a>
+            <a href="#">Bananas</a>
+            <a href="#">Elixirs</a>
+            <a href="#">Bundles</a>
+        </div>
+
+        <!-- Info -->
+        <div class="footer-col">
+            <h4>Info</h4>
+            <a href="#">About Us</a>
+            <a href="#">Our Story</a>
+            <a href="#">Stockists</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <!-- Connect -->
+        <div class="footer-col">
+            <h4>Connect</h4>
+            <div class="footer-newsletter">
+                <input type="email" placeholder="Your email">
+                <button>Join</button>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2026 MapleMoon &middot; Wholefood Carob Snacks
+    </div>
+</footer>
+
+<!-- ═══════════════════════════ JAVASCRIPT ═══════════════════════════ -->
+<script>
+    // Sticky nav shadow on scroll
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+</script>
+
+</body>
+</html>

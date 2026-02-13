@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MapleMoon — Normcore / Matte Theme Preview</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+
+        /* ── Navigation ── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #FFFFFF;
+            border-bottom: 1px solid #E5E2D8;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            gap: 32px;
+        }
+
+        .nav-logo {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-categories {
+            display: flex;
+            gap: 28px;
+            flex: 1;
+        }
+
+        .nav-category {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .nav-category-label {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 0.65rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-category-links {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .nav-category-links a {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 13px;
+            color: #333;
+            transition: color 0.2s;
+        }
+
+        .nav-category-links a:hover {
+            color: #457798;
+        }
+
+        .nav-category-links .nav-sep {
+            font-size: 10px;
+            color: #CCC;
+            margin: 0 2px;
+        }
+
+        .nav-search {
+            flex-shrink: 0;
+        }
+
+        .nav-search input {
+            width: 200px;
+            height: 34px;
+            border: none;
+            border-radius: 17px;
+            background: #F0EDE5;
+            padding: 0 16px;
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #333;
+            outline: none;
+        }
+
+        .nav-search input::placeholder {
+            color: #AAA;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-shrink: 0;
+        }
+
+        .nav-actions a {
+            color: #333;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        .nav-actions a:hover {
+            color: #457798;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -7px;
+            right: -9px;
+            background: #457798;
+            color: #FFF;
+            font-size: 0.6rem;
+            font-weight: 600;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── Hero / Split Layout ── */
+        .hero {
+            background: #F5F3F0;
+            padding: 80px 60px;
+        }
+
+        .hero .split-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .hero-text {
+            flex: 0 0 60%;
+        }
+
+        .hero-visual {
+            flex: 0 0 calc(40% - 60px);
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #1E4366;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .hero-text p {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+            max-width: 520px;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: #F0EDE5;
+            border-radius: 20px;
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            color: #6B6B5E;
+        }
+
+        .trust-badge i {
+            font-size: 0.7rem;
+            color: #7ECBA1;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            margin-top: 30px;
+            background: #457798;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 32px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+
+        .hero-cta:hover {
+            background: #365e7a;
+        }
+
+        .hero-collage {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .collage-item {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collage-item .collage-label {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* ── Product Grid Section ── */
+        .products-section {
+            background: #FFFFFF;
+            padding: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .breadcrumb a {
+            color: #999;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: #457798;
+        }
+
+        .section-heading {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1E4366;
+            margin-bottom: 30px;
+        }
+
+        .product-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* ── Product Card (Normcore) ── */
+        .product-card {
+            border: 1px solid #E5E2D8;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .product-card .product-image {
+            border-radius: 0;
+        }
+
+        .product-info {
+            padding: 16px;
+        }
+
+        .product-name {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1E4366;
+            margin-bottom: 2px;
+        }
+
+        .product-weight {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 0.78rem;
+            color: #8A8A7D;
+            margin-bottom: 6px;
+        }
+
+        .product-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 8px;
+        }
+
+        .product-stars i {
+            font-size: 0.75rem;
+            color: #C4A97D;
+        }
+
+        .product-price {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #1E4366;
+        }
+
+        .product-card .cert-row {
+            padding: 0 16px 12px;
+        }
+
+        .product-card .cert-badge {
+            font-size: 0.58rem;
+            padding: 2px 6px;
+            background: rgba(69, 119, 152, 0.05);
+            color: #8A8A7D;
+        }
+
+        .product-card .cert-badge i {
+            font-size: 0.52rem;
+            color: #AAA;
+        }
+
+        /* ── Card Tabs (Normcore signature) ── */
+        .card-tabs {
+            display: flex;
+            border-top: 1px solid #E5E2D8;
+        }
+
+        .card-tab {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            font-size: 0.72rem;
+            cursor: pointer;
+            border-right: 1px solid #E5E2D8;
+            background: #FAFAF7;
+            font-family: var(--font-body);
+            color: #8A8A7D;
+            transition: background 0.15s, color 0.15s;
+            user-select: none;
+        }
+
+        .card-tab:last-child {
+            border-right: none;
+        }
+
+        .card-tab.active {
+            background: #FFFFFF;
+            color: #1E4366;
+            font-weight: 600;
+        }
+
+        .card-tab:hover:not(.active) {
+            background: #F5F3F0;
+        }
+
+        .tab-content {
+            min-height: 60px;
+        }
+
+        .tab-content-panel {
+            padding: 12px;
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            color: #666;
+            line-height: 1.5;
+            display: none;
+        }
+
+        .tab-content-panel.active {
+            display: block;
+        }
+
+        /* ── Add to Cart Button ── */
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            background: #F5F3F0;
+            color: #1E4366;
+            border: none;
+            border-top: 1px solid #E5E2D8;
+            padding: 12px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .add-to-cart:hover {
+            background: #457798;
+            color: #FFFFFF;
+        }
+
+        /* ── Brand Story / Feature Section ── */
+        .brand-story {
+            background: #FFFFFF;
+            border-top: 1px solid #E5E2D8;
+            padding: 60px;
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-column {
+            text-align: left;
+        }
+
+        .brand-column .brand-icon {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .brand-column h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1E4366;
+            margin-bottom: 12px;
+        }
+
+        .brand-column p {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: #F5F3F0;
+            padding: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1E4366;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col a {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #666;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #457798;
+        }
+
+        .footer-newsletter p {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            height: 40px;
+            border: 1px solid #E5E2D8;
+            border-radius: 8px;
+            background: #FFFFFF;
+            padding: 0 14px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: #333;
+            outline: none;
+        }
+
+        .newsletter-form input::placeholder {
+            color: #AAA;
+        }
+
+        .newsletter-form input:focus {
+            border-color: #457798;
+        }
+
+        .newsletter-form button {
+            height: 40px;
+            padding: 0 20px;
+            background: #457798;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            background: #365e7a;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid #E5E2D8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 14px;
+        }
+
+        .payment-icons i {
+            font-size: 1.5rem;
+            color: #BBBBB0;
+        }
+
+        .footer-copyright {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.78rem;
+            color: #999;
+        }
+
+        /* ── Responsive adjustments ── */
+        @media (max-width: 1024px) {
+            .hero { padding: 60px 40px; }
+            .products-section { padding: 40px; }
+            .brand-story { padding: 40px; }
+            .footer { padding: 40px; }
+            .brand-grid { grid-template-columns: 1fr; gap: 32px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav { padding: 0 20px; gap: 16px; height: auto; min-height: 64px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+            .nav-categories { order: 3; flex-basis: 100%; gap: 16px; margin-top: 4px; }
+            .hero { padding: 40px 24px; }
+            .hero .split-layout { gap: 40px; }
+            .hero-text h1 { font-size: 2rem; }
+            .products-section { padding: 30px 20px; }
+            .brand-story { padding: 30px 20px; }
+            .footer { padding: 30px 20px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- 1. NAVIGATION BAR                                       -->
+<!-- ════════════════════════════════════════════════════════ -->
+<nav class="nav">
+    <div class="nav-logo">
+        <img src="../assets/maplemoon-logo.svg" alt="MapleMoon" style="height:32px; filter: brightness(0) saturate(100%) invert(42%) sepia(15%) saturate(1200%) hue-rotate(164deg);">
+    </div>
+
+    <div class="nav-categories">
+        <div class="nav-category">
+            <span class="nav-category-label">Snacks</span>
+            <div class="nav-category-links">
+                <a href="#">Bars</a>
+                <span class="nav-sep">|</span>
+                <a href="#">Moons</a>
+                <span class="nav-sep">|</span>
+                <a href="#">Bananas</a>
+            </div>
+        </div>
+        <div class="nav-category">
+            <span class="nav-category-label">Drinks</span>
+            <div class="nav-category-links">
+                <a href="#">Elixirs</a>
+            </div>
+        </div>
+        <div class="nav-category">
+            <span class="nav-category-label">Gifts</span>
+            <div class="nav-category-links">
+                <a href="#">Bundles</a>
+                <span class="nav-sep">|</span>
+                <a href="#">Gift Cards</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-search">
+        <input type="text" placeholder="Search products...">
+    </div>
+
+    <div class="nav-actions">
+        <a href="#" aria-label="Account"><i class="fa-regular fa-user"></i></a>
+        <a href="#" aria-label="Cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count">2</span>
+        </a>
+    </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- 2. HERO SECTION                                         -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="hero">
+    <div class="split-layout">
+        <div class="hero-text">
+            <h1>Wholefood Carob, Simplified.</h1>
+            <p>Pure, organic carob snacks crafted in Australia. No caffeine, no gluten, no additives — just honest ingredients you can trust.</p>
+
+            <div class="trust-badges">
+                <span class="trust-badge"><i class="fa-solid fa-leaf"></i> Certified Organic</span>
+                <span class="trust-badge"><i class="fa-solid fa-seedling"></i> Vegan</span>
+                <span class="trust-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> Gluten Free</span>
+                <span class="trust-badge"><i class="fa-solid fa-mug-hot"></i> Caffeine Free</span>
+                <span class="trust-badge"><i class="fa-solid fa-shield-halved"></i> Additive Free</span>
+            </div>
+
+            <a href="#products" class="hero-cta">Browse Products</a>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-collage">
+                <div class="collage-item" style="background: linear-gradient(135deg, #457798, #E8E5CE);">
+                    <div class="silhouette-bar" style="width:65%;height:35%;background:rgba(255,255,255,0.35);border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.1);"></div>
+                    <span class="collage-label">Pure Carob Bar</span>
+                </div>
+                <div class="collage-item" style="background: linear-gradient(135deg, #E8758A, #F5C6D0);">
+                    <div style="width:45%;height:45%;background:rgba(255,255,255,0.35);border-radius:50%;box-shadow:0 4px 20px rgba(0,0,0,0.1);"></div>
+                    <span class="collage-label">Goji Moon</span>
+                </div>
+                <div class="collage-item" style="background: linear-gradient(135deg, #E8C94A, #F5E08A);">
+                    <div style="width:55%;height:30%;background:rgba(255,255,255,0.35);border-radius:80px 80px 40px 40px;transform:rotate(-15deg);box-shadow:0 4px 20px rgba(0,0,0,0.1);"></div>
+                    <span class="collage-label">Banana</span>
+                </div>
+                <div class="collage-item" style="background: linear-gradient(135deg, #457798, #7DB9FA);">
+                    <div style="width:28%;height:60%;background:rgba(255,255,255,0.35);border-radius:8px 8px 4px 4px;position:relative;box-shadow:0 4px 20px rgba(0,0,0,0.1);"></div>
+                    <span class="collage-label">Elixir</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- 3. PRODUCT GRID — 8 PRODUCTS                            -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="products-section" id="products">
+    <div class="breadcrumb"><a href="#">Home</a> / All Products</div>
+    <h2 class="section-heading">All Products</h2>
+
+    <div class="product-grid-3">
+
+        <!-- Product 1: Pure Carob Bar -->
+        <div class="product-card">
+            <div class="product-image" style="background: var(--flavor-pure-carob);">
+                <div class="silhouette-bar"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Pure Carob Bar</div>
+                <div class="product-weight">90g</div>
+                <div class="product-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="product-price">$6.95</div>
+            </div>
+            <div class="cert-row" style="padding: 0 16px 12px;">
+                <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Organic</span>
+                <span class="cert-badge"><i class="fa-solid fa-seedling"></i> Vegan</span>
+                <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+            </div>
+            <div class="card-tabs">
+                <div class="card-tab active" data-tab="details">Details</div>
+                <div class="card-tab" data-tab="nutrition">Nutrition</div>
+                <div class="card-tab" data-tab="ingredients">Ingredients</div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-content-panel active" data-tab="details">Pure wholefood carob bar. Organic, vegan, and caffeine-free. A naturally sweet treat with no added sugar.</div>
+                <div class="tab-content-panel" data-tab="nutrition">Energy: 320kJ per serve / Protein: 1g / Fat: 2.6g / Carbs: 11.4g</div>
+                <div class="tab-content-panel" data-tab="ingredients">Organic carob powder, cacao butter, coconut oil.</div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 2: Goji & Coconut Bar -->
+        <div class="product-card">
+            <div class="product-image" style="background: var(--flavor-goji);">
+                <div class="silhouette-bar"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Goji &amp; Coconut Bar</div>
+                <div class="product-weight">90g</div>
+                <div class="product-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="product-price">$7.50</div>
+            </div>
+            <div class="cert-row" style="padding: 0 16px 12px;">
+                <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Organic</span>
+                <span class="cert-badge"><i class="fa-solid fa-seedling"></i> Vegan</span>
+                <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+            </div>
+            <div class="card-tabs">
+                <div class="card-tab active" data-tab="details">Details</div>
+                <div class="card-tab" data-tab="nutrition">Nutrition</div>
+                <div class="card-tab" data-tab="ingredients">Ingredients</div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-content-panel active" data-tab="details">Pure wholefood carob bar with goji berries and coconut. Organic, vegan, and caffeine-free.</div>
+                <div class="tab-content-panel" data-tab="nutrition">Energy: 320kJ per serve / Protein: 1g / Fat: 2.6g / Carbs: 11.4g</div>
+                <div class="tab-content-panel" data-tab="ingredients">Organic carob powder, cacao butter, goji berries, desiccated coconut.</div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 3: Cayenne Chilli Bar -->
+        <div class="product-card">
+            <div class="product-image" style="background: var(--flavor-cayenne);">
+                <div class="silhouette-bar"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Cayenne Chilli Bar</div>
+                <div class="product-weight">90g</div>
+                <div class="product-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="product-price">$7.50</div>
+            </div>
+            <div class="cert-row" style="padding: 0 16px 12px;">
+                <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Organic</span>
+                <span class="cert-badge"><i class="fa-solid fa-seedling"></i> Vegan</span>
+                <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+            </div>
+            <div class="card-tabs">
+                <div class="card-tab active" data-tab="details">Details</div>
+                <div class="card-tab" data-tab="nutrition">Nutrition</div>
+                <div class="card-tab" data-tab="ingredients">Ingredients</div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-content-panel active" data-tab="details">Pure wholefood carob bar with a cayenne chilli kick. Organic, vegan, and caffeine-free.</div>
+                <div class="tab-content-panel" data-tab="nutrition">Energy: 320kJ per serve / Protein: 1g / Fat: 2.6g / Carbs: 11.4g</div>
+                <div class="tab-content-panel" data-tab="ingredients">Organic carob powder, cacao butter, cayenne chilli pepper.</div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 4: Pure Carob Moon 4-Pack -->
+        <div class="product-card">
+            <div class="product-image" style="background: var(--flavor-pure-carob);">
+                <div class="silhouette-moon"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Pure Carob Moon 4-Pack</div>
+                <div class="product-weight">45g &times; 4</div>
+                <div class="product-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="product-price">$12.95</div>
+            </div>
+            <div class="cert-row" style="padding: 0 16px 12px;">
+                <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Organic</span>
+                <span class="cert-badge"><i class="fa-solid fa-seedling"></i> Vegan</span>
+                <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+            </div>
+            <div class="card-tabs">
+                <div class="card-tab active" data-tab="details">Details</div>
+                <div class="card-tab" data-tab="nutrition">Nutrition</div>
+                <div class="card-tab" data-tab="ingredients">Ingredients</div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-content-panel active" data-tab="details">Pure wholefood carob moons in a 4-pack. Organic, vegan, and caffeine-free. Individually wrapped for freshness.</div>
+                <div class="tab-content-panel" data-tab="nutrition">Energy: 320kJ per serve / Protein: 1g / Fat: 2.6g / Carbs: 11.4g</div>
+                <div class="tab-content-panel" data-tab="ingredients">Organic carob powder, cacao butter, coconut oil.</div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 5: Peppermint Moon 4-Pack -->
+        <div class="product-card">
+            <div class="product-image" style="background: var(--flavor-peppermint);">
+                <div class="silhouette-moon"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Peppermint Moon 4-Pack</div>
+                <div class="product-weight">45g &times; 4</div>
+                <div class="product-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="product-price">$12.95</div>
+            </div>
+            <div class="cert-row" style="padding: 0 16px 12px;">
+                <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Organic</span>
+                <span class="cert-badge"><i class="fa-solid fa-seedling"></i> Vegan</span>
+                <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+            </div>
+            <div class="card-tabs">
+                <div class="card-tab active" data-tab="details">Details</div>
+                <div class="card-tab" data-tab="nutrition">Nutrition</div>
+                <div class="card-tab" data-tab="ingredients">Ingredients</div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-content-panel active" data-tab="details">Pure wholefood carob moons with peppermint oil. Organic, vegan, and caffeine-free. Refreshing and naturally sweet.</div>
+                <div class="tab-content-panel" data-tab="nutrition">Energy: 320kJ per serve / Protein: 1g / Fat: 2.6g / Carbs: 11.4g</div>
+                <div class="tab-content-panel" data-tab="ingredients">Organic carob powder, cacao butter, organic peppermint oil.</div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 6: Carob Bananas 4-Pack -->
+        <div class="product-card">
+            <div class="product-image" style="background: var(--flavor-banana);">
+                <div class="silhouette-banana"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Carob Bananas 4-Pack</div>
+                <div class="product-weight">80g</div>
+                <div class="product-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="product-price">$8.50</div>
+            </div>
+            <div class="cert-row" style="padding: 0 16px 12px;">
+                <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Organic</span>
+                <span class="cert-badge"><i class="fa-solid fa-seedling"></i> Vegan</span>
+                <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+            </div>
+            <div class="card-tabs">
+                <div class="card-tab active" data-tab="details">Details</div>
+                <div class="card-tab" data-tab="nutrition">Nutrition</div>
+                <div class="card-tab" data-tab="ingredients">Ingredients</div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-content-panel active" data-tab="details">Pure wholefood carob-coated banana pieces. Organic, vegan, and caffeine-free. A fruity, creamy treat.</div>
+                <div class="tab-content-panel" data-tab="nutrition">Energy: 320kJ per serve / Protein: 1g / Fat: 2.6g / Carbs: 11.4g</div>
+                <div class="tab-content-panel" data-tab="ingredients">Organic carob powder, cacao butter, freeze-dried banana.</div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 7: Plain Carob Elixir -->
+        <div class="product-card">
+            <div class="product-image" style="background: var(--flavor-elixir-plain);">
+                <div class="silhouette-elixir"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">Plain Carob Elixir</div>
+                <div class="product-weight">250ml</div>
+                <div class="product-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="product-price">$9.95</div>
+            </div>
+            <div class="cert-row" style="padding: 0 16px 12px;">
+                <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Organic</span>
+                <span class="cert-badge"><i class="fa-solid fa-seedling"></i> Vegan</span>
+                <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+            </div>
+            <div class="card-tabs">
+                <div class="card-tab active" data-tab="details">Details</div>
+                <div class="card-tab" data-tab="nutrition">Nutrition</div>
+                <div class="card-tab" data-tab="ingredients">Ingredients</div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-content-panel active" data-tab="details">Pure wholefood carob elixir drink. Organic, vegan, and caffeine-free. Rich, smooth, and naturally sweet.</div>
+                <div class="tab-content-panel" data-tab="nutrition">Energy: 280kJ per serve / Protein: 2g / Fat: 1.8g / Carbs: 14g</div>
+                <div class="tab-content-panel" data-tab="ingredients">Filtered water, organic carob powder, organic coconut milk, organic vanilla extract.</div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 8: The Starter Bundle -->
+        <div class="product-card">
+            <div class="product-image" style="background: var(--flavor-bundle);">
+                <div class="silhouette-bundle"></div>
+            </div>
+            <div class="product-info">
+                <div class="product-name">The Starter Bundle</div>
+                <div class="product-weight">Mixed</div>
+                <div class="product-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="product-price">$34.95</div>
+            </div>
+            <div class="cert-row" style="padding: 0 16px 12px;">
+                <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Organic</span>
+                <span class="cert-badge"><i class="fa-solid fa-seedling"></i> Vegan</span>
+                <span class="cert-badge"><i class="fa-solid fa-wheat-awn-circle-exclamation"></i> GF</span>
+            </div>
+            <div class="card-tabs">
+                <div class="card-tab active" data-tab="details">Details</div>
+                <div class="card-tab" data-tab="nutrition">Nutrition</div>
+                <div class="card-tab" data-tab="ingredients">Ingredients</div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-content-panel active" data-tab="details">A curated selection of our best sellers. Includes one of each bar, moons, bananas, and an elixir. The perfect introduction to MapleMoon.</div>
+                <div class="tab-content-panel" data-tab="nutrition">Varies by product. See individual items for full nutritional information.</div>
+                <div class="tab-content-panel" data-tab="ingredients">Organic carob powder, cacao butter, coconut oil, and flavor-specific ingredients. See individual products for full details.</div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- 4. BRAND STORY / FEATURE SECTION                        -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section class="brand-story">
+    <div class="brand-grid">
+        <div class="brand-column">
+            <i class="fa-solid fa-seedling brand-icon" style="color: #7ECBA1;"></i>
+            <h3>Ingredients We Love</h3>
+            <p>Every MapleMoon product starts with certified organic Australian carob. We source the finest wholefood ingredients, avoiding anything artificial. Real food, real flavour, nothing to hide.</p>
+        </div>
+        <div class="brand-column">
+            <i class="fa-solid fa-certificate brand-icon" style="color: #C4A97D;"></i>
+            <h3>Our Certifications</h3>
+            <p>Certified Organic (ACO), Vegan Australia, Gluten Free (GFCO), Caffeine Free, No Artificial Additives, and Australian Made. Every claim verified, every badge earned.</p>
+        </div>
+        <div class="brand-column">
+            <i class="fa-solid fa-heart brand-icon" style="color: #E8758A;"></i>
+            <h3>Why Carob?</h3>
+            <p>Carob is naturally caffeine-free, lower in sugar than cocoa, and packed with fibre and antioxidants. It is a sustainable crop that thrives in Australian climates with minimal water. Better for you, better for the planet.</p>
+        </div>
+    </div>
+</section>
+<hr style="border: none; border-top: 1px solid #E5E2D8; margin: 0;">
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- 5. FOOTER                                               -->
+<!-- ════════════════════════════════════════════════════════ -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>Products</h4>
+            <ul>
+                <li><a href="#">Carob Bars</a></li>
+                <li><a href="#">Carob Moons</a></li>
+                <li><a href="#">Carob Bananas</a></li>
+                <li><a href="#">Elixirs</a></li>
+                <li><a href="#">Bundles</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Information</h4>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Stockists</a></li>
+                <li><a href="#">Wholesale</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Customer Service</h4>
+            <ul>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Shipping</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-col footer-newsletter">
+            <h4>Newsletter</h4>
+            <p>Stay in the loop with new products, recipes, and exclusive offers.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="button">Subscribe</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span class="footer-copyright">&copy; 2026 MapleMoon. All rights reserved.</span>
+        <div class="payment-icons">
+            <i class="fa-brands fa-cc-visa"></i>
+            <i class="fa-brands fa-cc-mastercard"></i>
+            <i class="fa-brands fa-cc-amex"></i>
+            <i class="fa-brands fa-cc-paypal"></i>
+        </div>
+    </div>
+</footer>
+
+<!-- ── Tab Switching JS ── -->
+<script>
+document.querySelectorAll('.card-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        const card = this.closest('.product-card');
+        card.querySelectorAll('.card-tab').forEach(t => t.classList.remove('active'));
+        card.querySelectorAll('.tab-content-panel').forEach(p => p.style.display = 'none');
+        this.classList.add('active');
+        card.querySelector(`.tab-content-panel[data-tab="${this.dataset.tab}"]`).style.display = 'block';
+    });
+});
+</script>
+
+</body>
+</html>

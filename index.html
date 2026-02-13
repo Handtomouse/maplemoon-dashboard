@@ -2747,6 +2747,22 @@
             .sticky-summary .sticky-label {
                 font-size: 0.65rem;
             }
+
+            .theme-preview-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            #preview-tab table {
+                font-size: 0.75rem;
+            }
+            #preview-tab table th,
+            #preview-tab table td {
+                padding: 6px 4px !important;
+            }
+
+            #preview-iframe-container iframe {
+                height: 60vh !important;
+            }
         }
 
         /* 11. Single Primary CTA with Clear Hierarchy */
@@ -3042,6 +3058,7 @@
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="files-tab" tabindex="-1" onclick="switchTab('files', event)"><i class="fas fa-folder-open" style="margin-right:6px"></i>Final Files</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="ecommerce-tab" tabindex="-1" onclick="switchTab('ecommerce', event)"><i class="fas fa-shopping-cart" style="margin-right:6px"></i>E-Commerce Proposal</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="research-tab" tabindex="-1" onclick="switchTab('research', event)"><i class="fas fa-flask" style="margin-right:6px"></i>Shopify Research</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="preview-tab" tabindex="-1" onclick="switchTab('preview', event)"><i class="fas fa-eye" style="margin-right:6px"></i>Theme Preview</button>
     </div>
 
     <!-- Quote Tab (existing content) -->
@@ -4452,6 +4469,26 @@ Contact: hello@handtomouse.org
             TARGET_DEADLINE: '2026-02-28',
             PRICING_TOLERANCE: 0.02,
         };
+
+        // Theme preview iframe loader
+        function loadThemePreview(src) {
+            var iframe = document.getElementById('preview-iframe');
+            var container = document.getElementById('preview-iframe-container');
+            var placeholder = document.getElementById('preview-placeholder');
+            var openLink = document.getElementById('preview-open-link');
+            if (src) {
+                iframe.src = src;
+                container.style.display = 'block';
+                placeholder.style.display = 'none';
+                openLink.href = src;
+                openLink.style.display = 'inline';
+            } else {
+                iframe.src = '';
+                container.style.display = 'none';
+                placeholder.style.display = 'block';
+                openLink.style.display = 'none';
+            }
+        }
 
         // Tab switching with ARIA support (#4) and deep-linking (#15)
         function switchTab(tabName, event) {
@@ -6811,6 +6848,150 @@ Contact: hello@handtomouse.org
             </div>
         </div>
 
+    </div>
+
+    <!-- Theme Preview Tab -->
+    <div id="preview-tab" class="tab-content" role="tabpanel" aria-labelledby="preview-tab-btn">
+        <h2 class="deck-section-header" style="font-size: 1.6rem; margin-bottom: 8px;">Theme Preview</h2>
+        <p class="deck-section-sub" style="margin-bottom: 30px;">Full-page mockups of MapleMoon's storefront in each theme — click to explore</p>
+
+        <!-- 3 Preview Cards -->
+        <div class="theme-preview-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 30px 30px;">
+
+            <!-- Shapes Card -->
+            <div style="border-radius: var(--border-radius-small); overflow: hidden; border: 2px solid var(--success-color); background: var(--mm-white);">
+                <div style="height: 180px; background: var(--mm-cream); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                    <div style="position: absolute; width: 120px; height: 120px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; background: rgba(69,119,152,0.12); top: -20px; right: -20px;"></div>
+                    <div style="position: absolute; width: 80px; height: 80px; border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%; background: rgba(216,207,242,0.2); bottom: -10px; left: -10px;"></div>
+                    <div style="text-align: center; z-index: 1;">
+                        <div style="font-family: var(--font-primary); font-size: 1.4rem; color: var(--mm-dark-blue);">Wholefood Carob</div>
+                        <div style="display: inline-block; padding: 4px 12px; border: 2px solid var(--success-color); border-radius: 14px; font-size: 0.7rem; font-weight: 700; color: var(--success-color); transform: rotate(-3deg); margin-top: 8px;">Organic</div>
+                    </div>
+                </div>
+                <div style="padding: 20px;">
+                    <div style="font-family: var(--font-primary); font-size: 1.2rem; font-weight: 700; color: var(--secondary-color);">Shapes</div>
+                    <div style="font-size: 0.85rem; color: var(--primary-color); margin: 4px 0 8px;">$380 &bull; Playful &amp; Fun</div>
+                    <p style="font-size: 0.8rem; color: #666; line-height: 1.5; margin-bottom: 16px;">Blob shapes, sticker badges, shape-masked product cards, animated decorations, 4-column grid</p>
+                    <a href="mockups/shapes.html" target="_blank" rel="noopener" style="display: block; text-align: center; background: var(--primary-color); color: white; padding: 10px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;">Open Full Preview</a>
+                </div>
+            </div>
+
+            <!-- Futurer/Basser Card -->
+            <div style="border-radius: var(--border-radius-small); overflow: hidden; border: 2px solid var(--mm-lilac); background: var(--mm-white);">
+                <div style="height: 180px; background: linear-gradient(160deg, #1E4366, #0D2137, #457798); display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center;">
+                        <div style="font-family: var(--font-primary); font-size: 2rem; color: white; letter-spacing: 0.08em; font-weight: 400;">MapleMoon</div>
+                        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; margin-top: 8px;">Wholefood Carob &middot; Australia</div>
+                    </div>
+                </div>
+                <div style="padding: 20px;">
+                    <div style="font-family: var(--font-primary); font-size: 1.2rem; font-weight: 700; color: var(--secondary-color);">Futurer / Basser</div>
+                    <div style="font-size: 0.85rem; color: var(--primary-color); margin: 4px 0 8px;">$320 &bull; Premium &amp; Cinematic</div>
+                    <p style="font-size: 0.8rem; color: #666; line-height: 1.5; margin-bottom: 16px;">Dark palette, massive whitespace, ghost buttons, gallery-style 2-column grid, centered nav</p>
+                    <a href="mockups/futurer_basser.html" target="_blank" rel="noopener" style="display: block; text-align: center; background: var(--secondary-color); color: white; padding: 10px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;">Open Full Preview</a>
+                </div>
+            </div>
+
+            <!-- Normcore/Matte Card -->
+            <div style="border-radius: var(--border-radius-small); overflow: hidden; border: 2px solid var(--afqa-accent); background: var(--mm-white);">
+                <div style="height: 180px; background: #F5F3F0; display: flex; align-items: center; justify-content: center; gap: 20px; padding: 20px;">
+                    <div style="flex: 1;">
+                        <div style="font-family: var(--font-primary); font-size: 1.1rem; color: var(--mm-dark-blue);">Wholefood Carob, Simplified.</div>
+                        <div style="display: flex; gap: 4px; margin-top: 8px;">
+                            <span style="font-size: 0.55rem; padding: 3px 8px; background: #F0EDE5; border-radius: 12px; color: #6B6B5E;">Organic</span>
+                            <span style="font-size: 0.55rem; padding: 3px 8px; background: #F0EDE5; border-radius: 12px; color: #6B6B5E;">Vegan</span>
+                            <span style="font-size: 0.55rem; padding: 3px 8px; background: #F0EDE5; border-radius: 12px; color: #6B6B5E;">GF</span>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; flex: 0 0 90px;">
+                        <div style="height: 40px; border-radius: 6px; background: linear-gradient(135deg, #457798, #E8E5CE);"></div>
+                        <div style="height: 40px; border-radius: 6px; background: linear-gradient(135deg, #E8758A, #F5C6D0);"></div>
+                        <div style="height: 40px; border-radius: 6px; background: linear-gradient(135deg, #E8C94A, #F5E08A);"></div>
+                        <div style="height: 40px; border-radius: 6px; background: linear-gradient(135deg, #457798, #7DB9FA);"></div>
+                    </div>
+                </div>
+                <div style="padding: 20px;">
+                    <div style="font-family: var(--font-primary); font-size: 1.2rem; font-weight: 700; color: var(--secondary-color);">Normcore / Matte</div>
+                    <div style="font-size: 0.85rem; color: var(--primary-color); margin: 4px 0 8px;">$320 &bull; Organized &amp; Wellness</div>
+                    <p style="font-size: 0.8rem; color: #666; line-height: 1.5; margin-bottom: 16px;">Product tabs, search bar, trust badges, 3-column grid, breadcrumbs, star ratings, payment icons</p>
+                    <a href="mockups/normcore_matte.html" target="_blank" rel="noopener" style="display: block; text-align: center; background: var(--afqa-accent); color: white; padding: 10px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;">Open Full Preview</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Comparison Table -->
+        <div style="padding: 0 30px 30px;">
+            <h3 class="deck-section-header" style="font-size: 1.1rem; margin-bottom: 15px;">Quick Comparison</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                <thead>
+                    <tr style="border-bottom: 2px solid var(--mm-dark-blue);">
+                        <th style="text-align: left; padding: 10px; color: var(--mm-dark-blue);">Attribute</th>
+                        <th style="text-align: center; padding: 10px; color: var(--success-color);">Shapes</th>
+                        <th style="text-align: center; padding: 10px; color: #6B5B95;">Futurer / Basser</th>
+                        <th style="text-align: center; padding: 10px; color: var(--afqa-accent);">Normcore / Matte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #E5E2D8;">
+                        <td style="padding: 10px; font-weight: 600;">Feel</td>
+                        <td style="text-align: center; padding: 10px;">Playful / Fun</td>
+                        <td style="text-align: center; padding: 10px;">Premium / Cinematic</td>
+                        <td style="text-align: center; padding: 10px;">Organized / Wellness</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #E5E2D8;">
+                        <td style="padding: 10px; font-weight: 600;">Nav Style</td>
+                        <td style="text-align: center; padding: 10px;">Standard + gradient stripe</td>
+                        <td style="text-align: center; padding: 10px;">Centered split, dark</td>
+                        <td style="text-align: center; padding: 10px;">Mega-menu + search bar</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #E5E2D8;">
+                        <td style="padding: 10px; font-weight: 600;">Hero</td>
+                        <td style="text-align: center; padding: 10px;">Blob shapes + stickers</td>
+                        <td style="text-align: center; padding: 10px;">100vh dark gradient</td>
+                        <td style="text-align: center; padding: 10px;">Split text/visual</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #E5E2D8;">
+                        <td style="padding: 10px; font-weight: 600;">Product Cards</td>
+                        <td style="text-align: center; padding: 10px;">4-col, shape masks, quick buy</td>
+                        <td style="text-align: center; padding: 10px;">2-col gallery, alt dark/light</td>
+                        <td style="text-align: center; padding: 10px;">3-col, info tabs, ratings</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #E5E2D8;">
+                        <td style="padding: 10px; font-weight: 600;">Best For</td>
+                        <td style="text-align: center; padding: 10px;">Fun consumable brand</td>
+                        <td style="text-align: center; padding: 10px;">Premium positioning</td>
+                        <td style="text-align: center; padding: 10px;">Info-heavy wellness</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; font-weight: 600;">Price</td>
+                        <td style="text-align: center; padding: 10px; font-weight: 600;">$380</td>
+                        <td style="text-align: center; padding: 10px; font-weight: 600;">$320</td>
+                        <td style="text-align: center; padding: 10px; font-weight: 600;">$320</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Iframe Viewer -->
+        <div style="padding: 0 30px 30px;">
+            <h3 class="deck-section-header" style="font-size: 1.1rem; margin-bottom: 15px;">Live Preview</h3>
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                <select id="preview-theme-select" onchange="loadThemePreview(this.value)" style="padding: 8px 16px; border-radius: 8px; border: 1px solid #E5E2D8; font-family: var(--font-secondary); font-size: 0.85rem; background: white; cursor: pointer;">
+                    <option value="">Select a theme to preview...</option>
+                    <option value="mockups/shapes.html">Shapes — Playful & Fun</option>
+                    <option value="mockups/futurer_basser.html">Futurer / Basser — Premium & Cinematic</option>
+                    <option value="mockups/normcore_matte.html">Normcore / Matte — Organized & Wellness</option>
+                </select>
+                <a id="preview-open-link" href="#" target="_blank" rel="noopener" style="display: none; font-size: 0.8rem; color: var(--primary-color);">Open in new tab <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>
+            </div>
+            <div id="preview-iframe-container" style="display: none; border-radius: var(--border-radius-small); overflow: hidden; box-shadow: var(--shadow-soft); border: 1px solid #E5E2D8;">
+                <iframe id="preview-iframe" src="" style="width: 100%; height: 80vh; border: none;" loading="lazy"></iframe>
+            </div>
+            <div id="preview-placeholder" style="text-align: center; padding: 80px 20px; color: #999; font-size: 0.9rem;">
+                <i class="fas fa-desktop" style="font-size: 2rem; margin-bottom: 12px; display: block; opacity: 0.3;"></i>
+                Select a theme above to preview it here
+            </div>
+        </div>
     </div>
 
     <!-- Back to Top Button (#14) -->

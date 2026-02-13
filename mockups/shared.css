@@ -1,0 +1,198 @@
+/* MapleMoon Theme Mockups — Shared Foundation */
+/* Imported by all 3 mockup pages for consistency */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap');
+
+/* ── Brand Tokens ── */
+:root {
+    --mm-deep-blue: #457798;
+    --mm-dark-blue: #1E4366;
+    --mm-cream: #E8E5CE;
+    --mm-light-blue: #7DB9FA;
+    --mm-bright-blue: #62ABF9;
+    --mm-lilac: #D8CFF2;
+    --mm-white: #FFFFFF;
+
+    /* Flavor Gradients */
+    --flavor-pure-carob: linear-gradient(135deg, #457798, #E8E5CE);
+    --flavor-goji: linear-gradient(135deg, #E8758A, #F5C6D0);
+    --flavor-cayenne: linear-gradient(135deg, #D4654A, #F5A27A);
+    --flavor-salted-almond: linear-gradient(135deg, #C4A97D, #E8DCC8);
+    --flavor-peppermint: linear-gradient(135deg, #7ECBA1, #C5E8D5);
+    --flavor-hazelnut: linear-gradient(135deg, #8B6B47, #C9A96E);
+    --flavor-banana: linear-gradient(135deg, #E8C94A, #F5E08A);
+    --flavor-elixir-plain: linear-gradient(135deg, #457798, #7DB9FA);
+    --flavor-elixir-spiced: linear-gradient(135deg, #B8844A, #D4A76A);
+    --flavor-bundle: linear-gradient(135deg, #457798, #D8CFF2);
+
+    /* Typography */
+    --font-heading: 'Crimson Text', Georgia, serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); color: #333; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* ── Product Silhouettes ── */
+/* Each product card has a .product-image wrapper with a flavor gradient and CSS shape inside */
+
+.product-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bar silhouette: horizontal rounded rectangle */
+.product-image .silhouette-bar {
+    width: 65%;
+    height: 35%;
+    background: rgba(255,255,255,0.35);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: relative;
+}
+.product-image .silhouette-bar::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 8%;
+    right: 8%;
+    height: 2px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 1px;
+}
+
+/* Moon silhouette: circle */
+.product-image .silhouette-moon {
+    width: 45%;
+    height: 45%;
+    background: rgba(255,255,255,0.35);
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Banana silhouette: curved shape */
+.product-image .silhouette-banana {
+    width: 55%;
+    height: 30%;
+    background: rgba(255,255,255,0.35);
+    border-radius: 80px 80px 40px 40px;
+    transform: rotate(-15deg);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Elixir silhouette: bottle */
+.product-image .silhouette-elixir {
+    width: 28%;
+    height: 60%;
+    background: rgba(255,255,255,0.35);
+    border-radius: 8px 8px 4px 4px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.product-image .silhouette-elixir::before {
+    content: '';
+    position: absolute;
+    top: -15%;
+    left: 25%;
+    width: 50%;
+    height: 18%;
+    background: rgba(255,255,255,0.35);
+    border-radius: 4px 4px 0 0;
+}
+
+/* Bundle silhouette: gift box */
+.product-image .silhouette-bundle {
+    width: 50%;
+    height: 45%;
+    background: rgba(255,255,255,0.35);
+    border-radius: 6px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.product-image .silhouette-bundle::before {
+    content: '';
+    position: absolute;
+    top: -12%;
+    left: -5%;
+    right: -5%;
+    height: 20%;
+    background: rgba(255,255,255,0.3);
+    border-radius: 4px;
+}
+.product-image .silhouette-bundle::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 45%;
+    width: 10%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+}
+
+/* ── Certification Badges ── */
+.cert-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.cert-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: rgba(69, 119, 152, 0.08);
+    color: var(--mm-deep-blue);
+}
+
+.cert-badge i {
+    font-size: 0.6rem;
+}
+
+/* ── Shared Utilities ── */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .product-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+    .product-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+    .product-grid-2 { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 768px) {
+    .product-grid-4,
+    .product-grid-3,
+    .product-grid-2 { grid-template-columns: 1fr !important; }
+
+    .split-layout { flex-direction: column !important; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr !important; }
+}
