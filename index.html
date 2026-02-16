@@ -3054,6 +3054,17 @@
             border-radius: var(--border-radius-small);
             padding: 22px;
             text-align: center;
+            transition: var(--transition);
+        }
+        .photoshoot-stat:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        .photoshoot-stat .stat-icon {
+            font-size: 1.4rem;
+            color: var(--mm-deep-blue);
+            margin-bottom: 8px;
+            opacity: 0.7;
         }
         .photoshoot-stat .stat-number {
             font-family: var(--font-primary);
@@ -3139,6 +3150,7 @@
             color: white;
             position: relative;
             overflow: hidden;
+            transition: var(--transition);
         }
         .photoshoot-sku-card .sku-count {
             font-family: var(--font-primary);
@@ -3223,6 +3235,7 @@
             border-radius: var(--border-radius-small);
             padding: 20px;
             text-align: center;
+            transition: var(--transition);
         }
         .photoshoot-shot-card .shot-icon {
             font-size: 1.8rem;
@@ -3252,6 +3265,7 @@
             background: rgba(232,229,206,0.3);
             border-radius: var(--border-radius-small);
             padding: 18px;
+            transition: var(--transition);
         }
         .photoshoot-prop-card .prop-icon {
             font-size: 1.4rem;
@@ -3281,6 +3295,7 @@
             border-radius: var(--border-radius-small);
             padding: 20px;
             text-align: center;
+            transition: var(--transition);
         }
         .photoshoot-crew-card .crew-icon {
             width: 48px;
@@ -3320,6 +3335,7 @@
             background: rgba(69,119,152,0.04);
             border-radius: var(--border-radius-small);
             padding: 18px;
+            transition: var(--transition);
         }
         .photoshoot-budget-card .budget-item {
             font-size: 0.85rem;
@@ -3590,6 +3606,34 @@
             .photoshoot-crew-grid { grid-template-columns: 1fr; }
             .photoshoot-budget-grid { grid-template-columns: 1fr; }
             .photoshoot-section { padding: 20px; }
+        }
+        @media (max-width: 480px) {
+            .photoshoot-option { padding: 6px 12px; font-size: 0.78rem; }
+            .photoshoot-time-block { grid-template-columns: 70px 1fr; }
+            .photoshoot-time-block .time-label { font-size: 0.75rem; }
+            .photoshoot-mood-card { aspect-ratio: 1; }
+            .photoshoot-decision-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+        }
+
+        /* Photoshoot card hover effects */
+        .photoshoot-shot-card:hover,
+        .photoshoot-prop-card:hover,
+        .photoshoot-crew-card:hover,
+        .photoshoot-budget-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        .photoshoot-sku-card:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Deliverables table polish */
+        .photoshoot-deliverables-table tbody tr:nth-child(even) td {
+            background: rgba(69,119,152,0.03);
+        }
+        .photoshoot-deliverables-table tbody tr:hover td {
+            background: rgba(69,119,152,0.06);
         }
     </style>
 </head>
@@ -5954,11 +5998,12 @@ Contact: hello@handtomouse.org
                 card.querySelectorAll('.photoshoot-option').forEach(opt => {
                     opt.addEventListener('click', function() {
                         // Deselect siblings
-                        card.querySelectorAll('.photoshoot-option').forEach(o => o.classList.remove('selected'));
+                        card.querySelectorAll('.photoshoot-option').forEach(o => { o.classList.remove('selected'); o.setAttribute('aria-selected', 'false'); });
                         this.classList.add('selected');
+                        this.setAttribute('aria-selected', 'true');
                         card.classList.add('decided');
                         const dot = card.querySelector('.photoshoot-decision-status');
-                        if (dot) { dot.classList.remove('undecided'); dot.classList.add('decided'); }
+                        if (dot) { dot.classList.remove('undecided'); dot.classList.add('decided'); dot.setAttribute('aria-label', 'Decision made'); }
                         // Save
                         const decisions = JSON.parse(localStorage.getItem('mm_photoshoot_decisions') || '{}');
                         decisions[decisionId] = this.dataset.value;
@@ -5996,10 +6041,11 @@ Contact: hello@handtomouse.org
             // Decisions progress
             const decisions = JSON.parse(localStorage.getItem('mm_photoshoot_decisions') || '{}');
             const decidedCount = Object.keys(decisions).length;
+            const totalDecisions = document.querySelectorAll('.photoshoot-decision-card').length || 11;
             const countEl = document.getElementById('ps-decisions-count');
             const barEl = document.getElementById('ps-decisions-bar');
             if (countEl) countEl.textContent = decidedCount;
-            if (barEl) barEl.style.width = ((decidedCount / 11) * 100) + '%';
+            if (barEl) barEl.style.width = ((decidedCount / totalDecisions) * 100) + '%';
 
             // Pre-shoot checklist progress
             const preItems = document.querySelectorAll('.photoshoot-check-item[data-type="pre"]');
@@ -6947,21 +6993,25 @@ Contact: hello@handtomouse.org
         </header>
 
         <!-- Stat Cards -->
-        <div class="photoshoot-section fade-in">
+        <div class="photoshoot-section fade-in stagger-1">
             <div class="photoshoot-stat-grid">
                 <div class="photoshoot-stat">
+                    <div class="stat-icon"><i class="fas fa-box-open"></i></div>
                     <span class="stat-number">12+</span>
                     <span class="stat-label">SKUs to Shoot</span>
                 </div>
                 <div class="photoshoot-stat">
+                    <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
                     <span class="stat-number">2</span>
                     <span class="stat-label">Day Shoot</span>
                 </div>
                 <div class="photoshoot-stat">
+                    <div class="stat-icon"><i class="fas fa-images"></i></div>
                     <span class="stat-number">~70</span>
                     <span class="stat-label">Final Images</span>
                 </div>
                 <div class="photoshoot-stat">
+                    <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
                     <span class="stat-number">$1.5–3.9k</span>
                     <span class="stat-label">Budget Range</span>
                 </div>
@@ -6969,7 +7019,7 @@ Contact: hello@handtomouse.org
         </div>
 
         <!-- Section 2: Art Direction & Mood Board -->
-        <div class="photoshoot-section fade-in">
+        <div class="photoshoot-section fade-in stagger-2">
             <h2 class="photoshoot-section-title">Art Direction & Mood Board</h2>
             <p class="photoshoot-section-sub">Premium artisanal wholefood — not a supermarket snack. $7–12 per bar demands elevated visual treatment.</p>
 
@@ -7012,7 +7062,7 @@ Contact: hello@handtomouse.org
         </div>
 
         <!-- Section 3: Products & Packaging -->
-        <div class="photoshoot-section fade-in">
+        <div class="photoshoot-section fade-in stagger-3">
             <h2 class="photoshoot-section-title">Products & Packaging</h2>
             <p class="photoshoot-section-sub">All AFQA-compliant packaging — badges visible, barcodes & nutrition panels get dedicated shots for wholesale.</p>
 
@@ -7056,7 +7106,7 @@ Contact: hello@handtomouse.org
         </div>
 
         <!-- Section 4: Two-Day Shoot Schedule -->
-        <div class="photoshoot-section fade-in">
+        <div class="photoshoot-section fade-in stagger-4">
             <h2 class="photoshoot-section-title">Two-Day Shoot Schedule</h2>
             <p class="photoshoot-section-sub">Waiting for all AFQA-cleared packaging before shooting — one comprehensive 2-day session.</p>
 
@@ -7151,7 +7201,7 @@ Contact: hello@handtomouse.org
 
         <!-- Section 5: Shot List -->
         <div class="photoshoot-section fade-in">
-            <h2 class="photoshoot-section-title">Shot List Summary</h2>
+            <h2 class="photoshoot-section-title">Shot List Summary <span class="section-badge badge-new" style="font-family:var(--font-secondary);font-size:0.7rem;vertical-align:middle;margin-left:10px;">50–70 Final Images</span></h2>
             <p class="photoshoot-section-sub">3–5 final images per product, plus hero banners, flat-lays, and social-specific crops.</p>
 
             <div class="photoshoot-shot-grid">
@@ -7229,7 +7279,7 @@ Contact: hello@handtomouse.org
 
         <!-- Section 7: Equipment & Crew -->
         <div class="photoshoot-section fade-in">
-            <h2 class="photoshoot-section-title">Equipment & Crew</h2>
+            <h2 class="photoshoot-section-title">Equipment & Crew <span class="section-badge badge-pending" style="font-family:var(--font-secondary);font-size:0.7rem;vertical-align:middle;margin-left:10px;">3 Roles to Fill</span></h2>
             <p class="photoshoot-section-sub">Nate art directs. Photographer and retoucher to be hired — needs food/product experience.</p>
 
             <div class="photoshoot-crew-grid">
@@ -7270,7 +7320,7 @@ Contact: hello@handtomouse.org
 
         <!-- Section 8: Budget -->
         <div class="photoshoot-section fade-in">
-            <h2 class="photoshoot-section-title">Budget Estimate</h2>
+            <h2 class="photoshoot-section-title">Budget Estimate <span class="section-badge badge-new" style="font-family:var(--font-secondary);font-size:0.7rem;vertical-align:middle;margin-left:10px;">$1,550–3,900 Range</span></h2>
             <p class="photoshoot-section-sub">Ranges based on experience level and location. Final amount depends on open decisions below.</p>
 
             <div class="photoshoot-budget-grid">
@@ -7355,154 +7405,154 @@ Contact: hello@handtomouse.org
                 <!-- Decision 1 -->
                 <div class="photoshoot-decision-card" data-decision="1">
                     <div class="photoshoot-decision-header">
-                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>1. Location for each shoot day</div>
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided" aria-label="Not yet decided"></span>1. Location for each shoot day</div>
                         <span class="photoshoot-decision-owner">Nate + Dylan & Carli</span>
                     </div>
-                    <div class="photoshoot-options-row">
-                        <button class="photoshoot-option" data-value="studio_both">Studio both days</button>
-                        <button class="photoshoot-option" data-value="studio_home">Studio Day 1 + Home Day 2</button>
-                        <button class="photoshoot-option" data-value="home_both">Home both days</button>
-                        <button class="photoshoot-option" data-value="airbnb">Airbnb location</button>
+                    <div class="photoshoot-options-row" role="listbox">
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="studio_both">Studio both days</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="studio_home">Studio Day 1 + Home Day 2</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="home_both">Home both days</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="airbnb">Airbnb location</button>
                     </div>
                 </div>
 
                 <!-- Decision 2 -->
                 <div class="photoshoot-decision-card" data-decision="2">
                     <div class="photoshoot-decision-header">
-                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>2. Photographer selection</div>
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided" aria-label="Not yet decided"></span>2. Photographer selection</div>
                         <span class="photoshoot-decision-owner">Nate</span>
                     </div>
-                    <div class="photoshoot-options-row">
-                        <button class="photoshoot-option" data-value="nate_source">Nate to source</button>
-                        <button class="photoshoot-option" data-value="dc_suggest">Dylan & Carli suggest</button>
-                        <button class="photoshoot-option" data-value="both_search">We both search</button>
-                        <button class="photoshoot-option" data-value="tbd">TBD</button>
+                    <div class="photoshoot-options-row" role="listbox">
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="nate_source">Nate to source</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="dc_suggest">Dylan & Carli suggest</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="both_search">We both search</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="tbd">TBD</button>
                     </div>
                 </div>
 
                 <!-- Decision 3 -->
                 <div class="photoshoot-decision-card" data-decision="3">
                     <div class="photoshoot-decision-header">
-                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>3. Retoucher selection</div>
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided" aria-label="Not yet decided"></span>3. Retoucher selection</div>
                         <span class="photoshoot-decision-owner">Nate</span>
                     </div>
-                    <div class="photoshoot-options-row">
-                        <button class="photoshoot-option" data-value="nate_handles">Nate handles</button>
-                        <button class="photoshoot-option" data-value="outsource">Outsource</button>
-                        <button class="photoshoot-option" data-value="photographer">Photographer includes</button>
-                        <button class="photoshoot-option" data-value="tbd">TBD</button>
+                    <div class="photoshoot-options-row" role="listbox">
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="nate_handles">Nate handles</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="outsource">Outsource</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="photographer">Photographer includes</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="tbd">TBD</button>
                     </div>
                 </div>
 
                 <!-- Decision 4 -->
                 <div class="photoshoot-decision-card" data-decision="4">
                     <div class="photoshoot-decision-header">
-                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>4. Editing / color grade style</div>
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided" aria-label="Not yet decided"></span>4. Editing / color grade style</div>
                         <span class="photoshoot-decision-owner">Nate + Retoucher</span>
                     </div>
-                    <div class="photoshoot-options-row">
-                        <button class="photoshoot-option" data-value="true_warm">True-to-life warm</button>
-                        <button class="photoshoot-option" data-value="full_amber">Full amber grade</button>
-                        <button class="photoshoot-option" data-value="bright_airy">Bright & airy</button>
-                        <button class="photoshoot-option" data-value="decide_later">Decide with retoucher</button>
+                    <div class="photoshoot-options-row" role="listbox">
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="true_warm">True-to-life warm</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="full_amber">Full amber grade</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="bright_airy">Bright & airy</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="decide_later">Decide with retoucher</button>
                     </div>
                 </div>
 
                 <!-- Decision 5 -->
                 <div class="photoshoot-decision-card" data-decision="5">
                     <div class="photoshoot-decision-header">
-                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>5. Brand colors in props</div>
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided" aria-label="Not yet decided"></span>5. Brand colors in props</div>
                         <span class="photoshoot-decision-owner">Nate</span>
                     </div>
-                    <div class="photoshoot-options-row">
-                        <button class="photoshoot-option" data-value="neutral">Neutral tones only</button>
-                        <button class="photoshoot-option" data-value="some_brand">Some brand accents</button>
-                        <button class="photoshoot-option" data-value="full_brand">Full brand palette</button>
-                        <button class="photoshoot-option" data-value="mix">Mix of both</button>
+                    <div class="photoshoot-options-row" role="listbox">
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="neutral">Neutral tones only</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="some_brand">Some brand accents</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="full_brand">Full brand palette</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="mix">Mix of both</button>
                     </div>
                 </div>
 
                 <!-- Decision 6 -->
                 <div class="photoshoot-decision-card" data-decision="6">
                     <div class="photoshoot-decision-header">
-                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>6. Australian native botanicals</div>
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided" aria-label="Not yet decided"></span>6. Australian native botanicals</div>
                         <span class="photoshoot-decision-owner">Nate</span>
                     </div>
-                    <div class="photoshoot-options-row">
-                        <button class="photoshoot-option" data-value="eucalyptus">Eucalyptus</button>
-                        <button class="photoshoot-option" data-value="banksia">Banksia</button>
-                        <button class="photoshoot-option" data-value="dried_grasses">Dried grasses</button>
-                        <button class="photoshoot-option" data-value="mix_all">Mix of all</button>
+                    <div class="photoshoot-options-row" role="listbox">
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="eucalyptus">Eucalyptus</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="banksia">Banksia</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="dried_grasses">Dried grasses</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="mix_all">Mix of all</button>
                     </div>
                 </div>
 
                 <!-- Decision 7 -->
                 <div class="photoshoot-decision-card" data-decision="7">
                     <div class="photoshoot-decision-header">
-                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>7. Overhead rig</div>
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided" aria-label="Not yet decided"></span>7. Overhead rig</div>
                         <span class="photoshoot-decision-owner">Nate</span>
                     </div>
-                    <div class="photoshoot-options-row">
-                        <button class="photoshoot-option" data-value="rent">Rent</button>
-                        <button class="photoshoot-option" data-value="borrow">Borrow</button>
-                        <button class="photoshoot-option" data-value="photographer">Photographer supplies</button>
-                        <button class="photoshoot-option" data-value="skip">Skip overhead shots</button>
+                    <div class="photoshoot-options-row" role="listbox">
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="rent">Rent</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="borrow">Borrow</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="photographer">Photographer supplies</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="skip">Skip overhead shots</button>
                     </div>
                 </div>
 
                 <!-- Decision 8 -->
                 <div class="photoshoot-decision-card" data-decision="8">
                     <div class="photoshoot-decision-header">
-                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>8. Video — same photographer or separate?</div>
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided" aria-label="Not yet decided"></span>8. Video — same photographer or separate?</div>
                         <span class="photoshoot-decision-owner">Nate</span>
                     </div>
-                    <div class="photoshoot-options-row">
-                        <button class="photoshoot-option" data-value="same">Same photographer</button>
-                        <button class="photoshoot-option" data-value="separate">Separate videographer</button>
-                        <button class="photoshoot-option" data-value="phone_only">Phone video only</button>
-                        <button class="photoshoot-option" data-value="skip">Skip video</button>
+                    <div class="photoshoot-options-row" role="listbox">
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="same">Same photographer</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="separate">Separate videographer</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="phone_only">Phone video only</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="skip">Skip video</button>
                     </div>
                 </div>
 
                 <!-- Decision 9 -->
                 <div class="photoshoot-decision-card" data-decision="9">
                     <div class="photoshoot-decision-header">
-                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>9. Budget approval</div>
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided" aria-label="Not yet decided"></span>9. Budget approval</div>
                         <span class="photoshoot-decision-owner">Nate</span>
                     </div>
-                    <div class="photoshoot-options-row">
-                        <button class="photoshoot-option" data-value="lower">Approve lower (~$1,550)</button>
-                        <button class="photoshoot-option" data-value="mid">Approve mid (~$2,700)</button>
-                        <button class="photoshoot-option" data-value="full">Approve full (~$3,900)</button>
-                        <button class="photoshoot-option" data-value="discuss">Need to discuss</button>
+                    <div class="photoshoot-options-row" role="listbox">
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="lower">Approve lower (~$1,550)</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="mid">Approve mid (~$2,700)</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="full">Approve full (~$3,900)</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="discuss">Need to discuss</button>
                     </div>
                 </div>
 
                 <!-- Decision 10 -->
                 <div class="photoshoot-decision-card" data-decision="10">
                     <div class="photoshoot-decision-header">
-                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>10. Billable to MapleMoon?</div>
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided" aria-label="Not yet decided"></span>10. Billable to MapleMoon?</div>
                         <span class="photoshoot-decision-owner">Nate</span>
                     </div>
-                    <div class="photoshoot-options-row">
-                        <button class="photoshoot-option" data-value="fully_billable">Fully billable</button>
-                        <button class="photoshoot-option" data-value="in_shopify">Included in Shopify scope</button>
-                        <button class="photoshoot-option" data-value="shared">Shared cost</button>
-                        <button class="photoshoot-option" data-value="nate_covers">Nate covers</button>
+                    <div class="photoshoot-options-row" role="listbox">
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="fully_billable">Fully billable</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="in_shopify">Included in Shopify scope</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="shared">Shared cost</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="nate_covers">Nate covers</button>
                     </div>
                 </div>
 
                 <!-- Decision 11 -->
                 <div class="photoshoot-decision-card" data-decision="11">
                     <div class="photoshoot-decision-header">
-                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>11. Founders available for shots?</div>
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided" aria-label="Not yet decided"></span>11. Founders available for shots?</div>
                         <span class="photoshoot-decision-owner">Dylan & Carli</span>
                     </div>
-                    <div class="photoshoot-options-row">
-                        <button class="photoshoot-option" data-value="yes_both">Yes, both of us</button>
-                        <button class="photoshoot-option" data-value="one_of_us">One of us</button>
-                        <button class="photoshoot-option" data-value="not_this_time">Not this time</button>
-                        <button class="photoshoot-option" data-value="maybe">Maybe — check closer</button>
+                    <div class="photoshoot-options-row" role="listbox">
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="yes_both">Yes, both of us</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="one_of_us">One of us</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="not_this_time">Not this time</button>
+                        <button class="photoshoot-option" role="option" aria-selected="false" data-value="maybe">Maybe — check closer</button>
                     </div>
                 </div>
             </div>
