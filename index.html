@@ -3014,6 +3014,583 @@
             max-height: 500px;
             padding-top: 12px;
         }
+
+        /* ── Photoshoot Plan Tab ── */
+        .photoshoot-section {
+            background: var(--mm-white);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+        .photoshoot-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--mm-deep-blue), var(--mm-light-blue), var(--mm-lilac));
+        }
+        .photoshoot-section-title {
+            font-family: var(--font-primary);
+            font-size: 1.6rem;
+            color: var(--mm-dark-blue);
+            margin-bottom: 8px;
+        }
+        .photoshoot-section-sub {
+            color: #8a7d6b;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+        .photoshoot-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 0;
+        }
+        .photoshoot-stat {
+            background: linear-gradient(135deg, rgba(69,119,152,0.06), rgba(125,185,250,0.06));
+            border-radius: var(--border-radius-small);
+            padding: 22px;
+            text-align: center;
+        }
+        .photoshoot-stat .stat-number {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--mm-deep-blue);
+            display: block;
+        }
+        .photoshoot-stat .stat-label {
+            font-size: 0.8rem;
+            color: #8a7d6b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+
+        /* Mood Board */
+        .photoshoot-mood-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 25px;
+        }
+        .photoshoot-mood-card {
+            position: relative;
+            border-radius: var(--border-radius-small);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: default;
+        }
+        .photoshoot-mood-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .photoshoot-mood-card:hover img {
+            transform: scale(1.05);
+        }
+        .photoshoot-mood-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(30,67,102,0.9) 0%, transparent 100%);
+            padding: 60px 16px 16px;
+            color: white;
+        }
+        .photoshoot-mood-overlay .brand-name {
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .photoshoot-mood-overlay .brand-take {
+            font-size: 0.75rem;
+            opacity: 0.85;
+            line-height: 1.4;
+        }
+        .photoshoot-mood-keywords {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .photoshoot-keyword {
+            padding: 8px 20px;
+            background: rgba(69,119,152,0.08);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--mm-deep-blue);
+        }
+
+        /* SKU Grid */
+        .photoshoot-sku-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .photoshoot-sku-card {
+            border-radius: var(--border-radius-small);
+            padding: 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .photoshoot-sku-card .sku-count {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+        .photoshoot-sku-card .sku-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: block;
+            margin-top: 4px;
+        }
+        .photoshoot-sku-card .sku-format {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+
+        /* Schedule Timeline */
+        .photoshoot-day-card {
+            background: rgba(69,119,152,0.04);
+            border-radius: var(--border-radius-small);
+            padding: 25px;
+            margin-bottom: 16px;
+        }
+        .photoshoot-day-title {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            color: var(--mm-dark-blue);
+            margin-bottom: 4px;
+        }
+        .photoshoot-day-focus {
+            font-size: 0.85rem;
+            color: #8a7d6b;
+            margin-bottom: 18px;
+        }
+        .photoshoot-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .photoshoot-time-block {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 14px;
+            align-items: center;
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: white;
+            transition: background 0.2s ease;
+        }
+        .photoshoot-time-block:hover {
+            background: rgba(69,119,152,0.05);
+        }
+        .photoshoot-time-block.break-block {
+            background: rgba(232,229,206,0.4);
+            font-style: italic;
+        }
+        .photoshoot-time-block .time-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--mm-deep-blue);
+            font-variant-numeric: tabular-nums;
+        }
+        .photoshoot-time-block .time-desc {
+            font-size: 0.88rem;
+            color: var(--mm-dark-blue);
+        }
+        .photoshoot-time-block .time-desc strong {
+            color: var(--mm-deep-blue);
+        }
+
+        /* Shot List Cards */
+        .photoshoot-shot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .photoshoot-shot-card {
+            background: rgba(69,119,152,0.04);
+            border-radius: var(--border-radius-small);
+            padding: 20px;
+            text-align: center;
+        }
+        .photoshoot-shot-card .shot-icon {
+            font-size: 1.8rem;
+            color: var(--mm-deep-blue);
+            margin-bottom: 10px;
+        }
+        .photoshoot-shot-card .shot-title {
+            font-family: var(--font-primary);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--mm-dark-blue);
+            margin-bottom: 6px;
+        }
+        .photoshoot-shot-card .shot-detail {
+            font-size: 0.8rem;
+            color: #8a7d6b;
+            line-height: 1.5;
+        }
+
+        /* Props Cards */
+        .photoshoot-props-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .photoshoot-prop-card {
+            background: rgba(232,229,206,0.3);
+            border-radius: var(--border-radius-small);
+            padding: 18px;
+        }
+        .photoshoot-prop-card .prop-icon {
+            font-size: 1.4rem;
+            color: var(--mm-deep-blue);
+            margin-bottom: 8px;
+        }
+        .photoshoot-prop-card .prop-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--mm-dark-blue);
+            margin-bottom: 6px;
+        }
+        .photoshoot-prop-card .prop-items {
+            font-size: 0.8rem;
+            color: #8a7d6b;
+            line-height: 1.6;
+        }
+
+        /* Crew Cards */
+        .photoshoot-crew-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .photoshoot-crew-card {
+            background: rgba(69,119,152,0.04);
+            border-radius: var(--border-radius-small);
+            padding: 20px;
+            text-align: center;
+        }
+        .photoshoot-crew-card .crew-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--mm-deep-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin: 0 auto 12px;
+        }
+        .photoshoot-crew-card .crew-role {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--mm-dark-blue);
+        }
+        .photoshoot-crew-card .crew-who {
+            font-size: 0.8rem;
+            color: #8a7d6b;
+            margin-top: 4px;
+        }
+        .photoshoot-crew-card .crew-tbd {
+            color: var(--danger-color);
+            font-weight: 600;
+        }
+
+        /* Budget Cards */
+        .photoshoot-budget-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .photoshoot-budget-card {
+            background: rgba(69,119,152,0.04);
+            border-radius: var(--border-radius-small);
+            padding: 18px;
+        }
+        .photoshoot-budget-card .budget-item {
+            font-size: 0.85rem;
+            color: #8a7d6b;
+            margin-bottom: 4px;
+        }
+        .photoshoot-budget-card .budget-range {
+            font-family: var(--font-primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--mm-deep-blue);
+        }
+        .photoshoot-budget-total {
+            background: linear-gradient(135deg, var(--mm-deep-blue), var(--mm-dark-blue));
+            border-radius: var(--border-radius-small);
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+        .photoshoot-budget-total .budget-total-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .photoshoot-budget-total .budget-total-amount {
+            font-family: var(--font-primary);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        /* Deliverables Table */
+        .photoshoot-deliverables-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        .photoshoot-deliverables-table th {
+            text-align: left;
+            padding: 12px 16px;
+            background: rgba(69,119,152,0.06);
+            color: var(--mm-deep-blue);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .photoshoot-deliverables-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid rgba(69,119,152,0.08);
+            color: var(--mm-dark-blue);
+        }
+        .photoshoot-deliverables-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Decision Cards */
+        .photoshoot-decisions-progress {
+            background: rgba(69,119,152,0.06);
+            border-radius: var(--border-radius-small);
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .photoshoot-decisions-progress .progress-text {
+            font-size: 0.9rem;
+            color: var(--mm-dark-blue);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .photoshoot-progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(69,119,152,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .photoshoot-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--mm-deep-blue), var(--mm-light-blue));
+            border-radius: 4px;
+            transition: width 0.4s ease;
+        }
+        .photoshoot-decision-card {
+            background: rgba(69,119,152,0.03);
+            border-radius: var(--border-radius-small);
+            padding: 20px;
+            margin-bottom: 14px;
+            border-left: 4px solid rgba(69,119,152,0.15);
+            transition: border-color 0.3s ease;
+        }
+        .photoshoot-decision-card.decided {
+            border-left-color: var(--success-color);
+        }
+        .photoshoot-decision-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .photoshoot-decision-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--mm-dark-blue);
+        }
+        .photoshoot-decision-owner {
+            font-size: 0.75rem;
+            color: #8a7d6b;
+            background: rgba(69,119,152,0.06);
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+        .photoshoot-decision-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .photoshoot-decision-status.undecided { background: var(--danger-color); }
+        .photoshoot-decision-status.decided { background: var(--success-color); }
+        .photoshoot-options-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .photoshoot-option {
+            padding: 8px 16px;
+            border: 2px solid rgba(69,119,152,0.2);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--mm-dark-blue);
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: var(--font-secondary);
+        }
+        .photoshoot-option:hover {
+            border-color: var(--mm-deep-blue);
+            background: rgba(69,119,152,0.05);
+        }
+        .photoshoot-option.selected {
+            background: var(--mm-deep-blue);
+            border-color: var(--mm-deep-blue);
+            color: white;
+        }
+        .photoshoot-copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: var(--mm-deep-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-secondary);
+            margin-top: 20px;
+        }
+        .photoshoot-copy-btn:hover {
+            background: var(--mm-dark-blue);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-hover);
+        }
+        .photoshoot-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--mm-dark-blue);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .photoshoot-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Checklists */
+        .photoshoot-checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .photoshoot-checklist-card {
+            background: rgba(69,119,152,0.03);
+            border-radius: var(--border-radius-small);
+            padding: 22px;
+        }
+        .photoshoot-checklist-title {
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            color: var(--mm-dark-blue);
+            margin-bottom: 6px;
+        }
+        .photoshoot-checklist-progress {
+            font-size: 0.8rem;
+            color: #8a7d6b;
+            margin-bottom: 14px;
+        }
+        .photoshoot-check-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(69,119,152,0.06);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+        .photoshoot-check-item:last-child { border-bottom: none; }
+        .photoshoot-check-item.checked {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+        .photoshoot-check-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(69,119,152,0.3);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            font-size: 0.7rem;
+            color: transparent;
+        }
+        .photoshoot-check-item.checked .photoshoot-check-box {
+            background: var(--success-color);
+            border-color: var(--success-color);
+            color: white;
+        }
+        .photoshoot-check-label {
+            font-size: 0.85rem;
+            color: var(--mm-dark-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .photoshoot-stat-grid { grid-template-columns: repeat(2, 1fr); }
+            .photoshoot-mood-grid { grid-template-columns: repeat(2, 1fr); }
+            .photoshoot-sku-grid { grid-template-columns: repeat(2, 1fr); }
+            .photoshoot-shot-grid { grid-template-columns: repeat(2, 1fr); }
+            .photoshoot-props-grid { grid-template-columns: repeat(2, 1fr); }
+            .photoshoot-crew-grid { grid-template-columns: repeat(2, 1fr); }
+            .photoshoot-budget-grid { grid-template-columns: repeat(2, 1fr); }
+            .photoshoot-checklist-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .photoshoot-stat-grid { grid-template-columns: 1fr; }
+            .photoshoot-mood-grid { grid-template-columns: 1fr; }
+            .photoshoot-sku-grid { grid-template-columns: 1fr; }
+            .photoshoot-shot-grid { grid-template-columns: 1fr; }
+            .photoshoot-props-grid { grid-template-columns: 1fr; }
+            .photoshoot-crew-grid { grid-template-columns: 1fr; }
+            .photoshoot-budget-grid { grid-template-columns: 1fr; }
+            .photoshoot-section { padding: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -3057,6 +3634,7 @@
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="assets-tab" tabindex="-1" onclick="switchTab('assets', event)">Assets & Specs</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="files-tab" tabindex="-1" onclick="switchTab('files', event)"><i class="fas fa-folder-open" style="margin-right:6px"></i>Final Files</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="ecommerce-tab" tabindex="-1" onclick="switchTab('ecommerce', event)"><i class="fas fa-shopping-cart" style="margin-right:6px"></i>E-Commerce Proposal</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="photoshoot-tab" tabindex="-1" onclick="switchTab('photoshoot', event)"><i class="fas fa-camera" style="margin-right:6px"></i>Photoshoot Plan</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="research-tab" tabindex="-1" onclick="switchTab('research', event)"><i class="fas fa-flask" style="margin-right:6px"></i>Shopify Research</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="preview-tab" tabindex="-1" onclick="switchTab('preview', event)"><i class="fas fa-eye" style="margin-right:6px"></i>Theme Preview</button>
     </div>
@@ -5351,10 +5929,162 @@ Contact: hello@handtomouse.org
             initEcommerceAnimations();
             initFileLinks();
             updateHeroCard();
+            initPhotoshootTab();
 
             // Load project data (renders tracker, kanban, specs, timeline tabs)
             loadProjectData();
         });
+
+        // ── Photoshoot Plan Tab — Interactive Decisions & Checklists ──
+        function initPhotoshootTab() {
+            // Load saved decisions
+            const saved = JSON.parse(localStorage.getItem('mm_photoshoot_decisions') || '{}');
+            document.querySelectorAll('.photoshoot-decision-card').forEach(card => {
+                const decisionId = card.dataset.decision;
+                if (saved[decisionId]) {
+                    const btn = card.querySelector('[data-value="' + saved[decisionId] + '"]');
+                    if (btn) {
+                        btn.classList.add('selected');
+                        card.classList.add('decided');
+                        const dot = card.querySelector('.photoshoot-decision-status');
+                        if (dot) { dot.classList.remove('undecided'); dot.classList.add('decided'); }
+                    }
+                }
+                // Bind click handlers
+                card.querySelectorAll('.photoshoot-option').forEach(opt => {
+                    opt.addEventListener('click', function() {
+                        // Deselect siblings
+                        card.querySelectorAll('.photoshoot-option').forEach(o => o.classList.remove('selected'));
+                        this.classList.add('selected');
+                        card.classList.add('decided');
+                        const dot = card.querySelector('.photoshoot-decision-status');
+                        if (dot) { dot.classList.remove('undecided'); dot.classList.add('decided'); }
+                        // Save
+                        const decisions = JSON.parse(localStorage.getItem('mm_photoshoot_decisions') || '{}');
+                        decisions[decisionId] = this.dataset.value;
+                        localStorage.setItem('mm_photoshoot_decisions', JSON.stringify(decisions));
+                        updatePhotoshootProgress();
+                    });
+                });
+            });
+
+            // Load saved checklists
+            const preCheck = JSON.parse(localStorage.getItem('mm_photoshoot_precheck') || '[]');
+            const postCheck = JSON.parse(localStorage.getItem('mm_photoshoot_postcheck') || '[]');
+            document.querySelectorAll('.photoshoot-check-item[data-type="pre"]').forEach(item => {
+                if (preCheck[parseInt(item.dataset.index)]) item.classList.add('checked');
+            });
+            document.querySelectorAll('.photoshoot-check-item[data-type="post"]').forEach(item => {
+                if (postCheck[parseInt(item.dataset.index)]) item.classList.add('checked');
+            });
+
+            updatePhotoshootProgress();
+        }
+
+        function togglePhotoshootCheck(el) {
+            el.classList.toggle('checked');
+            const type = el.dataset.type;
+            const key = type === 'pre' ? 'mm_photoshoot_precheck' : 'mm_photoshoot_postcheck';
+            const items = document.querySelectorAll('.photoshoot-check-item[data-type="' + type + '"]');
+            const states = [];
+            items.forEach(item => states.push(item.classList.contains('checked')));
+            localStorage.setItem(key, JSON.stringify(states));
+            updatePhotoshootProgress();
+        }
+
+        function updatePhotoshootProgress() {
+            // Decisions progress
+            const decisions = JSON.parse(localStorage.getItem('mm_photoshoot_decisions') || '{}');
+            const decidedCount = Object.keys(decisions).length;
+            const countEl = document.getElementById('ps-decisions-count');
+            const barEl = document.getElementById('ps-decisions-bar');
+            if (countEl) countEl.textContent = decidedCount;
+            if (barEl) barEl.style.width = ((decidedCount / 11) * 100) + '%';
+
+            // Pre-shoot checklist progress
+            const preItems = document.querySelectorAll('.photoshoot-check-item[data-type="pre"]');
+            const preChecked = document.querySelectorAll('.photoshoot-check-item[data-type="pre"].checked').length;
+            const preProgressEl = document.getElementById('ps-precheck-progress');
+            if (preProgressEl) preProgressEl.textContent = preChecked + ' of ' + preItems.length + ' complete';
+
+            // Post-shoot checklist progress
+            const postItems = document.querySelectorAll('.photoshoot-check-item[data-type="post"]');
+            const postChecked = document.querySelectorAll('.photoshoot-check-item[data-type="post"].checked').length;
+            const postProgressEl = document.getElementById('ps-postcheck-progress');
+            if (postProgressEl) postProgressEl.textContent = postChecked + ' of ' + postItems.length + ' complete';
+        }
+
+        function copyPhotoshootDecisions() {
+            const decisions = JSON.parse(localStorage.getItem('mm_photoshoot_decisions') || '{}');
+            const labels = {
+                '1': 'Location', '2': 'Photographer', '3': 'Retoucher',
+                '4': 'Color Grade', '5': 'Props Colors', '6': 'Botanicals',
+                '7': 'Overhead Rig', '8': 'Video', '9': 'Budget',
+                '10': 'Billable?', '11': 'Founders'
+            };
+            const valueLabels = {
+                'studio_both': 'Studio both days', 'studio_home': 'Studio Day 1 + Home Day 2',
+                'home_both': 'Home both days', 'airbnb': 'Airbnb location',
+                'nate_source': 'Nate to source', 'dc_suggest': 'Dylan & Carli suggest',
+                'both_search': 'We both search', 'tbd': 'TBD',
+                'nate_handles': 'Nate handles', 'outsource': 'Outsource',
+                'photographer': 'Photographer includes',
+                'true_warm': 'True-to-life warm', 'full_amber': 'Full amber grade',
+                'bright_airy': 'Bright & airy', 'decide_later': 'Decide with retoucher',
+                'neutral': 'Neutral tones only', 'some_brand': 'Some brand accents',
+                'full_brand': 'Full brand palette', 'mix': 'Mix of both',
+                'eucalyptus': 'Eucalyptus', 'banksia': 'Banksia',
+                'dried_grasses': 'Dried grasses', 'mix_all': 'Mix of all',
+                'rent': 'Rent', 'borrow': 'Borrow', 'skip': 'Skip',
+                'same': 'Same photographer', 'separate': 'Separate videographer',
+                'phone_only': 'Phone video only',
+                'lower': 'Approve lower (~$1,550)', 'mid': 'Approve mid (~$2,700)',
+                'full': 'Approve full (~$3,900)', 'discuss': 'Need to discuss',
+                'fully_billable': 'Fully billable', 'in_shopify': 'Included in Shopify scope',
+                'shared': 'Shared cost', 'nate_covers': 'Nate covers',
+                'yes_both': 'Yes, both of us', 'one_of_us': 'One of us',
+                'not_this_time': 'Not this time', 'maybe': 'Maybe — check closer'
+            };
+
+            let text = 'MAPLEMOON PHOTOSHOOT — DECISIONS\n';
+            text += '================================\n\n';
+            for (let i = 1; i <= 11; i++) {
+                const val = decisions[String(i)];
+                const label = labels[String(i)];
+                if (val) {
+                    text += i + '. ' + label + ': ' + (valueLabels[val] || val) + '\n';
+                } else {
+                    text += i + '. ' + label + ': (not decided)\n';
+                }
+            }
+            text += '\n' + Object.keys(decisions).length + ' of 11 decisions made.';
+
+            navigator.clipboard.writeText(text).then(() => {
+                showPhotoshootToast('Copied to clipboard!');
+            }).catch(() => {
+                // Fallback
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showPhotoshootToast('Copied to clipboard!');
+            });
+        }
+
+        function showPhotoshootToast(msg) {
+            let toast = document.getElementById('ps-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'ps-toast';
+                toast.className = 'photoshoot-toast';
+                document.body.appendChild(toast);
+            }
+            toast.innerHTML = '<i class="fas fa-check-circle" style="margin-right:8px"></i>' + msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
 </script>
 
     <!-- Assets & Specs Tab -->
@@ -6189,6 +6919,704 @@ Contact: hello@handtomouse.org
                     <div class="value-prop-card">
                         <h4><i class="fas fa-handshake" style="color:var(--mm-deep-blue);margin-right:8px"></i>Existing Partnership</h4>
                         <p>We already know your brand, assets, and team. 20% loyalty discount applied.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Photoshoot Plan Tab -->
+    <div id="photoshoot-tab" class="tab-content" role="tabpanel" aria-labelledby="photoshoot-tab-btn">
+
+        <!-- Section 1: Header -->
+        <header class="brand-header fade-in" style="margin-bottom: 30px;">
+            <div class="header-content">
+                <div class="maple-logo">
+                    <img src="assets/maplemoon-logo.svg" alt="MapleMoon" style="width: 200px; height: auto; margin: 0 auto; display: block;">
+                </div>
+                <div class="project-title">
+                    <h1>New Packaging Photoshoot Plan</h1>
+                    <div class="project-subtitle">Professional Product Photography — 2026</div>
+                    <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap; justify-content: center;">
+                        <span class="section-badge badge-new">Ready When Packaging Arrives</span>
+                        <span class="section-badge badge-pending">11 Decisions Needed</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stat Cards -->
+        <div class="photoshoot-section fade-in">
+            <div class="photoshoot-stat-grid">
+                <div class="photoshoot-stat">
+                    <span class="stat-number">12+</span>
+                    <span class="stat-label">SKUs to Shoot</span>
+                </div>
+                <div class="photoshoot-stat">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Day Shoot</span>
+                </div>
+                <div class="photoshoot-stat">
+                    <span class="stat-number">~70</span>
+                    <span class="stat-label">Final Images</span>
+                </div>
+                <div class="photoshoot-stat">
+                    <span class="stat-number">$1.5–3.9k</span>
+                    <span class="stat-label">Budget Range</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Art Direction & Mood Board -->
+        <div class="photoshoot-section fade-in">
+            <h2 class="photoshoot-section-title">Art Direction & Mood Board</h2>
+            <p class="photoshoot-section-sub">Premium artisanal wholefood — not a supermarket snack. $7–12 per bar demands elevated visual treatment.</p>
+
+            <div class="photoshoot-mood-grid">
+                <div class="photoshoot-mood-card">
+                    <img src="mockups/img/orris_stacked_amber.jpg" alt="Orris Paris reference">
+                    <div class="photoshoot-mood-overlay">
+                        <span class="brand-name">Orris Paris</span>
+                        <span class="brand-take">Amber tones, sculptural arrangement, warm artisanal feel</span>
+                    </div>
+                </div>
+                <div class="photoshoot-mood-card">
+                    <img src="mockups/img/twyg_silhouette_amber.jpg" alt="TWYG reference">
+                    <div class="photoshoot-mood-overlay">
+                        <span class="brand-name">TWYG</span>
+                        <span class="brand-take">Clean earthy tones, natural textures, understated luxury</span>
+                    </div>
+                </div>
+                <div class="photoshoot-mood-card">
+                    <img src="mockups/img/pana_mood_dark.jpg" alt="Pana Chocolate — dark editorial mood">
+                    <div class="photoshoot-mood-overlay">
+                        <span class="brand-name">Pana Chocolate</span>
+                        <span class="brand-take">Editorial sophistication, dimensional lighting, refined props</span>
+                    </div>
+                </div>
+                <div class="photoshoot-mood-card">
+                    <img src="mockups/img/loco_mood_minimal.jpg" alt="Loco Love — minimal luxury styling">
+                    <div class="photoshoot-mood-overlay">
+                        <span class="brand-name">Loco Love</span>
+                        <span class="brand-take">Minimal luxury, each product as precious object, soft diffused light</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photoshoot-mood-keywords">
+                <span class="photoshoot-keyword"><i class="fas fa-fire" style="margin-right:6px;opacity:0.6"></i>Warm & Artisanal</span>
+                <span class="photoshoot-keyword"><i class="fas fa-sun" style="margin-right:6px;opacity:0.6"></i>Clean & Bright</span>
+                <span class="photoshoot-keyword"><i class="fas fa-gem" style="margin-right:6px;opacity:0.6"></i>Premium & Elevated</span>
+            </div>
+        </div>
+
+        <!-- Section 3: Products & Packaging -->
+        <div class="photoshoot-section fade-in">
+            <h2 class="photoshoot-section-title">Products & Packaging</h2>
+            <p class="photoshoot-section-sub">All AFQA-compliant packaging — badges visible, barcodes & nutrition panels get dedicated shots for wholesale.</p>
+
+            <div class="photoshoot-sku-grid">
+                <div class="photoshoot-sku-card" style="background: linear-gradient(135deg, #457798, #7DB9FA);">
+                    <span class="sku-count">6</span>
+                    <span class="sku-name">Bars</span>
+                    <span class="sku-format">Wrapped / Sleeved</span>
+                </div>
+                <div class="photoshoot-sku-card" style="background: linear-gradient(135deg, #457798, #E8E5CE);">
+                    <span class="sku-count">2</span>
+                    <span class="sku-name">Moons</span>
+                    <span class="sku-format">Wrapped</span>
+                </div>
+                <div class="photoshoot-sku-card" style="background: linear-gradient(135deg, #E8C94A, #F5E08A); color: #5a4a1a;">
+                    <span class="sku-count">1</span>
+                    <span class="sku-name">Carob Bananas</span>
+                    <span class="sku-format">Wrapped</span>
+                </div>
+                <div class="photoshoot-sku-card" style="background: linear-gradient(135deg, #457798, #D8CFF2);">
+                    <span class="sku-count">2</span>
+                    <span class="sku-name">Elixirs</span>
+                    <span class="sku-format">Cardboard Jars</span>
+                </div>
+                <div class="photoshoot-sku-card" style="background: linear-gradient(135deg, #8B6B47, #C9A96E);">
+                    <span class="sku-count">1</span>
+                    <span class="sku-name">Starter Bundle</span>
+                    <span class="sku-format">Box / Bundled Wraps</span>
+                </div>
+                <div class="photoshoot-sku-card" style="background: linear-gradient(135deg, #1E4366, #457798);">
+                    <span class="sku-count">3+</span>
+                    <span class="sku-name">CDUs</span>
+                    <span class="sku-format">Counter Display Boxes</span>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <span class="photoshoot-keyword"><i class="fas fa-certificate" style="margin-right:6px;opacity:0.6"></i>AFQA badges visible in shots</span>
+                <span class="photoshoot-keyword"><i class="fas fa-barcode" style="margin-right:6px;opacity:0.6"></i>Barcode/nutrition panel shots for wholesale</span>
+            </div>
+        </div>
+
+        <!-- Section 4: Two-Day Shoot Schedule -->
+        <div class="photoshoot-section fade-in">
+            <h2 class="photoshoot-section-title">Two-Day Shoot Schedule</h2>
+            <p class="photoshoot-section-sub">Waiting for all AFQA-cleared packaging before shooting — one comprehensive 2-day session.</p>
+
+            <!-- Day 1 -->
+            <div class="photoshoot-day-card">
+                <h3 class="photoshoot-day-title"><i class="fas fa-camera" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Day 1 — Packshots & Product Detail</h3>
+                <div class="photoshoot-day-focus">Studio Day — Clean product photography for e-commerce + wholesale</div>
+                <div class="photoshoot-timeline">
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">9:00–9:30</span>
+                        <span class="time-desc"><strong>Setup</strong> — Studio lighting, surfaces, camera check</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">9:30–11:30</span>
+                        <span class="time-desc"><strong>Individual Packshots</strong> — Every SKU: front + angled + back (barcode/nutrition)</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">11:30–12:30</span>
+                        <span class="time-desc"><strong>Unwrapped / Open Product</strong> — Bars broken, elixir poured, bananas peeled</span>
+                    </div>
+                    <div class="photoshoot-time-block break-block">
+                        <span class="time-label">12:30–1:00</span>
+                        <span class="time-desc">Lunch Break</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">1:00–2:30</span>
+                        <span class="time-desc"><strong>Detail / Close-up</strong> — Bar texture, label close-ups, raw ingredients</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">2:30–3:30</span>
+                        <span class="time-desc"><strong>Group / Range Shots</strong> — Full product family, category groups</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">3:30–4:30</span>
+                        <span class="time-desc"><strong>Flat-Lays</strong> — 1–2 overhead compositions with products + ingredients</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">4:30–5:00</span>
+                        <span class="time-desc"><strong>CDU / Wholesale</strong> — Display units, packaging back panels</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="photoshoot-day-card">
+                <h3 class="photoshoot-day-title"><i class="fas fa-film" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Day 2 — Lifestyle, Hero & Video</h3>
+                <div class="photoshoot-day-focus">Location / Styled Day — Brand storytelling, hero banners, social content, launch video</div>
+                <div class="photoshoot-timeline">
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">9:00–9:30</span>
+                        <span class="time-desc"><strong>Setup</strong> — Prop styling, scene dressing</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">9:30–11:00</span>
+                        <span class="time-desc"><strong>Hero / Banner Images</strong> — Wide-format styled scenes for homepage + collections</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">11:00–12:00</span>
+                        <span class="time-desc"><strong>Lifestyle / In-Context</strong> — Table scenes, kitchen counter, picnic, hands holding</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">12:00–12:30</span>
+                        <span class="time-desc"><strong>Hands Shots</strong> — Breaking bar, holding elixir, unwrapping</span>
+                    </div>
+                    <div class="photoshoot-time-block break-block">
+                        <span class="time-label">12:30–1:00</span>
+                        <span class="time-desc">Lunch Break</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">1:00–2:00</span>
+                        <span class="time-desc"><strong>Founders Shots</strong> — Dylan & Carli with products (if available)</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">2:00–2:30</span>
+                        <span class="time-desc"><strong>Kids / Family Moment</strong> — 1–2 natural, candid shots</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">2:30–3:30</span>
+                        <span class="time-desc"><strong>Video Content</strong> — Product reveal, launch video, Reels content</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">3:30–4:00</span>
+                        <span class="time-desc"><strong>BTS Content</strong> — Phone footage for social storytelling</span>
+                    </div>
+                    <div class="photoshoot-time-block">
+                        <span class="time-label">4:00–4:30</span>
+                        <span class="time-desc"><strong>Pickup Shots</strong> — Anything missed, alternative angles, spontaneous ideas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Shot List -->
+        <div class="photoshoot-section fade-in">
+            <h2 class="photoshoot-section-title">Shot List Summary</h2>
+            <p class="photoshoot-section-sub">3–5 final images per product, plus hero banners, flat-lays, and social-specific crops.</p>
+
+            <div class="photoshoot-shot-grid">
+                <div class="photoshoot-shot-card">
+                    <div class="shot-icon"><i class="fas fa-box-open"></i></div>
+                    <div class="shot-title">Per Product</div>
+                    <div class="shot-detail">3–5 images each: Hero packshot, 45° angle, back/barcode, unwrapped, lifestyle</div>
+                </div>
+                <div class="photoshoot-shot-card">
+                    <div class="shot-icon"><i class="fas fa-layer-group"></i></div>
+                    <div class="shot-title">Collection Groups</div>
+                    <div class="shot-detail">Family shot, all Bars, all Moons, Elixirs duo, Bundle, CDU display</div>
+                </div>
+                <div class="photoshoot-shot-card">
+                    <div class="shot-icon"><i class="fas fa-image"></i></div>
+                    <div class="shot-title">Hero Banners</div>
+                    <div class="shot-detail">6–8 banners: Homepage, Bars, Moons, Elixirs, Bundles, Our Story, Seasonal</div>
+                </div>
+                <div class="photoshoot-shot-card">
+                    <div class="shot-icon"><i class="fas fa-th"></i></div>
+                    <div class="shot-title">Flat-Lays</div>
+                    <div class="shot-detail">1–2 overhead: Full range with ingredients, "unboxing" composition</div>
+                </div>
+                <div class="photoshoot-shot-card">
+                    <div class="shot-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="shot-title">Social Crops</div>
+                    <div class="shot-detail">1:1 for Instagram grid, 9:16 for Stories/Reels, 16:9 for web banners</div>
+                </div>
+                <div class="photoshoot-shot-card">
+                    <div class="shot-icon"><i class="fas fa-video"></i></div>
+                    <div class="shot-title">Video Content</div>
+                    <div class="shot-detail">1 hero launch video + 2–3 Reels + BTS phone footage</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Props & Styling -->
+        <div class="photoshoot-section fade-in">
+            <h2 class="photoshoot-section-title">Props & Styling</h2>
+            <p class="photoshoot-section-sub">Estimated $100–200 for surfaces and props. Source 2–3 days before shoot for freshness.</p>
+
+            <div class="photoshoot-props-grid">
+                <div class="photoshoot-prop-card">
+                    <div class="prop-icon"><i class="fas fa-square"></i></div>
+                    <div class="prop-title">Surfaces</div>
+                    <div class="prop-items">Marble slab, warm wood board, linen cloth, concrete tile, terracotta</div>
+                </div>
+                <div class="photoshoot-prop-card">
+                    <div class="prop-icon"><i class="fas fa-circle"></i></div>
+                    <div class="prop-title">Ceramics</div>
+                    <div class="prop-items">Matte bowls, small plates — warm cream and earthy tones</div>
+                </div>
+                <div class="photoshoot-prop-card">
+                    <div class="prop-icon"><i class="fas fa-scroll"></i></div>
+                    <div class="prop-title">Textiles</div>
+                    <div class="prop-items">Linen napkins in cream, oatmeal, terracotta</div>
+                </div>
+                <div class="photoshoot-prop-card">
+                    <div class="prop-icon"><i class="fas fa-seedling"></i></div>
+                    <div class="prop-title">Raw Ingredients</div>
+                    <div class="prop-items">Carob pods, coconut flakes, goji berries, peppermint, cayenne, almonds, hazelnuts, banana chips</div>
+                </div>
+                <div class="photoshoot-prop-card">
+                    <div class="prop-icon"><i class="fas fa-leaf"></i></div>
+                    <div class="prop-title">Botanicals</div>
+                    <div class="prop-items">Australian natives — eucalyptus, banksia, dried grasses</div>
+                </div>
+                <div class="photoshoot-prop-card">
+                    <div class="prop-icon"><i class="fas fa-wine-glass-alt"></i></div>
+                    <div class="prop-title">Glassware</div>
+                    <div class="prop-items">Simple tumbler for elixir poured shot</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: Equipment & Crew -->
+        <div class="photoshoot-section fade-in">
+            <h2 class="photoshoot-section-title">Equipment & Crew</h2>
+            <p class="photoshoot-section-sub">Nate art directs. Photographer and retoucher to be hired — needs food/product experience.</p>
+
+            <div class="photoshoot-crew-grid">
+                <div class="photoshoot-crew-card">
+                    <div class="crew-icon"><i class="fas fa-palette"></i></div>
+                    <div class="crew-role">Art Director</div>
+                    <div class="crew-who">Nate (HandToMouse)</div>
+                </div>
+                <div class="photoshoot-crew-card">
+                    <div class="crew-icon" style="background:var(--danger-color);"><i class="fas fa-camera"></i></div>
+                    <div class="crew-role">Photographer</div>
+                    <div class="crew-who crew-tbd">To Be Hired</div>
+                </div>
+                <div class="photoshoot-crew-card">
+                    <div class="crew-icon" style="background:var(--danger-color);"><i class="fas fa-magic"></i></div>
+                    <div class="crew-role">Retoucher</div>
+                    <div class="crew-who crew-tbd">To Be Hired</div>
+                </div>
+                <div class="photoshoot-crew-card">
+                    <div class="crew-icon" style="background:var(--danger-color);"><i class="fas fa-video"></i></div>
+                    <div class="crew-role">Videographer</div>
+                    <div class="crew-who crew-tbd">TBD — Same or Separate?</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; padding: 16px; background: rgba(232,229,206,0.3); border-radius: var(--border-radius-small);">
+                <h4 style="color: var(--mm-dark-blue); margin-bottom: 10px; font-size: 0.9rem;"><i class="fas fa-tools" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Equipment</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; font-size: 0.85rem; color: #8a7d6b;">
+                    <span><i class="fas fa-check" style="color:var(--success-color);margin-right:6px"></i>Camera (DSLR/mirrorless)</span>
+                    <span><i class="fas fa-check" style="color:var(--success-color);margin-right:6px"></i>Studio lighting (softbox)</span>
+                    <span><i class="fas fa-check" style="color:var(--success-color);margin-right:6px"></i>Tripod + overhead rig</span>
+                    <span><i class="fas fa-check" style="color:var(--success-color);margin-right:6px"></i>Reflectors & diffusers</span>
+                    <span><i class="fas fa-check" style="color:var(--success-color);margin-right:6px"></i>Phone (BTS / Reels)</span>
+                    <span><i class="fas fa-check" style="color:var(--success-color);margin-right:6px"></i>Backup memory cards</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Budget -->
+        <div class="photoshoot-section fade-in">
+            <h2 class="photoshoot-section-title">Budget Estimate</h2>
+            <p class="photoshoot-section-sub">Ranges based on experience level and location. Final amount depends on open decisions below.</p>
+
+            <div class="photoshoot-budget-grid">
+                <div class="photoshoot-budget-card">
+                    <div class="budget-item"><i class="fas fa-camera" style="margin-right:6px;color:var(--mm-deep-blue)"></i>Photographer (2 days)</div>
+                    <div class="budget-range">$800–2,000</div>
+                </div>
+                <div class="photoshoot-budget-card">
+                    <div class="budget-item"><i class="fas fa-building" style="margin-right:6px;color:var(--mm-deep-blue)"></i>Studio Rental (1 day)</div>
+                    <div class="budget-range">$200–500</div>
+                </div>
+                <div class="photoshoot-budget-card">
+                    <div class="budget-item"><i class="fas fa-lightbulb" style="margin-right:6px;color:var(--mm-deep-blue)"></i>Equipment Rental</div>
+                    <div class="budget-range">$100–300</div>
+                </div>
+                <div class="photoshoot-budget-card">
+                    <div class="budget-item"><i class="fas fa-paint-brush" style="margin-right:6px;color:var(--mm-deep-blue)"></i>Props & Surfaces</div>
+                    <div class="budget-range">$100–200</div>
+                </div>
+                <div class="photoshoot-budget-card">
+                    <div class="budget-item"><i class="fas fa-magic" style="margin-right:6px;color:var(--mm-deep-blue)"></i>Retouching / Editing</div>
+                    <div class="budget-range">$200–500</div>
+                </div>
+                <div class="photoshoot-budget-card">
+                    <div class="budget-item"><i class="fas fa-film" style="margin-right:6px;color:var(--mm-deep-blue)"></i>Video Editing</div>
+                    <div class="budget-range">$150–400</div>
+                </div>
+            </div>
+
+            <div class="photoshoot-budget-total">
+                <div class="budget-total-label">Estimated Total Range</div>
+                <div class="budget-total-amount">$1,550 – $3,900</div>
+            </div>
+        </div>
+
+        <!-- Section 9: Deliverables -->
+        <div class="photoshoot-section fade-in">
+            <h2 class="photoshoot-section-title">Deliverables</h2>
+            <p class="photoshoot-section-sub">All images in TIFF (print) + JPEG (web). RAW files archived. Video in 1080p minimum.</p>
+
+            <table class="photoshoot-deliverables-table">
+                <thead>
+                    <tr>
+                        <th>Deliverable</th>
+                        <th>Format</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><i class="fas fa-box-open" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Individual Product Shots</td><td>TIFF + JPEG</td><td>3–5 per SKU (~50–70 total)</td></tr>
+                    <tr><td><i class="fas fa-image" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Hero / Banner Images</td><td>TIFF + JPEG</td><td>6–8</td></tr>
+                    <tr><td><i class="fas fa-th" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Flat-Lay Compositions</td><td>TIFF + JPEG</td><td>2–3</td></tr>
+                    <tr><td><i class="fas fa-layer-group" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Group / Range Shots</td><td>TIFF + JPEG</td><td>4–6</td></tr>
+                    <tr><td><i class="fas fa-mobile-alt" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Social Crops (1:1, 9:16, 16:9)</td><td>JPEG</td><td>Key images in all ratios</td></tr>
+                    <tr><td><i class="fas fa-barcode" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Wholesale / Barcode Shots</td><td>JPEG (high-res)</td><td>1 per SKU</td></tr>
+                    <tr><td><i class="fas fa-file-image" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Raw Files</td><td>Camera RAW</td><td>Full shoot</td></tr>
+                    <tr><td><i class="fas fa-video" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Launch Video</td><td>MP4 (1080p+)</td><td>1 hero + 2–3 Reels</td></tr>
+                    <tr><td><i class="fas fa-mobile-alt" style="margin-right:8px;color:var(--mm-deep-blue)"></i>BTS Footage</td><td>MP4 (phone)</td><td>3–5 clips</td></tr>
+                </tbody>
+            </table>
+
+            <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <span class="photoshoot-keyword"><i class="fab fa-google-drive" style="margin-right:6px;opacity:0.6"></i>Google Drive: UFC/clients/maplemoon/deliverables/photoshoot_2026/</span>
+                <span class="photoshoot-keyword"><i class="fab fa-shopify" style="margin-right:6px;opacity:0.6"></i>Shopify asset library</span>
+                <span class="photoshoot-keyword"><i class="fas fa-share-alt" style="margin-right:6px;opacity:0.6"></i>Shared drive to Dylan & Carli</span>
+            </div>
+        </div>
+
+        <!-- Section 10: Interactive Decisions -->
+        <div class="photoshoot-section fade-in">
+            <h2 class="photoshoot-section-title">Open Decisions</h2>
+            <p class="photoshoot-section-sub">Click your preferred option for each decision. Selections save automatically and can be copied to share.</p>
+
+            <div class="photoshoot-decisions-progress">
+                <div class="progress-text"><span id="ps-decisions-count">0</span> of 11 decisions made</div>
+                <div class="photoshoot-progress-bar">
+                    <div class="photoshoot-progress-fill" id="ps-decisions-bar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div id="ps-decisions-container">
+                <!-- Decision 1 -->
+                <div class="photoshoot-decision-card" data-decision="1">
+                    <div class="photoshoot-decision-header">
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>1. Location for each shoot day</div>
+                        <span class="photoshoot-decision-owner">Nate + Dylan & Carli</span>
+                    </div>
+                    <div class="photoshoot-options-row">
+                        <button class="photoshoot-option" data-value="studio_both">Studio both days</button>
+                        <button class="photoshoot-option" data-value="studio_home">Studio Day 1 + Home Day 2</button>
+                        <button class="photoshoot-option" data-value="home_both">Home both days</button>
+                        <button class="photoshoot-option" data-value="airbnb">Airbnb location</button>
+                    </div>
+                </div>
+
+                <!-- Decision 2 -->
+                <div class="photoshoot-decision-card" data-decision="2">
+                    <div class="photoshoot-decision-header">
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>2. Photographer selection</div>
+                        <span class="photoshoot-decision-owner">Nate</span>
+                    </div>
+                    <div class="photoshoot-options-row">
+                        <button class="photoshoot-option" data-value="nate_source">Nate to source</button>
+                        <button class="photoshoot-option" data-value="dc_suggest">Dylan & Carli suggest</button>
+                        <button class="photoshoot-option" data-value="both_search">We both search</button>
+                        <button class="photoshoot-option" data-value="tbd">TBD</button>
+                    </div>
+                </div>
+
+                <!-- Decision 3 -->
+                <div class="photoshoot-decision-card" data-decision="3">
+                    <div class="photoshoot-decision-header">
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>3. Retoucher selection</div>
+                        <span class="photoshoot-decision-owner">Nate</span>
+                    </div>
+                    <div class="photoshoot-options-row">
+                        <button class="photoshoot-option" data-value="nate_handles">Nate handles</button>
+                        <button class="photoshoot-option" data-value="outsource">Outsource</button>
+                        <button class="photoshoot-option" data-value="photographer">Photographer includes</button>
+                        <button class="photoshoot-option" data-value="tbd">TBD</button>
+                    </div>
+                </div>
+
+                <!-- Decision 4 -->
+                <div class="photoshoot-decision-card" data-decision="4">
+                    <div class="photoshoot-decision-header">
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>4. Editing / color grade style</div>
+                        <span class="photoshoot-decision-owner">Nate + Retoucher</span>
+                    </div>
+                    <div class="photoshoot-options-row">
+                        <button class="photoshoot-option" data-value="true_warm">True-to-life warm</button>
+                        <button class="photoshoot-option" data-value="full_amber">Full amber grade</button>
+                        <button class="photoshoot-option" data-value="bright_airy">Bright & airy</button>
+                        <button class="photoshoot-option" data-value="decide_later">Decide with retoucher</button>
+                    </div>
+                </div>
+
+                <!-- Decision 5 -->
+                <div class="photoshoot-decision-card" data-decision="5">
+                    <div class="photoshoot-decision-header">
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>5. Brand colors in props</div>
+                        <span class="photoshoot-decision-owner">Nate</span>
+                    </div>
+                    <div class="photoshoot-options-row">
+                        <button class="photoshoot-option" data-value="neutral">Neutral tones only</button>
+                        <button class="photoshoot-option" data-value="some_brand">Some brand accents</button>
+                        <button class="photoshoot-option" data-value="full_brand">Full brand palette</button>
+                        <button class="photoshoot-option" data-value="mix">Mix of both</button>
+                    </div>
+                </div>
+
+                <!-- Decision 6 -->
+                <div class="photoshoot-decision-card" data-decision="6">
+                    <div class="photoshoot-decision-header">
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>6. Australian native botanicals</div>
+                        <span class="photoshoot-decision-owner">Nate</span>
+                    </div>
+                    <div class="photoshoot-options-row">
+                        <button class="photoshoot-option" data-value="eucalyptus">Eucalyptus</button>
+                        <button class="photoshoot-option" data-value="banksia">Banksia</button>
+                        <button class="photoshoot-option" data-value="dried_grasses">Dried grasses</button>
+                        <button class="photoshoot-option" data-value="mix_all">Mix of all</button>
+                    </div>
+                </div>
+
+                <!-- Decision 7 -->
+                <div class="photoshoot-decision-card" data-decision="7">
+                    <div class="photoshoot-decision-header">
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>7. Overhead rig</div>
+                        <span class="photoshoot-decision-owner">Nate</span>
+                    </div>
+                    <div class="photoshoot-options-row">
+                        <button class="photoshoot-option" data-value="rent">Rent</button>
+                        <button class="photoshoot-option" data-value="borrow">Borrow</button>
+                        <button class="photoshoot-option" data-value="photographer">Photographer supplies</button>
+                        <button class="photoshoot-option" data-value="skip">Skip overhead shots</button>
+                    </div>
+                </div>
+
+                <!-- Decision 8 -->
+                <div class="photoshoot-decision-card" data-decision="8">
+                    <div class="photoshoot-decision-header">
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>8. Video — same photographer or separate?</div>
+                        <span class="photoshoot-decision-owner">Nate</span>
+                    </div>
+                    <div class="photoshoot-options-row">
+                        <button class="photoshoot-option" data-value="same">Same photographer</button>
+                        <button class="photoshoot-option" data-value="separate">Separate videographer</button>
+                        <button class="photoshoot-option" data-value="phone_only">Phone video only</button>
+                        <button class="photoshoot-option" data-value="skip">Skip video</button>
+                    </div>
+                </div>
+
+                <!-- Decision 9 -->
+                <div class="photoshoot-decision-card" data-decision="9">
+                    <div class="photoshoot-decision-header">
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>9. Budget approval</div>
+                        <span class="photoshoot-decision-owner">Nate</span>
+                    </div>
+                    <div class="photoshoot-options-row">
+                        <button class="photoshoot-option" data-value="lower">Approve lower (~$1,550)</button>
+                        <button class="photoshoot-option" data-value="mid">Approve mid (~$2,700)</button>
+                        <button class="photoshoot-option" data-value="full">Approve full (~$3,900)</button>
+                        <button class="photoshoot-option" data-value="discuss">Need to discuss</button>
+                    </div>
+                </div>
+
+                <!-- Decision 10 -->
+                <div class="photoshoot-decision-card" data-decision="10">
+                    <div class="photoshoot-decision-header">
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>10. Billable to MapleMoon?</div>
+                        <span class="photoshoot-decision-owner">Nate</span>
+                    </div>
+                    <div class="photoshoot-options-row">
+                        <button class="photoshoot-option" data-value="fully_billable">Fully billable</button>
+                        <button class="photoshoot-option" data-value="in_shopify">Included in Shopify scope</button>
+                        <button class="photoshoot-option" data-value="shared">Shared cost</button>
+                        <button class="photoshoot-option" data-value="nate_covers">Nate covers</button>
+                    </div>
+                </div>
+
+                <!-- Decision 11 -->
+                <div class="photoshoot-decision-card" data-decision="11">
+                    <div class="photoshoot-decision-header">
+                        <div class="photoshoot-decision-title"><span class="photoshoot-decision-status undecided"></span>11. Founders available for shots?</div>
+                        <span class="photoshoot-decision-owner">Dylan & Carli</span>
+                    </div>
+                    <div class="photoshoot-options-row">
+                        <button class="photoshoot-option" data-value="yes_both">Yes, both of us</button>
+                        <button class="photoshoot-option" data-value="one_of_us">One of us</button>
+                        <button class="photoshoot-option" data-value="not_this_time">Not this time</button>
+                        <button class="photoshoot-option" data-value="maybe">Maybe — check closer</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="photoshoot-copy-btn" onclick="copyPhotoshootDecisions()">
+                    <i class="fas fa-copy"></i> Copy All Selections
+                </button>
+            </div>
+        </div>
+
+        <!-- Section 11: Checklists -->
+        <div class="photoshoot-section fade-in">
+            <h2 class="photoshoot-section-title">Checklists</h2>
+            <p class="photoshoot-section-sub">Track preparation and post-shoot tasks. Checkboxes save automatically.</p>
+
+            <div class="photoshoot-checklist-grid">
+                <!-- Pre-Shoot -->
+                <div class="photoshoot-checklist-card">
+                    <h3 class="photoshoot-checklist-title"><i class="fas fa-clipboard-check" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Pre-Shoot Checklist</h3>
+                    <div class="photoshoot-checklist-progress" id="ps-precheck-progress">0 of 11 complete</div>
+                    <div id="ps-precheck-list">
+                        <div class="photoshoot-check-item" data-type="pre" data-index="0" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">All AFQA-cleared packaging received & inspected</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="pre" data-index="1" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Photographer hired and briefed</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="pre" data-index="2" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Studio / location booked</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="pre" data-index="3" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Props and surfaces sourced</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="pre" data-index="4" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Raw ingredients purchased (fresh — 2–3 days before)</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="pre" data-index="5" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Mood board finalized & shared with photographer</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="pre" data-index="6" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Shot list printed for shoot day</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="pre" data-index="7" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Products steamed / cleaned and pristine</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="pre" data-index="8" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Enough stock of every SKU confirmed</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="pre" data-index="9" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Phone charged + storage cleared for BTS</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="pre" data-index="10" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Backup battery / memory cards</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post-Shoot -->
+                <div class="photoshoot-checklist-card">
+                    <h3 class="photoshoot-checklist-title"><i class="fas fa-check-double" style="margin-right:8px;color:var(--mm-deep-blue)"></i>Post-Shoot Checklist</h3>
+                    <div class="photoshoot-checklist-progress" id="ps-postcheck-progress">0 of 10 complete</div>
+                    <div id="ps-postcheck-list">
+                        <div class="photoshoot-check-item" data-type="post" data-index="0" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">All images backed up to 2 locations</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="post" data-index="1" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Selects chosen (Nate + Dylan & Carli review)</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="post" data-index="2" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Retouching brief sent to editor</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="post" data-index="3" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Edited images received and approved</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="post" data-index="4" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Asset guide created (image-to-Shopify mapping)</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="post" data-index="5" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Images uploaded to Shopify</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="post" data-index="6" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Social media crops exported</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="post" data-index="7" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Wholesale deck images prepared</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="post" data-index="8" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Print-resolution files stored for market materials</span>
+                        </div>
+                        <div class="photoshoot-check-item" data-type="post" data-index="9" onclick="togglePhotoshootCheck(this)">
+                            <div class="photoshoot-check-box"><i class="fas fa-check"></i></div>
+                            <span class="photoshoot-check-label">Video edited and delivered</span>
+                        </div>
                     </div>
                 </div>
             </div>
