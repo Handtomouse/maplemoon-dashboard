@@ -1,14 +1,14 @@
 {
-  "lastUpdated": "2026-02-11T10:00:00Z",
+  "lastUpdated": "2026-02-18T10:00:00Z",
   "project": {
-    "totalValue": 10656.14,
+    "totalValue": 11909.82,
     "inProgressValue": 626.84,
     "blockedValue": 0,
-    "readyValue": 0,
+    "readyValue": 1253.68,
     "completeValue": 10029.30,
-    "targetDate": "2026-02-28"
+    "targetDate": "2026-03-31"
   },
-  "_note": "Aggregate values are calculated from products array: inProgressValue = sum(status=in_progress), blockedValue = sum(status=blocked), readyValue = sum(status=ready), completeValue = sum(status=completed). These should match product sums. Updated 2026-02-11: All original AFQA scope COMPLETE & PAID. Elixirs in progress.",
+  "_note": "Updated 2026-02-18: Elixirs in progress (color+copy pending). 4 new products added (Lavender Bar/Moon, Orange Bar/Moon at 25% rate). Shopify website approved.",
   "products": [
     {
       "id": "pure_carob_bar",
@@ -261,12 +261,14 @@
       "progress": 30,
       "specsComplete": true,
       "blocker": null,
-      "notes": "IN PROGRESS. Barcodes received from client. AFQA compliance update underway. TPP Small Cylinder 73x115mm. Allergen statements, NIP formatting, claims review, country of origin, storage instructions.",
+      "notes": "IN PROGRESS. Barcodes received. Awaiting color decision and copy finalization. TPP Small Cylinder 73x115mm. AFQA compliance update underway.",
       "checklist": [
         "✅ SKU: MM_ELX_PCAR_250ML",
         "✅ Package: TPP Small Cylinder 73x115mm",
         "✅ Claims: vegan, organic, caffeine free, gluten free, refined sugar free",
         "✅ Barcode received from client",
+        "⏳ Color decision (finalize design)",
+        "⏳ Copy finalization (messaging/naming)",
         "⏳ Allergen statement update",
         "⏳ NIP formatting per AFQA",
         "⏳ Country of origin statement"
@@ -286,15 +288,105 @@
       "progress": 30,
       "specsComplete": true,
       "blocker": null,
-      "notes": "IN PROGRESS. Barcodes received from client. AFQA compliance update underway. TPP Small Cylinder 73x115mm. Ayurvedic inspired spiced variant. Same compliance work as Plain Carob Elixir.",
+      "notes": "IN PROGRESS. Barcodes received. Exploring yellow/orange color option (turmeric-inspired). Awaiting color decision + copy finalization. TPP Small Cylinder 73x115mm.",
       "checklist": [
         "✅ SKU: MM_ELX_SPIC_250ML",
         "✅ Package: TPP Small Cylinder 73x115mm",
         "✅ Claims: vegan, organic, caffeine free, gluten free, ayurvedic inspired",
         "✅ Barcode received from client",
+        "⏳ Yellow/orange color option (share with Carli)",
+        "⏳ Copy finalization (messaging/naming)",
         "⏳ Allergen statement update",
         "⏳ NIP formatting per AFQA",
         "⏳ Country of origin statement"
+      ]
+    },
+    {
+      "id": "lavender_bar",
+      "name": "Lavender Bar",
+      "fullName": "Lavender Bar - AFQA Compliance",
+      "type": "Bar",
+      "week": "Week 6",
+      "weekDates": "Week 6",
+      "status": "ready",
+      "price": 313.42,
+      "rateType": "compliance",
+      "discount": "25%",
+      "progress": 0,
+      "specsComplete": false,
+      "blocker": null,
+      "notes": "NEW — Added 17 Feb 2026. 25% compliance rate. Awaiting specs and barcodes from client.",
+      "checklist": [
+        "⏳ SKU assignment",
+        "⏳ Barcode from client",
+        "⏳ Packaging specs",
+        "⏳ AFQA compliance design"
+      ]
+    },
+    {
+      "id": "lavender_moon",
+      "name": "Lavender Moon",
+      "fullName": "Lavender Moon - AFQA Compliance",
+      "type": "Moon",
+      "week": "Week 6",
+      "weekDates": "Week 6",
+      "status": "ready",
+      "price": 313.42,
+      "rateType": "compliance",
+      "discount": "25%",
+      "progress": 0,
+      "specsComplete": false,
+      "blocker": null,
+      "notes": "NEW — Added 17 Feb 2026. 25% compliance rate. Awaiting specs and barcodes from client.",
+      "checklist": [
+        "⏳ SKU assignment",
+        "⏳ Barcode from client",
+        "⏳ Packaging specs",
+        "⏳ AFQA compliance design"
+      ]
+    },
+    {
+      "id": "orange_bar",
+      "name": "Orange Bar",
+      "fullName": "Orange Bar - AFQA Compliance",
+      "type": "Bar",
+      "week": "Week 6",
+      "weekDates": "Week 6",
+      "status": "ready",
+      "price": 313.42,
+      "rateType": "compliance",
+      "discount": "25%",
+      "progress": 0,
+      "specsComplete": false,
+      "blocker": null,
+      "notes": "NEW — Added 17 Feb 2026. 25% compliance rate. Awaiting specs and barcodes from client.",
+      "checklist": [
+        "⏳ SKU assignment",
+        "⏳ Barcode from client",
+        "⏳ Packaging specs",
+        "⏳ AFQA compliance design"
+      ]
+    },
+    {
+      "id": "orange_moon",
+      "name": "Orange Moon",
+      "fullName": "Orange Moon - AFQA Compliance",
+      "type": "Moon",
+      "week": "Week 6",
+      "weekDates": "Week 6",
+      "status": "ready",
+      "price": 313.42,
+      "rateType": "compliance",
+      "discount": "25%",
+      "progress": 0,
+      "specsComplete": false,
+      "blocker": null,
+      "notes": "NEW — Added 17 Feb 2026. 25% compliance rate. Awaiting specs and barcodes from client.",
+      "checklist": [
+        "⏳ SKU assignment",
+        "⏳ Barcode from client",
+        "⏳ Packaging specs",
+        "⏳ AFQA compliance design"
       ]
     }
   ]
