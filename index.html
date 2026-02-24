@@ -3914,6 +3914,7 @@
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="photoshoot-tab" tabindex="-1" onclick="switchTab('photoshoot', event)"><i class="fas fa-camera" style="margin-right:6px"></i>Photoshoot Plan</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="research-tab" tabindex="-1" onclick="switchTab('research', event)"><i class="fas fa-flask" style="margin-right:6px"></i>Shopify Research</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="preview-tab" tabindex="-1" onclick="switchTab('preview', event)"><i class="fas fa-eye" style="margin-right:6px"></i>Theme Preview</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="clientform-tab" tabindex="-1" onclick="switchTab('clientform', event)" style="background: var(--primary-color); color: white;"><i class="fas fa-clipboard-list" style="margin-right:6px"></i>Client Form</button>
     </div>
 
     <!-- Quote Tab (existing content) -->
@@ -9187,6 +9188,407 @@ Contact: hello@handtomouse.org
                 Select a theme above to preview it here
             </div>
         </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CLIENT FORM TAB
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="clientform-tab" class="tab-content" role="tabpanel" aria-labelledby="clientform-tab-btn">
+        <style>
+            .cf-wrap { max-width: 780px; margin: 0 auto; padding: 24px 16px 80px; font-family: 'Inter', -apple-system, sans-serif; }
+            .cf-intro { text-align: center; padding: 32px 20px 24px; }
+            .cf-intro h2 { font-size: 1.6rem; color: var(--primary-color, #1E4366); margin-bottom: 8px; }
+            .cf-intro p { font-size: 0.9rem; color: #888; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+            .cf-progress { display: flex; align-items: center; gap: 12px; padding: 12px 0; margin-bottom: 16px; position: sticky; top: 60px; z-index: 50; background: #F8F7F2; border-radius: 8px; padding: 12px 16px; }
+            .cf-progress-track { flex: 1; height: 6px; background: rgba(30,67,102,0.08); border-radius: 3px; overflow: hidden; }
+            .cf-progress-fill { height: 100%; background: #457798; border-radius: 3px; transition: width 0.4s ease; width: 0%; }
+            .cf-progress-text { font-size: 0.75rem; color: #457798; font-weight: 500; white-space: nowrap; }
+
+            .cf-section { background: white; border-radius: 12px; margin-bottom: 12px; border: 1px solid rgba(30,67,102,0.06); overflow: hidden; }
+            .cf-section-hdr { padding: 18px 20px; cursor: pointer; display: flex; align-items: center; gap: 14px; transition: background 0.2s; user-select: none; }
+            .cf-section-hdr:hover { background: rgba(69,119,152,0.03); }
+            .cf-section-num { width: 30px; height: 30px; border-radius: 50%; background: #457798; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0; }
+            .cf-section-title { flex: 1; }
+            .cf-section-title h3 { font-size: 1rem; color: #1E4366; margin: 0; }
+            .cf-section-title small { font-size: 0.78rem; color: #999; }
+            .cf-chevron { width: 18px; height: 18px; transition: transform 0.3s; flex-shrink: 0; }
+            .cf-section.open .cf-chevron { transform: rotate(180deg); }
+            .cf-section-body { display: none; padding: 0 20px 24px; }
+            .cf-section.open .cf-section-body { display: block; }
+
+            .cf-context { background: rgba(69,119,152,0.05); border-left: 3px solid #457798; padding: 10px 14px; margin-bottom: 20px; border-radius: 0 8px 8px 0; font-size: 0.82rem; color: rgba(30,67,102,0.65); line-height: 1.6; }
+            .cf-field { margin-bottom: 16px; }
+            .cf-field label { display: block; font-size: 0.82rem; font-weight: 500; color: #1E4366; margin-bottom: 5px; }
+            .cf-field .cf-hint { font-weight: 400; color: rgba(30,67,102,0.4); font-size: 0.78rem; }
+            .cf-field input[type="text"], .cf-field input[type="email"], .cf-field input[type="tel"], .cf-field input[type="url"], .cf-field textarea, .cf-field select {
+                width: 100%; padding: 9px 12px; border: 1.5px solid rgba(30,67,102,0.13); border-radius: 8px;
+                font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #1E4366; background: white; outline: none;
+                transition: border-color 0.2s, box-shadow 0.2s;
+            }
+            .cf-field input:focus, .cf-field textarea:focus { border-color: #457798; box-shadow: 0 0 0 3px rgba(69,119,152,0.1); }
+            .cf-field textarea { min-height: 70px; resize: vertical; }
+            .cf-field .cf-prefilled { background: rgba(69,119,152,0.04); border-style: dashed; }
+            .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+            @media (max-width: 600px) { .cf-row { grid-template-columns: 1fr; } }
+
+            .cf-radio { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; }
+            .cf-radio label { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1.5px solid rgba(30,67,102,0.1); border-radius: 8px; cursor: pointer; transition: all 0.2s; font-weight: 400; font-size: 0.83rem; }
+            .cf-radio label:hover { border-color: #457798; background: rgba(69,119,152,0.03); }
+            .cf-radio input { accent-color: #457798; }
+
+            .cf-sep { border: none; height: 1px; background: rgba(30,67,102,0.06); margin: 20px 0; }
+            .cf-subhead { font-size: 0.95rem; color: #1E4366; margin: 20px 0 10px; padding-bottom: 5px; border-bottom: 1px solid rgba(30,67,102,0.06); }
+
+            .cf-ptable { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.82rem; }
+            .cf-ptable th { text-align: left; padding: 7px 8px; font-weight: 500; color: #457798; border-bottom: 2px solid rgba(69,119,152,0.12); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+            .cf-ptable td { padding: 5px 8px; border-bottom: 1px solid rgba(30,67,102,0.04); }
+            .cf-ptable td:first-child { font-weight: 500; color: #1E4366; min-width: 160px; }
+            .cf-ptable input { width: 100%; max-width: 100px; padding: 6px 8px; border: 1.5px solid rgba(30,67,102,0.1); border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 0.82rem; outline: none; }
+            .cf-ptable input:focus { border-color: #457798; }
+
+            .cf-submit { text-align: center; padding: 32px 20px; }
+            .cf-submit-btn { background: #1E4366; color: #E8E5CE; border: none; padding: 14px 40px; font-size: 1rem; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+            .cf-submit-btn:hover { background: #457798; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(30,67,102,0.2); }
+            .cf-submit-note { font-size: 0.78rem; color: #999; margin-top: 10px; }
+            .cf-autosave { position: fixed; bottom: 20px; right: 20px; background: #1E4366; color: #E8E5CE; padding: 7px 14px; border-radius: 20px; font-size: 0.72rem; opacity: 0; transition: opacity 0.3s; z-index: 200; }
+            .cf-autosave.vis { opacity: 1; }
+
+            .cf-file-upload { border: 2px dashed rgba(30,67,102,0.12); border-radius: 8px; padding: 20px; text-align: center; cursor: pointer; transition: border-color 0.2s; }
+            .cf-file-upload:hover { border-color: #457798; }
+            .cf-file-upload p { font-size: 0.82rem; color: rgba(30,67,102,0.4); margin: 0; }
+            .cf-file-upload input { display: none; }
+        </style>
+
+        <div class="cf-wrap">
+            <div class="cf-intro">
+                <h2>Store Setup Form</h2>
+                <p>Help us build your new Shopify store by filling in what you can below. Your progress saves automatically — come back anytime.</p>
+            </div>
+
+            <div class="cf-progress">
+                <div class="cf-progress-track"><div class="cf-progress-fill" id="cfProgressFill"></div></div>
+                <span class="cf-progress-text" id="cfProgressText">0%</span>
+            </div>
+
+            <form id="cfForm">
+
+            <!-- S1: Business Basics -->
+            <div class="cf-section open" data-cfs="1">
+                <div class="cf-section-hdr" onclick="cfToggle(this)">
+                    <div class="cf-section-num">1</div>
+                    <div class="cf-section-title"><h3>Business Basics</h3><small>Name, address, contacts</small></div>
+                    <svg class="cf-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </div>
+                <div class="cf-section-body">
+                    <div class="cf-context">These details appear on your store, invoices, and legal pages.</div>
+                    <div class="cf-field"><label>Business name</label><input type="text" name="cf_business_name" value="MapleMoon" class="cf-prefilled" data-cf></div>
+                    <div class="cf-field"><label>Business address</label><input type="text" name="cf_business_address" value="33 Nana Street, Brunswick Heads NSW 2483" class="cf-prefilled" data-cf></div>
+                    <div class="cf-field"><label>ABN</label><input type="text" name="cf_abn" placeholder="XX XXX XXX XXX" data-cf></div>
+                    <div class="cf-field"><label>Business email <span class="cf-hint">(customer enquiries)</span></label><input type="email" name="cf_business_email" value="info@maplemoon.com.au" class="cf-prefilled" data-cf></div>
+                    <div class="cf-field"><label>Customer support phone</label><input type="tel" name="cf_support_phone" placeholder="04XX XXX XXX" data-cf></div>
+                    <hr class="cf-sep">
+                    <div class="cf-subhead">Primary Contacts</div>
+                    <div class="cf-row">
+                        <div class="cf-field"><label>Carli's email</label><input type="email" name="cf_carli_email" data-cf></div>
+                        <div class="cf-field"><label>Carli's mobile</label><input type="tel" name="cf_carli_phone" data-cf></div>
+                    </div>
+                    <div class="cf-row">
+                        <div class="cf-field"><label>Dylan's email</label><input type="email" name="cf_dylan_email" data-cf></div>
+                        <div class="cf-field"><label>Dylan's mobile</label><input type="tel" name="cf_dylan_phone" data-cf></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- S2: Social Media -->
+            <div class="cf-section" data-cfs="2">
+                <div class="cf-section-hdr" onclick="cfToggle(this)">
+                    <div class="cf-section-num">2</div>
+                    <div class="cf-section-title"><h3>Social Media & Web</h3><small>Your online presence</small></div>
+                    <svg class="cf-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </div>
+                <div class="cf-section-body">
+                    <div class="cf-context">We'll link these in your store footer and set up social sharing previews.</div>
+                    <div class="cf-field"><label>Instagram handle</label><input type="text" name="cf_instagram" placeholder="@maplemoon_carob" data-cf></div>
+                    <div class="cf-field"><label>Facebook page URL</label><input type="url" name="cf_facebook" placeholder="https://facebook.com/..." data-cf></div>
+                    <div class="cf-field"><label>TikTok handle</label><input type="text" name="cf_tiktok" placeholder="@..." data-cf></div>
+                    <div class="cf-field"><label>Other social profiles <span class="cf-hint">(Pinterest, YouTube, etc.)</span></label><textarea name="cf_other_socials" rows="2" placeholder="List any other profiles..." data-cf></textarea></div>
+                    <hr class="cf-sep">
+                    <div class="cf-field"><label>Current website URL</label><input type="url" name="cf_current_website" value="https://maplemoon.com.au" class="cf-prefilled" data-cf></div>
+                    <div class="cf-field"><label>Current website platform</label><input type="text" name="cf_current_platform" value="WooCommerce" class="cf-prefilled" data-cf></div>
+                </div>
+            </div>
+
+            <!-- S3: Retail Pricing -->
+            <div class="cf-section" data-cfs="3">
+                <div class="cf-section-hdr" onclick="cfToggle(this)">
+                    <div class="cf-section-num">3</div>
+                    <div class="cf-section-title"><h3>Retail Pricing</h3><small>The most important section</small></div>
+                    <svg class="cf-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </div>
+                <div class="cf-section-body">
+                    <div class="cf-context"><strong>This is the single biggest item we need.</strong> Every product needs a retail price before it can go on the store. All prices in AUD inc GST. Leave blank any packs you don't plan to sell.</div>
+
+                    <div class="cf-subhead">Carob Bars (90g)</div>
+                    <table class="cf-ptable"><thead><tr><th>Product</th><th>Single $</th><th>6-Pack $</th><th>12-Pack $</th></tr></thead><tbody>
+                        <tr><td>Pure Carob & Cacao Butter</td><td><input name="cf_p_bar_pcar_1" placeholder="$" data-cf></td><td><input name="cf_p_bar_pcar_6" placeholder="$" data-cf></td><td><input name="cf_p_bar_pcar_12" placeholder="$" data-cf></td></tr>
+                        <tr><td>Goji & Coconut</td><td><input name="cf_p_bar_gcoc_1" placeholder="$" data-cf></td><td><input name="cf_p_bar_gcoc_6" placeholder="$" data-cf></td><td><input name="cf_p_bar_gcoc_12" placeholder="$" data-cf></td></tr>
+                        <tr><td>Cayenne Chilli & Celtic Salt</td><td><input name="cf_p_bar_chilli_1" placeholder="$" data-cf></td><td><input name="cf_p_bar_chilli_6" placeholder="$" data-cf></td><td><input name="cf_p_bar_chilli_12" placeholder="$" data-cf></td></tr>
+                        <tr><td>Salted Almond</td><td><input name="cf_p_bar_asal_1" placeholder="$" data-cf></td><td><input name="cf_p_bar_asal_6" placeholder="$" data-cf></td><td><input name="cf_p_bar_asal_12" placeholder="$" data-cf></td></tr>
+                        <tr><td>Peppermint Buckwheat Crisp</td><td><input name="cf_p_bar_pmin_1" placeholder="$" data-cf></td><td><input name="cf_p_bar_pmin_6" placeholder="$" data-cf></td><td><input name="cf_p_bar_pmin_12" placeholder="$" data-cf></td></tr>
+                        <tr><td>Roasted Dark Hazelnut</td><td><input name="cf_p_bar_hnut_1" placeholder="$" data-cf></td><td><input name="cf_p_bar_hnut_6" placeholder="$" data-cf></td><td><input name="cf_p_bar_hnut_12" placeholder="$" data-cf></td></tr>
+                    </tbody></table>
+
+                    <div class="cf-subhead">Carob Moons (45g 4-pack)</div>
+                    <table class="cf-ptable"><thead><tr><th>Product</th><th>Single $</th><th>6-Pack $</th><th>12-Pack $</th></tr></thead><tbody>
+                        <tr><td>Pure Carob & Cacao Butter</td><td><input name="cf_p_moon_pcar_1" placeholder="$" data-cf></td><td><input name="cf_p_moon_pcar_6" placeholder="$" data-cf></td><td><input name="cf_p_moon_pcar_12" placeholder="$" data-cf></td></tr>
+                        <tr><td>Coconut & Goji</td><td><input name="cf_p_moon_gcoc_1" placeholder="$" data-cf></td><td><input name="cf_p_moon_gcoc_6" placeholder="$" data-cf></td><td><input name="cf_p_moon_gcoc_12" placeholder="$" data-cf></td></tr>
+                        <tr><td>Almond Celtic Salt</td><td><input name="cf_p_moon_asal_1" placeholder="$" data-cf></td><td><input name="cf_p_moon_asal_6" placeholder="$" data-cf></td><td><input name="cf_p_moon_asal_12" placeholder="$" data-cf></td></tr>
+                        <tr><td>Cayenne Chilli Celtic Salt</td><td><input name="cf_p_moon_chilli_1" placeholder="$" data-cf></td><td><input name="cf_p_moon_chilli_6" placeholder="$" data-cf></td><td><input name="cf_p_moon_chilli_12" placeholder="$" data-cf></td></tr>
+                        <tr><td>Roasted Hazelnut</td><td><input name="cf_p_moon_hnut_1" placeholder="$" data-cf></td><td><input name="cf_p_moon_hnut_6" placeholder="$" data-cf></td><td><input name="cf_p_moon_hnut_12" placeholder="$" data-cf></td></tr>
+                        <tr><td>Peppermint Buckwheat Crisp</td><td><input name="cf_p_moon_pmin_1" placeholder="$" data-cf></td><td><input name="cf_p_moon_pmin_6" placeholder="$" data-cf></td><td><input name="cf_p_moon_pmin_12" placeholder="$" data-cf></td></tr>
+                    </tbody></table>
+
+                    <div class="cf-subhead">Carob Bananas (80g 4-pack)</div>
+                    <table class="cf-ptable"><thead><tr><th>Product</th><th>Single $</th><th>6-Pack $</th><th>12-Pack $</th></tr></thead><tbody>
+                        <tr><td>Carob Bananas</td><td><input name="cf_p_banana_1" placeholder="$" data-cf></td><td><input name="cf_p_banana_6" placeholder="$" data-cf></td><td><input name="cf_p_banana_12" placeholder="$" data-cf></td></tr>
+                    </tbody></table>
+
+                    <div class="cf-subhead">Carob Elixirs (250ml)</div>
+                    <table class="cf-ptable"><thead><tr><th>Product</th><th>Single $</th><th>6-Pack $</th></tr></thead><tbody>
+                        <tr><td>Plain Carob Elixir</td><td><input name="cf_p_elixir_plain_1" placeholder="$" data-cf></td><td><input name="cf_p_elixir_plain_6" placeholder="$" data-cf></td></tr>
+                        <tr><td>Spiced Carob Elixir</td><td><input name="cf_p_elixir_spiced_1" placeholder="$" data-cf></td><td><input name="cf_p_elixir_spiced_6" placeholder="$" data-cf></td></tr>
+                    </tbody></table>
+
+                    <div class="cf-subhead">Bundles & Gift Sets</div>
+                    <table class="cf-ptable"><thead><tr><th>Product</th><th>Price $</th><th>What's included?</th></tr></thead><tbody>
+                        <tr><td>Starter Pack</td><td><input name="cf_p_bundle_starter" placeholder="$" data-cf></td><td><input name="cf_bundle_starter_desc" placeholder="Contents..." data-cf style="max-width:180px"></td></tr>
+                        <tr><td>Moon Sampler</td><td><input name="cf_p_bundle_moon" placeholder="$" data-cf></td><td><input name="cf_bundle_moon_desc" placeholder="Contents..." data-cf style="max-width:180px"></td></tr>
+                        <tr><td>Full Range Bundle</td><td><input name="cf_p_bundle_full" placeholder="$" data-cf></td><td><input name="cf_bundle_full_desc" placeholder="Contents..." data-cf style="max-width:180px"></td></tr>
+                        <tr><td>Mixed Bars 6-Pack</td><td><input name="cf_p_bundle_bars" placeholder="$" data-cf></td><td><input name="cf_bundle_bars_desc" placeholder="Flavours?" data-cf style="max-width:180px"></td></tr>
+                        <tr><td>Mixed Moons 6-Pack</td><td><input name="cf_p_bundle_moons" placeholder="$" data-cf></td><td><input name="cf_bundle_moons_desc" placeholder="Flavours?" data-cf style="max-width:180px"></td></tr>
+                        <tr><td>Classic Gift Set</td><td><input name="cf_p_gift_classic" placeholder="$" data-cf></td><td><input name="cf_gift_classic_desc" placeholder="Contents..." data-cf style="max-width:180px"></td></tr>
+                        <tr><td>Premium Gift Set</td><td><input name="cf_p_gift_premium" placeholder="$" data-cf></td><td><input name="cf_gift_premium_desc" placeholder="Contents..." data-cf style="max-width:180px"></td></tr>
+                    </tbody></table>
+
+                    <hr class="cf-sep">
+                    <div class="cf-field"><label>Free shipping threshold <span class="cf-hint">(we suggest $75)</span></label><input type="text" name="cf_free_ship" value="$75" class="cf-prefilled" data-cf></div>
+                    <div class="cf-field"><label>Any launch/sale pricing plans?</label><textarea name="cf_launch_pricing" rows="2" placeholder="e.g. 10% off first order..." data-cf></textarea></div>
+                    <div class="cf-field"><label>Need wholesale pricing too?</label>
+                        <div class="cf-radio"><label><input type="radio" name="cf_wholesale" value="yes" data-cf><span>Yes — separately</span></label><label><input type="radio" name="cf_wholesale" value="no" data-cf><span>Retail only for now</span></label></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- S4: Missing Ingredients -->
+            <div class="cf-section" data-cfs="4">
+                <div class="cf-section-hdr" onclick="cfToggle(this)">
+                    <div class="cf-section-num">4</div>
+                    <div class="cf-section-title"><h3>Missing Ingredients</h3><small>Just a few gaps</small></div>
+                    <svg class="cf-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </div>
+                <div class="cf-section-body">
+                    <div class="cf-context">We have most ingredients from AFQA work. Just need these gaps filled.</div>
+                    <div class="cf-subhead">Carob Bananas</div>
+                    <p style="font-size:0.82rem;color:#999;margin-bottom:10px">We have: Carob Powder, Cacao Butter, Dried Banana — need percentages.</p>
+                    <div class="cf-row">
+                        <div class="cf-field"><label>Carob Powder %</label><input type="text" name="cf_banana_pct_carob" placeholder="e.g. 12.5%" data-cf></div>
+                        <div class="cf-field"><label>Cacao Butter %</label><input type="text" name="cf_banana_pct_cacao" placeholder="e.g. 12.5%" data-cf></div>
+                    </div>
+                    <div class="cf-field"><label>Australian Dried Banana %</label><input type="text" name="cf_banana_pct_banana" placeholder="e.g. 75%" data-cf></div>
+                    <hr class="cf-sep">
+                    <div class="cf-subhead">Plain Carob Elixir</div>
+                    <div class="cf-field"><label>Full ingredient list with percentages</label><textarea name="cf_elixir_plain_ing" rows="3" placeholder="e.g. Carob Powder (80%), Cacao Butter (20%)..." data-cf></textarea></div>
+                    <div class="cf-subhead">Spiced Carob Elixir</div>
+                    <div class="cf-field"><label>Full ingredient list with percentages</label><textarea name="cf_elixir_spiced_ing" rows="3" placeholder="e.g. Carob Powder (70%), Cinnamon (5%)..." data-cf></textarea></div>
+                    <div class="cf-field"><label>Any ingredient changes since last AFQA submission?</label><textarea name="cf_ingredient_changes" rows="2" placeholder="List changes or 'No changes'" data-cf></textarea></div>
+                </div>
+            </div>
+
+            <!-- S5: Shipping & Returns -->
+            <div class="cf-section" data-cfs="5">
+                <div class="cf-section-hdr" onclick="cfToggle(this)">
+                    <div class="cf-section-num">5</div>
+                    <div class="cf-section-title"><h3>Shipping & Returns</h3><small>Store policies</small></div>
+                    <svg class="cf-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </div>
+                <div class="cf-section-body">
+                    <div class="cf-context">Quick answers are fine — we'll write the formal policy copy.</div>
+                    <div class="cf-field"><label>Shipping carrier</label><input type="text" name="cf_ship_carrier" value="Australia Post" class="cf-prefilled" data-cf></div>
+                    <div class="cf-row">
+                        <div class="cf-field"><label>Metro delivery</label><input type="text" name="cf_ship_metro" placeholder="e.g. 2-4 days" data-cf></div>
+                        <div class="cf-field"><label>Regional delivery</label><input type="text" name="cf_ship_regional" placeholder="e.g. 5-7 days" data-cf></div>
+                    </div>
+                    <div class="cf-field"><label>Express shipping?</label><div class="cf-radio"><label><input type="radio" name="cf_express" value="yes" data-cf><span>Yes</span></label><label><input type="radio" name="cf_express" value="no" data-cf><span>No</span></label></div></div>
+                    <div class="cf-field"><label>Express cost (if yes)</label><input type="text" name="cf_express_cost" placeholder="e.g. $12.95" data-cf></div>
+                    <div class="cf-field"><label>International shipping?</label><div class="cf-radio"><label><input type="radio" name="cf_intl" value="yes" data-cf><span>Yes</span></label><label><input type="radio" name="cf_intl" value="no" data-cf><span>Not yet</span></label></div></div>
+                    <div class="cf-field"><label>If yes, which countries?</label><input type="text" name="cf_intl_countries" placeholder="e.g. NZ, US, UK..." data-cf></div>
+                    <hr class="cf-sep">
+                    <div class="cf-subhead">Returns</div>
+                    <div class="cf-field"><label>Accept returns?</label><div class="cf-radio"><label><input type="radio" name="cf_returns" value="yes" data-cf><span>Yes</span></label><label><input type="radio" name="cf_returns" value="no" data-cf><span>No (food)</span></label><label><input type="radio" name="cf_returns" value="damaged" data-cf><span>Damaged/faulty only</span></label></div></div>
+                    <div class="cf-field"><label>Refund type</label><div class="cf-radio"><label><input type="radio" name="cf_refund" value="refund" data-cf><span>Refund</span></label><label><input type="radio" name="cf_refund" value="exchange" data-cf><span>Exchange</span></label><label><input type="radio" name="cf_refund" value="both" data-cf><span>Both</span></label></div></div>
+                    <div class="cf-field"><label>Who pays return shipping?</label><div class="cf-radio"><label><input type="radio" name="cf_return_ship" value="customer" data-cf><span>Customer</span></label><label><input type="radio" name="cf_return_ship" value="us" data-cf><span>We cover it</span></label></div></div>
+                    <div class="cf-field"><label>Return window</label><div class="cf-radio"><label><input type="radio" name="cf_return_days" value="14" data-cf><span>14 days</span></label><label><input type="radio" name="cf_return_days" value="30" data-cf><span>30 days</span></label></div></div>
+                </div>
+            </div>
+
+            <!-- S6: Brand & Story -->
+            <div class="cf-section" data-cfs="6">
+                <div class="cf-section-hdr" onclick="cfToggle(this)">
+                    <div class="cf-section-num">6</div>
+                    <div class="cf-section-title"><h3>Brand & Story</h3><small>Tell your story authentically</small></div>
+                    <svg class="cf-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </div>
+                <div class="cf-section-body">
+                    <div class="cf-context">These answers help us write your About page and product copy in your authentic voice. Don't overthink it — your own words are best.</div>
+                    <div class="cf-field"><label>Describe MapleMoon in one sentence</label><textarea name="cf_brand_sentence" rows="2" data-cf></textarea></div>
+                    <div class="cf-field"><label>Origin story — how did MapleMoon start?</label><textarea name="cf_brand_origin" rows="4" data-cf></textarea></div>
+                    <div class="cf-field"><label>Why carob?</label><textarea name="cf_brand_why_carob" rows="3" data-cf></textarea></div>
+                    <div class="cf-field"><label>What makes you different?</label><textarea name="cf_brand_diff" rows="3" data-cf></textarea></div>
+                    <div class="cf-field"><label>Ideal customer <span class="cf-hint">(age, lifestyle, values)</span></label><textarea name="cf_brand_customer" rows="3" data-cf></textarea></div>
+                    <div class="cf-field"><label>Non-negotiable brand values</label><textarea name="cf_brand_values" rows="2" placeholder='e.g. "always organic", "minimal ingredients"' data-cf></textarea></div>
+                    <div class="cf-field"><label>Where is the carob sourced?</label><input type="text" name="cf_carob_source" data-cf></div>
+                    <div class="cf-field"><label>Where is the cacao butter sourced?</label><input type="text" name="cf_cacao_source" data-cf></div>
+                    <div class="cf-field"><label>Where are products manufactured?</label><input type="text" name="cf_manufacturing" placeholder="Own facility / co-packer..." data-cf></div>
+                    <div class="cf-field"><label>Certifications beyond organic?</label><input type="text" name="cf_certifications" data-cf></div>
+                    <div class="cf-field"><label>Anything you'd NEVER want said about the brand?</label><textarea name="cf_brand_never" rows="2" data-cf></textarea></div>
+                </div>
+            </div>
+
+            <!-- S7: Migration -->
+            <div class="cf-section" data-cfs="7">
+                <div class="cf-section-hdr" onclick="cfToggle(this)">
+                    <div class="cf-section-num">7</div>
+                    <div class="cf-section-title"><h3>Existing Store & Migration</h3><small>Moving from WooCommerce</small></div>
+                    <svg class="cf-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </div>
+                <div class="cf-section-body">
+                    <div class="cf-context">We'll migrate your WooCommerce data to Shopify so nothing gets lost.</div>
+                    <div class="cf-field"><label>Can you export WooCommerce products as CSV?</label><div class="cf-radio"><label><input type="radio" name="cf_woo_products" value="yes" data-cf><span>Yes</span></label><label><input type="radio" name="cf_woo_products" value="no" data-cf><span>Not sure</span></label></div></div>
+                    <div class="cf-field"><label>Can you export customer list?</label><div class="cf-radio"><label><input type="radio" name="cf_woo_customers" value="yes" data-cf><span>Yes</span></label><label><input type="radio" name="cf_woo_customers" value="no" data-cf><span>Not sure</span></label></div></div>
+                    <div class="cf-field"><label>Approximate existing customers</label><input type="text" name="cf_customer_count" placeholder="e.g. 200" data-cf></div>
+                    <div class="cf-field"><label>Email list? <span class="cf-hint">(Mailchimp, etc.)</span></label><input type="text" name="cf_email_list" placeholder="e.g. Mailchimp, ~500 subs" data-cf></div>
+                    <div class="cf-field"><label>Domain registrar</label><input type="text" name="cf_registrar" placeholder="GoDaddy, Namecheap..." data-cf></div>
+                    <div class="cf-field"><label>High-traffic pages to redirect?</label><textarea name="cf_traffic_pages" rows="2" placeholder="We'll set up redirects" data-cf></textarea></div>
+                </div>
+            </div>
+
+            <!-- S8: Stockists -->
+            <div class="cf-section" data-cfs="8">
+                <div class="cf-section-hdr" onclick="cfToggle(this)">
+                    <div class="cf-section-num">8</div>
+                    <div class="cf-section-title"><h3>Stockists</h3><small>Where else can people buy?</small></div>
+                    <svg class="cf-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </div>
+                <div class="cf-section-body">
+                    <div class="cf-context">For your Stockists page — helps customers find you in-store and boosts local SEO.</div>
+                    <div class="cf-field"><label>Current retail stockists <span class="cf-hint">(store, suburb, state)</span></label><textarea name="cf_stockists" rows="5" placeholder="Byron Bay Health Foods, Byron Bay, NSW&#10;The Green Grocer, Brunswick Heads, NSW" data-cf></textarea></div>
+                    <div class="cf-field"><label>Wholesale/distribution partners?</label><textarea name="cf_wholesale_partners" rows="2" data-cf></textarea></div>
+                    <div class="cf-field"><label>"Become a Stockist" form on site?</label><div class="cf-radio"><label><input type="radio" name="cf_stockist_form" value="yes" data-cf><span>Yes</span></label><label><input type="radio" name="cf_stockist_form" value="no" data-cf><span>No</span></label></div></div>
+                </div>
+            </div>
+
+            <!-- S9: Photography -->
+            <div class="cf-section" data-cfs="9">
+                <div class="cf-section-hdr" onclick="cfToggle(this)">
+                    <div class="cf-section-num">9</div>
+                    <div class="cf-section-title"><h3>Photography</h3><small>Product shoot planning</small></div>
+                    <svg class="cf-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </div>
+                <div class="cf-section-body">
+                    <div class="cf-context">Great product photography is essential. Timing depends on when new packaging samples arrive.</div>
+                    <div class="cf-field"><label>Existing product photography?</label><textarea name="cf_existing_photos" rows="2" placeholder="Where? Drive, Dropbox, phone?" data-cf></textarea></div>
+                    <div class="cf-field"><label>New AFQA packaging samples arrived?</label><div class="cf-radio"><label><input type="radio" name="cf_samples" value="yes" data-cf><span>Yes</span></label><label><input type="radio" name="cf_samples" value="no" data-cf><span>Not yet</span></label><label><input type="radio" name="cf_samples" value="some" data-cf><span>Some</span></label></div></div>
+                    <div class="cf-field"><label>Which products have samples ready?</label><textarea name="cf_samples_ready" rows="2" placeholder="e.g. All bars, moons still printing..." data-cf></textarea></div>
+                    <div class="cf-field"><label>Available for founder portraits?</label><div class="cf-radio"><label><input type="radio" name="cf_portraits" value="yes" data-cf><span>Yes</span></label><label><input type="radio" name="cf_portraits" value="maybe" data-cf><span>Maybe later</span></label><label><input type="radio" name="cf_portraits" value="no" data-cf><span>No</span></label></div></div>
+                    <div class="cf-field"><label>Preferred shoot location</label><div class="cf-radio"><label><input type="radio" name="cf_location" value="studio" data-cf><span>Studio</span></label><label><input type="radio" name="cf_location" value="home" data-cf><span>Home</span></label><label><input type="radio" name="cf_location" value="outdoor" data-cf><span>Outdoor</span></label><label><input type="radio" name="cf_location" value="flexible" data-cf><span>Flexible</span></label></div></div>
+                    <div class="cf-field"><label>Photo budget <span class="cf-hint">($1,500 - $4,000 est.)</span></label><input type="text" name="cf_photo_budget" placeholder="e.g. $2,500 max" data-cf></div>
+                    <div class="cf-field"><label>Products NOT ready to shoot?</label><textarea name="cf_not_ready" rows="2" placeholder="e.g. Elixirs still in dev..." data-cf></textarea></div>
+                </div>
+            </div>
+
+            <!-- S10: Anything Else -->
+            <div class="cf-section" data-cfs="10">
+                <div class="cf-section-hdr" onclick="cfToggle(this)">
+                    <div class="cf-section-num">10</div>
+                    <div class="cf-section-title"><h3>Anything Else</h3><small>Anything we missed</small></div>
+                    <svg class="cf-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l5 5 5-5"/></svg>
+                </div>
+                <div class="cf-section-body">
+                    <div class="cf-context">Features you want, concerns, ideas — anything on your mind.</div>
+                    <div class="cf-field"><label>Additional notes</label><textarea name="cf_notes" rows="5" placeholder="Anything else..." data-cf></textarea></div>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="cf-submit">
+                <button type="button" class="cf-submit-btn" onclick="cfSubmit()">Download Responses</button>
+                <p class="cf-submit-note">Progress saves automatically. Click to download your answers as a file to send to Nate.</p>
+            </div>
+
+            </form>
+        </div>
+
+        <div class="cf-autosave" id="cfAutosave">Saved</div>
+
+        <script>
+        (function(){
+            var CFK = 'mm_client_form';
+            window.cfToggle = function(h){ h.closest('.cf-section').classList.toggle('open'); };
+
+            function cfSave(){
+                var d={};
+                document.querySelectorAll('[data-cf]').forEach(function(el){
+                    if(el.type==='radio'||el.type==='checkbox'){if(el.checked)d[el.name]=el.value;}
+                    else{if(el.value)d[el.name]=el.value;}
+                });
+                localStorage.setItem(CFK,JSON.stringify(d));
+                var b=document.getElementById('cfAutosave');b.classList.add('vis');
+                setTimeout(function(){b.classList.remove('vis');},1200);
+                cfProgress();
+            }
+
+            function cfRestore(){
+                var s=localStorage.getItem(CFK);if(!s)return;var d=JSON.parse(s);
+                Object.keys(d).forEach(function(n){
+                    document.querySelectorAll('[name="'+n+'"]').forEach(function(el){
+                        if(el.type==='radio'||el.type==='checkbox'){el.checked=(el.value===d[n]);}
+                        else{el.value=d[n];}
+                    });
+                });
+                cfProgress();
+            }
+
+            function cfProgress(){
+                var all=document.querySelectorAll('[data-cf]'),filled=0,total=0,seen={};
+                all.forEach(function(el){
+                    if(el.type==='radio'){
+                        if(!seen[el.name]){seen[el.name]=1;total++;if(document.querySelector('[name="'+el.name+'"]:checked'))filled++;}
+                    }else{total++;if(el.value.trim())filled++;}
+                });
+                var pct=total>0?Math.round(filled/total*100):0;
+                document.getElementById('cfProgressFill').style.width=pct+'%';
+                document.getElementById('cfProgressText').textContent=pct+'%';
+            }
+
+            window.cfSubmit = function(){
+                var d={};
+                document.querySelectorAll('[data-cf]').forEach(function(el){
+                    if(el.type==='radio'||el.type==='checkbox'){if(el.checked)d[el.name]=el.value;}
+                    else{if(el.value)d[el.name]=el.value;}
+                });
+                d._submitted=new Date().toISOString();
+                var blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+                var a=document.createElement('a');a.href=URL.createObjectURL(blob);
+                a.download='maplemoon_form_'+new Date().toISOString().slice(0,10)+'.json';a.click();
+                URL.revokeObjectURL(a.href);
+                alert('Downloaded! Please send the file to Nate at hello@handtomouse.org');
+            };
+
+            document.getElementById('cfForm').addEventListener('input',function(e){if(e.target.hasAttribute('data-cf'))cfSave();});
+            document.getElementById('cfForm').addEventListener('change',function(e){if(e.target.hasAttribute('data-cf'))cfSave();});
+            cfRestore();cfProgress();
+        })();
+        </script>
     </div>
 
     <!-- Back to Top Button (#14) -->
