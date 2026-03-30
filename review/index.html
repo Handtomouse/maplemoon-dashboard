@@ -589,6 +589,126 @@
   .phone-frame img {
     background: #222;
     min-height: 60px;
+    cursor: zoom-in;
+  }
+
+  /* ── Reviewer Field ── */
+  .reviewer-wrap {
+    max-width: 1200px;
+    margin: 0 auto 8px;
+    padding: 0 24px;
+  }
+  .reviewer-field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    background: rgba(30,67,102,0.08);
+    border: 1px solid var(--mm-cream-15);
+    border-radius: var(--radius-md);
+  }
+  .reviewer-field label {
+    font-family: var(--mm-serif);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--mm-cream);
+    white-space: nowrap;
+  }
+  .reviewer-field input {
+    flex: 1;
+    max-width: 300px;
+    background: rgba(231,228,202,0.04);
+    border: 1px solid var(--mm-cream-08);
+    border-radius: 8px;
+    padding: 8px 14px;
+    color: var(--mm-cream);
+    font-family: var(--mm-sans);
+    font-size: 15px;
+  }
+  .reviewer-field input::placeholder { color: var(--mm-cream-30); }
+  .reviewer-field input:focus { outline: none; border-color: var(--mm-blue-deep); }
+
+  /* ── Draft Saved Indicator ── */
+  .draft-indicator {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: rgba(30,67,102,0.9);
+    color: var(--mm-cream-50);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 200;
+  }
+  .draft-indicator.show { opacity: 1; }
+
+  /* ── Lightbox ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(8px);
+    cursor: zoom-out;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 92vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    color: var(--mm-cream-50);
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    transition: background 0.2s;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.15); }
+  .lightbox-label {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--mm-cream-50);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── PDP tall image fix ── */
+  .design-card[data-slug^="pdp"] .laptop-screen {
+    max-height: 500px;
+    overflow: hidden;
+    position: relative;
+  }
+  .design-card[data-slug^="pdp"] .laptop-screen::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(transparent, #111);
+    pointer-events: none;
   }
 </style>
 </head>
@@ -614,6 +734,14 @@
 </header>
 
 <form action="https://formspree.io/f/xgopagoy" method="POST" id="reviewForm">
+
+<!-- Reviewer Name -->
+<div class="reviewer-wrap">
+  <div class="reviewer-field">
+    <label for="reviewerName">Your Name</label>
+    <input type="text" id="reviewerName" name="reviewer_name" required placeholder="e.g. Carli">
+  </div>
+</div>
 
 <!-- ═══════ TOP PICKS ═══════ -->
 <div class="section">
@@ -653,6 +781,16 @@
   <h2>Thank you!</h2>
   <p>Your feedback has been submitted. We'll review everything before our meeting on Thursday April 3.</p>
 </div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <img id="lightboxImg" src="" alt="">
+  <span class="lightbox-label" id="lightboxLabel"></span>
+</div>
+
+<!-- Draft Indicator -->
+<div class="draft-indicator" id="draftIndicator">Draft saved</div>
 
 <!-- HTM Footer -->
 <footer class="htm-footer">
@@ -791,6 +929,82 @@ function updateProgress() {
   document.getElementById('progressText').textContent = count + ' / ' + TOTAL_RATABLE + ' rated';
 }
 
+// ═══════ LOCALSTORAGE DRAFT SAVE ═══════
+const DRAFT_KEY = 'mm_review_draft';
+let saveTimeout;
+
+function saveDraft() {
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(() => {
+    const form = document.getElementById('reviewForm');
+    const data = {};
+    new FormData(form).forEach((val, key) => { data[key] = val; });
+    // Also capture unchecked radios' state by checking each group
+    form.querySelectorAll('input[type="radio"]').forEach(r => {
+      if (r.checked) data[r.name] = r.value;
+    });
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+    // Flash indicator
+    const ind = document.getElementById('draftIndicator');
+    ind.classList.add('show');
+    setTimeout(() => ind.classList.remove('show'), 1500);
+  }, 300);
+}
+
+function restoreDraft() {
+  const raw = localStorage.getItem(DRAFT_KEY);
+  if (!raw) return;
+  try {
+    const data = JSON.parse(raw);
+    const form = document.getElementById('reviewForm');
+    Object.entries(data).forEach(([key, val]) => {
+      const el = form.querySelector(`[name="${key}"]`);
+      if (!el) return;
+      if (el.type === 'radio') {
+        const radio = form.querySelector(`[name="${key}"][value="${val}"]`);
+        if (radio) radio.checked = true;
+      } else {
+        el.value = val;
+      }
+    });
+    updateProgress();
+  } catch(e) { /* ignore corrupt draft */ }
+}
+
+function clearDraft() {
+  localStorage.removeItem(DRAFT_KEY);
+}
+
+// ═══════ LIGHTBOX ═══════
+function initLightbox() {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbLabel = document.getElementById('lightboxLabel');
+  const lbClose = document.getElementById('lightboxClose');
+
+  document.querySelectorAll('.laptop-screen img, .tablet-frame img, .phone-frame img').forEach(img => {
+    img.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lbLabel.textContent = img.alt || '';
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox() {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', (e) => {
+    if (e.target === lb) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lb.classList.contains('active')) closeLightbox();
+  });
+}
+
 // ═══════ FORM SUBMIT ═══════
 function handleSubmit(e) {
   e.preventDefault();
@@ -803,7 +1017,9 @@ function handleSubmit(e) {
     headers: { 'Accept': 'application/json' }
   }).then(r => {
     if (r.ok) {
+      clearDraft();
       form.style.display = 'none';
+      document.querySelector('.reviewer-wrap').style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
@@ -817,10 +1033,19 @@ function handleSubmit(e) {
 // ═══════ INIT ═══════
 document.addEventListener('DOMContentLoaded', () => {
   mount();
+  restoreDraft();
+
+  // Bind save on every interaction
   document.querySelectorAll('input[type="radio"]').forEach(r => {
-    r.addEventListener('change', updateProgress);
+    r.addEventListener('change', () => { updateProgress(); saveDraft(); });
   });
+  document.querySelectorAll('textarea, input[type="text"]').forEach(el => {
+    el.addEventListener('blur', saveDraft);
+    el.addEventListener('input', saveDraft);
+  });
+
   document.getElementById('reviewForm').addEventListener('submit', handleSubmit);
+  initLightbox();
   updateProgress();
 });
 </script>
