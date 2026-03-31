@@ -708,7 +708,10 @@
 <div class="form-footer">
   <h2>Overall Thoughts</h2>
   <textarea name="overall_comments" class="overall-comment" placeholder="Any other comments, preferences, or questions about the designs..."></textarea>
-  <button type="submit" class="submit-btn">Submit Review</button>
+  <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+    <button type="submit" class="submit-btn">Submit Review</button>
+    <button type="button" onclick="saveDraft();var b=this;b.textContent='Saved!';b.style.borderColor='#4ade80';b.style.color='#4ade80';setTimeout(function(){b.textContent='Save Progress';b.style.borderColor='';b.style.color=''},2000)" style="background:transparent;border:1px solid var(--mm-cream-30);color:var(--mm-cream-50);padding:12px 28px;border-radius:8px;font-family:var(--mm-sans);font-size:14px;cursor:pointer;transition:all 0.2s">Save Progress</button>
+  </div>
 </div>
 
 </form>
@@ -741,20 +744,21 @@
 // ═══════ VERSION DATA ═══════
 // Edit this array to add/remove/reorder versions.
 // Each version needs: slug, name, category, badge (optional), has_tablet, has_mobile
+const LIVE_BASE = 'https://maplemoon-website.vercel.app';
 const VERSIONS = [
-  { slug: 'v1_brand_statement', name: 'V1 Brand Statement', category: 'all', has_tablet: true, has_mobile: true },
-  { slug: 'v6_before_and_after', name: 'V6 Before & After', category: 'all', has_tablet: false, has_mobile: false },
-  { slug: 'v7_flavour_picker', name: 'V7 Flavour Picker', category: 'all', has_tablet: true, has_mobile: true },
-  { slug: 'v8_time_of_day', name: 'V8 Time of Day', category: 'all', has_tablet: true, has_mobile: true },
-  { slug: 'v9_story_cards', name: 'V9 Story Cards', category: 'all', has_tablet: true, has_mobile: true },
-  { slug: 'v10_letterbox_cinema', name: 'V10 Letterbox Cinema', category: 'all', has_tablet: true, has_mobile: true },
-  { slug: 'v11_the_grid', name: 'V11 The Grid', category: 'all', has_tablet: false, has_mobile: false },
-  { slug: 'v13_full_bleed_photo', name: 'V13 Full Bleed Photo', category: 'all', has_tablet: true, has_mobile: true },
-  { slug: 'v14_ingredient_journey', name: 'V14 Ingredient Journey', category: 'all', has_tablet: true, has_mobile: true },
-  { slug: 'v15_product_orbit', name: 'V15 Product Orbit', category: 'all', has_tablet: true, has_mobile: true },
-  { slug: 'v16_moodboard', name: 'V16 Moodboard', category: 'all', has_tablet: true, has_mobile: true },
-  { slug: 'v18_light_flavour_picker', name: 'V18 Light Flavour Picker', category: 'all', has_tablet: true, has_mobile: true },
-  { slug: 'v19_light_grid', name: 'V19 Light Grid', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v1_brand_statement', name: 'V1 Brand Statement', category: 'all', has_tablet: true, has_mobile: true, hero: 'hero_v1' },
+  { slug: 'v6_before_and_after', name: 'V6 Before & After', category: 'all', has_tablet: false, has_mobile: false, hero: 'hero_v6' },
+  { slug: 'v7_flavour_picker', name: 'V7 Flavour Picker', category: 'all', has_tablet: true, has_mobile: true, hero: 'hero_v7' },
+  { slug: 'v8_time_of_day', name: 'V8 Time of Day', category: 'all', has_tablet: true, has_mobile: true, hero: 'hero_v8' },
+  { slug: 'v9_story_cards', name: 'V9 Story Cards', category: 'all', has_tablet: true, has_mobile: true, hero: 'hero_v9' },
+  { slug: 'v10_letterbox_cinema', name: 'V10 Letterbox Cinema', category: 'all', has_tablet: true, has_mobile: true, hero: 'hero_v10' },
+  { slug: 'v11_the_grid', name: 'V11 The Grid', category: 'all', has_tablet: false, has_mobile: false, hero: 'hero_v11' },
+  { slug: 'v13_full_bleed_photo', name: 'V13 Full Bleed Photo', category: 'all', has_tablet: true, has_mobile: true, hero: 'hero_v13' },
+  { slug: 'v14_ingredient_journey', name: 'V14 Ingredient Journey', category: 'all', has_tablet: true, has_mobile: true, hero: 'hero_v14' },
+  { slug: 'v15_product_orbit', name: 'V15 Product Orbit', category: 'all', has_tablet: true, has_mobile: true, hero: 'hero_v15' },
+  { slug: 'v16_moodboard', name: 'V16 Moodboard', category: 'all', has_tablet: true, has_mobile: true, hero: 'hero_v16' },
+  { slug: 'v18_light_flavour_picker', name: 'V18 Light Flavour Picker', category: 'all', has_tablet: true, has_mobile: true, hero: 'hero_v18' },
+  { slug: 'v19_light_grid', name: 'V19 Light Grid', category: 'all', has_tablet: true, has_mobile: true, hero: 'hero_v19' },
 ];
 
 const TOTAL_RATABLE = VERSIONS.length;
@@ -804,6 +808,7 @@ function renderCard(v) {
       <div class="card-header">
         <h3 class="card-title">${v.name}</h3>
         ${badgeHTML}
+        ${v.hero ? `<a href="${LIVE_BASE}/${v.hero}.html" target="_blank" rel="noopener" style="font-family:var(--mm-sans);font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--mm-blue-deep);text-decoration:none;border:1px solid var(--mm-cream-15);padding:3px 10px;border-radius:12px;margin-left:auto;transition:border-color 0.2s,color 0.2s" onmouseover="this.style.borderColor='var(--mm-cream-50)';this.style.color='var(--mm-cream)'" onmouseout="this.style.borderColor='var(--mm-cream-15)';this.style.color='var(--mm-blue-deep)'">&rarr; View Live</a>` : ''}
       </div>
       ${devicesHTML}
       <div class="rating-row">
