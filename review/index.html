@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MapleMoon — Website Design Review</title>
+<title>MapleMoon - Website Design Review</title>
 <meta name="description" content="Review and rate MapleMoon homepage design directions. All breakpoints shown.">
 <link rel="icon" type="image/svg+xml" href="../assets/maplemoon-logo.svg">
 <link rel="stylesheet" href="https://use.typekit.net/dvz0xjs.css">
@@ -156,46 +156,6 @@
     margin-left: 8px;
   }
 
-  /* ── Accordion ── */
-  details.accordion {
-    max-width: 1200px;
-    margin: 32px auto 0;
-    padding: 0 24px;
-  }
-  details.accordion summary {
-    font-family: var(--mm-serif);
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--mm-cream);
-    cursor: pointer;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--mm-cream-15);
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    user-select: none;
-  }
-  details.accordion summary::-webkit-details-marker { display: none; }
-  details.accordion summary::before {
-    content: '\25B6';
-    font-size: 12px;
-    color: var(--mm-cream-50);
-    transition: transform 0.2s;
-  }
-  details.accordion[open] summary::before {
-    transform: rotate(90deg);
-  }
-  .accordion-count {
-    font-family: var(--mm-sans);
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--mm-blue-deep);
-    background: var(--mm-navy-15);
-    padding: 2px 10px;
-    border-radius: 12px;
-  }
-
   /* ── Design Card ── */
   .design-card {
     background: rgba(30,67,102,0.08);
@@ -208,13 +168,6 @@
   .design-card:hover {
     border-color: var(--mm-cream-15);
   }
-  .design-card.top-pick {
-    border: 1px solid rgba(225,215,142,0.3);
-    background: rgba(225,215,142,0.04);
-  }
-  .design-card.top-pick:hover {
-    border-color: rgba(225,215,142,0.5);
-  }
   .card-header {
     display: flex;
     align-items: baseline;
@@ -226,26 +179,6 @@
     font-size: 22px;
     font-weight: 500;
     color: var(--mm-cream);
-  }
-  .card-badge {
-    font-family: var(--mm-sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 12px;
-    white-space: nowrap;
-  }
-  .badge-pick {
-    background: rgba(225,215,142,0.15);
-    color: var(--mm-gold);
-    border: 1px solid rgba(225,215,142,0.3);
-  }
-  .badge-keeper {
-    background: rgba(74,126,157,0.15);
-    color: var(--mm-sky);
-    border: 1px solid rgba(74,126,157,0.3);
   }
 
   /* ── Device Frames ── */
@@ -694,22 +627,6 @@
     letter-spacing: 0.04em;
   }
 
-  /* ── PDP tall image fix ── */
-  .design-card[data-slug^="pdp"] .laptop-screen {
-    max-height: 500px;
-    overflow: hidden;
-    position: relative;
-  }
-  .design-card[data-slug^="pdp"] .laptop-screen::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(transparent, #111);
-    pointer-events: none;
-  }
 </style>
 </head>
 <body>
@@ -723,7 +640,7 @@
 <!-- Progress -->
 <div class="progress-wrap">
   <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-  <span class="progress-text" id="progressText">0 / 29 rated</span>
+  <span class="progress-text" id="progressText">0 / 14 rated</span>
 </div>
 
 <!-- Header -->
@@ -745,7 +662,7 @@
 
 <!-- ═══════ ALL DESIGNS ═══════ -->
 <div class="section">
-  <h2 class="section-title">Homepage Concepts <span class="count">&mdash; scroll through and rate each one</span></h2>
+  <h2 class="section-title">Homepage Concepts <span class="count">- scroll through and rate each one</span></h2>
   <div id="allDesigns"></div>
 </div>
 
@@ -793,7 +710,7 @@ const VERSIONS = [
   { slug: 'v8_time_of_day', name: 'V8 Time of Day', category: 'all', has_tablet: true, has_mobile: true },
   { slug: 'v9_story_cards', name: 'V9 Story Cards', category: 'all', has_tablet: true, has_mobile: true },
   { slug: 'v10_letterbox_cinema', name: 'V10 Letterbox Cinema', category: 'all', has_tablet: true, has_mobile: true },
-  { slug: 'v11_the_grid', name: 'V11 The Grid', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v11_the_grid', name: 'V11 The Grid', category: 'all', has_tablet: false, has_mobile: false },
   { slug: 'v13_full_bleed_photo', name: 'V13 Full Bleed Photo', category: 'all', has_tablet: true, has_mobile: true },
   { slug: 'v14_ingredient_journey', name: 'V14 Ingredient Journey', category: 'all', has_tablet: true, has_mobile: true },
   { slug: 'v15_product_orbit', name: 'V15 Product Orbit', category: 'all', has_tablet: true, has_mobile: true },
@@ -963,6 +880,8 @@ function initLightbox() {
 function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
+  const rated = form.querySelectorAll('.radio-group input:checked').length;
+  if (rated === 0) { alert('Please rate at least one design before submitting.'); return; }
   const data = new FormData(form);
 
   fetch(form.action, {
@@ -974,6 +893,7 @@ function handleSubmit(e) {
       clearDraft();
       form.style.display = 'none';
       document.querySelector('.reviewer-wrap').style.display = 'none';
+      document.querySelector('.progress-wrap').style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
