@@ -743,29 +743,11 @@
   </div>
 </div>
 
-<!-- ═══════ TOP PICKS ═══════ -->
+<!-- ═══════ ALL DESIGNS ═══════ -->
 <div class="section">
-  <h2 class="section-title">Top Picks <span class="count">Nate's recommendations</span></h2>
-  <div id="topPicks"></div>
+  <h2 class="section-title">Homepage Concepts <span class="count">&mdash; scroll through and rate each one</span></h2>
+  <div id="allDesigns"></div>
 </div>
-
-<!-- ═══════ HOMEPAGE CONCEPTS ═══════ -->
-<details class="accordion">
-  <summary>Homepage Concepts <span class="accordion-count">14 designs</span></summary>
-  <div id="homepageConcepts" style="padding-top: 24px;"></div>
-</details>
-
-<!-- ═══════ ALTERNATE VERSIONS ═══════ -->
-<details class="accordion">
-  <summary>Alternate Versions <span class="accordion-count">7 designs</span></summary>
-  <div id="alternateVersions" style="padding-top: 24px;"></div>
-</details>
-
-<!-- ═══════ PRODUCT PAGES ═══════ -->
-<details class="accordion">
-  <summary>Product Pages <span class="accordion-count">5 designs</span></summary>
-  <div id="productPages" style="padding-top: 24px;"></div>
-</details>
 
 <!-- ═══════ OVERALL ═══════ -->
 <div class="form-footer">
@@ -805,26 +787,20 @@
 // Edit this array to add/remove/reorder versions.
 // Each version needs: slug, name, category, badge (optional), has_tablet, has_mobile
 const VERSIONS = [
-  // ── Top Picks ──
-  { slug: 'v2_shop_now', name: 'V2 Shop Now', category: 'top', badge: '#1 Pick', badgeType: 'pick', has_tablet: true, has_mobile: true },
-  { slug: 'v9_story_cards', name: 'V9 Story Cards', category: 'top', badge: '#2 Pick', badgeType: 'pick', has_tablet: true, has_mobile: true },
-  { slug: 'v17_light_editorial', name: 'V17 Light Editorial', category: 'top', badge: '#3 Pick', badgeType: 'pick', has_tablet: true, has_mobile: true },
-
-  // ── Homepage Concepts ──
-  { slug: 'v1_brand_statement', name: 'V1 Brand Statement', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v4_the_range', name: 'V4 The Range', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v6_before_and_after', name: 'V6 Before & After', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v7_flavour_picker', name: 'V7 Flavour Picker', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v8_time_of_day', name: 'V8 Time of Day', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v10_letterbox_cinema', name: 'V10 Letterbox Cinema', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v11_the_grid', name: 'V11 The Grid', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v13_full_bleed_photo', name: 'V13 Full Bleed Photo', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v14_ingredient_journey', name: 'V14 Ingredient Journey', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v15_product_orbit', name: 'V15 Product Orbit', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v16_moodboard', name: 'V16 Moodboard', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v18_light_flavour_picker', name: 'V18 Light Flavour Picker', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'v19_light_grid', name: 'V19 Light Grid', category: 'homepage', has_tablet: true, has_mobile: true },
-  { slug: 'ultimate_hybrid', name: 'Ultimate Hybrid', category: 'homepage', has_tablet: true, has_mobile: true },
+  { slug: 'v1_brand_statement', name: 'V1 Brand Statement', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v6_before_and_after', name: 'V6 Before & After', category: 'all', has_tablet: false, has_mobile: false },
+  { slug: 'v7_flavour_picker', name: 'V7 Flavour Picker', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v8_time_of_day', name: 'V8 Time of Day', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v9_story_cards', name: 'V9 Story Cards', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v10_letterbox_cinema', name: 'V10 Letterbox Cinema', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v11_the_grid', name: 'V11 The Grid', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v13_full_bleed_photo', name: 'V13 Full Bleed Photo', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v14_ingredient_journey', name: 'V14 Ingredient Journey', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v15_product_orbit', name: 'V15 Product Orbit', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v16_moodboard', name: 'V16 Moodboard', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v18_light_flavour_picker', name: 'V18 Light Flavour Picker', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'v19_light_grid', name: 'V19 Light Grid', category: 'all', has_tablet: true, has_mobile: true },
+  { slug: 'ultimate_hybrid', name: 'Ultimate Hybrid', category: 'all', has_tablet: true, has_mobile: true },
 ];
 
 const TOTAL_RATABLE = VERSIONS.length;
@@ -888,17 +864,11 @@ function renderCard(v) {
     </div>`;
 }
 
-// Mount cards into containers
+// Mount cards into single flat container
 function mount() {
-  const containers = {
-    top: document.getElementById('topPicks'),
-    homepage: document.getElementById('homepageConcepts'),
-    alternate: document.getElementById('alternateVersions'),
-    pdp: document.getElementById('productPages'),
-  };
+  const container = document.getElementById('allDesigns');
   VERSIONS.forEach(v => {
-    const target = containers[v.category];
-    if (target) target.insertAdjacentHTML('beforeend', renderCard(v));
+    container.insertAdjacentHTML('beforeend', renderCard(v));
   });
 }
 
