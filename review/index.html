@@ -716,7 +716,7 @@
 <!-- Success -->
 <div class="success-msg" id="successMsg">
   <h2>Thank you!</h2>
-  <p>Your feedback has been submitted. We'll review everything before our meeting on Thursday April 3.</p>
+  <p>Your feedback has been submitted. We'll review everything before our next meeting.</p>
 </div>
 
 <!-- Lightbox -->
@@ -977,6 +977,15 @@ function clearDraft() {
 }
 
 // ═══════ LIGHTBOX ═══════
+// Global lightbox opener for gallery images
+function openLightbox(src) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxLabel').textContent = '';
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
 function initLightbox() {
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightboxImg');
