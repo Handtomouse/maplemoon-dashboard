@@ -627,6 +627,38 @@
     letter-spacing: 0.04em;
   }
 
+  /* ── Photo Gallery ── */
+  .gallery-section {
+    max-width: 1200px;
+    margin: 48px auto 0;
+    padding: 0 24px;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 8px;
+  }
+  .gallery-grid img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: zoom-in;
+    transition: transform 0.2s, opacity 0.2s;
+    opacity: 0.85;
+  }
+  .gallery-grid img:hover {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+  @media (max-width: 600px) {
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 6px;
+    }
+    .gallery-grid img { height: 140px; }
+  }
+
 </style>
 </head>
 <body>
@@ -664,6 +696,12 @@
 <div class="section">
   <h2 class="section-title">Homepage Concepts <span class="count">- scroll through and rate each one</span></h2>
   <div id="allDesigns"></div>
+</div>
+
+<!-- ═══════ PHOTOGRAPHY GALLERY ═══════ -->
+<div class="gallery-section">
+  <h2 class="section-title">Photography & Visual Direction <span class="count">- click any image to enlarge</span></h2>
+  <div class="gallery-grid" id="galleryGrid"></div>
 </div>
 
 <!-- ═══════ OVERALL ═══════ -->
@@ -789,6 +827,99 @@ function mount() {
   });
 }
 
+// ═══════ PHOTO GALLERY ═══════
+const GALLERY = [
+  { src: 'images/gallery/MM_BAR_Web-Mockups_ASAL_90G_02-FEB-2026.jpg', label: 'Salted Almond Bar' },
+  { src: 'images/gallery/MM_BAR_Web-Mockups_CHIL_90G_02-FEB-2026.jpg', label: 'Cayenne Chilli Bar' },
+  { src: 'images/gallery/MM_BAR_Web-Mockups_GCOC_90G_02-FEB-2026.jpg', label: 'Golden Coconut Bar' },
+  { src: 'images/gallery/MM_BAR_Web-Mockups_HNUT_90G_02-FEB-2026.jpg', label: 'Hazelnut Bar' },
+  { src: 'images/gallery/MM_BAR_Web-Mockups_PCAR_90G_02-FEB-2026.jpg', label: 'Pure Carob Bar' },
+  { src: 'images/gallery/MM_BAR_Web-Mockups_PMIN_90G_02-FEB-2026.jpg', label: 'Peppermint Bar' },
+  { src: 'images/gallery/MM_MOONS_Web-Mockups_ASAL_35G_02-FEB-2026@2x.jpg', label: 'Salted Almond Moon' },
+  { src: 'images/gallery/MM_MOONS_Web-Mockups_CHIL_35G_02-FEB-2026@2x.jpg', label: 'Cayenne Chilli Moon' },
+  { src: 'images/gallery/MM_MOONS_Web-Mockups_GCOC_35G_02-FEB-2026@2x.jpg', label: 'Golden Coconut Moon' },
+  { src: 'images/gallery/MM_MOONS_Web-Mockups_HNUT_35G_02-FEB-2026@2x.jpg', label: 'Hazelnut Moon' },
+  { src: 'images/gallery/MM_MOONS_Web-Mockups_PCAR_35G_02-FEB-2026@2x.jpg', label: 'Pure Carob Moon' },
+  { src: 'images/gallery/MM_MOONS_Web-Mockups_PMIN_35G_02-FEB-2026@2x.jpg', label: 'Peppermint Moon' },
+  { src: 'images/gallery/MM_MUL_Web-Mockups_BANN_80G_02-FEB-2026@2x.jpg', label: 'Banana Bar' },
+  { src: 'images/gallery/MM_MUL_Web-Mockups_BANN_80G_4PK_02-FEB-2026@2x.jpg', label: 'Banana Bar 4-Pack' },
+  { src: 'images/gallery/eclipse-bite_coconut.jpg', label: 'Eclipse Bite Coconut' },
+  { src: 'images/gallery/hero_bar_carob_pods_studio.jpg', label: 'Carob Pods Studio' },
+  { src: 'images/gallery/hero_bar_lineup.jpg', label: 'Bar Lineup' },
+  { src: 'images/gallery/hero_carob_bar_hand.jpg', label: 'Carob Bar in Hand' },
+  { src: 'images/gallery/hero_carob_bar_smoke_portrait.jpg', label: 'Bar Smoke Portrait' },
+  { src: 'images/gallery/hero_carob_bar_smoke_wide.jpg', label: 'Bar Smoke Wide' },
+  { src: 'images/gallery/hero_carob_pods_hand.jpg', label: 'Carob Pods in Hand' },
+  { src: 'images/gallery/hero_carob_pods_macro.jpg', label: 'Carob Pods Macro' },
+  { src: 'images/gallery/hero_elixir_hand.jpg', label: 'Elixir in Hand' },
+  { src: 'images/gallery/hero_moons_lifestyle.jpg', label: 'Moons Lifestyle' },
+  { src: 'images/gallery/maplemoon_atmospheric_cornflower_blue_fog_gen_001_20260331_170834.jpg', label: 'Blue Fog Atmosphere 1' },
+  { src: 'images/gallery/maplemoon_atmospheric_cornflower_blue_fog_gen_002_20260331_170838.jpg', label: 'Blue Fog Atmosphere 2' },
+  { src: 'images/gallery/maplemoon_imagetoimage_mmbarwebmockupschil90g02feb2026png_gen_20260331_171411.jpg', label: 'AI Chilli Bar' },
+  { src: 'images/gallery/maplemoon_imagetoimage_mmbarwebmockupsgcoc90g02feb2026png_gen_20260331_190918.jpg', label: 'AI Golden Coconut Bar' },
+  { src: 'images/gallery/maplemoon_imagetoimage_mmbarwebmockupshnut90g02feb2026png_gen_20260331_191009.jpg', label: 'AI Hazelnut Bar' },
+  { src: 'images/gallery/maplemoon_imagetoimage_mmmoonswebmockupspcar35g02feb20262xpng_gen_20260331_162331.jpg', label: 'AI Pure Carob Moon 1' },
+  { src: 'images/gallery/maplemoon_imagetoimage_mmmoonswebmockupspcar35g02feb20262xpng_gen_20260331_163815.jpg', label: 'AI Pure Carob Moon 2' },
+  { src: 'images/gallery/maplemoon_imagetoimage_mmmoonswebmockupspcar35g02feb20262xpng_gen_20260331_171420.jpg', label: 'AI Pure Carob Moon 3' },
+  { src: 'images/gallery/maplemoon_imagetoimage_mmmoonswebmockupspcar35g02feb20262xpng_gen_20260331_172243.jpg', label: 'AI Pure Carob Moon 4' },
+  { src: 'images/gallery/maplemoon_minimalist_botanical_closeup_silhouette_gen_001_20260331_163816.jpg', label: 'Botanical Silhouette Closeup 1' },
+  { src: 'images/gallery/maplemoon_minimalist_botanical_closeup_silhouette_gen_002_20260331_163820.jpg', label: 'Botanical Silhouette Closeup 2' },
+  { src: 'images/gallery/maplemoon_minimalist_botanical_silhouette_photograph_gen_002_20260331_190407.jpg', label: 'Botanical Silhouette' },
+  { src: 'images/gallery/maplemoon_minimalist_food_silhouette_photograph_gen_001_20260331_160157.jpg', label: 'Food Silhouette 1' },
+  { src: 'images/gallery/maplemoon_minimalist_food_silhouette_photograph_gen_002_20260331_160200.jpg', label: 'Food Silhouette 2' },
+  { src: 'images/gallery/maplemoon_minimalist_silhouette_photograph_byron_gen_001_20260331_190545.jpg', label: 'Byron Bay Silhouette 1' },
+  { src: 'images/gallery/maplemoon_minimalist_silhouette_photograph_byron_gen_002_20260331_190550.jpg', label: 'Byron Bay Silhouette 2' },
+  { src: 'images/gallery/maplemoon_three_luxury_gift_boxes_gen_001_20260331_164103.jpg', label: 'Gift Boxes 1' },
+  { src: 'images/gallery/maplemoon_three_luxury_gift_boxes_gen_001_20260331_190452.jpg', label: 'Gift Boxes 2' },
+  { src: 'images/gallery/maplemoon_three_luxury_gift_boxes_gen_002_20260331_164107.jpg', label: 'Gift Boxes 3' },
+  { src: 'images/gallery/reuse_moons_162331.jpg', label: 'Moons Product Shot' },
+  { src: 'images/gallery/silhouette_closeup.jpg', label: 'Silhouette Closeup' },
+  { src: 'images/gallery/bg_v14_carob.jpg', label: 'Carob Background' },
+  { src: 'images/gallery/bg_v17_v18_light.jpg', label: 'Light Beige Background' },
+  { src: 'images/gallery/bg_v19_light.jpg', label: 'Light Background' },
+  { src: 'images/gallery/bg_v2_gradient.jpg', label: 'Blue Gradient' },
+  { src: 'images/gallery/bg_v4_range.jpg', label: 'Range Background' },
+  { src: 'images/gallery/blue_fog.jpg', label: 'Blue Fog' },
+  { src: 'images/gallery/blue_fog_001.jpg', label: 'Blue Fog Deep' },
+  { src: 'images/gallery/byron_bay_silhouette.jpg', label: 'Byron Bay Silhouette' },
+  { src: 'images/gallery/chatgpt_mar31_09_17_26_PM.jpg', label: 'Background Concept 1' },
+  { src: 'images/gallery/chatgpt_mar31_09_17_27_PM.jpg', label: 'Background Concept 2' },
+  { src: 'images/gallery/chatgpt_mar31_09_17_27_PM__1_.jpg', label: 'Background Concept 3' },
+  { src: 'images/gallery/chatgpt_mar31_09_17_29_PM.jpg', label: 'Background Concept 4' },
+  { src: 'images/gallery/chatgpt_mar31_09_17_29_PM__1_.jpg', label: 'Background Concept 5' },
+  { src: 'images/gallery/chatgpt_mar31_09_17_30_PM.jpg', label: 'Background Concept 6' },
+  { src: 'images/gallery/chatgpt_mar31_09_17_33_PM.jpg', label: 'Background Concept 7' },
+  { src: 'images/gallery/chatgpt_mar31_09_17_34_PM.jpg', label: 'Background Concept 8' },
+  { src: 'images/gallery/chatgpt_mar31_09_23_16_PM.jpg', label: 'Background Concept 9' },
+  { src: 'images/gallery/chatgpt_mar31_09_23_26_PM.jpg', label: 'Background Concept 10' },
+  { src: 'images/gallery/chatgpt_mar31_09_23_28_PM.jpg', label: 'Background Concept 11' },
+  { src: 'images/gallery/chatgpt_mar31_09_25_09_PM.jpg', label: 'Background Concept 12' },
+  { src: 'images/gallery/chatgpt_mar31_09_25_14_PM.jpg', label: 'Background Concept 13' },
+  { src: 'images/gallery/chatgpt_mar31_09_25_56_PM.jpg', label: 'Background Concept 14' },
+  { src: 'images/gallery/chatgpt_mar31_09_26_16_PM.jpg', label: 'Background Concept 15' },
+  { src: 'images/gallery/chatgpt_Mar_10__2026__02_19_25_PM.jpg', label: 'Early Concept 1' },
+  { src: 'images/gallery/chatgpt_Mar_10__2026__03_17_42_PM.jpg', label: 'Early Concept 2' },
+  { src: 'images/gallery/chatgpt_Mar_10__2026__03_19_13_PM.jpg', label: 'Early Concept 3' },
+  { src: 'images/gallery/chatgpt_Mar_10__2026__03_38_46_PM.jpg', label: 'Early Concept 4' },
+  { src: 'images/gallery/chatgpt_Mar_10__2026__05_30_33_PM.jpg', label: 'Early Concept 5' },
+  { src: 'images/gallery/chatgpt_Mar_12__2026__09_48_28_AM.jpg', label: 'Early Concept 6' },
+  { src: 'images/gallery/chatgpt_Mar_12__2026__10_57_57_AM.jpg', label: 'Early Concept 7' },
+];
+
+function mountGallery() {
+  const grid = document.getElementById('galleryGrid');
+  if (!grid) return;
+  GALLERY.forEach(item => {
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = item.label;
+    img.title = item.label;
+    img.loading = 'lazy';
+    img.onclick = function() { openLightbox(this.src); };
+    grid.appendChild(img);
+  });
+}
+
 // ═══════ PROGRESS ═══════
 function updateProgress() {
   const radios = document.querySelectorAll('input[type="radio"]:checked');
@@ -907,6 +1038,7 @@ function handleSubmit(e) {
 // ═══════ INIT ═══════
 document.addEventListener('DOMContentLoaded', () => {
   mount();
+  mountGallery();
   restoreDraft();
 
   // Bind save on every interaction
