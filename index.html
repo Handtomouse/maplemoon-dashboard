@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MapleMoon Project Portal - Updated Feb 2026</title>
+    <title>MapleMoon Project Portal</title>
     <meta name="description" content="MapleMoon project portal - packaging design, AFQA compliance, and e-commerce proposal dashboard.">
     <meta property="og:title" content="MapleMoon Project Portal">
     <meta property="og:description" content="Client dashboard for MapleMoon packaging design & e-commerce projects.">
@@ -4290,6 +4290,38 @@
             color: var(--mm-dark-blue);
         }
         /* ── end Phase 02: Billing cross-link ── */
+
+        /* ── Phase 02 / W8: Tab content type scale (5 surviving tabs) ── */
+        .tab-content h1 {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--mm-dark-blue);
+            margin: 0 0 16px 0;
+            line-height: 1.2;
+        }
+        .tab-content h2 {
+            font-family: var(--font-secondary);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--mm-deep-blue);
+            margin: 0 0 16px 0;
+            line-height: 1.3;
+        }
+        .tab-content h3 {
+            font-family: var(--font-secondary);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--mm-dark-blue);
+            margin: 0 0 12px 0;
+            line-height: 1.35;
+        }
+        .tab-content p {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        /* ── end Phase 02 / W8 ── */
     </style>
 </head>
 <body>
@@ -4344,7 +4376,7 @@
                 </div>
 
                 <div class="project-title">
-                    <h1>Project Portal - Updated Feb 2026</h1>
+                    <h1>MapleMoon Project Portal</h1>
                     <div class="project-subtitle">Design & Packaging Development</div>
                     <!-- Project Health Indicator (#13) & Last Updated (#12) -->
                     <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap; justify-content: center;">
@@ -5164,7 +5196,7 @@
 
     <!-- Billing Tab -->
     <div id="billing-tab" class="tab-content" role="tabpanel" aria-labelledby="billing-tab-btn">
-        <h2 style="color: var(--mm-dark-blue); margin-bottom: 24px; font-family: var(--font-primary);">Billing</h2>
+        <h2>Billing</h2>
         <section id="billing-afqa" class="billing-section">
             <div class="loading-skeleton" style="padding:20px;text-align:center;color:var(--mm-deep-blue);opacity:0.6"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading billing...</div>
         </section>
@@ -5181,7 +5213,7 @@
             </div>
         </section>
 
-        <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Project Tracker</h2>
+        <h2>Project Tracker</h2>
 
         <div class="tracker-stats" id="tracker-stats">
             <div class="loading-skeleton" style="padding:20px;text-align:center;color:var(--mm-deep-blue);opacity:0.6"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading stats...</div>
@@ -5231,7 +5263,7 @@
             </div>
         </section>
 
-        <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Specification Tracker</h2>
+        <h2>Specification Tracker</h2>
 
         <div id="blocker-alert" style="background: rgba(90, 143, 90, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--success-color);">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
@@ -7233,7 +7265,7 @@ Contact: hello@handtomouse.org
 
     <!-- Final Files Tab -->
     <div id="files-tab" class="tab-content">
-        <h2 style="color: var(--mm-brown); margin-bottom: 10px;"><i class="fas fa-folder-open" style="margin-right: 10px; color: var(--mm-deep-blue);"></i>Final Deliverable Files</h2>
+        <h2><i class="fas fa-folder-open" style="margin-right: 10px; color: var(--mm-deep-blue);"></i>Final Deliverable Files</h2>
         <p style="color: #666; margin-bottom: 20px;">All completed design files for the MapleMoon AFQA project. Click to view or download from Google Drive.</p>
 
         <div style="padding: 16px 20px; background: rgba(143, 188, 139, 0.08); border-left: 3px solid var(--success-color); border-radius: 4px; margin-bottom: 20px; font-size: 0.9rem; color: #666;">
@@ -9312,7 +9344,7 @@ Contact: hello@handtomouse.org
     <div id="archive-tab" class="tab-content" role="tabpanel" aria-labelledby="archive-tab-btn">
         <header class="brand-header fade-in">
             <h1>Archive</h1>
-            <p style="margin-top: 8px; color: var(--mm-deep-blue);">Historical artifacts and reference material from earlier project phases. Each card links to the source content one click away.</p>
+            <p>Historical artifacts and reference material from earlier project phases. Each card links to the source content one click away.</p>
         </header>
         <div id="archive-grid" class="archive-grid">
             <!-- populated by renderArchiveCards() -->
