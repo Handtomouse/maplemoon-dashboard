@@ -6446,7 +6446,9 @@ Contact: hello@handtomouse.org
 
         // ── Billing tab renderer ──
         function fmtMoney(n) {
-            return '$' + Number(n).toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const num = Number(n);
+            const safe = Number.isFinite(num) ? num : 0;
+            return '$' + safe.toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
 
         function escHtml(s) {
@@ -6505,9 +6507,9 @@ Contact: hello@handtomouse.org
                     '</div>' +
                     '<ul class="billing-line-items">' +
                         w.line_items.map(function(li) {
-                            const cls = li.status === 'in_progress' ? 'in-progress' : li.status === 'not_started' ? 'not-started' : escHtml(li.status);
-                            const label = li.status === 'in_progress' ? 'In progress' : li.status === 'not_started' ? 'Not started' : escHtml(li.status);
-                            return '<li><span class="item-name">' + escHtml(li.name) + '</span><span class="status-pill ' + cls + '">' + label + '</span></li>';
+                            const ALLOWED = { in_progress: ['in-progress', 'In progress'], not_started: ['not-started', 'Not started'], paid: ['paid', 'Paid'], billed: ['billed', 'Billed'] };
+                            const entry = ALLOWED[li.status] || ALLOWED.not_started;
+                            return '<li><span class="item-name">' + escHtml(li.name) + '</span><span class="status-pill ' + entry[0] + '">' + entry[1] + '</span></li>';
                         }).join('') +
                     '</ul>';
 
