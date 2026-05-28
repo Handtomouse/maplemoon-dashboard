@@ -6457,95 +6457,111 @@ Contact: hello@handtomouse.org
             });
         }
 
+        function renderBillingAfqa(root, data) {
+            const total = data.invoices.reduce(function(s, i) { return s + i.amount; }, 0);
+            root.innerHTML =
+                '<div class="billing-section-header">' +
+                    '<h3>' + escHtml(data.scope_label) + '</h3>' +
+                    '<span class="billing-section-total">' + fmtMoney(total) + '</span>' +
+                    '<span class="mates-rate-pill">Mates Rate</span>' +
+                '</div>' +
+                '<p class="billing-section-explainer">' + escHtml(data.rate_explainer) + '</p>' +
+                '<table class="billing-table">' +
+                    '<thead><tr><th>Scope</th><th>Invoice</th><th>Date</th><th class="amount">Amount</th><th>Status</th></tr></thead>' +
+                    '<tbody>' +
+                    data.invoices.map(function(inv) {
+                        return '<tr>' +
+                            '<td>' + escHtml(inv.scope) + '</td>' +
+                            '<td>' + escHtml(inv.number) + '</td>' +
+                            '<td>' + escHtml(inv.date) + '</td>' +
+                            '<td class="amount">' + fmtMoney(inv.amount) + '</td>' +
+                            '<td><span class="status-pill paid">Paid</span></td>' +
+                        '</tr>';
+                    }).join('') +
+                    '</tbody>' +
+                '</table>';
+        }
+
+        function renderBillingWebsite(root, w) {
+            const ALLOWED = { in_progress: ['in-progress', 'In progress'], not_started: ['not-started', 'Not started'], paid: ['paid', 'Paid'], billed: ['billed', 'Billed'] };
+            root.innerHTML =
+                '<div class="billing-section-header">' +
+                    '<h3>' + escHtml(w.scope_label) + '</h3>' +
+                    '<span class="billing-section-total">' + fmtMoney(w.scope_total) + '</span>' +
+                '</div>' +
+                '<div class="billing-progress-bar"><div class="billing-progress-fill" style="width: ' + Number(w.consumed_percent) + '%"></div></div>' +
+                '<div class="billing-money-row">' +
+                    '<div class="money-item"><div class="money-label">Deposit paid</div><div class="money-value">' + fmtMoney(w.deposit_paid) + '</div></div>' +
+                    '<div class="money-item"><div class="money-label">Consumed</div><div class="money-value">' + Number(w.consumed_percent) + '%</div></div>' +
+                    '<div class="money-item"><div class="money-label">Remaining</div><div class="money-value">' + fmtMoney(w.remaining) + '</div></div>' +
+                '</div>' +
+                '<ul class="billing-line-items">' +
+                    w.line_items.map(function(li) {
+                        const entry = ALLOWED[li.status] || ALLOWED.not_started;
+                        return '<li><span class="item-name">' + escHtml(li.name) + '</span><span class="status-pill ' + entry[0] + '">' + entry[1] + '</span></li>';
+                    }).join('') +
+                '</ul>';
+        }
+
+        function renderBillingPhotoshoot(root, p) {
+            const total = p.invoices.reduce(function(s, i) { return s + i.amount; }, 0);
+            root.innerHTML =
+                '<div class="billing-section-header">' +
+                    '<h3>' + escHtml(p.scope_label) + '</h3>' +
+                    '<span class="billing-section-total">' + fmtMoney(total) + '</span>' +
+                    '<span class="mates-rate-pill">Mates Rate</span>' +
+                '</div>' +
+                '<p class="billing-section-explainer">' + escHtml(p.rate_explainer) + '</p>' +
+                '<table class="billing-table">' +
+                    '<thead><tr><th>Scope</th><th>Invoice</th><th>Date</th><th class="amount">Amount</th><th>Status</th></tr></thead>' +
+                    '<tbody>' +
+                    p.invoices.map(function(inv) {
+                        const statusClass = inv.status === 'paid' ? 'paid' : 'billed';
+                        const statusLabel = inv.status === 'paid' ? 'Paid' : inv.status === 'draft' ? 'Billed' : escHtml(inv.status);
+                        return '<tr>' +
+                            '<td>' + escHtml(inv.scope) + '</td>' +
+                            '<td>' + escHtml(inv.number) + '</td>' +
+                            '<td>' + escHtml(inv.date) + '</td>' +
+                            '<td class="amount">' + fmtMoney(inv.amount) + '</td>' +
+                            '<td><span class="status-pill ' + statusClass + '">' + statusLabel + '</span></td>' +
+                        '</tr>';
+                    }).join('') +
+                    '</tbody>' +
+                '</table>';
+        }
+
+        function billingSectionFallback(label) {
+            return '<div class="billing-fallback"><i class="fas fa-exclamation-triangle" style="margin-right:8px"></i>' + escHtml(label) + ' could not be loaded. Please refresh the page.</div>';
+        }
+
         async function renderBilling() {
             const afqaRoot = document.getElementById('billing-afqa');
             const websiteRoot = document.getElementById('billing-website');
             const photoRoot = document.getElementById('billing-photoshoot');
             if (!afqaRoot || !websiteRoot || !photoRoot) return;
 
+            let d;
             try {
                 const response = await fetch('data/billing.json', { cache: 'no-store' });
                 if (!response.ok) throw new Error('HTTP ' + response.status);
-                const d = await response.json();
-
-                // AFQA Retrospective
-                const afqaTotal = d.afqa_retrospective.invoices.reduce(function(s, i) { return s + i.amount; }, 0);
-                afqaRoot.innerHTML =
-                    '<div class="billing-section-header">' +
-                        '<h3>' + escHtml(d.afqa_retrospective.scope_label) + '</h3>' +
-                        '<span class="billing-section-total">' + fmtMoney(afqaTotal) + '</span>' +
-                        '<span class="mates-rate-pill">Mates Rate</span>' +
-                    '</div>' +
-                    '<p class="billing-section-explainer">' + escHtml(d.afqa_retrospective.rate_explainer) + '</p>' +
-                    '<table class="billing-table">' +
-                        '<thead><tr><th>Scope</th><th>Invoice</th><th>Date</th><th class="amount">Amount</th><th>Status</th></tr></thead>' +
-                        '<tbody>' +
-                        d.afqa_retrospective.invoices.map(function(inv) {
-                            return '<tr>' +
-                                '<td>' + escHtml(inv.scope) + '</td>' +
-                                '<td>' + escHtml(inv.number) + '</td>' +
-                                '<td>' + escHtml(inv.date) + '</td>' +
-                                '<td class="amount">' + fmtMoney(inv.amount) + '</td>' +
-                                '<td><span class="status-pill paid">Paid</span></td>' +
-                            '</tr>';
-                        }).join('') +
-                        '</tbody>' +
-                    '</table>';
-
-                // Website Progress
-                const w = d.website_progress;
-                websiteRoot.innerHTML =
-                    '<div class="billing-section-header">' +
-                        '<h3>' + escHtml(w.scope_label) + '</h3>' +
-                        '<span class="billing-section-total">' + fmtMoney(w.scope_total) + '</span>' +
-                    '</div>' +
-                    '<div class="billing-progress-bar"><div class="billing-progress-fill" style="width: ' + Number(w.consumed_percent) + '%"></div></div>' +
-                    '<div class="billing-money-row">' +
-                        '<div class="money-item"><div class="money-label">Deposit paid</div><div class="money-value">' + fmtMoney(w.deposit_paid) + '</div></div>' +
-                        '<div class="money-item"><div class="money-label">Consumed</div><div class="money-value">' + Number(w.consumed_percent) + '%</div></div>' +
-                        '<div class="money-item"><div class="money-label">Remaining</div><div class="money-value">' + fmtMoney(w.remaining) + '</div></div>' +
-                    '</div>' +
-                    '<ul class="billing-line-items">' +
-                        w.line_items.map(function(li) {
-                            const ALLOWED = { in_progress: ['in-progress', 'In progress'], not_started: ['not-started', 'Not started'], paid: ['paid', 'Paid'], billed: ['billed', 'Billed'] };
-                            const entry = ALLOWED[li.status] || ALLOWED.not_started;
-                            return '<li><span class="item-name">' + escHtml(li.name) + '</span><span class="status-pill ' + entry[0] + '">' + entry[1] + '</span></li>';
-                        }).join('') +
-                    '</ul>';
-
-                // Photoshoot
-                const p = d.photoshoot;
-                const photoTotal = p.invoices.reduce(function(s, i) { return s + i.amount; }, 0);
-                photoRoot.innerHTML =
-                    '<div class="billing-section-header">' +
-                        '<h3>' + escHtml(p.scope_label) + '</h3>' +
-                        '<span class="billing-section-total">' + fmtMoney(photoTotal) + '</span>' +
-                        '<span class="mates-rate-pill">Mates Rate</span>' +
-                    '</div>' +
-                    '<p class="billing-section-explainer">' + escHtml(p.rate_explainer) + '</p>' +
-                    '<table class="billing-table">' +
-                        '<thead><tr><th>Scope</th><th>Invoice</th><th>Date</th><th class="amount">Amount</th><th>Status</th></tr></thead>' +
-                        '<tbody>' +
-                        p.invoices.map(function(inv) {
-                            const statusClass = inv.status === 'paid' ? 'paid' : 'billed';
-                            const statusLabel = inv.status === 'paid' ? 'Paid' : inv.status === 'draft' ? 'Billed' : escHtml(inv.status);
-                            return '<tr>' +
-                                '<td>' + escHtml(inv.scope) + '</td>' +
-                                '<td>' + escHtml(inv.number) + '</td>' +
-                                '<td>' + escHtml(inv.date) + '</td>' +
-                                '<td class="amount">' + fmtMoney(inv.amount) + '</td>' +
-                                '<td><span class="status-pill ' + statusClass + '">' + statusLabel + '</span></td>' +
-                            '</tr>';
-                        }).join('') +
-                        '</tbody>' +
-                    '</table>';
+                d = await response.json();
             } catch (e) {
-                console.error('renderBilling failed:', e);
-                const fallback = '<div class="billing-fallback"><i class="fas fa-exclamation-triangle" style="margin-right:8px"></i>Billing data could not be loaded. Please refresh the page.</div>';
-                if (afqaRoot) afqaRoot.innerHTML = fallback;
-                if (websiteRoot) websiteRoot.innerHTML = '';
-                if (photoRoot) photoRoot.innerHTML = '';
+                console.error('renderBilling: fetch failed', e);
+                afqaRoot.innerHTML = billingSectionFallback('Billing data');
+                websiteRoot.innerHTML = '';
+                photoRoot.innerHTML = '';
+                return;
             }
+
+            // Render each section in its own try/catch so a single bad block does not wipe the others
+            try { renderBillingAfqa(afqaRoot, d.afqa_retrospective); }
+            catch (e) { console.error('renderBilling: afqa failed', e); afqaRoot.innerHTML = billingSectionFallback('AFQA section'); }
+
+            try { renderBillingWebsite(websiteRoot, d.website_progress); }
+            catch (e) { console.error('renderBilling: website failed', e); websiteRoot.innerHTML = billingSectionFallback('Website section'); }
+
+            try { renderBillingPhotoshoot(photoRoot, d.photoshoot); }
+            catch (e) { console.error('renderBilling: photoshoot failed', e); photoRoot.innerHTML = billingSectionFallback('Photoshoot section'); }
         }
 
         // ── Photoshoot Plan Tab - Interactive Decisions & Checklists ──
