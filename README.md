@@ -31,10 +31,16 @@ Client dashboard for MapleMoon's AFQA Compliance Packaging Project.
 - **Final Files** — Google Drive links to all 36 print-ready PDFs
 - **E-Commerce Proposal** — Shopify website proposal
 
+## Pricing
+
+Canonical AFQA pricing: see [`FINAL_PRICING_BREAKDOWN.md`](FINAL_PRICING_BREAKDOWN.md).
+
+Archived earlier versions: [`_archive/PRICING_CALCULATIONS.md`](_archive/PRICING_CALCULATIONS.md), [`_archive/REVISED_PRICING.md`](_archive/REVISED_PRICING.md).
+
 ## Tech
 
 - Static HTML/CSS/JS (no build, no dependencies)
-- Data: `data/project_status.json`
+- Data: `data/project_status.json` (AFQA products), `data/billing.json` (Billing tab)
 - Deployed via Vercel (auto-deploy on push to `main`)
 - Final files linked to Google Drive via file IDs
 
