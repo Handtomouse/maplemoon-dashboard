@@ -3877,6 +3877,46 @@
             .manifest-matrix-tab { font-size: 0.72rem; padding: 5px 10px; }
         }
 
+        /* iPhone SE / 375px tweaks - inherits from 480px, only nudges where breaks occur */
+        @media (max-width: 375px) {
+            .tab-button {
+                font-size: 0.88rem;
+                padding: 12px 14px;
+            }
+            .billing-section {
+                padding: 16px;
+            }
+            .billing-section-header h3 {
+                font-size: 1.15rem;
+                flex-basis: 100%;
+            }
+            .billing-section-total {
+                font-size: 1rem;
+            }
+            .billing-table th,
+            .billing-table td {
+                padding: 8px 6px;
+                font-size: 0.85rem;
+            }
+            .billing-money-row {
+                gap: 12px;
+            }
+            .billing-money-row .money-item {
+                min-width: 100%;
+            }
+            .billing-line-items li {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .status-pill,
+            .mates-rate-pill {
+                font-size: 0.65rem;
+                padding: 3px 8px;
+            }
+            h1 { font-size: 1.5rem !important; }
+            h2 { font-size: 1.25rem !important; }
+        }
+
         /* Billing tab styles */
         .billing-section {
             background: var(--mm-white);
