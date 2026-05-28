@@ -4134,6 +4134,31 @@
             border-radius: 6px;
         }
         /* ── end Phase 02: Archive tab ── */
+
+        /* ── Phase 02: Back-to-source breadcrumbs ── */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            margin: 0 0 20px 0;
+            background: var(--mm-cream);
+            color: var(--mm-dark-blue);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        .back-link:hover {
+            background: rgba(69, 119, 152, 0.12);
+        }
+        .back-link:focus-visible {
+            outline: 2px solid var(--mm-deep-blue);
+            outline-offset: 2px;
+        }
+        /* ── end Phase 02: Back-to-source breadcrumbs ── */
     </style>
 </head>
 <body>
@@ -5656,8 +5681,42 @@ Contact: hello@handtomouse.org
             // Update URL hash (#15)
             history.replaceState(null, '', '#' + tabName);
 
+            // T7: Breadcrumb wiring — cleanup all, then inject if arrived via archiveOpen
+            breadcrumbCleanup();
+            if (sessionStorage.getItem('mm:viaArchiveOpen')) {
+                const returnTo = sessionStorage.getItem('mm:returnTo') || 'archive';
+                injectBreadcrumb(tabName, returnTo);
+                sessionStorage.removeItem('mm:viaArchiveOpen');
+            } else {
+                sessionStorage.removeItem('mm:returnTo');
+            }
+
             // Scroll to top of tab
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function breadcrumbCleanup() {
+            document.querySelectorAll('.back-link').forEach(function(el) { el.remove(); });
+        }
+
+        function injectBreadcrumb(currentTabName, returnTo) {
+            const label = returnTo === 'billing' ? 'Billing' : 'Archive';
+            const tabEl = document.getElementById(currentTabName + '-tab');
+            if (!tabEl) return;
+            const el = document.createElement('div');
+            el.className = 'back-link';
+            el.setAttribute('role', 'button');
+            el.setAttribute('tabindex', '0');
+            el.setAttribute('aria-label', 'Back to ' + label);
+            el.innerHTML = '<span aria-hidden="true">&#8592;</span> Back to ' + label;
+            el.addEventListener('click', function() {
+                breadcrumbCleanup();
+                switchTab(returnTo);
+            });
+            el.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
+            });
+            tabEl.insertBefore(el, tabEl.firstChild);
         }
 
         // All initialization consolidated into initDashboard() - called from single DOMContentLoaded below
@@ -6662,16 +6721,21 @@ Contact: hello@handtomouse.org
 
         function archiveOpen(anchor, returnTo) {
             sessionStorage.setItem('mm:returnTo', returnTo || 'archive');
+            sessionStorage.setItem('mm:viaArchiveOpen', '1');
             const tabName = anchor.replace(/-tab$/, '');
             const btn = document.querySelector('[aria-controls="' + anchor + '"]');
             if (btn) {
                 switchTab(tabName, { target: btn });
             } else {
+                // Retired tab: no nav button. Toggle classes manually and inject breadcrumb.
                 document.querySelectorAll('.tab-content.active').forEach(function(el) { el.classList.remove('active'); });
                 const target = document.getElementById(anchor);
                 if (target) {
                     target.classList.add('active');
                     history.replaceState(null, '', '#' + tabName);
+                    breadcrumbCleanup();
+                    injectBreadcrumb(tabName, sessionStorage.getItem('mm:returnTo') || 'archive');
+                    sessionStorage.removeItem('mm:viaArchiveOpen');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
                     console.warn('Archive target not found:', anchor);
