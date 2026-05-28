@@ -4159,6 +4159,55 @@
             outline-offset: 2px;
         }
         /* ── end Phase 02: Back-to-source breadcrumbs ── */
+
+        /* ── Phase 02: Status This week + Assets sections ── */
+        .status-section { margin-bottom: 32px; }
+        .status-section-title {
+            font-family: var(--font-primary);
+            color: var(--mm-dark-blue);
+            margin: 0 0 16px 0;
+            font-size: 1.5rem;
+        }
+        .status-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 800px) {
+            .status-cards-grid { grid-template-columns: 1fr; }
+        }
+        .status-card {
+            background: var(--mm-white, #ffffff);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .status-card .status-pill { align-self: flex-start; }
+        .status-pill-done { background: var(--success-color); color: #ffffff; }
+        .status-pill-in_progress { background: var(--warning-color); color: #ffffff; }
+        .status-pill-upcoming { background: var(--mm-deep-blue); color: #ffffff; }
+        .status-card-title {
+            font-family: var(--font-primary);
+            color: var(--mm-dark-blue);
+            font-size: 1.05rem;
+            margin: 4px 0 0 0;
+        }
+        .status-card-date {
+            color: var(--mm-deep-blue);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .status-card-context {
+            color: #66584D;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 4px 0 0 0;
+        }
+        /* ── end Phase 02: Status sections ── */
     </style>
 </head>
 <body>
@@ -5043,6 +5092,13 @@
 
     <!-- Project Tracker Tab -->
     <div id="tracker-tab" class="tab-content active">
+        <section id="status-this-week" class="status-section">
+            <h2 class="status-section-title">This week</h2>
+            <div id="status-this-week-cards" class="status-cards-grid">
+                <div class="loading-skeleton" style="padding:20px;text-align:center;color:var(--mm-deep-blue);opacity:0.6"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading milestones...</div>
+            </div>
+        </section>
+
         <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Project Tracker</h2>
 
         <div class="tracker-stats" id="tracker-stats">
@@ -5052,6 +5108,13 @@
         <div class="kanban-board" id="kanban-board">
             <div class="loading-skeleton" style="padding:40px;text-align:center;color:var(--mm-deep-blue);opacity:0.6"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading project tracker...</div>
         </div>
+
+        <section id="status-assets" class="status-section" style="margin-top: 32px;">
+            <h2 class="status-section-title">Assets and specs</h2>
+            <table class="spec-table" id="status-asset-table">
+                <tr><td class="loading-skeleton" style="padding:30px;text-align:center;color:var(--mm-deep-blue);opacity:0.6"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading assets...</td></tr>
+            </table>
+        </section>
     </div>
 
     <!-- Spec Tracker Tab -->
@@ -6187,8 +6250,9 @@ Contact: hello@handtomouse.org
         // IMPROVEMENT 2: ASSET LIBRARY TAB
         // ============================================================================
 
-        function renderAssetLibrary(data) {
-            const table = document.getElementById('asset-table');
+        function renderAssetLibrary(data, targetId) {
+            const table = document.getElementById(targetId || 'asset-table');
+            if (!table) return;
 
             const assets = [
                 // Bar Specs & Barcodes
@@ -6407,6 +6471,7 @@ Contact: hello@handtomouse.org
                 renderSpecTable(data);
                 renderTimeline(data);
                 renderAssetLibrary(data);
+                renderAssetLibrary(data, 'status-asset-table');
                 renderApprovalWorkflow(data);
                 updateCountdown(data.project.targetDate);
                 initDynamicDate(data);
@@ -6565,8 +6630,9 @@ Contact: hello@handtomouse.org
             // Load billing data (renders Billing tab)
             renderBilling();
 
-            // Phase 02: render Archive cards
+            // Phase 02: render Archive cards + This week milestones
             renderArchiveCards();
+            renderThisWeek();
         });
 
         // ── Billing tab renderer ──
@@ -6687,6 +6753,38 @@ Contact: hello@handtomouse.org
 
             try { renderBillingPhotoshoot(photoRoot, d.photoshoot); }
             catch (e) { console.error('renderBilling: photoshoot failed', e); photoRoot.innerHTML = billingSectionFallback('Photoshoot section'); }
+        }
+
+        // ── Phase 02: Status This week renderer ──
+        async function renderThisWeek() {
+            const container = document.getElementById('status-this-week-cards');
+            if (!container) return;
+            try {
+                const res = await fetch('data/milestones.json', { cache: 'no-store' });
+                if (!res.ok) throw new Error('milestones fetch failed (HTTP ' + res.status + ')');
+                const data = await res.json();
+                const today = new Date().toISOString().slice(0, 10);
+                const sorted = data.milestones.slice().sort(function(a, b) { return a.date.localeCompare(b.date); });
+                const done = sorted.filter(function(m) { return m.status === 'done' && m.date <= today; });
+                const upcoming = sorted.filter(function(m) { return m.status !== 'done' || m.date > today; });
+                const lastDone = done.slice(-1);
+                const nextUp = upcoming.slice(0, Math.max(0, 3 - lastDone.length));
+                const picks = lastDone.concat(nextUp).slice(0, 3);
+                const safeStatus = function(s) { return ['done', 'in_progress', 'upcoming'].indexOf(s) >= 0 ? s : 'upcoming'; };
+                container.innerHTML = picks.length ? picks.map(function(m) {
+                    const st = safeStatus(m.status);
+                    return '<article class="status-card status-' + st + '">' +
+                        '<span class="status-pill status-pill-' + st + '">' + escHtml(st.replace('_', ' ')) + '</span>' +
+                        '<h3 class="status-card-title">' + escHtml(m.title) + '</h3>' +
+                        '<p class="status-card-date">' + escHtml(m.date) + '</p>' +
+                        '<p class="status-card-context">' + escHtml(m.context) + '</p>' +
+                    '</article>';
+                }).join('') : '<p style="color:#66584D;">No milestones to display.</p>';
+            } catch (err) {
+                console.warn('renderThisWeek failed:', err);
+                const section = document.getElementById('status-this-week');
+                if (section) section.style.display = 'none';
+            }
         }
 
         // ── Phase 02: Archive tab renderer ──
