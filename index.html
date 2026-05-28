@@ -4063,6 +4063,77 @@
             background: rgba(184, 84, 80, 0.06);
             border-radius: 6px;
         }
+        /* ── Phase 02: Archive tab ── */
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+        @media (max-width: 600px) {
+            .archive-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .archive-card {
+            background: var(--mm-white, #ffffff);
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .archive-card-title {
+            font-family: var(--font-primary);
+            color: var(--mm-dark-blue);
+            font-size: 1.25rem;
+            margin: 0 0 4px 0;
+        }
+        .archive-card-subtitle {
+            color: var(--mm-deep-blue);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin: 0;
+        }
+        .archive-card-context {
+            color: #66584D;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin: 8px 0 12px 0;
+        }
+        .archive-card-meta {
+            color: #888;
+            font-size: 0.78rem;
+            margin: 0 0 12px 0;
+        }
+        .archive-card-view-btn {
+            background: var(--mm-deep-blue);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 18px;
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            align-self: flex-start;
+            transition: background 0.2s;
+        }
+        .archive-card-view-btn:hover {
+            background: var(--mm-dark-blue);
+            color: #ffffff;
+        }
+        .archive-empty {
+            color: var(--danger-color);
+            padding: 24px;
+            text-align: center;
+            background: rgba(184, 84, 80, 0.06);
+            border-radius: 6px;
+        }
+        /* ── end Phase 02: Archive tab ── */
     </style>
 </head>
 <body>
@@ -6442,6 +6513,9 @@ Contact: hello@handtomouse.org
 
             // Load billing data (renders Billing tab)
             renderBilling();
+
+            // Phase 02: render Archive cards
+            renderArchiveCards();
         });
 
         // ── Billing tab renderer ──
@@ -6562,6 +6636,55 @@ Contact: hello@handtomouse.org
 
             try { renderBillingPhotoshoot(photoRoot, d.photoshoot); }
             catch (e) { console.error('renderBilling: photoshoot failed', e); photoRoot.innerHTML = billingSectionFallback('Photoshoot section'); }
+        }
+
+        // ── Phase 02: Archive tab renderer ──
+        async function renderArchiveCards() {
+            const grid = document.getElementById('archive-grid');
+            if (!grid) return;
+            try {
+                const res = await fetch('data/archive_index.json', { cache: 'no-store' });
+                if (!res.ok) throw new Error('archive_index fetch failed (HTTP ' + res.status + ')');
+                const data = await res.json();
+                grid.innerHTML = data.cards.map(function(card) {
+                    const isExternal = !!card.external;
+                    const action = isExternal
+                        ? '<a class="archive-card-view-btn" href="' + escHtml(card.anchor) + '" target="_blank" rel="noopener">View</a>'
+                        : '<button class="archive-card-view-btn" data-anchor="' + escHtml(card.anchor) + '">View</button>';
+                    return '<article class="archive-card">' +
+                        '<h3 class="archive-card-title">' + escHtml(card.title) + '</h3>' +
+                        '<p class="archive-card-subtitle">' + escHtml(card.subtitle) + '</p>' +
+                        '<p class="archive-card-context">' + escHtml(card.context) + '</p>' +
+                        '<p class="archive-card-meta">Last current as of: ' + escHtml(card.last_current) + '</p>' +
+                        action +
+                    '</article>';
+                }).join('');
+                grid.querySelectorAll('.archive-card-view-btn[data-anchor]').forEach(function(btn) {
+                    btn.addEventListener('click', function() { archiveOpen(btn.dataset.anchor); });
+                });
+            } catch (err) {
+                console.warn('Archive render failed:', err);
+                grid.innerHTML = '<p class="archive-empty">Reference data not loaded. Refresh the page or contact Nate.</p>';
+            }
+        }
+
+        function archiveOpen(anchor, returnTo) {
+            sessionStorage.setItem('mm:returnTo', returnTo || 'archive');
+            const tabName = anchor.replace(/-tab$/, '');
+            const btn = document.querySelector('[aria-controls="' + anchor + '"]');
+            if (btn) {
+                switchTab(tabName, { target: btn });
+            } else {
+                document.querySelectorAll('.tab-content.active').forEach(function(el) { el.classList.remove('active'); });
+                const target = document.getElementById(anchor);
+                if (target) {
+                    target.classList.add('active');
+                    history.replaceState(null, '', '#' + tabName);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    console.warn('Archive target not found:', anchor);
+                }
+            }
         }
 
         // ── Photoshoot Plan Tab - Interactive Decisions & Checklists ──
@@ -8911,6 +9034,19 @@ Contact: hello@handtomouse.org
             cfRestore();cfProgress();
         })();
         </script>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ARCHIVE TAB (Phase 02)
+         ═══════════════════════════════════════════════════════════════ -->
+    <div id="archive-tab" class="tab-content" role="tabpanel" aria-labelledby="archive-tab-btn">
+        <header class="brand-header fade-in">
+            <h1>Archive</h1>
+            <p style="margin-top: 8px; color: var(--mm-deep-blue);">Historical artifacts and reference material from earlier project phases. Each card links to the source content one click away.</p>
+        </header>
+        <div id="archive-grid" class="archive-grid">
+            <!-- populated by renderArchiveCards() -->
+        </div>
     </div>
 
     <!-- Back to Top Button (#14) -->

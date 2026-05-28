@@ -55,7 +55,8 @@
       "subtitle": "External link to the review subfolder",
       "context": "Screenshots may be stale post-website-refresh. A refresh is a separate follow-up, not part of this phase.",
       "last_current": "[PENDING - Nate to confirm]",
-      "anchor": "review-link"
+      "anchor": "review/",
+      "external": true
     },
     {
       "id": "timeline",
