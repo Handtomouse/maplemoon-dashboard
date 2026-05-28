@@ -1,0 +1,69 @@
+{
+  "lastUpdated": "2026-05-28T23:55:00+10:00",
+  "cards": [
+    {
+      "id": "quote",
+      "title": "Original Quote and Invoice",
+      "subtitle": "AFQA pricing breakdown, Feb 2026",
+      "context": "Original mates-rate quote and invoice rationale for the AFQA compliance scope. Superseded by Billing as source of truth.",
+      "last_current": "2026-02-18",
+      "anchor": "quote-tab"
+    },
+    {
+      "id": "ecommerce",
+      "title": "E-Commerce Proposal",
+      "subtitle": "Shopify pitch, Feb 2026 (approved 17 Feb 2026)",
+      "context": "Original proposal for the MapleMoon Shopify build. Approved 17 Feb 2026; superseded by the live build in flight at maplemoon-website.",
+      "last_current": "2026-02-17",
+      "anchor": "ecommerce-tab"
+    },
+    {
+      "id": "research",
+      "title": "Shopify Research",
+      "subtitle": "Pre-build platform, theme, and competitive intel",
+      "context": "One-shot research deck used to scope the Shopify build. Reference only; the build is now in flight.",
+      "last_current": "2026-02-15",
+      "anchor": "research-tab"
+    },
+    {
+      "id": "preview",
+      "title": "Theme Preview",
+      "subtitle": "Pre-build theme A/B preview",
+      "context": "Early theme A/B preview from before the build started. Superseded by live website staging.",
+      "last_current": "2026-02-15",
+      "anchor": "preview-tab"
+    },
+    {
+      "id": "clientform",
+      "title": "Client Form",
+      "subtitle": "Intake form for the Shopify project",
+      "context": "Pre-filled with MapleMoon best-guess defaults. If you already submitted, this is historical. If not, please complete and email info@maplemoon.com.au.",
+      "last_current": "2026-02-15",
+      "anchor": "clientform-tab"
+    },
+    {
+      "id": "photoshoot",
+      "title": "Photoshoot Guide",
+      "subtitle": "Shot manifest for the 24 May 2026 Shopify shoot",
+      "context": "Retrospective reference for the 122-shot Shopify shoot captured by Mitch and Melly. Embedded iframe to mm-photoshoot-guide.vercel.app.",
+      "last_current": "2026-05-24",
+      "anchor": "photoshoot-tab"
+    },
+    {
+      "id": "review",
+      "title": "Design Review",
+      "subtitle": "External link to the review subfolder",
+      "context": "Screenshots may be stale post-website-refresh. A refresh is a separate follow-up, not part of this phase.",
+      "last_current": "[PENDING - Nate to confirm]",
+      "anchor": "review-link"
+    },
+    {
+      "id": "timeline",
+      "title": "Full Timeline",
+      "subtitle": "Original week-by-week timeline",
+      "context": "The complete 1834-line project timeline. Condensed into the Status tab's This week hook (10 milestones); this archive card preserves the full historical view.",
+      "last_current": "2026-05-28",
+      "anchor": "timeline-tab"
+    }
+  ]
+}

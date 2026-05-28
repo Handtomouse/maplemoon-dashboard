@@ -1,0 +1,65 @@
+{
+  "lastUpdated": "2026-05-28T23:55:00+10:00",
+  "milestones": [
+    {
+      "date": "2026-01-15",
+      "title": "INV-0355 paid: AFQA Bars (6)",
+      "status": "done",
+      "context": "All 6 bar designs cloned from Pure Carob master, AFQA compliance complete."
+    },
+    {
+      "date": "2026-01-15",
+      "title": "INV-0354 paid: Icons (8)",
+      "status": "done",
+      "context": "4 updated plus 4 new certification icons delivered."
+    },
+    {
+      "date": "2026-01-15",
+      "title": "INV-0356 paid: Bar CDUs (6)",
+      "status": "done",
+      "context": "Counter display units for all 6 bar SKUs, barcodes confirmed."
+    },
+    {
+      "date": "2026-02-17",
+      "title": "New SKUs added at 25% rate",
+      "status": "done",
+      "context": "Lavender and Orange Bars and Moons added to the AFQA scope."
+    },
+    {
+      "date": "2026-02-18",
+      "title": "Shopify website project approved",
+      "status": "done",
+      "context": "Shopify e-commerce build green-lit; staging in flight at maplemoon-website."
+    },
+    {
+      "date": "2026-05-24",
+      "title": "Shopify photoshoot completed",
+      "status": "done",
+      "context": "Mitch and Melly captured 122 Shopify-mapped shots across the product range."
+    },
+    {
+      "date": "2026-05-28",
+      "title": "Photoshoot art direction underway",
+      "status": "in_progress",
+      "context": "INV-0406 ($1,750) authorised for shot selection, retouching, and curation pass."
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Staging review with Carli and Dylan (target)",
+      "status": "upcoming",
+      "context": "Review live staging URL; feedback drives website direction finalisation."
+    },
+    {
+      "date": "2026-06-30",
+      "title": "Photo deliverables to MapleMoon (target)",
+      "status": "upcoming",
+      "context": "Final selects from photoshoot delivered for Shopify build and ongoing marketing."
+    },
+    {
+      "date": "2026-07-31",
+      "title": "Shopify website launch (target)",
+      "status": "upcoming",
+      "context": "Website direction finalised, products live, AFQA assets integrated."
+    }
+  ]
+}
