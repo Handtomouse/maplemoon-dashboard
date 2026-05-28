@@ -4208,6 +4208,64 @@
             margin: 4px 0 0 0;
         }
         /* ── end Phase 02: Status sections ── */
+
+        /* ── Phase 02: Specs SKU and barcode reference ── */
+        .specs-section {
+            background: var(--mm-white, #ffffff);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .specs-section-title {
+            font-family: var(--font-primary);
+            color: var(--mm-dark-blue);
+            margin: 0 0 8px 0;
+            font-size: 1.4rem;
+        }
+        .specs-section-explainer {
+            color: #66584D;
+            font-size: 0.9rem;
+            margin: 0 0 16px 0;
+            line-height: 1.4;
+        }
+        .specs-codes-table-wrap {
+            overflow-x: auto;
+        }
+        .specs-codes-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        .specs-codes-table thead th {
+            text-align: left;
+            background: var(--mm-cream);
+            color: var(--mm-dark-blue);
+            font-family: var(--font-secondary);
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--mm-deep-blue);
+        }
+        .specs-codes-table tbody td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(69, 119, 152, 0.1);
+            font-size: 0.92rem;
+            color: #3D3D3D;
+            vertical-align: top;
+        }
+        .specs-codes-table tbody tr:hover {
+            background: rgba(232, 229, 206, 0.3);
+        }
+        .specs-codes-table tbody td:nth-child(2),
+        .specs-codes-table tbody td:nth-child(3) {
+            font-family: 'SF Mono', 'Menlo', monospace;
+            font-size: 0.85rem;
+            color: var(--mm-deep-blue);
+        }
+        /* ── end Phase 02: Specs reference ── */
     </style>
 </head>
 <body>
@@ -5119,6 +5177,36 @@
 
     <!-- Spec Tracker Tab -->
     <div id="specs-tab" class="tab-content">
+        <section id="specs-codes" class="specs-section">
+            <h2 class="specs-section-title">SKU and barcode reference</h2>
+            <p class="specs-section-explainer">For manufacturer-share comms. Confirm with the print partner before each run.</p>
+            <div class="specs-codes-table-wrap">
+            <table class="specs-codes-table">
+                <thead>
+                    <tr><th>Product</th><th>SKU</th><th>Barcode</th><th>Status</th><th>Notes</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Pure Carob Bar CDU</td><td>-</td><td>0743966644696</td><td>Paid</td><td>50% master template</td></tr>
+                    <tr><td>Goji and Coconut Bar CDU</td><td>-</td><td>0743966127625</td><td>Paid</td><td>15% clone</td></tr>
+                    <tr><td>Cayenne Chilli Bar CDU</td><td>-</td><td>0743966644719</td><td>Paid</td><td>15% clone</td></tr>
+                    <tr><td>Salted Almond Bar CDU</td><td>-</td><td>0743966644733</td><td>Paid</td><td>15% clone</td></tr>
+                    <tr><td>Peppermint Buckwheat Bar CDU</td><td>-</td><td>0743966644757</td><td>Paid</td><td>15% clone</td></tr>
+                    <tr><td>Roasted Hazelnut Bar CDU</td><td>-</td><td>0743966644771</td><td>Paid</td><td>15% clone</td></tr>
+                    <tr><td>Pure Carob Moon CDU</td><td>-</td><td>0743966644641</td><td>Paid</td><td>100% master design</td></tr>
+                    <tr><td>Coconut and Goji Moon CDU</td><td>-</td><td>0743966644542</td><td>Paid</td><td>15% clone</td></tr>
+                    <tr><td>Almond Celtic Salt Moon CDU</td><td>-</td><td>0743966644566</td><td>Paid</td><td>15% clone</td></tr>
+                    <tr><td>Cayenne Chilli Moon CDU</td><td>-</td><td>0743966644580</td><td>Paid</td><td>15% clone</td></tr>
+                    <tr><td>Roasted Hazelnut Moon CDU</td><td>-</td><td>0743966644603</td><td>Paid</td><td>15% clone</td></tr>
+                    <tr><td>Peppermint Buckwheat Moon CDU</td><td>-</td><td>0743966644627</td><td>Paid</td><td>15% clone</td></tr>
+                    <tr><td>Banana 4-pack</td><td>MM_MUL_BANN_4PK</td><td>0743966127632</td><td>Paid</td><td>80g, NIP 320kJ/1600kJ</td></tr>
+                    <tr><td>Banana CDU</td><td>MM_CDU_BANN</td><td>0743966644665</td><td>Paid</td><td>-</td></tr>
+                    <tr><td>Pure Carob Elixir 250ml</td><td>MM_ELX_PCAR_250ML</td><td>pending</td><td>In progress</td><td>AFQA colour and copy in flight</td></tr>
+                    <tr><td>Spicy Elixir 250ml</td><td>MM_ELX_SPIC_250ML</td><td>pending</td><td>In progress</td><td>AFQA colour and copy in flight</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
         <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Specification Tracker</h2>
 
         <div id="blocker-alert" style="background: rgba(90, 143, 90, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--success-color);">
