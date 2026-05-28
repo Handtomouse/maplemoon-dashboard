@@ -4266,6 +4266,30 @@
             color: var(--mm-deep-blue);
         }
         /* ── end Phase 02: Specs reference ── */
+
+        /* ── Phase 02: Billing cross-link to Archive ── */
+        .billing-cross-link {
+            margin: 16px 0 0 0;
+            padding: 12px 0 0 0;
+            border-top: 1px dashed rgba(69, 119, 152, 0.25);
+            font-size: 0.9rem;
+            color: #66584D;
+        }
+        .billing-cross-link-btn {
+            background: none;
+            border: none;
+            color: var(--mm-deep-blue);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            font-size: inherit;
+            font-family: inherit;
+            text-decoration: underline;
+        }
+        .billing-cross-link-btn:hover {
+            color: var(--mm-dark-blue);
+        }
+        /* ── end Phase 02: Billing cross-link ── */
     </style>
 </head>
 <body>
@@ -6758,7 +6782,11 @@ Contact: hello@handtomouse.org
                         '</tr>';
                     }).join('') +
                     '</tbody>' +
-                '</table>';
+                '</table>' +
+                '<p class="billing-cross-link">' +
+                    'See the original quote and invoice rationale - ' +
+                    '<button class="billing-cross-link-btn" type="button" onclick="archiveOpen(\'quote-tab\', \'billing\')">View in Archive</button>' +
+                '</p>';
         }
 
         function renderBillingWebsite(root, w) {
