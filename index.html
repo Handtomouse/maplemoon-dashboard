@@ -3939,7 +3939,7 @@
                         </div>
                         <div class="last-updated">
                             <i class="fas fa-sync-alt"></i>
-                            <span id="last-updated-text" data-updated="2026-02-11">Updated today</span> <span class="date-absolute">(Feb 11, 2026)</span>
+                            <span id="last-updated-text">Recently updated</span> <span class="date-absolute" id="last-updated-absolute"></span>
                         </div>
                     </div>
                 </div>
@@ -5429,15 +5429,35 @@ Contact: hello@handtomouse.org
             }
         }
 
-        function initDynamicDate() {
+        function initDynamicDate(projectData) {
             const updatedEl = document.getElementById('last-updated-text');
-            if (updatedEl) {
-                const updatedDate = new Date(updatedEl.dataset.updated);
+            const absoluteEl = document.getElementById('last-updated-absolute');
+            if (!updatedEl) return;
+
+            try {
+                const lastUpdatedIso = projectData && projectData.lastUpdated;
+                if (!lastUpdatedIso) {
+                    updatedEl.textContent = 'Recently updated';
+                    return;
+                }
+                const updatedDate = new Date(lastUpdatedIso);
+                if (isNaN(updatedDate.getTime())) {
+                    updatedEl.textContent = 'Recently updated';
+                    return;
+                }
                 const now = new Date();
                 const diffDays = Math.floor((now - updatedDate) / (1000 * 60 * 60 * 24));
                 if (diffDays === 0) updatedEl.textContent = 'Updated today';
                 else if (diffDays === 1) updatedEl.textContent = 'Updated yesterday';
                 else updatedEl.textContent = 'Updated ' + diffDays + ' days ago';
+
+                if (absoluteEl) {
+                    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                    absoluteEl.textContent = '(' + months[updatedDate.getMonth()] + ' ' + updatedDate.getDate() + ', ' + updatedDate.getFullYear() + ')';
+                }
+            } catch (e) {
+                console.warn('initDynamicDate failed:', e);
+                updatedEl.textContent = 'Recently updated';
             }
         }
 
@@ -5531,7 +5551,7 @@ Contact: hello@handtomouse.org
         // Load project data from JSON
         async function loadProjectData() {
             try {
-                const response = await fetch('data/project_status.json');
+                const response = await fetch('data/project_status.json', { cache: 'no-store' });
                 const data = await response.json();
 
                 renderStats(data);
@@ -5541,6 +5561,7 @@ Contact: hello@handtomouse.org
                 updateCountdown(data.project.targetDate);
                 updateBlockerCountdown();
                 validatePricing(data);
+                initDynamicDate(data);
 
                 window.projectDataLoaded = true;
             } catch (error) {
@@ -6050,7 +6071,7 @@ Contact: hello@handtomouse.org
         const originalLoadProjectData = loadProjectData;
         loadProjectData = async function() {
             try {
-                const response = await fetch('data/project_status.json');
+                const response = await fetch('data/project_status.json', { cache: 'no-store' });
                 const data = await response.json();
 
                 renderStats(data);
@@ -6060,6 +6081,7 @@ Contact: hello@handtomouse.org
                 renderAssetLibrary(data);
                 renderApprovalWorkflow(data);
                 updateCountdown(data.project.targetDate);
+                initDynamicDate(data);
 
                 window.projectDataLoaded = true;
             } catch (error) {
@@ -6203,7 +6225,6 @@ Contact: hello@handtomouse.org
             // UI setup
             initKeyboardNav();
             initDeepLink();
-            initDynamicDate();
             initBackToTop();
             initEcommerceAnimations();
             initFileLinks();
