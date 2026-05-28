@@ -7,8 +7,8 @@ Client dashboard for MapleMoon's AFQA Compliance Packaging Project.
 ## Project Status
 
 - **Total AFQA Value**: $10,656.14 (Inc GST)
-- **Paid**: $10,029.30 (original scope — 26 designs + 8 icons)
-- **In Progress**: $626.84 (2 Elixirs — AFQA compliance)
+- **Paid**: $10,029.30 (original scope - 26 designs + 8 icons)
+- **In Progress**: $626.84 (2 Elixirs - AFQA compliance)
 - **Target**: February 28, 2026
 
 ## Invoices
@@ -23,13 +23,13 @@ Client dashboard for MapleMoon's AFQA Compliance Packaging Project.
 
 ## Tabs
 
-- **Quote & Invoice** — Pricing breakdown, timeline, action cards
-- **Project Tracker** — Kanban board from `data/project_status.json`
-- **Spec Tracker** — Product specs, barcodes, dimensions
-- **Timeline** — Week-by-week progress
-- **Assets & Specs** — Asset library with status indicators
-- **Final Files** — Google Drive links to all 36 print-ready PDFs
-- **E-Commerce Proposal** — Shopify website proposal
+- **Quote & Invoice** - Pricing breakdown, timeline, action cards
+- **Project Tracker** - Kanban board from `data/project_status.json`
+- **Spec Tracker** - Product specs, barcodes, dimensions
+- **Timeline** - Week-by-week progress
+- **Assets & Specs** - Asset library with status indicators
+- **Final Files** - Google Drive links to all 36 print-ready PDFs
+- **E-Commerce Proposal** - Shopify website proposal
 
 ## Pricing
 
