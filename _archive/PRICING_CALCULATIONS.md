@@ -1,3 +1,7 @@
+> **ARCHIVED 2026-05-28.** This document is no longer current. See `FINAL_PRICING_BREAKDOWN.md` for the canonical AFQA pricing.
+
+---
+
 # MapleMoon AFQA Project - Complete Pricing Calculations
 
 **Date:** December 2, 2025
