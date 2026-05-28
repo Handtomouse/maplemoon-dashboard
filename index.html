@@ -3876,6 +3876,153 @@
             .manifest-summary-grid { grid-template-columns: 1fr 1fr; }
             .manifest-matrix-tab { font-size: 0.72rem; padding: 5px 10px; }
         }
+
+        /* Billing tab styles */
+        .billing-section {
+            background: var(--mm-white);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .billing-section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .billing-section-header h3 {
+            font-family: var(--font-primary);
+            color: var(--mm-dark-blue);
+            margin: 0;
+            font-size: 1.4rem;
+            flex: 1 1 auto;
+        }
+        .billing-section-total {
+            font-family: var(--font-secondary);
+            font-weight: 700;
+            color: var(--mm-deep-blue);
+            font-size: 1.1rem;
+        }
+        .billing-section-explainer {
+            color: #66584D;
+            font-size: 0.9rem;
+            margin: 0 0 16px 0;
+            line-height: 1.4;
+        }
+        .mates-rate-pill {
+            background: var(--mm-lilac);
+            color: var(--mm-dark-blue);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+        .status-pill {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            display: inline-block;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+        .status-pill.paid { background: var(--success-color); color: white; }
+        .status-pill.billed { background: var(--mm-deep-blue); color: white; }
+        .status-pill.in-progress { background: var(--warning-color); color: white; }
+        .status-pill.not-started { background: #B0B0B0; color: white; }
+        .billing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+        .billing-table th {
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #66584D;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .billing-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            color: #3D3D3D;
+            font-size: 0.95rem;
+        }
+        .billing-table td.amount {
+            font-weight: 700;
+            color: var(--mm-dark-blue);
+            text-align: right;
+            white-space: nowrap;
+        }
+        .billing-progress-bar {
+            width: 100%;
+            height: 14px;
+            background: rgba(0,0,0,0.06);
+            border-radius: 7px;
+            overflow: hidden;
+            margin: 12px 0;
+        }
+        .billing-progress-fill {
+            height: 100%;
+            background: var(--mm-deep-blue);
+            transition: width 300ms ease;
+        }
+        .billing-money-row {
+            display: flex;
+            gap: 24px;
+            margin: 12px 0 20px 0;
+            flex-wrap: wrap;
+        }
+        .billing-money-row .money-item {
+            flex: 1 1 auto;
+            min-width: 140px;
+        }
+        .billing-money-row .money-label {
+            font-size: 0.78rem;
+            color: #66584D;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .billing-money-row .money-value {
+            font-family: var(--font-secondary);
+            font-weight: 700;
+            color: var(--mm-dark-blue);
+            font-size: 1.15rem;
+        }
+        .billing-line-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .billing-line-items li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            gap: 12px;
+        }
+        .billing-line-items li:last-child { border-bottom: none; }
+        .billing-line-items .item-name {
+            color: #3D3D3D;
+            font-size: 0.95rem;
+            flex: 1 1 auto;
+        }
+        .billing-fallback {
+            padding: 20px;
+            text-align: center;
+            color: var(--danger-color);
+            background: rgba(184, 84, 80, 0.06);
+            border-radius: 6px;
+        }
     </style>
 </head>
 <body>
@@ -3913,6 +4060,7 @@
     <!-- Tab Navigation -->
     <div class="tab-navigation" role="tablist" aria-label="Project sections">
         <button class="tab-button active" role="tab" aria-selected="true" aria-controls="quote-tab" tabindex="0" onclick="switchTab('quote', event)">Quote & Invoice</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="billing-tab" tabindex="-1" onclick="switchTab('billing', event)"><i class="fas fa-receipt" style="margin-right:6px"></i>Billing</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="tracker-tab" tabindex="-1" onclick="switchTab('tracker', event)">Project Tracker</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="specs-tab" tabindex="-1" onclick="switchTab('specs', event)">Spec Tracker</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="timeline-tab" tabindex="-1" onclick="switchTab('timeline', event)">Timeline</button>
@@ -4753,6 +4901,16 @@
             </div>
         </div>
 
+    </div>
+
+    <!-- Billing Tab -->
+    <div id="billing-tab" class="tab-content" role="tabpanel" aria-labelledby="billing-tab-btn">
+        <h2 style="color: var(--mm-dark-blue); margin-bottom: 24px; font-family: var(--font-primary);">Billing</h2>
+        <section id="billing-afqa" class="billing-section">
+            <div class="loading-skeleton" style="padding:20px;text-align:center;color:var(--mm-deep-blue);opacity:0.6"><i class="fas fa-spinner fa-spin" style="margin-right:8px"></i>Loading billing...</div>
+        </section>
+        <section id="billing-website" class="billing-section"></section>
+        <section id="billing-photoshoot" class="billing-section"></section>
     </div>
 
     <!-- Project Tracker Tab -->
@@ -6241,7 +6399,112 @@ Contact: hello@handtomouse.org
 
             // Load project data (renders tracker, kanban, specs, timeline tabs)
             loadProjectData();
+
+            // Load billing data (renders Billing tab)
+            renderBilling();
         });
+
+        // ── Billing tab renderer ──
+        function fmtMoney(n) {
+            return '$' + Number(n).toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function escHtml(s) {
+            return String(s).replace(/[&<>"']/g, function(c) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+            });
+        }
+
+        async function renderBilling() {
+            const afqaRoot = document.getElementById('billing-afqa');
+            const websiteRoot = document.getElementById('billing-website');
+            const photoRoot = document.getElementById('billing-photoshoot');
+            if (!afqaRoot || !websiteRoot || !photoRoot) return;
+
+            try {
+                const response = await fetch('data/billing.json', { cache: 'no-store' });
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                const d = await response.json();
+
+                // AFQA Retrospective
+                const afqaTotal = d.afqa_retrospective.invoices.reduce(function(s, i) { return s + i.amount; }, 0);
+                afqaRoot.innerHTML =
+                    '<div class="billing-section-header">' +
+                        '<h3>' + escHtml(d.afqa_retrospective.scope_label) + '</h3>' +
+                        '<span class="billing-section-total">' + fmtMoney(afqaTotal) + '</span>' +
+                        '<span class="mates-rate-pill">Mates Rate</span>' +
+                    '</div>' +
+                    '<p class="billing-section-explainer">' + escHtml(d.afqa_retrospective.rate_explainer) + '</p>' +
+                    '<table class="billing-table">' +
+                        '<thead><tr><th>Scope</th><th>Invoice</th><th>Date</th><th class="amount">Amount</th><th>Status</th></tr></thead>' +
+                        '<tbody>' +
+                        d.afqa_retrospective.invoices.map(function(inv) {
+                            return '<tr>' +
+                                '<td>' + escHtml(inv.scope) + '</td>' +
+                                '<td>' + escHtml(inv.number) + '</td>' +
+                                '<td>' + escHtml(inv.date) + '</td>' +
+                                '<td class="amount">' + fmtMoney(inv.amount) + '</td>' +
+                                '<td><span class="status-pill paid">Paid</span></td>' +
+                            '</tr>';
+                        }).join('') +
+                        '</tbody>' +
+                    '</table>';
+
+                // Website Progress
+                const w = d.website_progress;
+                websiteRoot.innerHTML =
+                    '<div class="billing-section-header">' +
+                        '<h3>' + escHtml(w.scope_label) + '</h3>' +
+                        '<span class="billing-section-total">' + fmtMoney(w.scope_total) + '</span>' +
+                    '</div>' +
+                    '<div class="billing-progress-bar"><div class="billing-progress-fill" style="width: ' + Number(w.consumed_percent) + '%"></div></div>' +
+                    '<div class="billing-money-row">' +
+                        '<div class="money-item"><div class="money-label">Deposit paid</div><div class="money-value">' + fmtMoney(w.deposit_paid) + '</div></div>' +
+                        '<div class="money-item"><div class="money-label">Consumed</div><div class="money-value">' + Number(w.consumed_percent) + '%</div></div>' +
+                        '<div class="money-item"><div class="money-label">Remaining</div><div class="money-value">' + fmtMoney(w.remaining) + '</div></div>' +
+                    '</div>' +
+                    '<ul class="billing-line-items">' +
+                        w.line_items.map(function(li) {
+                            const cls = li.status === 'in_progress' ? 'in-progress' : li.status === 'not_started' ? 'not-started' : escHtml(li.status);
+                            const label = li.status === 'in_progress' ? 'In progress' : li.status === 'not_started' ? 'Not started' : escHtml(li.status);
+                            return '<li><span class="item-name">' + escHtml(li.name) + '</span><span class="status-pill ' + cls + '">' + label + '</span></li>';
+                        }).join('') +
+                    '</ul>';
+
+                // Photoshoot
+                const p = d.photoshoot;
+                const photoTotal = p.invoices.reduce(function(s, i) { return s + i.amount; }, 0);
+                photoRoot.innerHTML =
+                    '<div class="billing-section-header">' +
+                        '<h3>' + escHtml(p.scope_label) + '</h3>' +
+                        '<span class="billing-section-total">' + fmtMoney(photoTotal) + '</span>' +
+                        '<span class="mates-rate-pill">Mates Rate</span>' +
+                    '</div>' +
+                    '<p class="billing-section-explainer">' + escHtml(p.rate_explainer) + '</p>' +
+                    '<table class="billing-table">' +
+                        '<thead><tr><th>Scope</th><th>Invoice</th><th>Date</th><th class="amount">Amount</th><th>Status</th></tr></thead>' +
+                        '<tbody>' +
+                        p.invoices.map(function(inv) {
+                            const statusClass = inv.status === 'paid' ? 'paid' : 'billed';
+                            const statusLabel = inv.status === 'paid' ? 'Paid' : inv.status === 'draft' ? 'Billed' : escHtml(inv.status);
+                            return '<tr>' +
+                                '<td>' + escHtml(inv.scope) + '</td>' +
+                                '<td>' + escHtml(inv.number) + '</td>' +
+                                '<td>' + escHtml(inv.date) + '</td>' +
+                                '<td class="amount">' + fmtMoney(inv.amount) + '</td>' +
+                                '<td><span class="status-pill ' + statusClass + '">' + statusLabel + '</span></td>' +
+                            '</tr>';
+                        }).join('') +
+                        '</tbody>' +
+                    '</table>';
+            } catch (e) {
+                console.error('renderBilling failed:', e);
+                const fallback = '<div class="billing-fallback"><i class="fas fa-exclamation-triangle" style="margin-right:8px"></i>Billing data could not be loaded. Please refresh the page.</div>';
+                if (afqaRoot) afqaRoot.innerHTML = fallback;
+                if (websiteRoot) websiteRoot.innerHTML = '';
+                if (photoRoot) photoRoot.innerHTML = '';
+            }
+        }
 
         // ── Photoshoot Plan Tab — Interactive Decisions & Checklists ──
         function initPhotoshootTab() {
