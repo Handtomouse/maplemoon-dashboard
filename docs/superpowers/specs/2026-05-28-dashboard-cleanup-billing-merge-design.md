@@ -288,7 +288,6 @@ Rollback: branch is isolated, Nate reverts `feature/dashboard-cleanup-billing-me
 - No "Hi Dylan" or "Hi Carli" copy patterns; if the tab includes a greeting line it uses "Hey team"
 - No third-party speak in tab copy ("so Mitch can review", "while Travis is around", etc)
 - No mention of internal milestone splits (30/40/30 stays internal)
-- TITTS Chicken stays out of any dashboard surface entirely
 
 ## Done when
 
