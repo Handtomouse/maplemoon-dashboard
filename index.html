@@ -4170,23 +4170,15 @@
 
     <!-- Tab Navigation -->
     <div class="tab-navigation" role="tablist" aria-label="Project sections">
-        <button class="tab-button active" role="tab" aria-selected="true" aria-controls="quote-tab" tabindex="0" onclick="switchTab('quote', event)">Quote & Invoice</button>
+        <button class="tab-button active" role="tab" aria-selected="true" aria-controls="tracker-tab" tabindex="0" onclick="switchTab('tracker', event)"><i class="fas fa-tasks" style="margin-right:6px"></i>Status</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="billing-tab" tabindex="-1" onclick="switchTab('billing', event)"><i class="fas fa-receipt" style="margin-right:6px"></i>Billing</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="tracker-tab" tabindex="-1" onclick="switchTab('tracker', event)">Project Tracker</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="specs-tab" tabindex="-1" onclick="switchTab('specs', event)">Spec Tracker</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="timeline-tab" tabindex="-1" onclick="switchTab('timeline', event)">Timeline</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="assets-tab" tabindex="-1" onclick="switchTab('assets', event)">Assets & Specs</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="specs-tab" tabindex="-1" onclick="switchTab('specs', event)"><i class="fas fa-clipboard-list" style="margin-right:6px"></i>Specs</button>
         <button class="tab-button" role="tab" aria-selected="false" aria-controls="files-tab" tabindex="-1" onclick="switchTab('files', event)"><i class="fas fa-folder-open" style="margin-right:6px"></i>Final Files</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="ecommerce-tab" tabindex="-1" onclick="switchTab('ecommerce', event)"><i class="fas fa-shopping-cart" style="margin-right:6px"></i>E-Commerce Proposal</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="photoshoot-tab" tabindex="-1" onclick="switchTab('photoshoot', event)"><i class="fas fa-camera" style="margin-right:6px"></i>Photoshoot Guide</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="research-tab" tabindex="-1" onclick="switchTab('research', event)"><i class="fas fa-flask" style="margin-right:6px"></i>Shopify Research</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="preview-tab" tabindex="-1" onclick="switchTab('preview', event)"><i class="fas fa-eye" style="margin-right:6px"></i>Theme Preview</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="clientform-tab" tabindex="-1" onclick="switchTab('clientform', event)" style="background: var(--primary-color); color: white;"><i class="fas fa-clipboard-list" style="margin-right:6px"></i>Client Form</button>
-        <a href="review/" class="tab-button" style="background: var(--mm-dark-blue); color: var(--mm-cream, #E8E5CE); text-decoration: none; display: inline-flex; align-items: center;"><i class="fas fa-palette" style="margin-right:6px"></i>Design Review</a>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="archive-tab" tabindex="-1" onclick="switchTab('archive', event)"><i class="fas fa-archive" style="margin-right:6px"></i>Archive</button>
     </div>
 
     <!-- Quote Tab (existing content) -->
-    <div id="quote-tab" class="tab-content active" role="tabpanel" aria-labelledby="quote-tab-btn">
+    <div id="quote-tab" class="tab-content" role="tabpanel" aria-labelledby="quote-tab-btn">
 
         <!-- Brand Header -->
         <header class="brand-header fade-in">
@@ -5025,7 +5017,7 @@
     </div>
 
     <!-- Project Tracker Tab -->
-    <div id="tracker-tab" class="tab-content">
+    <div id="tracker-tab" class="tab-content active">
         <h2 style="color: var(--mm-brown); margin-bottom: 20px;">Project Tracker</h2>
 
         <div class="tracker-stats" id="tracker-stats">
