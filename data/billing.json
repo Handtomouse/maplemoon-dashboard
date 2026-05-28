@@ -1,0 +1,81 @@
+{
+  "lastUpdated": "2026-05-28T17:00:00+10:00",
+  "currency": "AUD",
+  "afqa_retrospective": {
+    "scope_label": "AFQA Compliance (26 products + 8 icons)",
+    "rate_context": "mates_rate",
+    "rate_explainer": "50% on master templates, 15% on clones, 25% on light updates, 100% on new products.",
+    "invoices": [
+      {
+        "number": "INV-0354",
+        "amount": 151.25,
+        "date": "2026-01-15",
+        "status": "paid",
+        "scope": "Icons (8)"
+      },
+      {
+        "number": "INV-0355",
+        "amount": 1567.09,
+        "date": "2026-01-15",
+        "status": "paid",
+        "scope": "Bars (6)"
+      },
+      {
+        "number": "INV-0356",
+        "amount": 2350.61,
+        "date": "2026-01-15",
+        "status": "paid",
+        "scope": "Bar CDUs (6)"
+      },
+      {
+        "number": "INV-0359",
+        "amount": 1567.09,
+        "date": "2026-01-25",
+        "status": "paid",
+        "scope": "Moons (6)"
+      },
+      {
+        "number": "INV-0363",
+        "amount": 4393.26,
+        "date": "2026-02-04",
+        "status": "paid",
+        "scope": "Moon CDUs (6) + Banana CDU + Bananas 4-Pack"
+      }
+    ]
+  },
+  "website_progress": {
+    "scope_label": "Shopify Build (10 line items)",
+    "scope_total": 13206.00,
+    "deposit_paid": 3961.80,
+    "deposit_invoice": "INV-0369",
+    "consumed_percent": 17,
+    "remaining": 9244.20,
+    "rate_context": "standard_with_goodwill",
+    "line_items": [
+      { "name": "Store setup",           "status": "in_progress", "weight": 12 },
+      { "name": "Theme customisation",   "status": "in_progress", "weight": 18 },
+      { "name": "Content pages",         "status": "not_started", "weight": 10 },
+      { "name": "Klaviyo",               "status": "not_started", "weight": 8 },
+      { "name": "GA4",                   "status": "not_started", "weight": 6 },
+      { "name": "WooCommerce migration", "status": "not_started", "weight": 12 },
+      { "name": "Copywriting",           "status": "not_started", "weight": 12 },
+      { "name": "Photo art direction",   "status": "in_progress", "weight": 10 },
+      { "name": "Reviews",               "status": "not_started", "weight": 6 },
+      { "name": "Training",              "status": "not_started", "weight": 6 }
+    ]
+  },
+  "photoshoot": {
+    "scope_label": "Photoshoot (weekend flat)",
+    "rate_context": "mates_rate_flat",
+    "rate_explainer": "Flat fee for Saturday prep + Sunday shoot, weekend total.",
+    "invoices": [
+      {
+        "number": "C21_MM_07",
+        "amount": 500.00,
+        "date": "2026-05-28",
+        "status": "draft",
+        "scope": "Weekend prep + shoot"
+      }
+    ]
+  }
+}
