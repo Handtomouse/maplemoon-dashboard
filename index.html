@@ -6483,7 +6483,7 @@ Contact: hello@handtomouse.org
         }
 
         function renderBillingWebsite(root, w) {
-            const ALLOWED = { in_progress: ['in-progress', 'In progress'], not_started: ['not-started', 'Not started'], paid: ['paid', 'Paid'], billed: ['billed', 'Billed'] };
+            const ALLOWED = { in_progress: ['in-progress', 'In progress'], not_started: ['not-started', 'Not started'], paid: ['paid', 'Paid'], billed: ['billed', 'Billed'], billed_separately: ['billed', 'Billed separately'] };
             root.innerHTML =
                 '<div class="billing-section-header">' +
                     '<h3>' + escHtml(w.scope_label) + '</h3>' +

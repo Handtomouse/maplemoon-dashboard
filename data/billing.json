@@ -59,7 +59,7 @@
       { "name": "GA4",                   "status": "not_started", "weight": 6 },
       { "name": "WooCommerce migration", "status": "not_started", "weight": 12 },
       { "name": "Copywriting",           "status": "not_started", "weight": 12 },
-      { "name": "Photo art direction",   "status": "in_progress", "weight": 10 },
+      { "name": "Photo art direction",   "status": "billed_separately", "weight": 10 },
       { "name": "Reviews",               "status": "not_started", "weight": 6 },
       { "name": "Training",              "status": "not_started", "weight": 6 }
     ]
