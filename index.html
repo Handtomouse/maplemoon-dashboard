@@ -11,9 +11,40 @@
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="assets/maplemoon-logo.svg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <!-- Brand serif: self-hosted P22 Mackinac Pro. NOTE: assets/fonts/*.woff2 are Fontspring DEMO files (preview only). Replace with licensed webfonts before production deploy. -->
+    <link rel="preload" href="assets/fonts/MackinacPro-Book.woff2" as="font" type="font/woff2" crossorigin>
     <style>
+        /* ── P22 Mackinac Pro (brand serif) — DEMO files, preview only ── */
+        @font-face {
+            font-family: 'P22 Mackinac Pro';
+            src: url('assets/fonts/MackinacPro-Book.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'P22 Mackinac Pro';
+            src: url('assets/fonts/MackinacPro-BookItalic.woff2') format('woff2');
+            font-weight: 400;
+            font-style: italic;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'P22 Mackinac Pro';
+            src: url('assets/fonts/MackinacPro-Medium.woff2') format('woff2');
+            font-weight: 500 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'P22 Mackinac Pro';
+            src: url('assets/fonts/MackinacPro-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
         :root {
             /* MapleMoon Brand Colors */
             --mm-deep-blue: #457798;
@@ -34,7 +65,7 @@
             --danger-color: #B85450;
 
             /* Typography */
-            --font-primary: 'Crimson Text', serif;
+            --font-primary: 'P22 Mackinac Pro', Georgia, serif;
             --font-secondary: 'Inter', sans-serif;
 
             /* Spacing & Effects */
@@ -5360,7 +5391,7 @@
             const modalHTML = `
                 <div id="approvalModal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; animation: fadeIn 0.3s;">
                     <div style="background: white; border-radius: 20px; padding: 40px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
-                        <h2 style="font-family: 'Crimson Text', serif; color: #1E4366; margin-bottom: 20px; font-size: 2rem;">
+                        <h2 style="font-family: var(--font-primary); color: #1E4366; margin-bottom: 20px; font-size: 2rem;">
                             <i class="fas fa-check-circle" style="color: #62ABF9;"></i> Approve AFQA Compliance Project
                         </h2>
 
