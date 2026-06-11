@@ -1025,6 +1025,37 @@
                 font-size: 1.25rem !important;
             }
 
+            /* Tighter mobile header (Phase 02 follow-up) */
+            .brand-header .header-content {
+                gap: 12px;
+            }
+
+            .brand-header .maple-logo {
+                padding: 12px;
+                max-width: 140px;
+            }
+
+            .brand-header .maple-logo img {
+                width: 100px !important;
+            }
+
+            .brand-header .project-title {
+                padding: 14px 16px;
+            }
+
+            .brand-header .project-title h1 {
+                font-size: 1.35rem !important;
+                margin-bottom: 4px;
+            }
+
+            .brand-header .project-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .brand-header .client-summary {
+                padding: 12px 14px;
+            }
+
             /* Tab Navigation - Convert to Dropdown on Mobile */
             .tab-navigation {
                 flex-direction: column;
@@ -4352,9 +4383,58 @@
     <!-- Approval Required Banner (Improvement #5) -->
     <div class="approval-banner" id="approval-banner">
         <i class="fas fa-clipboard-check"></i>
-        <span><strong>Update - 18 Feb 2026:</strong> Shopify website approved! 4 new products added (Lavender + Orange bars & moons). Elixir color + copy in progress.</span>
+        <span><strong>Update - 28 May 2026:</strong> Shopify photoshoot complete (122 shots, 24 May). Photo art direction and curation in progress. Portal refreshed.</span>
         <button onclick="scrollToApprovals()">Review Now</button>
     </div>
+
+    <!-- Brand Header (global - relocated from #quote-tab in Phase 02 follow-up) -->
+    <header class="brand-header fade-in">
+        <div class="header-content">
+            <div class="maple-logo">
+                <img src="assets/maplemoon-logo.svg" alt="MapleMoon" style="width: 200px; height: auto; margin: 0 auto; display: block;">
+            </div>
+
+            <div class="project-title">
+                <h1>MapleMoon Project Portal</h1>
+                <div class="project-subtitle">Design & Packaging Development</div>
+                <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap; justify-content: center;">
+                    <div class="project-health">
+                        <div class="health-light green"></div>
+                        <span>On Track</span>
+                    </div>
+                    <div class="last-updated">
+                        <i class="fas fa-sync-alt"></i>
+                        <span id="last-updated-text">Recently updated</span> <span class="date-absolute" id="last-updated-absolute"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-summary">
+                <h3 class="accordion-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleAccordion(this, 'financial-overview-content')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleAccordion(this,'financial-overview-content')}">
+                    Complete Financial Overview
+                    <i class="fas fa-chevron-down accordion-icon" aria-hidden="true"></i>
+                </h3>
+                <div id="financial-overview-content" class="accordion-content">
+                    <div class="summary-item">
+                        <span>Total Relationship Value:</span>
+                        <span>$23,701.27</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Original Project Progress:</span>
+                        <span>100% Complete & Paid</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>AFQA Project Status:</span>
+                        <span>84% Complete - Elixirs + New Flavors In Progress</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Last Updated:</span>
+                        <span id="last-updated-summary">February 11, 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <!-- Tab Navigation -->
     <div class="tab-navigation" role="tablist" aria-label="Project sections">
@@ -4368,55 +4448,7 @@
     <!-- Quote Tab (existing content) -->
     <div id="quote-tab" class="tab-content" role="tabpanel" aria-labelledby="quote-tab-btn">
 
-        <!-- Brand Header -->
-        <header class="brand-header fade-in">
-            <div class="header-content">
-                <div class="maple-logo">
-                    <img src="assets/maplemoon-logo.svg" alt="MapleMoon" style="width: 200px; height: auto; margin: 0 auto; display: block;">
-                </div>
-
-                <div class="project-title">
-                    <h1>MapleMoon Project Portal</h1>
-                    <div class="project-subtitle">Design & Packaging Development</div>
-                    <!-- Project Health Indicator (#13) & Last Updated (#12) -->
-                    <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap; justify-content: center;">
-                        <div class="project-health">
-                            <div class="health-light green"></div>
-                            <span>On Track</span>
-                        </div>
-                        <div class="last-updated">
-                            <i class="fas fa-sync-alt"></i>
-                            <span id="last-updated-text">Recently updated</span> <span class="date-absolute" id="last-updated-absolute"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="client-summary">
-                    <h3 class="accordion-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleAccordion(this, 'financial-overview-content')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleAccordion(this,'financial-overview-content')}">
-                        Complete Financial Overview
-                        <i class="fas fa-chevron-down accordion-icon" aria-hidden="true"></i>
-                    </h3>
-                    <div id="financial-overview-content" class="accordion-content">
-                        <div class="summary-item">
-                            <span>Total Relationship Value:</span>
-                            <span>$23,701.27</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>Original Project Progress:</span>
-                            <span>100% Complete & Paid</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>AFQA Project Status:</span>
-                            <span>84% Complete - Elixirs + New Flavors In Progress</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>Last Updated:</span>
-                            <span id="last-updated-summary">February 11, 2026</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <!-- Brand header relocated to global page header above tab nav (Phase 02 follow-up) -->
 
         <!-- Financial Overview -->
         <div class="financial-overview">
