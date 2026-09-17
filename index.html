@@ -6862,8 +6862,8 @@ Contact: hello@handtomouse.org
                 '</div>' +
                 '<div class="billing-progress-bar"><div class="billing-progress-fill" style="width: ' + Number(w.consumed_percent) + '%"></div></div>' +
                 '<div class="billing-money-row">' +
-                    '<div class="money-item"><div class="money-label">Deposit paid</div><div class="money-value">' + fmtMoney(w.deposit_paid) + '</div></div>' +
-                    '<div class="money-item"><div class="money-label">Consumed</div><div class="money-value">' + Number(w.consumed_percent) + '%</div></div>' +
+                    '<div class="money-item"><div class="money-label">Paid to date</div><div class="money-value">' + fmtMoney(w.paid_to_date != null ? w.paid_to_date : w.deposit_paid) + '</div></div>' +
+                    '<div class="money-item"><div class="money-label">Paid</div><div class="money-value">' + Number(w.consumed_percent) + '%</div></div>' +
                     '<div class="money-item"><div class="money-label">Remaining</div><div class="money-value">' + fmtMoney(w.remaining) + '</div></div>' +
                 '</div>' +
                 '<ul class="billing-line-items">' +

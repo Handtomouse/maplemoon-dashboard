@@ -44,12 +44,14 @@
     ]
   },
   "website_progress": {
-    "scope_label": "Shopify Build (10 line items)",
+    "scope_label": "Shopify Build (10 line items, ex GST)",
     "scope_total": 13206.00,
     "deposit_paid": 3961.80,
+    "paid_to_date": 9244.20,
+    "paid_invoices": ["INV-0369", "INV-0415"],
     "deposit_invoice": "INV-0369",
-    "consumed_percent": 17,
-    "remaining": 9244.20,
+    "consumed_percent": 70,
+    "remaining": 3961.80,
     "rate_context": "standard_with_goodwill",
     "line_items": [
       { "name": "Store setup",           "status": "in_progress", "weight": 12 },
@@ -75,13 +77,6 @@
         "date": "2026-05-23",
         "status": "billed",
         "scope": "Photoshoot weekend (Sat 23 May prep + Sun 24 May shoot)"
-      },
-      {
-        "number": "INV-0406",
-        "amount": 1200.00,
-        "date": "2026-05-23",
-        "status": "billed",
-        "scope": "Photo art direction (shot guide, brand boards, creative brief)"
       }
     ]
   }
